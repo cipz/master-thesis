@@ -1,0 +1,32 @@
+%!TEX root = ../thesis.tex
+
+\begin{savequote}[75mm]
+This is a quote
+\qauthor{This is the author of the quote}
+\end{savequote}
+
+\chapter{This is a chapter}\label{ch:chapter_reference}
+
+	\lipsum[1-2]
+	
+	\newpage
+	
+	\section{Section one}\label{sec:section_one_reference}
+	
+		Let me list some useful commands:
+		\begin{itemize}
+			\item This is a \Quote{quote}.
+			\item This, \Chapref{chapter_reference}, is a chapter reference.
+			\item This adds the following \gls{word}\glsadd{word} to the glossary.
+		\end{itemize}
+		
+	%	This is a figure:	
+	%	\begin{figure}[H]
+	%		\centering
+	%		\includegraphics[width=1\textwidth]{resources/legacy-code}\\
+	%		\caption{Dilbert on legacy system infrastructures}
+	%	\end{figure}
+	
+	\section{Section two}\label{sec:section_two_reference}
+	
+	\section{Section three}\label{sec:section_three_reference}

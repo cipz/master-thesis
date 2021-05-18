@@ -1,0 +1,53 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass{Dissertate}
+
+\begin{document}
+	
+	\raggedbottom
+
+	\input{frontmatter/personalize}
+	% \maketitle
+	% \copyrightpage
+	
+	\frontmatter
+	
+	\setstretch{\dnormalspacing}
+	
+	% \abstractpage
+	% \tableofcontents
+	% \authorlist
+	% \listoffigures
+	% \dedicationpage
+	% \acknowledgments
+	
+	% \doublespacing
+	
+	% Include chapters
+	\setcounter{chapter}{0} % Start chapter numbering at 1
+	% \include{chapters/chapter_template}
+	\include{chapters/chapter1} % Introduction
+	\include{chapters/conclusion}
+	
+	% \include{chapters/appendixA}
+	% \include{chapters/appendixB}
+	
+	\addcontentsline{toc}{chapter}{Acknowledgments}
+	\acknowledgments
+	
+	\cleardoublepage
+	\phantomsection
+	
+	\addcontentsline{toc}{chapter}{References}
+	\bibliography{references}
+	
+	\cleardoublepage
+	\phantomsection
+	
+	\addcontentsline{toc}{chapter}{Glossary}
+	\printglossary
+
+	\backmatter
+
+\end{document}
