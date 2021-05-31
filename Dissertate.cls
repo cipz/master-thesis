@@ -418,8 +418,6 @@
 \renewcommand{\backmatter}{
     \input{endmatter/personalize}
     \clearpage
-    \bibliography{references}
-    \addcontentsline{toc}{chapter}{References}
     \bibliographystyle{apalike2}
     \include{endmatter/colophon}
 }
