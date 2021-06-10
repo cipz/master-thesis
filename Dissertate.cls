@@ -77,8 +77,8 @@
 
 % Text layout.
 %\RequirePackage[outer=1in, inner=1.55in, twoside, a4paper, showframe]{geometry}
-%\RequirePackage[outer=1in, inner=1.55in, twoside, a4paper]{geometry} %PRINT VERSION
-\RequirePackage[outer=1.275in, inner=1.275in, twoside, a4paper]{geometry} %PRINT VERSION
+\RequirePackage[outer=1in, inner=1.55in, twoside, a4paper]{geometry} %PRINT VERSION
+% \RequirePackage[outer=1.275in, inner=1.275in, twoside, a4paper]{geometry} %PRINT VERSION
 \usepackage{ragged2e}
 %\RaggedRight
 \RequirePackage{graphicx}
@@ -344,6 +344,8 @@
 	\abstractpage
 	\sommario
 	
+	\preface
+	
 	\tableofcontents
 	
 	\phantomsection
@@ -366,14 +368,41 @@
 	
 }
 
-\newcommand{\copyrightpage}{
-	\vspace*{18cm}
-	\begin{center}
-	\scshape \noindent \small \copyright \  \small  \theauthor \\
-	all rights reserved, % \@degreeyear
-	\end{center}
+\newcommand{\copyrightpage}{	
+%	\vspace*{18cm}
+%	\begin{center}
+%	\scshape \noindent \small \copyright \  \small  \theauthor \\
+%	all rights reserved, % \@degreeyear
+%	\end{center}
+%	\cleardoublepage
+%	\rm
+
+	\noindent
+	Olivia H. Plant: DevOps under control, Development of a framework for achieving
+	internal control and effectively managing risks in a DevOps environment
+	Master Thesis, University of Twente, March 2019
+
+	\vfill
+	
+	\begin{tabularx}{\textwidth}{Xl}
+		\textbf{Author} &  \\
+		Voinea Stefan Ciprian & \\
+		Study programme: & MSc Business Information Technology \\
+		E-mail: & o.h.plant@alumnus.utwente.nl\\
+	\end{tabularx}
+
+	\vspace{0.5cm}
+
+	\begin{tabularx}{\textwidth}{Xl}
+		\textbf{Graduation commitee} &  \\
+		Claudio Enrico Palazzi & \\
+		Study programme: & MSc Business Information Technology \\
+		E-mail: & o.h.plant@alumnus.utwente.nl\\
+	\end{tabularx}
+
 	\cleardoublepage
 	\rm
+
 }
 
 \newcommand{\dedicationpage}{
@@ -408,6 +437,13 @@
 	\chapter*{Sommario}
 	\addcontentsline{toc}{chapter}{Sommario}
 	\input{frontmatter/sommario}
+}
+
+\newcommand{\preface}{
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Preface}
+	\chapter*{Preface}
+	\input{frontmatter/preface.tex}
 }
 
 \newcommand{\acronyms}{
