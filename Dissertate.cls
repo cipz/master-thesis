@@ -184,7 +184,9 @@
 \RequirePackage[palatino]{quotchap}
 \renewcommand*{\chapterheadstartvskip}{\vspace*{-0.5\baselineskip}}
 \renewcommand*{\chapterheadendvskip}{\vspace{1.3\baselineskip}}
+
 \bibliographystyle{IEEEtran}
+% In case of errors https://tex.stackexchange.com/questions/267277/latex-error-file-ieeetran-cls-not-found
 
 \usepackage{url}
 \def\UrlBreaks{\do\/\do-}
