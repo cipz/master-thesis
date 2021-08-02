@@ -3,10 +3,20 @@
 
 \documentclass{Dissertate}
 
+\input{glossary}
+
+\makeglossaries
+
 \input{words}
 
 \begin{document}
-	
+
+	% Open lora mesh network supporting / for air quality sensing
+	% Open LoRa mesh network for IoT air quality sensing devices
+	% Study of a low-power mesh network of IoT devices based on LoRa applied in air quality sensing
+	% Open LoRa mesh network for\\IoT air quality sensing devices: bringing down the classic client server architecture
+	% demystifying
+			
 	\raggedbottom
 
 	\input{frontmatter/personalize}
@@ -37,8 +47,8 @@
  	\include{chapters/chapter6} % Results and experimentation
 	\include{chapters/conclusion}
 	
-	% \include{chapters/appendixA}
-	% \include{chapters/appendixB}
+	\include{chapters/appendixA} % Programming pycom's FiPy and PyTrack
+	\include{chapters/appendixB} % Glossary of terms and abbreviations
 	
 	\addcontentsline{toc}{chapter}{Acknowledgments}
 	\acknowledgments

@@ -7,6 +7,8 @@ This is a quote
 
 \chapter{This is a chapter}\label{ch:chapter_reference}
 
+	Footnote\footnote{footnotes working fine}
+
 	\lipsum[1-2]
 	
 	\newpage
@@ -42,4 +44,37 @@ This is a quote
 	
 	\section{Section two}\label{sec:section_two_reference}
 	
+		\[
+			\left[
+			\begin{tabular}{@{\qquad}m{.6\textwidth}@{\quad}}
+				\raggedright%
+				\textbf{Web addresses in texts} \par
+				There's a package called \texttt{url} designed for typesetting web addresses.
+				Write \mbox{\texttt{\string\usepackage\string{url\string}}} in your preamble; this will provide the
+				command \mbox{\texttt{\string\url}}. This command takes an address for the argument and
+				will print it out with typewriter font. Furthermore, it is able to handle
+				special characters in addresses like underscores and percent signs. It even
+				enables hyphenation in addresses, which is useful for websites with a very
+				long name.%
+			\end{tabular}
+			\right]
+		\]
+	
 	\section{Section three}\label{sec:section_three_reference}
+	
+		\[
+			\left[
+			\begin{tabular}{@{\quad}m{.3\textwidth}@{\qquad}m{.5\textwidth}@{\quad}}
+				\includegraphics[width=\linewidth]{example-image-a} &
+				\raggedright%
+				\textbf{Web addresses in texts} \par
+				There's a package called \texttt{url} designed for typesetting web addresses.
+				Write \mbox{\texttt{\string\usepackage\string{url\string}}} in your preamble; this will provide the
+				command \mbox{\texttt{\string\url}}. This command takes an address for the argument and
+				will print it out with typewriter font. Furthermore, it is able to handle
+				special characters in addresses like underscores and percent signs. It even
+				enables hyphenation in addresses, which is useful for websites with a very
+				long name.%
+			\end{tabular}
+			\right]
+		\]
