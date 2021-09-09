@@ -17,14 +17,19 @@
 
 \usepackage{lipsum} 
 \usepackage{tabularx}
+\usepackage[bottom]{footmisc}
 
 \newcommand{\Quote}[1]{``\textit{#1}''}
 
 \RequirePackage{etoolbox}
 
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage[automake, indexonlyfirst, numberline]{glossaries}
 \usepackage{graphicx}
+
+\usepackage[automake, indexonlyfirst, numberline]{glossaries}
+
+\renewcommand{\glsnamefont}[1]{\uppercase{\bfseries #1}}
+\renewcommand{\gls}[1]{\textsc{#1}\textsubscript{G}\glsadd{#1}}
 
 % Package used to highlight
 
@@ -76,9 +81,9 @@
     {\endoldenumerate\end{spacing}}
 
 % Text layout.
-%\RequirePackage[outer=1in, inner=1.55in, twoside, a4paper, showframe]{geometry}
-%\RequirePackage[outer=1in, inner=1.55in, twoside, a4paper]{geometry} %PRINT VERSION
-\RequirePackage[outer=1.275in, inner=1.275in, twoside, a4paper]{geometry} %PRINT VERSION
+% \RequirePackage[outer=1in, inner=1.55in, twoside, a4paper, showframe]{geometry}
+\RequirePackage[outer=1in, inner=1.55in, twoside, a4paper]{geometry} %PRINT VERSION
+% \RequirePackage[outer=1.275in, inner=1.275in, twoside, a4paper]{geometry} %PRINT VERSION
 \usepackage{ragged2e}
 %\RaggedRight
 \RequirePackage{graphicx}
@@ -118,10 +123,6 @@
 \renewcommand{\thefootnote}{\arabic{footnote}}
 \let\oldfootnote\footnote
 \renewcommand{\footnote}[1]{\oldfootnote{\fontspec{EB Garamond}#1}}
-
-\glossarystyle{altlist}
-\makeglossaries
-\input{glossary.tex}
 
 % Tikz
 \usepackage{tikz}
@@ -184,7 +185,9 @@
 \RequirePackage[palatino]{quotchap}
 \renewcommand*{\chapterheadstartvskip}{\vspace*{-0.5\baselineskip}}
 \renewcommand*{\chapterheadendvskip}{\vspace{1.3\baselineskip}}
+
 \bibliographystyle{IEEEtran}
+% In case of errors https://tex.stackexchange.com/questions/267277/latex-error-file-ieeetran-cls-not-found
 
 \usepackage{url}
 \def\UrlBreaks{\do\/\do-}
@@ -245,10 +248,6 @@
 \def\pdTwoSchool#1{\gdef\@pdTwoSchool{#1}}
 \def\pdTwoYear#1{\gdef\@pdTwoYear{#1}}
 
-\renewcommand{\glsnamefont}[1]{\uppercase{\bfseries #1}}
-\renewcommand{\gls}[1]{\textsc{#1}\textsubscript{G}}
-
-
 \hypersetup{
     colorlinks,
     citecolor=SchoolColor, 
@@ -271,8 +270,12 @@
 
 	\begin{center}
 		
-		% Big university logo in the center of the page
-		\vbox to0pt{\vbox to\textheight{\vfill\vspace{-2cm}\includegraphics[width=11.5cm]{resources/img/unipd/unipd-bn-light} \vfill}\vss}
+		% Big university logo
+		% https://tex.stackexchange.com/questions/167719/how-to-use-background-image-in-latex
+		\tikz[remember picture,overlay]
+		\node[opacity=0.3,inner sep=0pt] at (current page.west){
+			\includegraphics[height=1.04\paperheight]{resources/img/unipd/unipd-bn-light}
+		};
 		
 		\vspace*{\fill}
 		
@@ -298,7 +301,7 @@
 		\vspace{.7cm}
 		
 		\vspace{30pt}
-		\scshape{\Huge{\bfseries{\textcolor{SchoolColor}{\thetitle}}}} \normalsize \\
+		\scshape{\Huge{\bfseries{\textcolor{SchoolColor}{\thetitle}}}} \normalsize
 		\vspace{25pt}
 		\vspace{15pt}
 		
@@ -342,6 +345,8 @@
 	\abstractpage
 	\sommario
 	
+	\preface
+	
 	\tableofcontents
 	
 	\phantomsection
@@ -350,6 +355,8 @@
 	\addcontentsline{toc}{chapter}{List of figures}
 	\renewcommand*\listfigurename{List of figures}
 	\listoffigures
+
+	\cleardoublepage
 	
 	\addcontentsline{toc}{chapter}{List of tables}
 	\renewcommand*\listtablename{List of tables}
@@ -364,14 +371,45 @@
 	
 }
 
-\newcommand{\copyrightpage}{
-	\vspace*{18cm}
+\newcommand{\copyrightpage}{	
+%	\vspace*{18cm}
+%	\begin{center}
+%	\scshape \noindent \small \copyright \  \small  \theauthor \\
+%	all rights reserved, % \@degreeyear
+%	\end{center}
+%	\cleardoublepage
+%	\rm
+
+	\noindent
+	Olivia H. Plant: DevOps under control, Development of a framework for achieving
+	internal control and effectively managing risks in a DevOps environment
+	Master Thesis, University of Twente, March 2019
+
+	\vfill
+	
 	\begin{center}
-	\scshape \noindent \small \copyright \  \small  \theauthor \\
-	all rights reserved, % \@degreeyear
+		
+		\begin{tabularx}{0.9\textwidth}{Xl}
+			\textbf{Author} &  \\
+			Voinea Stefan Ciprian & \\
+			Study programme: & MSc Business Information Technology \\
+			E-mail: & o.h.plant@alumnus.utwente.nl\\
+		\end{tabularx}
+	
+		\vspace{0.5cm}
+	
+		\begin{tabularx}{0.9\textwidth}{Xl}
+			\textbf{Graduation commitee} &  \\
+			Claudio Enrico Palazzi & \\
+			Study programme: & MSc Business Information Technology \\
+			E-mail: & o.h.plant@alumnus.utwente.nl\\
+		\end{tabularx}
+	
 	\end{center}
+
 	\cleardoublepage
 	\rm
+
 }
 
 \newcommand{\dedicationpage}{
@@ -399,6 +437,7 @@
 	\addcontentsline{toc}{chapter}{Abstract}
 	\chapter*{Abstract}
 	\input{frontmatter/abstract}
+	\cleardoublepage
 }
 
 \newcommand{\sommario}{
@@ -406,6 +445,15 @@
 	\chapter*{Sommario}
 	\addcontentsline{toc}{chapter}{Sommario}
 	\input{frontmatter/sommario}
+	\cleardoublepage
+}
+
+\newcommand{\preface}{
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Preface}
+	\chapter*{Preface}
+	\input{frontmatter/preface}
+	\cleardoublepage
 }
 
 \newcommand{\acronyms}{
@@ -421,7 +469,3 @@
     \bibliographystyle{apalike2}
     \include{endmatter/colophon}
 }
-
-
-
-

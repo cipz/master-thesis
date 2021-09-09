@@ -1,12 +1,18 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
 
+% TODO incentrare sul fatto che io sto vendendo la rete mesh e non megasense
+
 \documentclass{Dissertate}
+
+\input{glossary}
+
+\makeglossaries
 
 \input{words}
 
 \begin{document}
-	
+		
 	\raggedbottom
 
 	\input{frontmatter/personalize}
@@ -17,15 +23,6 @@
 	
 	\setstretch{\dnormalspacing}
 	
-	% \abstractpage
-	% \tableofcontents
-	% \authorlist
-	% \listoffigures
-	% \dedicationpage
-	% \acknowledgments
-	
-	% \doublespacing
-	
 	% Include chapters
 	\setcounter{chapter}{0} % Start chapter numbering at 1
 	% \include{chapters/chapter_template}
@@ -35,10 +32,10 @@
 	\include{chapters/chapter4} % Related work
 	\include{chapters/chapter5} % Proposed solution
  	\include{chapters/chapter6} % Results and experimentation
-	\include{chapters/conclusion}
+	\include{chapters/conclusion} % Conclusions
 	
-	% \include{chapters/appendixA}
-	% \include{chapters/appendixB}
+	\include{chapters/appendixA} 
+	\include{chapters/appendixB} 
 	
 	\addcontentsline{toc}{chapter}{Acknowledgments}
 	\acknowledgments
