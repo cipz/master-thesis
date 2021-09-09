@@ -1,6 +1,8 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
 
+% TODO incentrare sul fatto che io sto vendendo la rete mesh e non megasense
+
 \documentclass{Dissertate}
 
 \input{glossary}
@@ -10,13 +12,7 @@
 \input{words}
 
 \begin{document}
-
-	% Open lora mesh network supporting / for air quality sensing
-	% Open LoRa mesh network for IoT air quality sensing devices
-	% Study of a low-power mesh network of IoT devices based on LoRa applied in air quality sensing
-	% Open LoRa mesh network for\\IoT air quality sensing devices: bringing down the classic client server architecture
-	% demystifying
-			
+		
 	\raggedbottom
 
 	\input{frontmatter/personalize}
@@ -27,15 +23,6 @@
 	
 	\setstretch{\dnormalspacing}
 	
-	% \abstractpage
-	% \tableofcontents
-	% \authorlist
-	% \listoffigures
-	% \dedicationpage
-	% \acknowledgments
-	
-	% \doublespacing
-	
 	% Include chapters
 	\setcounter{chapter}{0} % Start chapter numbering at 1
 	% \include{chapters/chapter_template}
@@ -45,10 +32,10 @@
 	\include{chapters/chapter4} % Related work
 	\include{chapters/chapter5} % Proposed solution
  	\include{chapters/chapter6} % Results and experimentation
-	\include{chapters/conclusion}
+	\include{chapters/conclusion} % Conclusions
 	
-	\include{chapters/appendixA} % Programming pycom's FiPy and PyTrack
-	\include{chapters/appendixB} % Glossary of terms and abbreviations
+	\include{chapters/appendixA} 
+	\include{chapters/appendixB} 
 	
 	\addcontentsline{toc}{chapter}{Acknowledgments}
 	\acknowledgments

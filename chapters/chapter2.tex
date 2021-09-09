@@ -1,13 +1,5 @@
 %!TEX root = ../thesis.tex
 
-% TODO iot for sensing of air quality
-
-% related work :incentrato su cosa vendo, reti mesh
-
-% cancellare expected results -> magari in introduzione cosa ci si aspetta dal progetto
-
-% in appendice cose "non necessarie"
-
 \chapter{Background}\label{chapter:background}
 
 	% TODO cambiare in maniera da vendere la mesh, non megasense
@@ -16,8 +8,7 @@
 	It first explains what the Internet of Things is, afterwards, it describes the problem with air pollution, to conclude with an overview on the background work and state or art of IoT devices capable of detecting such pollution.
 	In particular, it concentrates on MegaSense, the IoT air quality sensing project which the work on this thesis builds upon.
 
-	% TODO incentrare sul fatto che io sto vendendo la rete mesh e non megasense
-	A deeper understanding of the related work can be found in chapter \ref{chapter:related_work}, where previously made projects developed in the context of air quality monitoring are described.
+	A deeper understanding of the related work on mesh networks can be found in chapter \ref{chapter:related_work}, where previously made projects which use a similar architecture are described.
 
 \section{Internet of Things}
 
@@ -25,61 +16,46 @@
 	%https://www.smithsonianmag.com/innovation/kevin-ashton-describes-the-internet-of-things-180953749/
 	%http://www.itrco.jp/libraries/RFIDjournal-That%20Internet%20of%20Things%20Thing.pdf
 	%https://www.rfidjournal.com/that-internet-of-things-thing
-	It's name, which is now know all around the globe, has been attributed to \textit{Kevin Ashton}, who used it in a presentation at about radio frequency identification (RFID) technology, \textit{Protector \& Gamble}, in 1999 \cite{iot_definition} to describe the network connecting objects in the physical world to the Internet.
+	It's name, which is now know all around the globe, has been attributed to \textit{Kevin Ashton}, who used it in a presentation about radio frequency identification (RFID) technology, at \textit{Protector \& Gamble}, in 1999 \cite{iot_definition} to describe the network connecting objects in the physical world to the Internet.
 	
-	% todo cambiare machines?
-	This constantly expanding area of Computer Science aims to turn physical objects, as small as they may be, into nodes of an interconnected system that opens the door to new interfaces between humans and machines and how these see the physical world.
+	This constantly expanding branch of Computer Science aims to turn physical objects, as small as they may be, into nodes of an interconnected system which opens the door to new interfaces between humans and machines and how these see the physical world.
+	Its importance heavily relies on data gathered from these devices, since, in combination with other paradigms such as machine learning and Artificial Intelligence, this can be transformed into valuable information.
+	The creation of models from all these inputs has given a more efficient workflow in companies and has improved certain aspects of everyday life, with wearable technologies used to enhance quality of life.
 	
-	% promising technology to turn each physical object (i.e., a thing) into a node on the Internet and to facilitate machine-to-human and machine-to-machine communication with the physical world
-	
-	% TODO aggiungere ai al glossario
-	Its importance heavily relies on the data gathered from these devices, since, in combination with other paradigms such as machine learning and AI, it can be transformed into usable information.
-	The creation of models from all these inputs have given a more efficient workflow in companies, with Industry 4.0 and IIoT, and has improved certain aspects of everyday life, with technologies such as wearables, used to enhance quality of life.
-
 	% TODO inserire una frase per dire che prima di introdurre l'argomento principale ecco un paio di esempi di tecnologia IoT
-		
+	
 	% \newpage
 	\subsection{Universal Product Code and Barcode}
 
 		% https://www.thoughtco.com/bar-codes-history-1991329
-		One of the first technologies that can be considered as IoT, is the ``\textit{Universal Product Code}'', or \textit{UPC}.
-		% todo cambiare / modificare 
+		One of the first technologies that can be considered part of the IoT family, is the ``\textit{Universal Product Code}'', or \textit{UPC}.
+		% todo cambiare / modificare
 		It's first iteration is detailed in the patent issued to inventors Joseph Woodland and Bernard Silver on October 7, 1952, and can be described as a ``bull's eye'' symbol, made up of a series of concentric circles \cite{upc_patent}, as can be seen in Figure~\ref{fig:upc_patent}.
 		
-%		\noindent
-%		\begin{minipage}{0.3\textwidth}\raggedright
-%			
-%		\end{minipage}%
-%		\hfill%
-%		\begin{minipage}{0.7\textwidth}
-%			\includegraphics[width=\textwidth]{resources/img/upc_1}
-%			\captionof{figure}{Carnegie Mellon University's ``coke machine''}
-%		\end{minipage}
-%		\newline	
-		
-		Authors of the patent, state  that ``One application of the invention is in the so called ``super-market' field.'', indicating that they already successfully identified a need to speed up and automatizing the process of paying at the super market.
+		Authors of the patent, state  that ``one application of the invention is in the so called 'super-market' field'', indicating that they already successfully identified a need to speed up and automatizing the process of paying at super-markets.
 		
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=\textwidth-4cm]{resources/img/upc_1}
-			\caption{``\textit{Diagrammatic view showing an em bodiment of the invention}''}
+			\caption{Diagrammatic view of the Universal Product Code}
 			\label{fig:upc_patent}
 		\end{figure}
 		
-		Although, due to the large size and low reliability of equipment, this concept has not been immediately introduced to the public.
-	
-	
-	
-	
-	
-		The first widespread appearance ... 
+		Due to the large size and low reliability of the equipment necessary to read the figure, this concept has not been immediately released for everyday use.
+		Commercial adoption relied on the emergence of laser optics, which started to offer a more compact reading technology.
+		
+		Although, printers used to generate barcodes were vulnerable to smudge the design coped with errors as ink bleeding would result in taller bars.
+		
+
+		Only later, in 
+
+		The first widespread 
 	
 		The barcode, as it is now known, was first used commercially in 1966, and it was soon realized that it would become an industry standard.
 		
 		The first appearance of the Universal Product Code (UPC) to the public and has become widespread, is the one developed in 1971 by George Laurer at IBM \cite{upc_ibm}.
 		% TODO cambiare
-		Adoption relied on emergence of laser optics, developed around the same time, as these offered compact reading technology.
-		Although, printers used to generate barcodes were vulnerable to smudge the design coped with errors as ink bleeding would result in taller bars.
+		
 		% TODO cambiare
 		This invention offered the first way to track products and address them.
 		
@@ -200,6 +176,9 @@
 		
 		On the other hand, from an industrial point of view, there are 
 		
+		
+		with Industry 4.0 and Industrial IoT (IIoT)
+		
 		\vspace{3cm}
 		
 		
@@ -239,7 +218,7 @@
 % https://www.rinnovabili.it/ambiente/biella-zaino-misura-smog-654/
 
 \newpage
-\section{iot for sensing of air quality}
+\section{IoT for sensing of air quality}
 
 \newpage
 \section{MegaSense}
