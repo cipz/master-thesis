@@ -18,8 +18,20 @@
 \usepackage{lipsum} 
 \usepackage{tabularx}
 \usepackage[bottom]{footmisc}
+\usepackage{enumitem} 
 
-\newcommand{\Quote}[1]{``\textit{#1}''}
+\newcommand{\Quote}[3]{
+	\begin{center}
+		\begin{minipage}[H]{0.9\columnwidth}
+			\begin{center}
+				``\textit{#1}''~#2
+			\end{center}
+			\begin{flushright}
+				\textit{ - #3}
+			\end{flushright}
+		\end{minipage}
+	\end{center}
+}
 
 \RequirePackage{etoolbox}
 
@@ -119,10 +131,9 @@
                 tablewithin=chapter]{caption}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \RequirePackage{microtype}
-
 \renewcommand{\thefootnote}{\arabic{footnote}}
 \let\oldfootnote\footnote
-\renewcommand{\footnote}[1]{\oldfootnote{\fontspec{EB Garamond}#1}}
+\renewcommand{\footnote}[1]{\oldfootnote{~\fontspec{EB Garamond}#1}}
 
 % Tikz
 \usepackage{tikz}

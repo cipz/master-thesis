@@ -4,35 +4,65 @@
 
 
 % TODO mettere da qualche parte overview of underlaying network technologies
+% Hardware Addressing Schemes
 	
-	% Hardware Addressing Schemes
+	This chapter explains more in detail the underlying technologies of this project.
 	
-	To fully understand the project and the choices behind it, is worth taking a look at some backgrounds technology which can be useful to know before proceeding further into this thesis.
-	In this chapter we describe DTNs, the notion of peer-to-peer and overlay networks.
+	Starting from the general definition of a network and the most common architectures, to radio technologies work and then micro-controllers.
 	
-	internetworking \cite{internetworking}
+
+%	In this chapter we describe DTNs, the notion of peer-to-peer and overlay networks.
+%	
+%	internetworking \cite{internetworking}
 	
 	
 % TODO andare a recuperare dal libro di douglas
 \section{Approaches To Network Communication}
 	
-	A  computer  network  is a  structure  that  makes  available  to  a  data 
-	processing  user at  one  place  some data  processing  function or  service 
-	performed at another place.
+	\begin{center}
+		\begin{minipage}[H]{0.9\columnwidth}
+			\begin{center}
+				``\textit{A computer network is a structure that makes available to a data processing user at one place some data processing function or service performed at another place.}''~\cite{nla.cat-vn252493}
+			\end{center}
+		\end{minipage}
+	\end{center}
 	
-	A  network architecture is  a  complete definition  of all  the layers  neces-
-	sary  to  build  the  network.  The  definition  itself  is expressed  as a  set  of 
-	protocols  that  act  within  the  same  layer  or  between  layers.  A  protocol,  in 
-	tum,  is  a  set  of  agreements  for  interaction  of two  or  more  parties  and  is 
-	expressed  by  three  components,  syntax  (e.g., a  set  of  headers, a set  of 
-	commands/responses), semantics (the actions  and reactions that take place, 
-	including  the  exchange  of  messages),  and  timing,  the  sequencing  and  con-
-	currency aspects  of the  protocol
+	Given the definition of computer network by Paul E. Green, it is easy to understand its importance in today's society.
+	% http://www.redbooks.ibm.com/abstracts/gg243376.html
+	A network of networks is called internetwork, shortened by internet; however, the Internet, with a capital I, is a set of worldwide interconnected networks \cite{gg243376}.
+	Questa distinzione è stata cominciata ad essere fatta / proposta in the beginning of the 1980s\footnote{\href{https://datatracker.ietf.org/doc/html/rfc871}{RFC 871 (1982): A PERSPECTIVE ON THE ARPANET REFERENCE MODEL}}$^{,}$\footnote{\href{https://datatracker.ietf.org/doc/html/rfc872}{RFC 872 (1982): TCP-ON-A-LAN}}, when computers were becoming more and more accessible not only to to companies and universities, but also in households with the advent of MS-DOS\footnote{\href{https://github.com/microsoft/MS-DOS}{MS-DOS source code on GitHub}}, thus ARPANET was expanding and LANs were not enough anymore to accomodate the amount of data travelling from one place to another.
 	
-	connection oriented vs connectionless
+	Although from the 1980s, As described in \cite{gg243376}, it is possible to divide the Internet such as the following groups of networks:
+	\begin{itemize}[noitemsep]
+		\item Backbones: Large networks that exist primarily to interconnect other networks. Also known as network access points (NAPs) or Internet Exchange
+		\item Regional networks connecting, for example, universities and colleges.
+		\item Commercial networks providing access to the backbones to subscribers, and networks owned by commercial organizations for internal use that also have connections to the Internet.
+		\item Local networks, such as campus-wide university networks
+	\end{itemize}
+
+	Thus came the need for a better structure that could organize at best these components in a more robust, but also flexible, large network.
 	
-	Despite the potential drawback of not being able to guarantee network capacity,
-	connectionless networks have become extremely popular.
+	% inserire immagine con la nuvoletta che si vede dentro e non si vede dentro
+	
+	% distinzione tra distributed systems e computer network
+	
+	It is important to understand the difference between network architecture and network topology.
+	
+	A network architecture, as described by by Paul E. Green, ``is a complete definition of all the layers necessary to build the network''\cite{nla.cat-vn252493}.
+	This is focused on the network software, which needs to be highly structure in order to allow for heterogeneous systems to communicate with each other.
+	One example of network architecture is the ISO/OSI stack, which is implemented by the TCP/IP stack of protocols.
+	``A protocol is a set of agreements for interaction of two or more parties and is expressed by three components, syntax (e.g., a set of headers, a set of commands/responses), semantics (the actions and reactions that take place, including the exchange of messages), and timing, the sequencing and concurrency aspects of the protocol.''\cite{nla.cat-vn252493}.
+	Different types of network use different architectures, based on the transmission medium and how well this performs (errors, speed, etc.)
+	
+	% https://www.omnisci.com/technical-glossary/network-topology
+	On the other hand, the network topology refers to the manner in which the links and nodes of a network are arranged to relate to each other.
+	
+	% inserire immagine con le varie architetture di rete	
+	
+	% COPIATO DA INTERNET: responsible for technical management of IETF activities and the Internet standards process
+	Nowadays, the organization responsible for technical management of IETF activities and the Internet standards process is the Internet Engineering Steering Group (IESG)\footnote{\url{https://www.ietf.org/about/groups/iesg/}}.
+	
+	\newpage
 	
 	WAN vs LAN
 	
