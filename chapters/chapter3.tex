@@ -265,6 +265,9 @@
 	
 	It is important to note though that using a generic board in a production environment might not be ideal, since it might lack of support and documentation.
 	The boards described subsequently are from three of the major MCU producers, Arduino, Raspberry Pi and Pycom, which have built hardware that is well documented and suited for many different environments, from hobbysts to industrial use.
+	
+	% TODO COMPLETARE
+	Regarding the programming language ... Micropython ... 
 
 	\subsection{Arduino}
 	
@@ -324,59 +327,70 @@
 		% TODO rivedere bene quando si scrive resto della tesi
 		Particularly, this last model, the board on the right in Fig. \ref{img:arduino_board}, has been considered as one of the possible choices as development board for this project.
 		As better explained in chap 5, it has been discarded since it does not offer LoRa connectivity and an additional module would have been necessary to connect the board in a mesh.
-									
-	\newpage
-						
+							
 	\subsection{Raspberry Pi}
-		
-		The Raspberry Pi is a tiny and affordable computer that you can use to learn programming through fun, practical projects
-		
-		When compared to the Arduino, the Raspberry pi offers more functionalities, since it's architecture 
-				
+
+		% https://ccclib.org/raspberrypi/
 		% https://www.electronicshub.org/raspberry-pi-vs-arduino/
-		Raspberry Pi and Arduino are two very popular boards among electronics DIY builders, hobbyists and even professionals. Raspberry Pi and Arduino are quite different boards. While Arduino is aimed at quick programming and circuit prototyping, Raspberry Pi acts as a learning tool for Computer Programming 
-				
-		The Raspberry Pi was developed by Eben Upton at the University of Cambridge in the United Kingdom with the aim of teaching and improving programming skills of students in developing countries. While Arduino is a Microcontroller based development board, the Raspberry Pi is a Microprocessor (usually an ARM Cortex A Series) based board that acts as a computer.
+		Another important microcontroller on the market is the Raspberry Pi, developed by Eben Upton at the University of Cambridge in the United Kingdom with the aim of teaching and improving programming skills of students in developing countries.
 		
-		You can connect several peripherals like a Monitor (through HDMI or AV Port), Mouse and Keyboard (through USB), connect to internet (through Ethernet or Wi-Fi), add a Camera (through the dedicated Camera Interface), just like we do to our desktop computer.
+		Compared to the Arduino specifications, it also offers more functionalities, since they include an ARM processor, a GPU with HDMI output connectivity, an Ethernet port, USB ports to connect mouse and keyboard, a camera interface, more RAM memory and more I/O pins.
+		% https://www.makeuseof.com/tag/what-is-an-arm-processor/
+		ARM processors, or Advanced RISC Machine processors, are better suited to mobile computing, since they use a simplified, less power-hungry method of processing.
+		This allows the Raspberry Pi to run full operating systems such as some Linux distributions, included the official operating system Raspian OS
 		
+		% TODO rivedere perchè copiato
 		Since the entire Computer (the Processor, RAM, Storage, Graphics, Connectors, etc.) is sitting on a single Printed Circuit Board, the Raspberry Pi (and other similar boards) are called as Single Board Computers or SBC.
 		
-		Another important thing about Raspberry Pi is, as it is a Linux based Computer, you can develop software using several Programming Languages like C, C++, Python, Java, HTML, etc.
+		Letting their differences aside, both are very popular boards among electronics DIY builders, hobbyists and even professionals.
+		Some projects involve the use of both boards in a master-slave architecture, where the Raspberry Pi acts as a master and gathers the data from the Arduinos, which are equipped with the sensors.
 		
-		% --
-		
-		As the Arduino, there are different versions of raspberry pi, each one serving different scopes
-		
-		spiegare quali sono 
-		
+		Some of the main competitors of the Raspberry Pi are the Banana Pi and the Asus Tinkerboard (in Fig. \ref{img:generic_board}).
+		Since, like the Arduino, the Raspberry Pi boards schematics are open-source and available online \footnote{\url{https://www.raspberrypi.org/documentation/computers/raspberry-pi.html}}, board makers have been able to adapt them in their own way.
+
 		% https://en.wikipedia.org/wiki/Raspberry_Pi
+		% https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/
+		
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{resources/img/chap3/raspberry_types}
-			\caption{}
+			\caption{Raspberry Pi Model 3B+ on the left, Raspberry Pi Zero in the middle, Raspberry Pi Pico on the right}
+			\label{img:raspberry_board}
 		\end{figure}
-				
-		Come mai non è stato scelto raspberry pi
-			
-		\newpage
+		
+		There are now different Raspberry Pi boards, or models, each a bit more specialized than the other.
+		Some of the most important models are:
+		% https://www.raspberrypi.org/products/
+		\begin{itemize}[noitemsep]
+			\item Model B+
+			\item Zero
+			\item Pico
+		\end{itemize}
+		
+		% TODO rivedere prezzi
+		They are represented in Fig. \ref{img:raspberry_board} and can be considered as the latest evolution of what is needed to learn programming in a Unix like environment at a low cost, in fact these boards cost 35\$, 5\$ and 3\$ each.
+		A complete list of the available boards can be found on their online store \footnote{\url{https://www.raspberrypi.org/products/}}.
+		
+		% TODO rivedere bene quando si scrive resto della tesi
+		The Raspberry Pi Pico was considered for this project, but was rejected since, as the Arduino, it would have needed additional modules for LoRa and BLE connectivity, while the other models have a computational power much greater than the one needed.
 			
 	\subsection{Pycom}
-	
-%		\noindent
-%		\begin{minipage}{0.5\textwidth}% adapt widths of minipages to your needs
-%			\includegraphics[width=\textwidth]{resources/img/pycom-logo-new-rp1}
-%			\captionof{figure}{\textit{Pycom} company logo}
-%		\end{minipage}%
-%		\hfill%
-%		\begin{minipage}{0.55\textwidth}\raggedright
-%			Yesterday,\\
-%			all my troubles seemed so far away\\
-%			Now it looks as though they're here to stay\\
-%			Oh, I believe in yesterday.				Yesterday,\\
-%			all my troubles seemed so far away\\
-%			Now it looks as though they're here to stay\\
-%		\end{minipage}
+		
+		% https://pycom.io/the-story-of-pycom-things/
+		While Raspberry Pi and Arduino share a longer history, Pycom was founded in 2015 via a crowdfunding campaign on Kickstarter.
+		The goal was to create a board for immediate development in the world of IoT, with all the possible connectivity.
+			
+		As the other two previously described companies, Pycom offers multiple board choices, such as:
+		\begin{itemize}[noitemsep]
+			\item tets
+		\end{itemize}
+			
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{resources/img/chap3/pycom_board}
+			\caption{fypy on the left, PyTrack 2X in the middle, pysense on the right}
+			\label{img:pycom_board}
+		\end{figure}	
 		
 		A Pycom development board has considerably more I/O than a standard Arduino, but probably comparable to an Arduino Mega. Easy to program via Python. Good example code from Pycom. Small community. Low cost. Not at all comparable to Raspberry Pi in terms of software flexibility.
 		
@@ -392,11 +406,7 @@
 
 		% https://pycom.io/product/fipy/
 		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=\textwidth]{resources/img/chap3/pycom_board}
-			\caption{}
-		\end{figure}
+
 
 		% TODO ADD TO REFERENCES
 		% https://docs.pycom.io/gitbook/assets/lopy4-pinout.pdf
