@@ -56,6 +56,8 @@
 
 	% TODO sistemare posizione footnote alla fine
 	% Oppure prendere mappa da https://www.globalbackbone.tisparkle.com/
+	% Mettere riferimento a mappa interattiva
+	% https://globe.gl/example/submarine-cables/
 	\begin{figure}
 		\centering
 		\includegraphics[width=\textwidth]{resources/img/chap3/backbone}
@@ -351,7 +353,7 @@
 		% https://en.wikipedia.org/wiki/Raspberry_Pi
 		% https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/
 		
-		\begin{figure}[H]
+		\begin{figure}
 			\centering
 			\includegraphics[width=\textwidth]{resources/img/chap3/raspberry_types}
 			\caption{Raspberry Pi Model 3B+ on the left, Raspberry Pi Zero in the middle, Raspberry Pi Pico on the right}
@@ -360,11 +362,10 @@
 		
 		There are now different Raspberry Pi boards, or models, each a bit more specialized than the other.
 		Some of the most important models are:
-		% https://www.raspberrypi.org/products/
 		\begin{itemize}[noitemsep]
-			\item Model B+
-			\item Zero
-			\item Pico
+			\item 3 B+ / 4: the model 3B+ and 4 are their most selling products, they are marketed as a ''tiny, dual-display, desktop computer'' \footnote{\url{https://www.raspberrypi.org/products/raspberry-pi-4-model-b/}};
+			\item Zero: it's the smallest form factor Raspberry Pi on the market;
+			\item Pico: a low-cost, high-performance microcontroller board with flexible digital interfaces.
 		\end{itemize}
 		
 		% TODO rivedere prezzi
@@ -380,17 +381,28 @@
 		While Raspberry Pi and Arduino share a longer history, Pycom was founded in 2015 via a crowdfunding campaign on Kickstarter.
 		The goal was to create a board for immediate development in the world of IoT, with all the possible connectivity.
 			
-		As the other two previously described companies, Pycom offers multiple board choices, such as:
-		\begin{itemize}[noitemsep]
-			\item tets
-		\end{itemize}
-			
+		As the other two previously described companies, Pycom offers multiple board choices, such as the fipy, the wipy and the lopy.
+		These boards are very similar to each other, since all of them offer at least WiFi and BLE, have the same chipset, interfaces and memory.
+
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{resources/img/chap3/pycom_board}
 			\caption{fypy on the left, PyTrack 2X in the middle, pysense on the right}
 			\label{img:pycom_board}
 		\end{figure}	
+		
+		In particular, the FiPy board, present in Fig. \ref{img:pycom_board}, has been chosen for this project since it packs five networks in one small board.
+		It is capable to communicate via WiFi, Bluetooth, LoRa, Sigfox and dual LTE-M (CAT-M1 and NB-IoT), and gives access to global LPWAN networks.
+		
+		
+		
+		
+		Contrarly to Arduino and Raspberry Pi, the Pycom company has decided to maintain the datasheets and the firmware of the boards proprietary.
+		
+		
+		the Micropython-programmable FiPy takes up the same footprint as our other boards. Featuring 
+		
+		
 		
 		A Pycom development board has considerably more I/O than a standard Arduino, but probably comparable to an Arduino Mega. Easy to program via Python. Good example code from Pycom. Small community. Low cost. Not at all comparable to Raspberry Pi in terms of software flexibility.
 		
