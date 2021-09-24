@@ -90,7 +90,7 @@
 	% https://standards.iso.org/ittf/PubliclyAvailableStandards/s020269_ISO_IEC_7498-1_1994(E).zip
 	One example of network architecture is the ISO/OSI reference model \footnote{\url{https://www.iso.org/standard/20269.html}}, which is implemented by the TCP/IP stack of protocols.
 
-	\begin{figure}
+	\begin{figure}[H]
 		\centering
 		% https://stackoverflow.com/questions/38596488/in-which-layer-is-http-in-the-osi-model
 		\includegraphics[width=\textwidth]{resources/img/chap3/isoosi}
@@ -104,7 +104,7 @@
 	% https://www.omnisci.com/technical-glossary/network-topology
 	On the other hand, the network topology refers to the manner in which the links and nodes of a network are arranged to relate to each other.
 	
-	\begin{figure}[h!]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{resources/img/chap3/network_topologies.png}
 		\caption{Common network topologies}
@@ -323,7 +323,9 @@
 	
 		% TODO rivedere bene quando si scrive resto della tesi
 		Particularly, this last model, the board on the right in Fig. \ref{img:arduino_board}, has been considered as one of the possible choices as development board for this project.
-		As better explained in chap 5, it has been discarded since it does not offer LoRa connectivity and an additional module would have been necessary to connect the board in a mesh
+		As better explained in chap 5, it has been discarded since it does not offer LoRa connectivity and an additional module would have been necessary to connect the board in a mesh.
+									
+	\newpage
 						
 	\subsection{Raspberry Pi}
 		
@@ -349,13 +351,15 @@
 		spiegare quali sono 
 		
 		% https://en.wikipedia.org/wiki/Raspberry_Pi
-		\begin{figure}
+		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{resources/img/chap3/raspberry_types}
 			\caption{}
 		\end{figure}
 				
 		Come mai non è stato scelto raspberry pi
+			
+		\newpage
 			
 	\subsection{Pycom}
 	
@@ -383,7 +387,17 @@
 
 		Mettere una tabella comparativa tra arduino raspberry e picom per dimostrare le capacità computazionali di ciascuno
 		
-% TODO ADD TO REFERENCES
-% https://docs.pycom.io/gitbook/assets/lopy4-pinout.pdf
 		
 		A more in depth description of how the chosen technologies interact is present in chap
+
+		% https://pycom.io/product/fipy/
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\textwidth]{resources/img/chap3/pycom_board}
+			\caption{}
+		\end{figure}
+
+		% TODO ADD TO REFERENCES
+		% https://docs.pycom.io/gitbook/assets/lopy4-pinout.pdf
+	
