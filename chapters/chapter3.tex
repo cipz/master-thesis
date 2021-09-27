@@ -224,7 +224,6 @@
 \section{LoRa and LoRaWAN}
 
 \newpage
-\newpage
 	
 \section{Hardware (Microcontrollers)}\label{sec:microcontrollers}
 
@@ -269,7 +268,9 @@
 	The boards described subsequently are from three of the major MCU producers, Arduino, Raspberry Pi and Pycom, which have built hardware that is well documented and suited for many different environments, from hobbysts to industrial use.
 	
 	% TODO COMPLETARE
-	Regarding the programming language ... Micropython ... 
+	Regarding the programming language ... Decrivere cosè Micropython ... 
+	
+	Mettere una tabella comparativa tra arduino raspberry e picom per dimostrare le capacità computazionali di ciascuno
 
 	\subsection{Arduino}
 	
@@ -308,6 +309,7 @@
 		These can be attached directly on top of the board and provide sensors, interfaces, peripherals on a single board, rather than attaching to the Arduino singularly.
 		% https://learn.sparkfun.com/tutorials/arduino-shields
 		Some of the functionalities that can be added by a shield are Ethernet, WiFi, GPS, displays and cameras, motor drivers.
+		Most of the additional shields on the market have been developed for the Arduino UNO, since it is the most common board.
 		
 		The choice of making the Arduino schematics open-source and accessible to anyone has largely favored the development of newer boards, similar in capacity to the Arduino but more specialized, since producers and board makers are able to keep only the components needed or add different ones.
 		An example can be the two middle boards in Fig. \ref{img:generic_board}, which rode the wave of Arduino's popularity.
@@ -378,48 +380,49 @@
 	\subsection{Pycom}
 		
 		% https://pycom.io/the-story-of-pycom-things/
-		While Raspberry Pi and Arduino share a longer history, Pycom was founded in 2015 via a crowdfunding campaign on Kickstarter.
-		The goal was to create a board for immediate development in the world of IoT, with all the possible connectivity.
-			
-		As the other two previously described companies, Pycom offers multiple board choices, such as the fipy, the wipy and the lopy.
+		While Raspberry Pi and Arduino share a longer history, Pycom was founded in 2015 via a crowdfunding campaign on Kickstarter with the goal to create a new board for immediate development in the world of IoT, with all the possible connectivity.
+		As the other two previously described companies, Pycom offers multiple board choices, such as the fipy, represented in Fig. \ref{img:pycom_board}, the wipy and the lopy.
 		These boards are very similar to each other, since all of them offer at least WiFi and BLE, have the same chipset, interfaces and memory.
-
-		\begin{figure}[H]
+		
+		\begin{figure}
 			\centering
 			\includegraphics[width=\textwidth]{resources/img/chap3/pycom_board}
 			\caption{fypy on the left, PyTrack 2X in the middle, pysense on the right}
 			\label{img:pycom_board}
 		\end{figure}	
 		
-		In particular, the FiPy board, present in Fig. \ref{img:pycom_board}, has been chosen for this project since it packs five networks in one small board.
-		It is capable to communicate via WiFi, Bluetooth, LoRa, Sigfox and dual LTE-M (CAT-M1 and NB-IoT), and gives access to global LPWAN networks.
+		In particular, the FiPy board, has been chosen for this project since it packs five networks in one small board.
+		As described in the product page \footnote{\url{https://pycom.io/product/fipy/}}, it is capable to communicate via WiFi, Bluetooth, LoRa, Sigfox and dual LTE-M (CAT-M1 and NB-IoT), and gives access to global LPWAN networks.
+		% share similar specifications
+		All the boards offered by pycom at the time of writing are equipped with an Espressif ESP32 chipset, 4MB of RAM and an flash memory of 8MB.
 		
+		% TODO VERIFICARE 
+		% https://pycom.io/products/software/open-source/
+		% https://eu.mouser.com/manufacturer/pycom/
+		Contrary to Arduino and Raspberry Pi, the Pycom has decided to maintain the datasheets and the firmware of their boards proprietary, which means there is far less support from the community when comes to finding bugs in the software or improving the component placement on the board.
+		Nonetheless, Pycom boards are chosen for the affability of the company producing them, also because of their high density of hardware on a board with a small footprint.
 		
+		Additional sensors and functions can be added to Pycom boards via shieds, just like the Arduino.
+		% https://pycom.io/product/pysense-2-0-x/
+		% https://pycom.io/product/pytrack-2-0-x/
+		Particularly for this project, the fipy has been integrated with the Pytrack 2x, which add accelerometer and GPS, and the pysense, which add ambient light, pressure and humidity.
+		Both expansion boards are represented in Fig. \ref{img:pycom_board}.
+				
+		% https://docs.pycom.io/pybytes/
+		As for the programming language, Pycom boards can be programmed using Mycropython via their Pymakr suite of IDE plugins, the Pymate mobile app, and Pybytes an online middleware platform and desktop application to remotely manage the boards.
 		
+		About the cost of the boards, the price of the single major components used for this project are, at the time of writing:
+		\begin{itemize}
+			% https://pycom.io/product/fipy/
+			\item FiPy €59.40
+			% https://pycom.io/product/pytrack-2-0-x/
+			\item Pytrack 2.0 X €40.65
+			% https://pycom.io/product/pysense-2-0-x/
+			\item Pysense €29.65
+		\end{itemize}
 		
-		Contrarly to Arduino and Raspberry Pi, the Pycom company has decided to maintain the datasheets and the firmware of the boards proprietary.
+		Although higher than an Arduino board, it is important to consider that these boards offer and all in one solution.		
 		
-		
-		the Micropython-programmable FiPy takes up the same footprint as our other boards. Featuring 
-		
-		
-		
-		A Pycom development board has considerably more I/O than a standard Arduino, but probably comparable to an Arduino Mega. Easy to program via Python. Good example code from Pycom. Small community. Low cost. Not at all comparable to Raspberry Pi in terms of software flexibility.
-		
-		% https://www.reddit.com/r/IOT/comments/kx6knr/what_do_people_think_of_pycom_products/
-		A complete LoRa gateway (Pygate + WiPy + IP67 box + antenna) costs around \$100, which is pretty good. So far very stable, and it was easy to configure. There's a PoE unit, but I use WiFi (at my home).
-
-		Come mai sono state scelte le board di pycom per il progetto
-
-		Mettere una tabella comparativa tra arduino raspberry e picom per dimostrare le capacità computazionali di ciascuno
-		
-		
+		% TODO rivedere bene quando si scrive resto della tesi
 		A more in depth description of how the chosen technologies interact is present in chap
-
-		% https://pycom.io/product/fipy/
 		
-
-
-		% TODO ADD TO REFERENCES
-		% https://docs.pycom.io/gitbook/assets/lopy4-pinout.pdf
-	
