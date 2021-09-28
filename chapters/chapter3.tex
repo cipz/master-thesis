@@ -1,9 +1,9 @@
 %!TEX root = ../thesis.tex
 
-%\begin{savequote}[70mm]
-%	The Internet is becoming the town square for the global village of tomorrow.
-%	\qauthor{Bill Gates}
-%\end{savequote}
+\begin{savequote}[70mm]
+	The Internet is becoming the town square for the global village of tomorrow.
+	\qauthor{Bill Gates}
+\end{savequote}
 
 
 \chapter{Technologies}\label{chapter:technologies}
@@ -267,12 +267,42 @@
 	It is important to note though that using a generic board in a production environment might not be ideal, since it might lack of support and documentation.
 	The boards described subsequently are from three of the major MCU producers, Arduino, Raspberry Pi and Pycom, which have built hardware that is well documented and suited for many different environments, from hobbysts to industrial use.
 	
-	% TODO COMPLETARE
-	Regarding the programming language ... Decrivere cosè Micropython ... 
-	
-	Mettere una tabella comparativa tra arduino raspberry e picom per dimostrare le capacità computazionali di ciascuno
+	The simplified architectures and the constraints of embedded devices are reflected in the narrow choice for programming languages.
+	It is hard to find an MCU programmed in Java since this would require the JVM running in the background.
+	Popular languages for MCUs are, for example, C/C++, Assembly, Rust, Ada, Erlang, etc.
+	% TODO CONTROLLARE
+	All these have in common the fact that they are compiled and the bytecode has a small footprint.
+	A particular microcontroller company, Arduino, have developed a version of C++ specific for their boards, but given the simplictity of this new dialect, many boards on the market can be programmed with it.
+	Arduino is explained further in Subsection \ref{subsec:arduino}.
 
-	\subsection{Arduino}
+	% TODO da spostare in 
+	Another programming language that is quickly taking hold at the time of writing, is Mycropython.
+	As explained in their website it is an "efficient implementation of the Python 3 programming language that includes a small subset of the Python standard library and is optimised to run on microcontrollers and in constrained environments" \footnote{\url{https://micropython.org/}}.
+	% https://itqna.net/questions/437/what-definition-verbose-code-and-why-it-interesting-reduce-i
+	Python's fast learning and explicit code advantages are reflected in this smaller version for microcontrollers, available for most of them.
+	
+	% TODO riempire spazio che manca
+	
+	\newpage
+	
+	Below is a table with the specifications of microcontrollers from Arduino, Raspberry Pi and Pycom, which are better described in the following subsections.
+	\begin{table}[htbp]
+		\begin{center}
+			\begin{tabularx}{\textwidth}{@{}|Y|Y|Y|Y|Y|Y|@{}} 
+				\hline
+				& Arduino UNO R3 & Arduino Nano BLE & Raspberry Pi & Rasperry Pi Pico & Pycom FyPy \\\hline
+					CPU &&&&& \\\hline
+					RAM &&&&& \\\hline
+					ROM &&&&& \\\hline
+					IO PINS &&&&& \\\hline
+					IO PORTS &&&&& \\\hline
+			\end{tabularx}
+			\caption{Specifications of Arduino, Raspberry Pi and Pycom microcontrollers}
+			\label{table:1}
+		\end{center}
+	\end{table}
+
+	\subsection{Arduino}\label{subsec:arduino}
 	
 		% https://www.arduino.cc/en/Main/AboutUs
 		% https://www.oreilly.com/library/view/arduino-a-technical/9781491934319/ch01.html	
@@ -402,7 +432,7 @@
 		Contrary to Arduino and Raspberry Pi, the Pycom has decided to maintain the datasheets and the firmware of their boards proprietary, which means there is far less support from the community when comes to finding bugs in the software or improving the component placement on the board.
 		Nonetheless, Pycom boards are chosen for the affability of the company producing them, also because of their high density of hardware on a board with a small footprint.
 		
-		Additional sensors and functions can be added to Pycom boards via shieds, just like the Arduino.
+		Additional sensors and functions can be added to Pycom boards via shields, just like the Arduino.
 		% https://pycom.io/product/pysense-2-0-x/
 		% https://pycom.io/product/pytrack-2-0-x/
 		Particularly for this project, the fipy has been integrated with the Pytrack 2x, which add accelerometer and GPS, and the pysense, which add ambient light, pressure and humidity.
@@ -412,7 +442,7 @@
 		As for the programming language, Pycom boards can be programmed using Mycropython via their Pymakr suite of IDE plugins, the Pymate mobile app, and Pybytes an online middleware platform and desktop application to remotely manage the boards.
 		
 		About the cost of the boards, the price of the single major components used for this project are, at the time of writing:
-		\begin{itemize}
+		\begin{itemize}[noitemsep]
 			% https://pycom.io/product/fipy/
 			\item FiPy €59.40
 			% https://pycom.io/product/pytrack-2-0-x/
@@ -421,8 +451,10 @@
 			\item Pysense €29.65
 		\end{itemize}
 		
-		Although higher than an Arduino board, it is important to consider that these boards offer and all in one solution.		
+		Although higher than an Arduino board, it is important to consider that these boards offer and all in one solution.
+		The additional cost in buying an external generic shield for an Arduino board would be reflected not only on the money spent on the shield itself, but also in the time and effort of configuring and troubleshooting it in case of errors.
+		An overall advantage of Pycom's products is the tight ecosystem, which allows for faster and easier troubleshooting, configuration and programming.
+		All these factors are well described in Pycom's documentation on their website \footnote{\url{https://docs.pycom.io/}}.
 		
 		% TODO rivedere bene quando si scrive resto della tesi
-		A more in depth description of how the chosen technologies interact is present in chap
-		
+		A more in depth description of how the chosen technologies interact is present in chap5.	
