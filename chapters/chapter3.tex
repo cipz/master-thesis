@@ -52,8 +52,6 @@
 		\item Local networks which run, for example, across a campus university;
 	\end{itemize}
 
-	\newpage
-
 	% TODO sistemare posizione footnote alla fine
 	% Oppure prendere mappa da https://www.globalbackbone.tisparkle.com/
 	% Mettere riferimento a mappa interattiva
@@ -91,10 +89,10 @@
 	This is focused on the network software, which needs to be highly structure in order to allow for heterogeneous systems to communicate with each other.
 	% https://standards.iso.org/ittf/PubliclyAvailableStandards/s020269_ISO_IEC_7498-1_1994(E).zip
 	One example of network architecture is the ISO/OSI reference model \footnote{\url{https://www.iso.org/standard/20269.html}}, which is implemented by the TCP/IP stack of protocols.
-
+	
+	% https://stackoverflow.com/questions/38596488/in-which-layer-is-http-in-the-osi-model
 	\begin{figure}[H]
 		\centering
-		% https://stackoverflow.com/questions/38596488/in-which-layer-is-http-in-the-osi-model
 		\includegraphics[width=\textwidth]{resources/img/chap3/isoosi}
 		\caption{The ISO/OSI reference model against the TCP/IP stack}
 	\end{figure}
@@ -135,14 +133,12 @@
 	% COPIATO DA INTERNET: responsible for technical management of IETF activities and the Internet standards process
 	Nowadays, the organization responsible for technical management of IETF activities and the Internet standards process is the Internet Engineering Steering Group (IESG)\footnote{\url{https://www.ietf.org/about/groups/iesg/}}.
 	It is necessary to have an organization looking over the Internet itself since it gives the regulations that allow all devices to interconnect with each other.
-	
-	\newpage	
 
 \section{Radio technologies}\label{sec:radio_tech}
 	
 	% https://en.wikipedia.org/wiki/Invention_of_radio
-	Although Guglielmo Marconi is usually credited as the inventor of radio due to the creation of the first commercially successful wireless communication system \cite{4137304}, many scientists before him have studied the subject of radio waves.
-	The discovery of electromagnetic waves, including radio waves, by Heinrich Rudolf Hertz in the 1880s came after theoretical development on the connection between electricity and magnetism that started in the early 1800s.
+	Although Guglielmo Marconi is usually credited as the inventor of radio due, to the creation of the first commercially successful wireless communication system \cite{4137304}, many scientists before him have studied the subject of radio waves.
+	The discovery of electromagnetic waves, including radio waves, by Heinrich Rudolf Hertz in the 1880s, came after theoretical development on the connection between electricity and magnetism that started in the early 1800s.
 	Scientists tried to achieve the idea of a wireless telegraph via electric conduction and electromagnetic induction for a while before the establishment of radio-based communication.
 	
 	% https://science.howstuffworks.com/innovation/inventions/who-invented-the-radio.htm
@@ -150,74 +146,81 @@
 	% TODO aggiungere patent?
 	This Tesla coil has been used by Marconi in his experiments and is present in the patent he presented for radio transmission of data.
 	
-	A century later, radio technology has massively evolved and is used on a daily basis.
+	More than a century later, radio technology has massively evolved and is used on a daily basis.
 	Devices has shrunk and the amount of transmission meanings have increased far from what both Tesla and Marconi could have thought of.
 	Thus, in order to give a complete picture of radio transmitting technologies, it is important to make a distinction among the ones that are made for internal or nearby use vs the ones that are used for longer distances.
 	
-	% TODO SPIEGARE BENE DA QUESTA PAGINA
 	% https://sites.google.com/site/pnutpck11/lesson-9---wireless-transmission-media
+	Many users opt for wireless transmission media because it is more convenient than installing cables, even if they might sacrifice some performance. 
+	Also, using wireless technology allows transmission in locations where it is impossible to install cables.
+	% TODO RIVEDERE COPIATA SPUDORATAMENTE
+	Types of wireless transmission media used in communications include infrared, broadcast radio, cellular radio, microwaves, and communications satellites.
+	\begin{itemize}[noitemsep]
+		\item Infrared: wireless transmission medium that sends signals using infrared light waves
+		\item Broadcast Radio: wireless transmission medium that distributes radio signals through the air over long distances such as between cities, regions, and countries and short distances such as within an office or home. Bluetooth, UWB, Wi-Fi, and WiMAX communications technologies use broadcast radio signals.
+		\item Cellular Radio: form of broadcast radio that is used widely for mobile communications, specifically wireless modems and cell phones, which use high-frequency radio waves to transmit voice and digital data messages.
+		\item Communications satellite: space station that receives microwave signals from an earth-based station, amplifies (strengthens) the signals, and broadcasts the signals back over a wide area to any number of earth-based stations.
+		Applications such as air navigation, television and radio broadcasts, weather forecasting, video conferencing, paging, global positioning systems, and Internet connections use communications satellites.
+	\end{itemize}
 	
-	With new transmission technologies, new network architectures that are better suited for the transmission method have emerged.
-	Topologies that bring computation closer to the edge are also rising, since they allow for faster computation and they bring data closer to the user.
+	With new transmission technologies, new network architectures and topologies that are better suited for the transmission method have emerged.
+	Topologies that bring computation closer to the edge are also rising in popularity, since they allow for faster computation and they bring data closer to the user.
 	
 	LAN MAN and WAN are not enough anymore to describe the new topologies.
 	An important distinction is now made by other factors such as power consumption, cost of the devices and range of the transmiter and receiver.
 	
-	% TODO spiegare LPWAN
+	The most important new category of wireless communication, that interests IoT and reprents a large portion of the market at the time of writing, as described in chap2, is LPWAN, which stands for Low Power Wide Area Networks.
 	
-	Distinction of low cost vs higher cost
-	% http://iotfactory.eu/iot-knowledge-center/overview-of-iot-networks/
+	The characteristics of LPWAN are: long range, low power and low cost.
+	% https://en.wikipedia.org/wiki/Low-power_wide-area_network
+	Lightweight protocols reduce complexity in hardware design and lower device costs. Its long range combined with a star topology reduce expensive infrastructure requirements, and the use of license-free or licensed bands reduce network costs.
+
+	% http://iotfactory.eu/iot-knowledge-center/overview-of-iot-networks/	
+	% TODO CAMBIARE E CITARE
+	% https://www.mdpi.com/1999-5903/12/3/46
+	The growing popularity of IoT use cases in domains that rely on connectivity spanning large areas and the ability to handle a massive number of connections is driving the demand for LPWAN access technologies \cite{fi12030046}, and the project presented in this thesis falls under this category of communication.
+	LPWAN allows connectivity in many applications, from crowded areas in smart cities to smart farming and smart environment, from security and emergencies to e-health.
 	
-	% PAPER : LPWAN Technologies: Emerging ApplicationCharacteristics, Requirements, andDesign Considerations
-	\begin{figure}
+	Various wireless transmission methods can be used to create a LPWAN, some of the most used in IoT are Sigfox, LoRa and NarrowBand IoT (NB-IoT).
+
+	One important factor for all these transmission methods is to support a massive number of simultaneously connected devices with low data rates \cite{fi12030046}.
+	
+%	Other communication technologies worth mentioning are 
+%	
+%	unire a capitolo due dove parli di ardueco
+%	IEEE 802.11, better known in the public as WiFi, short for wireless fidelity
+	
+	Fig. \ref{img:wireless_coverage} 
+
+	In subsection \ref{subsec:lora_lorawan}, there is a more complete explanation on LoRa and LoRaWAN.
+		
+	\newpage
+		
+	\begin{figure}[H]
 		\centering
 		\includegraphics[height=\textwidth, angle=90]{resources/img/iot_range}
-		\caption{}
+		\caption[Wireless access geographic coverage.]{Wireless access geographic coverage. \cite{fi12030046}}
+		\label{img:wireless_coverage}
 	\end{figure}
-		
-	% https://www.sjsu.edu/faculty/watkins/transist.htm
-	da quando Tesla e Marconi studiavano questa tecnologia, l'invenzione del transistor at the infamous bell labs e la miniaturizzazione del computer, come descritto anche in [fare riferimento al paragrafo dei microcontroller], hanno permesso di implementare questi mezzi trasmissivi a vaste categorie di dispositivi 
-	
-	Questo ha portato alla nascita dell'Internet of Things, o IoT, come descritto anche nel Chap2.
-	
-	Vengono descritte adesso alcune delle più importanti tecnologie radio per il mondo dell'iot
 
-	Altre tecnologie sono RFID, ecc. ma quelle sono per un'altra storia
+	\newpage
+
+	\subsection{LoRa and LoRaWAN}\label{subsec:lora_lorawan}
 	
-	\subsection{LoRa}
-	
-		https://lora-alliance.org/
+		% https://lora-alliance.org/		
+		% https://www.semtech.com/lora
 		
-		https://www.semtech.com/lora
-		
-		\begin{figure}
+		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{resources/img/LoRa_Why_Range}
 			\caption{}
 		\end{figure}
 	
 	
-		The smaller the package, the greater the range.
-		The greater the range, the fewer receiving antennas.
-		The fewer antennas, the lower the total costs for the user.
+%		The smaller the package, the greater the range.
+%		The greater the range, the fewer receiving antennas.
+%		The fewer antennas, the lower the total costs for the user.
 
-	\subsection{LoRaWAN}
-	
-	\subsection{Bluetooth}		
-	
-	\subsection{WiFi}
-
-	IEEE 802.11, better known in the public as WiFi, short for wireless fidelity
-	
-	\subsection{5G and LTE}
-	
-	The goal of fifth-generation (5G) wireless networks and beyond is to realize connecting “anything, anyone, anytime, anywhere” [1] reliably and energy-efficiently [ M. Agiwal, A. Roy and N. Saxena, "Next generation 5G wireless networks: A comprehensive survey", IEEE Communications Surveys \& Tutorials, vol. 18, no. 3, pp. 1617-1655, 2016.]
-	
-
-\section{LoRa and LoRaWAN}
-
-\newpage
-	
 \section{Hardware (Microcontrollers)}\label{sec:microcontrollers}
 
 	Microcontrollers (or MCUs, short for Microcontroller Unit) are compact integrated circuits designed to govern a specific operation in an embedded system.
@@ -274,10 +277,6 @@
 	% https://itqna.net/questions/437/what-definition-verbose-code-and-why-it-interesting-reduce-i
 	Python's fast learning and explicit code advantages are reflected in this smaller version for microcontrollers, available for most of them.
 	
-	% TODO riempire spazio che manca
-	
-	\newpage
-	
 	Below is a table with the specifications of microcontrollers from Arduino, Raspberry Pi and Pycom, which are better described in the following subsections.
 	\begin{table}[htbp]
 		\begin{center}
@@ -316,7 +315,7 @@
 		% https://store.arduino.cc/products/arduino-uno-rev3
 		% https://store.arduino.cc/products/arduino-yun-rev-2
 		% https://store.arduino.cc/products/arduino-nano-33-ble
-		\begin{figure}
+		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{resources/img/chap3/arduino_types}
 			% TODO rivedere accento yun, mettere link?
@@ -378,7 +377,7 @@
 		% https://en.wikipedia.org/wiki/Raspberry_Pi
 		% https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/
 		
-		\begin{figure}
+		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{resources/img/chap3/raspberry_types}
 			\caption{Raspberry Pi Model 3B+ on the left, Raspberry Pi Zero in the middle, Raspberry Pi Pico on the right}
@@ -407,7 +406,7 @@
 		As the other two previously described companies, Pycom offers multiple board choices, such as the fipy, represented in Fig. \ref{img:pycom_board}, the wipy and the lopy.
 		These boards are very similar to each other, since all of them offer at least WiFi and BLE, have the same chipset, interfaces and memory.
 		
-		\begin{figure}
+		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{resources/img/chap3/pycom_board}
 			\caption{fypy on the left, PyTrack 2X in the middle, pysense on the right}
