@@ -1,3 +1,4 @@
+
 % -------------------------------------------------------------------
 %  @LaTeX-class-file{
 %     filename        = "Dissertate.cls",
@@ -18,8 +19,20 @@
 \usepackage{lipsum} 
 \usepackage{tabularx}
 \usepackage[bottom]{footmisc}
+\usepackage{enumitem} 
 
-\newcommand{\Quote}[1]{``\textit{#1}''}
+\newcommand{\Quote}[3]{
+	\begin{center}
+		\begin{minipage}[H]{0.9\columnwidth}
+			\begin{center}
+				``\textit{#1}''~#2
+			\end{center}
+			\begin{flushright}
+				\textit{ - #3}
+			\end{flushright}
+		\end{minipage}
+	\end{center}
+}
 
 \RequirePackage{etoolbox}
 
@@ -119,10 +132,9 @@
                 tablewithin=chapter]{caption}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \RequirePackage{microtype}
-
 \renewcommand{\thefootnote}{\arabic{footnote}}
 \let\oldfootnote\footnote
-\renewcommand{\footnote}[1]{\oldfootnote{\fontspec{EB Garamond}#1}}
+\renewcommand{\footnote}[1]{\oldfootnote{~\fontspec{EB Garamond}#1}}
 
 % Tikz
 \usepackage{tikz}
@@ -318,7 +330,7 @@
 				\vspace{1pt}
 				\textit{} \hfill \textit{Student ID}\\
 				\vspace{.5pt}
-				\textbf{} \hfill \textbf{studentid}\\
+				\textbf{} \hfill \textbf{1237294}\\
 				%	  Università di Padova \\
 				%	  \vspace{6pt}
 				%	  \textit{Co-supervisor} \\
@@ -326,7 +338,7 @@
 				%	  \@coadvisorOneUniversity
 				\vspace{.1cm}
 			\end{flushleft}
-			\textbf{Accademic Year 2018 - 2019}
+			\textbf{Accademic Year 2020 - 2021}
 		\end{normalsize}
 		
 		
@@ -381,9 +393,8 @@
 %	\rm
 
 	\noindent
-	Olivia H. Plant: DevOps under control, Development of a framework for achieving
-	internal control and effectively managing risks in a DevOps environment
-	Master Thesis, University of Twente, March 2019
+	Stefan Ciprian Voinea: Open LoRa mesh network for IoT-based air quality sensing\\
+	Master Thesis, Università degli Studi di Padova, December 2021
 
 	\vfill
 	
@@ -392,17 +403,20 @@
 		\begin{tabularx}{0.9\textwidth}{Xl}
 			\textbf{Author} &  \\
 			Voinea Stefan Ciprian & \\
-			Study programme: & MSc Business Information Technology \\
-			E-mail: & o.h.plant@alumnus.utwente.nl\\
+			Study programme: & Master's Degree in Computer Science \\
+			E-mail: & \href{mailto://stefanciprian.voinea@studenti.unipd.it}{stefanciprian.voinea@studenti.unipd.it}\\
+			E-mail: & \href{mailto://ciprian.voinea@outlook.com}{ciprian.voinea@outlook.com}
 		\end{tabularx}
 	
 		\vspace{0.5cm}
-	
+		
+		% TODO CAMBIARE
+		
 		\begin{tabularx}{0.9\textwidth}{Xl}
 			\textbf{Graduation commitee} &  \\
 			Claudio Enrico Palazzi & \\
 			Study programme: & MSc Business Information Technology \\
-			E-mail: & o.h.plant@alumnus.utwente.nl\\
+			E-mail: & \href{mailto://cpalazzi@math.unipd.it}{cpalazzi@math.unipd.it}\\
 		\end{tabularx}
 	
 	\end{center}
