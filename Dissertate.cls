@@ -106,6 +106,8 @@
 \RequirePackage{setspace}
 \RequirePackage{verbatim}
 
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
 % Fonts.
 \RequirePackage{color}
 \RequirePackage{xcolor}

@@ -233,20 +233,65 @@
 
 	% Describe these solutions, history, pricing (from the ones that cost a lot and are very reliable to the ones that are cheap and less reliable; a high amount of cheap devices can perform almost as good as a high end device)
 	% Describe some solutions that have been previously proposed by other researchears and universities
+
+% Da ardueco
+
+%	Two general strategies can be used to deploy an environ-
+%	mental monitoring system: creating a network of fixed sensors
+%	and resorting to mobile sensors
+
+
+% Da ardueco
+	
+%	Air quality and the presence of tiny particular
+%	matter are crucial factors in human health, especially when con-
+%	sidering urban scenarios. In this context, smart mobility coupled
+%	with low-cost sensors can create a distributed and sustainable
+%	platform for social sensing able to provide pervasive data to
+%	citizens and public administrations. Sustainable and eco-aware
+%	decisions can then be supported by empirical evidence, resulting
+%	in an improved life and city administration. In this paper, we
+%	present ArduECO, a simple Arduino-based wireless device able
+%	of collecting air quality data. Without loss of generality, we have
+%	designed our device as a box that can be installed on a bike; in
+%	this way, beyond private bikes, municipalities could exploit their
+%	bike sharing fleets as pervasive sensing systems
+
+	Sotto sono descritte due soluzioni
 	
 	\subsection{ArduECO}
+		
+		This article describes ArduECO, a wireless device based
+		on an Arduino-like board capable of gathering data about air
+		quality (and more with simple extensions) and sending them
+		to the cloud, to be processed and displayed
 		
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{resources/img/ardueco_circuit}
 			\caption{Circuit of the ArduECO prototype}
 		\end{figure}
+
+		% https://www.hackster.io/news/nodemcu-based-ardueco-aims-to-track-global-air-quality-metrics-using-bike-sharing-fleets-75d50e169fc8
+		Built for under \$20 in parts and linked to AWS IoT Core, the ArduECO is designed to travel through cities via bike sharing networks.
+		
+		The ArduECO sensor is built around four core components: The NodeMCU ESP8266-based development board; a microSD card reader for local data caching; a GPS-based global navigation satellite system (GNSS) receiver for location data; and an MQ-7 carbon monoxide sensor, which the researchers note can easily be replaced with other sensors using the same pinout.
+		
+		As well as capturing the air quality data locally, each ArduECO is designed to send its data to the cloud when a synchronisation button is pushed — transmitting its cached data to an MQTT server running on Amazon Web Services IoT Core. Putting server costs aside, the researchers say the sensor platform can be built in a bill of materials (BOM) of around €15 (around \$18) — less, if built in bulk.
 		
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=.5\textwidth]{resources/img/ardueco_picture}
 			\caption{ArduECO prototype}
 		\end{figure}
+	
+		ArduECO is a wireless IoT device that represents one of the
+		possible combinations of open source hardware and software.
+		This wireless device is able to detect the amount of CO and the
+		level of pollution in the air in order to send this information to
+		the cloud over Wi-Fi. 
+	
+		
 
 	\subsection{MegaSense and Hope}
 	
