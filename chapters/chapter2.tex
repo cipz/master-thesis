@@ -2,7 +2,6 @@
 
 \chapter{Background}\label{chap:background}
 
-	% TODO cambiare in maniera da vendere la mesh, non megasense
 	This chapter introduces the background concepts necessary to understand the project presented in this thesis and why it has been developed.
 	
 	It first explains what the Internet of Things is, afterwards, it describes the problem with air pollution, to conclude with an overview on the background work and state or art of IoT devices capable of detecting such pollution.
@@ -256,53 +255,116 @@
 %	designed our device as a box that can be installed on a bike; in
 %	this way, beyond private bikes, municipalities could exploit their
 %	bike sharing fleets as pervasive sensing systems
-
-	Sotto sono descritte due soluzioni
+	
+	The following are two examples of solutions to detect and keep track of pollutants in the air.
 	
 	\subsection{ArduECO}
+
+		% https://www.hackster.io/news/nodemcu-based-ardueco-aims-to-track-global-air-quality-metrics-using-bike-sharing-fleets-75d50e169fc8
+		% https://www.math.unipd.it/~cpalazzi/ArduECO/ArduECO%20IEEE%20Presentation%20FINAL.pdf
+		% https://arxiv.org/pdf/2007.08305.pdf
 		
-		This article describes ArduECO, a wireless device based
-		on an Arduino-like board capable of gathering data about air
-		quality (and more with simple extensions) and sending them
-		to the cloud, to be processed and displayed
+		ArduECO is a wireless device based on an Arduino-like board, esp8266, capable of gathering data about air quality (and more with simple extensions) and sending them to the cloud, to be processed and displayed.
+		
+		This solution has been proposed in the paper ``Air Quality Control through Bike Sharing Fleets''\cite{ardueco_paper}.
+		
+		One of the main design goals of this device is to be easily fit on shared means of transportation, such as bikes and electric scooters.
+		% https://www.sciencedirect.com/science/article/abs/pii/S0966692321000508?via%3Dihub
+		% TODO completare
+		Parlare di come questi mezzi di trasporto sono diventati sempre più utilizzati con il covid e post covid.
+		% https://www.frontiersin.org/articles/10.3389/fpsyg.2021.646593/full
+		In contrast, other approaches to shared transportation, such as car sharing, have severely suffered from the outbreak of the coronavirus.
+		% TODO completare
 		
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{resources/img/ardueco_circuit}
 			\caption{Circuit of the ArduECO prototype}
+			\label{img:ardueco_circuit}
 		\end{figure}
-
-		% https://www.hackster.io/news/nodemcu-based-ardueco-aims-to-track-global-air-quality-metrics-using-bike-sharing-fleets-75d50e169fc8
-		Built for under \$20 in parts and linked to AWS IoT Core, the ArduECO is designed to travel through cities via bike sharing networks.
 		
-		The ArduECO sensor is built around four core components: The NodeMCU ESP8266-based development board; a microSD card reader for local data caching; a GPS-based global navigation satellite system (GNSS) receiver for location data; and an MQ-7 carbon monoxide sensor, which the researchers note can easily be replaced with other sensors using the same pinout.
+		The ArduECO sensor is built around four core components: The NodeMCU ESP8266-based development board; a microSD card reader for local data caching; a GPS-based global navigation satellite system receiver for location data; and an MQ-7 carbon monoxide (CO) sensor, which can easily be replaced with other sensors using the same pinout.
+		Fig. \ref{img:ardueco_circuit} shows the full circuit of the prototype, while Fig. \ref{img:ardueco_picture} is a picture of the built device.
 		
-		As well as capturing the air quality data locally, each ArduECO is designed to send its data to the cloud when a synchronisation button is pushed — transmitting its cached data to an MQTT server running on Amazon Web Services IoT Core. Putting server costs aside, the researchers say the sensor platform can be built in a bill of materials (BOM) of around €15 (around \$18) — less, if built in bulk.
+		As well as capturing the air quality data locally, data is cached and later sent in the cloud to an MQTT server running on Amazon Web Services IoT Core \footnote{\url{https://aws.amazon.com/iot-core/}}.
+		% TODO espandere la frase
+		Data is sent over the built-in wifi module of the esp8266.
+		Server costs aside, the researchers say the sensor platform can be built in a bill of materials (BOM) of around €15 (around \$18) — less, if built in bulk.
 		
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=.5\textwidth]{resources/img/ardueco_picture}
-			\caption{ArduECO prototype}
+			\caption{Built ArduECO prototype}
+			\label{img:ardueco_picture}
 		\end{figure}
 	
-		ArduECO is a wireless IoT device that represents one of the
-		possible combinations of open source hardware and software.
-		This wireless device is able to detect the amount of CO and the
-		level of pollution in the air in order to send this information to
-		the cloud over Wi-Fi. 
-	
-		
+		As described in the paper, this project is more of a proof of concept that shows the possibility of creating a small and cheap device which can be placed on shared means of transportation.
+		% TODO completare
+		Therefore there are various aspects that can be improved, such as:
 
 	\subsection{MegaSense and Hope}
+
+		% https://www.researchgate.net/profile/Samu-Varjonen
+
+		% https://www.megasense.org/
+		% https://uia-initiative.eu/en/uia-cities/helsinki	
+		% https://ieeexplore.ieee.org/document/9248143
 	
-		% Describe the megasense project, put pictures and explain how it has been developed until now
+		MegaSense has been developed by the Departments of Computer Science at the University of Helsinki \footnote{\url{https://www.helsinki.fi/en/computer-science}} brings forward accurate portable low-cost sensing devices and an online data platform integrating multiple sources of urban data and leveraging AI network calibration producing hyper-local air quality information in real time.
 		
-%		https://www.megasense.org/
-%		
-%		Describe the consortium
-%		
-%		HOPE and Megasense
-%		
-%		The calibration of the megasense device is made via
-%
-%		MegaSense, developed at the University of Helsinki's department of Computer Science
+		MegaSense feedback loop involves the actions of individuals and the physical and chemical processes, which increase exposure duration and concentration to air pollution. These exposures are tested by citizens and companies in City of Helsinki and EU projects.
+		
+		Compared to the previously described ArduECO, the MegaSense is a full project that has brought to a 
+		
+		\noindent
+		\begin{minipage}{0.4\textwidth}% adapt widths of minipages to your needs
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=.8\textwidth]{resources/img/megasense}
+				\caption{Megasense prototype}
+				\label{img:megasense_picture}
+			\end{figure}
+			\vspace{3mm}
+		\end{minipage}%
+		\hfill%
+		\begin{minipage}{0.6\textwidth}\raggedright
+			Some text here, depends on the pagination.
+		\end{minipage}
+	
+		The system receives data from sensing platforms
+		measuring local pollution exposure and other variables affect-
+		ing it. This data is processed into air quality information such
+		as maps and advice on how to reduce personal exposure, take
+		healthier routes, and direct participants to improve measure-
+		ments in areas that have limited sensor coverage. Below we
+		detail the different components of the system architecture.
+
+		The core of MegaSense consists of two layers: the Edge and
+		Cloud. The Edge layer is responsible for reactively receiving
+		data from available data sources, such as sensor devices,
+		traffic data systems, and weather information systems. It
+		delivers advice and pollution maps to the mobile Exposure App
+		which provides the user with personal air pollution exposure
+		information as well as district exposure maps.
+		This layer is responsible for data preprocessing for filtering
+		and data cleanin
+		
+		he Cloud layer is responsible for storing cleaned data
+		and aggregating the crowd-sourced data while preserving the
+		privacy of participants. It includes a scalable storage system
+		based on Lustre, a distributed production-grade file system
+		similar in principle to Amazon S3.
+		
+		During data gathering campaigns registered citizens down-
+		load the HOPE Exposure App from Google play store and
+		tether their Android smart phone to HOPE sensor. The HOPE
+		Exposure App is pre-configured with the MegaSense server
+		address and upon launching the app and switching on the
+		HOPE sensor, measurement data packets including the smart-
+		phone GPS location are routed by wireless connection via local
+		mobile service provider to the MegaSense Core
+		
+		The HOPE project further develops the clean air journey
+		planner application that creates optimal walking and cycling
+		routes based on air quality of Helsinki (Figure 6). The route
+		guide is made by Forum Virium Helsinki.

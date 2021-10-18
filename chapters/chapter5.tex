@@ -37,7 +37,65 @@
 %
 %
 %calcolare transmission times
+	
+	\subsection{Algorithms}
 
+		% https://latexdraw.com/automata-diagrams-in-latex/
+		% https://hayesall.com/blog/latex-automata/
+		% https://isaaccomputerscience.org/concepts/dsa_toc_fsm?examBoard=all&stage=all
+	
+		To better understand the algorithms, they are represented using finite state automatas.
+		For a graphical reason, each state of the automatas is abbreviated, and the full state is described in a table underneath
+		
+		Visione da generale a specifica di ciasun componente
+		
+		\subsubsection{Main}
+			
+			\begin{center}
+
+				\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+				
+					% Help grid
+					% \draw [help lines] (-1,1) grid (6,-6);
+					
+					\tikzstyle{every state}=[fill={rgb:black,1;white,10}]
+					
+
+					\node[state, initial]  			(s_0)                 	{$s_0$}; % START
+					\node[state] 					(s_1)	[right of=s_0]	{$s_1$}; % BOOT
+					\node[state]					(s_2) 	[right of=s_1]	{$s_2$}; % MESH DEFINITION
+					\node[state, accepting]			(s_3) 	[right of=s_2]	{$s_3$}; % MAIN LOOP
+					
+					\path[->]
+					(s_0) edge node {} (s_1)
+					(s_1) edge node {} (s_2)
+					(s_2) edge node {} (s_3)
+					(s_3) edge [loop right] node {} ();
+				
+				\end{tikzpicture}
+				
+					\begin{table}[htbp]
+					\begin{center}
+						\begin{tabularx}{0.85\textwidth}{@{}|Y|Y|Y|@{}} 
+							\hline
+							State abbreviation & Full state name & State description \\\hline
+							$s_{0}$ && \\\hline
+						\end{tabularx}
+						\caption{Main algorithm fsm description}
+						\label{table:fsm_main}
+					\end{center}
+				\end{table}
+
+			\end{center}
+
+		\subsubsection{Boot up}
+		
+		\subsubsection{Mesh initiation}
+		
+		\subsubsection{Broadcast mesh information}
+		
+		\subsubsection{Loop}
+		
 \section{Use cases}
 
 % TODO ADD TO REFERENCES

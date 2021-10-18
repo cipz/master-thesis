@@ -94,8 +94,8 @@
     {\endoldenumerate\end{spacing}}
 
 % Text layout.
-% \RequirePackage[outer=1in, inner=1.55in, twoside, a4paper, showframe]{geometry}
-\RequirePackage[outer=1in, inner=1.55in, twoside, a4paper]{geometry} %PRINT VERSION
+\RequirePackage[outer=1in, inner=1.55in, twoside, a4paper, showframe]{geometry}
+% \RequirePackage[outer=1in, inner=1.55in, twoside, a4paper]{geometry} %PRINT VERSION
 % \RequirePackage[outer=1.275in, inner=1.275in, twoside, a4paper]{geometry} %PRINT VERSION
 \usepackage{ragged2e}
 %\RaggedRight
@@ -140,6 +140,7 @@
 
 % Tikz
 \usepackage{tikz}
+\usetikzlibrary{arrows,automata,positioning}
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest} 
 \pgfplotsset{plot coordinates/math parser=false} 
@@ -179,7 +180,8 @@
 \RequirePackage{titling}
 
 % Front matter.
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
 \usepackage[titles]{tocloft}
 \usepackage[titletoc]{appendix}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
