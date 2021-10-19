@@ -272,6 +272,9 @@
     urlcolor=SchoolColor,
 }
 
+\usepackage{tocloft}
+\setlength{\cftsubsecnumwidth}{3.2em}
+
 %% FRONT MATTER %%
 
 \renewcommand{\frontmatter}{	
