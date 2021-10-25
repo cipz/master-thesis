@@ -1,12 +1,13 @@
 %!TEX root = ../thesis.tex
 
+% https://en.wikipedia.org/wiki/Kelly_Johnson_(engineer)
 % https://en.wikipedia.org/wiki/KISS_principle
-\begin{savequote}[70mm]
+\begin{savequote}[40mm]
 	\textbf{K}eep\\
 	\textbf{I}t\\
 	\textbf{S}imple\\
-	\textbf{S}tupid\\
-%	\qauthor{Bill Gates}
+	\textbf{S}tupid
+	\qauthor{Kelly Johnson}
 \end{savequote}
 
 \chapter{Proposed solution}\label{chapter:proposed_solution}
@@ -81,18 +82,44 @@
 					
 					\end{tikzpicture}
 					
-						\begin{table}[htbp]
-						\begin{center}
-							\begin{tabularx}{0.85\textwidth}{@{}|Y|Y|Y|@{}} 
-								\hline
-								State abbreviation & Full state name & State description \\\hline
-								$s_{0}$ && \\\hline
-							\end{tabularx}
-							\caption{Main algorithm fsm description}
-							\label{table:fsm_main}
-						\end{center}
-					\end{table}
-	
+				\end{center}
+
+				\begin{table}[htbp]
+					\begin{center}
+						\begin{tabularx}{0.85\textwidth}{@{}|Y|Y|Y|@{}} 
+							\hline
+							State abbreviation & Full state name & State description \\\hline
+							$s_{0}$ && \\\hline
+						\end{tabularx}
+						\caption{Main algorithm fsm description}
+						\label{table:fsm_main}
+					\end{center}
+				\end{table}
+							
+				\begin{center}
+					
+					% BLOCK STYLES
+					\tikzstyle{decision} = [diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+					\tikzstyle{block} = [rectangle, draw, fill=blue!20,	text width=4em, text centered, rounded corners, minimum height=3em]
+					\tikzstyle{line} = [draw, -latex']
+					\tikzstyle{cloud} = [draw, ellipse,fill=red!20, minimum height=2.5em, minimum width=3.5em]
+
+					\begin{tikzpicture}[node distance = 2cm, auto]
+						
+						% BLOCKS
+						
+						\node [cloud] 					(start) 	{start};
+						\node [block, below of=start] 	(boot) 		{boot()};
+						\node [block, below of=boot] 	(main) 		{main()};
+						\node [cloud, below of=main] 	(end) 		{end};
+						
+						% EDGES
+						\path [line] (start) -- (boot);
+						\path [line] (boot) -- (main);
+						\path [line] (main) -- (end);
+						
+					\end{tikzpicture}
+
 				\end{center}
 	
 			\subsubsection{Boot up}

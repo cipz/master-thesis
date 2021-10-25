@@ -150,6 +150,7 @@
 \usepackage{multirow}
 %\usepackage{multicolumn}
 \usepackage{subcaption}
+\usetikzlibrary{shapes,arrows}
 \usetikzlibrary{patterns,decorations.pathreplacing,backgrounds,calc}
 \usepackage{afterpage}
 \usepackage{tabulary}
@@ -400,8 +401,15 @@
 %	\rm
 
 	\noindent
-	Stefan Ciprian Voinea: Open LoRa mesh network for IoT-based air quality sensing\\
-	Master Thesis, Università degli Studi di Padova, December 2021
+	
+	\begin{center}
+		
+		\begin{tabularx}{0.9\textwidth}{Xl}
+			Open LoRa mesh network for IoT-based air quality sensing &  \\
+			Master Thesis, Università degli Studi di Padova, December 2021
+		\end{tabularx}
+			
+	\end{center}
 
 	\vfill
 	
@@ -409,21 +417,24 @@
 		
 		\begin{tabularx}{0.9\textwidth}{Xl}
 			\textbf{Author} &  \\
+			&  \\
 			Voinea Stefan Ciprian & \\
 			Study programme: & Master's Degree in Computer Science \\
 			E-mail: & \href{mailto://stefanciprian.voinea@studenti.unipd.it}{stefanciprian.voinea@studenti.unipd.it}\\
-			E-mail: & \href{mailto://ciprian.voinea@outlook.com}{ciprian.voinea@outlook.com}
-		\end{tabularx}
-	
-		\vspace{0.5cm}
-		
-		% TODO CAMBIARE
-		
-		\begin{tabularx}{0.9\textwidth}{Xl}
+			E-mail: & \href{mailto://ciprian.voinea@outlook.com}{ciprian.voinea@outlook.com} \\
+			&  \\
+			&  \\
 			\textbf{Graduation commitee} &  \\
-			Claudio Enrico Palazzi & \\
-			Study programme: & MSc Business Information Technology \\
+			&  \\
+			Claudio Enrico Palazzi & Università degli Studi di Padova \\
+			Study programme: & Assoc. Prof. in Computer Science \\
 			E-mail: & \href{mailto://cpalazzi@math.unipd.it}{cpalazzi@math.unipd.it}\\
+			Personal webpage & \href{https://www.math.unipd.it/~cpalazzi/}{https://www.math.unipd.it/\textasciitilde cpalazzi/}\\
+			&  \\
+			Pietro Manzoni &  Universitat Politècnica de València \\
+			Study programme: & Assoc. Prof. in Computer Science \\
+			E-mail: & \href{mailto://pmanzoni@disca.upv.es}{pmanzoni@disca.upv.es}\\
+			Personal webpage & \href{https://pmanzoni.github.io/}{https://pmanzoni.github.io/}
 		\end{tabularx}
 	
 	\end{center}
