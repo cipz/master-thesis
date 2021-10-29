@@ -239,6 +239,67 @@
 %		The greater the range, the fewer receiving antennas.
 %		The fewer antennas, the lower the total costs for the user.
 
+LoRa (short for long range) is a spread spectrum modulation
+technique derived from the chirp spread spectrum (CSS)
+technology. LoRa devices provide a long range, low power
+wireless platform that is being widely adopted for the Internet
+of Things (IoT) networks worldwide. LoRa devices and the
+open LoRaWAN protocol enable smart IoT applications in
+various context, like: energy management, natural resource
+reduction, pollution control, infrastructure efﬁciency, disaster
+prevention, and more.
+LoRaWAN is a comprehensive network architecture that de-
+tails a Low Power, Wide Area (LPWA) networking technology.
+It was designed to interconnect battery operated “things” and
+provides a bi-directional communication service with end-to-
+end security features. The architecture is based on a star-of-
+stars topology in which speciﬁc devices called gateways relay
+messages between end-devices and a central network server.
+The wireless communication takes place through a single-hop
+link between the end-device and one or many gateways.
+The speciﬁcation deﬁnes the device-to-infrastructure physi-
+cal layer parameters (LoRa) and the speciﬁc LoRaWAN pro-
+tocol to allow for full interoperability among manufacturers. It
+deﬁnes the technical implementation but it does not deﬁne any
+commercial model or type of deployment, e.g., public, shared,
+private, enterprise. The LoRaWAN speciﬁcation is developed
+and maintained by the LoRa Alliance 1 , an open association
+of collaborating members. With LoRa and LoRaWAN the
+intention was to provide the possibility to deploy Internet of
+Things applications fast in areas where large distances are
+involved, yet low bandwidth is needed. Low bandwidth makes
+it ideal for practical IoT deployments with less data or where
+data transmissions are not constant, for example with waste
+management where the information that is required is whether
+a waste bin is full or not. Moreover, the end-to-end delay (or
+the RTT) can be relatively high, with values below one second
+being acceptable [16]
+
+Conversely, packet loss is a more crucial factor. In Lo-
+RaWAN, once a message has been delivered, there is no
+acknowledgement of receipt. However, nodes can request
+acknowledgements. In this case, if many gateways receive the
+same packet, the cloud has to choose one gateway to respond
+at a ﬁxed time, usually a couple of seconds later. The problem
+is that when a gateway is transmitting back to the node, it stops
+listening to everything else. So, if an application needs a lot of
+acknowledgements, the gateway will very likely spend more
+time transmitting acknowledgements than listening, which will
+eventually lead to a network saturation. Therefore, classical
+applications do not require acknowledgments and that’s why
+having a reliable network with very small packet loss rate is
+crucial if we don’t want to lose relevant information.
+
+Chirp spread spectrum has been used in
+military and space communication for decades due to the long
+communication distances that can be achieved and robustness
+to interference, but LoRa is the ﬁrst low cost implementation
+for commercial usage. The advantage of LoRa is in the
+technology’s long range capability. Range highly depends on
+the environment or obstructions in a given location, but LoRa
+and LoRaWAN have a link budget greater than any other
+standardized communication technology
+
 \section{Hardware (Microcontrollers)}\label{sec:microcontrollers}
 
 	% Parlare di board come questa?
@@ -471,3 +532,8 @@
 		
 		% TODO rivedere bene quando si scrive resto della tesi
 		A more in depth description of how the chosen technologies interact is present in chap5.	
+		
+	
+	\subsection{Chip shortage}
+	
+		% https://www.raspberrypi.com/news/supply-chain-shortages-and-our-first-ever-price-increase/

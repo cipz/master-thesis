@@ -28,6 +28,10 @@
 	into use in large scale, can make a difference when it comes to the 
 	network  in  the  IoT  world  today.
 
+	Future IoT deployments need to focus on sustainability
+	since huge centralized data centers (cloud computing) have
+	become a critical part of the infrastructure.
+
 	This chapter anticipates the one where the actual project is described and shows some related projects from which the open mesh has drawn inspiration.
 	
 	A  wireless  mesh  network  (WMN)  is  a  communications 
@@ -125,6 +129,12 @@
 				\label{img:vanet}
 			\end{figure}
 		\end{minipage}
+	
+		% Mesh network in other areas
+		% https://www.vmware.com/products/tanzu-service-mesh.html
+		
+		% BLUETOOTH
+		% https://www.ericsson.com/en/reports-and-papers/white-papers/bluetooth-mesh-networking
 		
 	
 		% https://haltian.com/resource/top-four-mesh-networks/
@@ -135,17 +145,63 @@
 	
 		\subsection{Advantages of WMS}
 		
+			Benefits of Mesh Network in IoT
+			
+			Mesh Network for IoT devices offers enormous benefits that make it sought-after in enterprises and significant in an IoT app development company.
+			Self-healing
+			
+			Like Shortest Path Bridging, Self-healing algorithm automatically chooses the best path to transfer data even if a few nodes lose connection. Specifically, it uses only those connections that are available and working to maintain the task.
+			Self-configuring
+			
+			Due to auto-discovery, mesh networks are self-configuring in nature. Hence, the new nodes calibrate automatically and connect to the network without any previous setup. Consequently, network administration and expansion become easier in mesh networking.
+			Scalability and Reliability
+			
+			In a mesh network, it is way easy to add or remove nodes without any efficiency issue. Usually, issues are in proportion to the devices. However, it is quite the opposite in the case of a mesh network. Adding nodes in a mesh network provides more routes in which data package can travel, which makes the network faster, reliable, and error-resistant.
+			Cost Reduction
+			
+			Since mesh networks don’t require internet connection, it consumes ultra-little energy. Meanwhile, sensors are pocket-friendly and long-lasting.
+			
+			Besides, IoT implementation reduces expenses in many other ways like better management, optimization of resources usage, and more.
+		
 		\subsection{Disasvantages of WMS}
+		
+			Drawbacks of Mesh Network in IoT
+			
+			Though there are ample benefits of a mesh network, it also comes with a few drawbacks. So, it is essential to gain in-depth knowledge of this network before deciding whether a mesh network is a perfect fit for you.
+			Low Capacity
+			
+			Mesh network is the best way of sending small data packages. Unfortunately, it doesn’t perform well while transferring video file sized data.
+			
+			Still, if transferring a large amount of data is compulsory, then the wifi mesh network would be a better option.
+			Latency
+			
+			Actively switching from one node to another can decelerate the data receiving process. However, it is not an issue when your system requires a package every few minutes or so. But, it might be not enough for a few systems.
+			
+			Conversely, a full mesh network can accelerate the data transfer by connecting every node to one another.
+			Maintenance
+			
+			Due to the self-healing ability of the mesh network, finding a non-working node might be time-consuming. Also, we won’t come to know if a node is having an issue.
+			
+			On the other hand, mesh networks for IoT devices are established to make the IoT system smarter and more efficient. So, the nodes are less prone to crash.
 	
-	\section{Algorithms for Wireless Mesh networks}
+		\subsection{Scalability}
+		
+			% https://www.inthemesh.com/archive/the-scalability-of-mesh-networks/\\
+			
+			% https://ieeexplore.ieee.org/document/8071545
+			
+			% PAPER: LoRaWAN Range Extender for Industrial IoT
 	
-						
+	\section{Algorithms for lora Wireless Mesh networks}
+	
+		% https://www.springerprofessional.de/en/research-on-using-the-aodv-protocol-for-a-lora-mesh-network/18715992
 	
 	\section{Projects}
 		
+		Here are three categories of projects:
+		
 		\subsection{Open source projects}
 		
-
 			% https://www.hackster.io/scottpowell69/lora-mesh-chat-5267d9
 			\subsubsection{LoRa Mesh Chat}
 			
@@ -168,7 +224,7 @@
 				\end{minipage}
 			
 				
-				\subsection{Meshtastic}		
+				\subsubsection{Meshtastic}		
 	
 					% https://meshtastic.org/
 					% https://github.com/meshtastic
@@ -184,24 +240,79 @@
 		
 		\subsection{Research projects}
 		
-			% https://www.springerprofessional.de/en/research-on-using-the-aodv-protocol-for-a-lora-mesh-network/18715992
+			\subsubsection{Monitoring of Large-Area IoT Sensors Using LoRa Wireless Mesh Network System: Design and Evaluation}
 			
-			% BLUETOOTH
-			% https://www.ericsson.com/en/reports-and-papers/white-papers/bluetooth-mesh-networking
+			\subsubsection{Black Powder Flow Monitoring in Pipelines by Means of Multi-Hop LoRa Networks}
+		
+			\subsubsection{Exploring Multi-Hop LoRa for Green Smart Cities}
 			
-			% https://ieeexplore.ieee.org/document/8071545
+			\subsubsection{Proposal of a Hybrid LoRa Mesh / LoRaWAN Network}
 			
+			\subsubsection{Beyond the Star of Stars: An Introduction to Multihop and Mesh for LoRa and LoRaWAN}
+			
+			\subsubsection{LoRa-based Mesh Network for Off-grid Emergency Communications}
+			
+			% https://ieeexplore.ieee.org/document/9394317
 			\subsubsection{LoRaCTP}
 			
-				% https://ieeexplore.ieee.org/document/9394317
+				a ﬂexible protocol based
+				on LoRa technology that allows for the transfer of “content” to
+				large distances with very low energy. LoRaCTP provides all the
+				necessary mechanisms to make LoRa reliable, by introducing a
+				lightweight connection set-up and ideally allowing the sending
+				of an as-long-as necessary data message.
+			
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=.75\textwidth]{resources/img/chap4/loractp_packet}
+					\caption[Flow of the establishment and interchange of data in LoRaCTP]{Structure of the packet used by the stop-and-wait ARQ. \cite{loractp}}
+				\end{figure}
 			
 				\begin{figure}[H]
 					\centering
 					\includegraphics[width=.5\textwidth]{resources/img/loractp_flow}
-					\caption{Flow of the establishment and interchange of data in LoRaCTP}
+					\caption[Flow of the establishment and interchange of data in LoRaCTP]{Flow of the establishment and interchange of data in LoRaCTP \cite{loractp}}
 				\end{figure}
 		
+		By content we refer to a self-contained piece of data, like a
+		JSON encoded message whose length is in principle unlimited.
+		We tested out library with messages of up to 150 kbytes,
+		as indicated in Section V. LoRaCTP is based on a unicast
+		protocol adopting a classical stop-and-wait ARQ approach
+		with a dynamic and adaptive value for the retransmission
+		delay. The protocol ensures that information is not lost due to
+		dropped packets and that packets are received in the correct
+		order.
+		
+		Each packet is sent by using a three attempts scheme. That
+		is, if after three attempts no ACK is received, we suppose
+		that the channel is currently busy or too noisy and the content
+		sending is dropped.
+		
+		On top of this ﬂow-control protocol there is a lightweight
+		transport protocol that is used to establish a connection be-
+		tween a master node, and a client node. Figure 3 shows a sim-
+		ple sequence example. Basically the master device “listens”
+		to incoming connections. Connections can be established in a
+		unicast manner, by providing the address of the master device,
+		or using an anycast approach, thus sending to the generic
+		“00000000” address and thus receiving the reply from the
+		close-by listening device. This possibility allows for a greater
+		ﬂexibility in establishing dynamic topologys in rural areas, for
+		example.
+		
+		% https://www.project-owl.com/
+		% https://www.reddit.com/r/RTLSDR/comments/bzian5/ltt_showcases_new_lora_mesh_network_devices/
+
 		\subsection{Market solutions}
+		
+			Emergency Off-Grid Communication
+			
+			
+			
+			During a natural disaster or emergency, you might not be able to depend on your cell or land-line phones or internet to exchange information between you and your loved ones, or the community around you in the ways you are used to.
+			
+			Cell towers and internet routers must be powered to operate, and if there is a large enough power outage then their services can easily be compromised, and might not come back online for days, or even weeks.
 		
 			% https://www.kickstarter.com/projects/sonnet/sonnet-decentralized-mobile-communication
 			% https://www.indiegogo.com/projects/sonnet-game-changer-for-wilderness-communications#/
@@ -211,7 +322,7 @@
 				\begin{minipage}{0.48\textwidth}% adapt widths of minipages to your needs
 					\begin{figure}[H]
 						\centering
-						\includegraphics[width=\textwidth]{resources/img/chap4/lora-mesh-chat-5267d9}
+						\includegraphics[width=\textwidth]{resources/img/chap4/sonnet}
 						\caption[Self Organizing Wireless Mesh Networks]{Self Organizing Wireless Mesh Networks\cite{BADIS2015653}}
 						\label{img:wms_microsoft}
 					\end{figure}
@@ -227,20 +338,87 @@ Sonnet brings the long-range wireless communication of the walkie-talkie to the 
 
 Sonnet's mesh network dramatically increases the effective range beyond point-to-point range by relaying data through other deices. With Sonnet, data can be relayed up to 16 times to achieve a maximum range of 80 km (50 miles)!
 				\end{minipage}
-		
 
+		
+			% https://gotenna.com/
+			%				https://gotennamesh.com/products/mesh?utm_source=internal-link&utm_medium=menu&utm_campaign=gotenna.com
 			\subsubsection{goTenna}
 				
-%				https://gotennamesh.com/products/mesh?utm_source=internal-link&utm_medium=menu&utm_campaign=gotenna.com
+				\noindent
+				\begin{minipage}{0.48\textwidth}% adapt widths of minipages to your needs
+					\begin{figure}[H]
+						\centering
+						\includegraphics[width=\textwidth]{resources/img/chap4/gotenna}
+						\caption[Self Organizing Wireless Mesh Networks]{Self Organizing Wireless Mesh Networks\cite{BADIS2015653}}
+						\label{img:wms_microsoft}
+					\end{figure}
+				\end{minipage}%
+				\hfill%
+				\begin{minipage}{0.5\textwidth}\raggedright
+				 Meet the sleek, lightweight device that pairs with your smartphone, and keeps your group connected when venturing off grid.
+				
+				Send text \& GPS locations without cell or wifi
+				Works with any iOS or Android smartphone
+				Mesh-networking enabled to privately relay messages
+				\end{minipage}
+			
+			A compact and ruggedized network management kit for larger teams operating goTenna Pro X devices and third-party software like ATAK in complex environments where no service is not an option.
+			
+			\noindent
+			\begin{minipage}{0.48\textwidth}% adapt widths of minipages to your needs
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{resources/img/chap4/gotenna_prox}
+					\caption[Self Organizing Wireless Mesh Networks]{Self Organizing Wireless Mesh Networks\cite{BADIS2015653}}
+					\label{img:wms_microsoft}
+				\end{figure}
+			\end{minipage}%
+			\hfill%
+			\begin{minipage}{0.5\textwidth}\raggedright
+				Meet the sleek, lightweight device that pairs with your smartphone, and keeps your group connected when venturing off grid.
+				
+				Send text \& GPS locations without cell or wifi
+				Works with any iOS or Android smartphone
+				Mesh-networking enabled to privately relay messages
+			\end{minipage}
+				
+
 						
-			% https://gotenna.com/
-			
-			
-			% https://www.project-owl.com/
-			% https://www.reddit.com/r/RTLSDR/comments/bzian5/ltt_showcases_new_lora_mesh_network_devices/
-		
-			Pycom itself has an available mesh network that connects lora devices, compared to the one proposed in this paper thought
+						
 			% https://docs.pycom.io/pymesh/
+			% https://pycom.io/pymesh-relaunch/
+			\subsubsection{pymesh}
 			
-			% Mesh network in other areas
-			% https://www.vmware.com/products/tanzu-service-mesh.html
+				Pycom itself has an available mesh network that connects lora devices, compared to the one proposed in this paper thought
+
+				
+				
+				Pymesh is the LoRa full-mesh network technology.
+				
+				A Mesh network acts like a net, this means that any node within the network can connect with any other node.
+				
+				Mesh networks essentially get rid of gateways, which decentralises the network’s infrastructure. This then means that the network becomes flexible, so it can do many wonderful things – such as generate, change and fix itself. The success of the Mesh network is down to its parts, as any node within the network will automatically connect to the best radio-link available.
+				
+				Pymesh works on all of our LoRa supporting development boards, the LoPy4 and FiPy as well as on our OEM modules, L01 and L04.
+				
+				An ad-hoc communication network over raw-LoRa radio
+				Multi-gateway (Border Routers) Nodes that connect Mesh-internal data with the Cloud
+				Each Node uses LBS - Listen Before Talk
+				Security on multiple levels
+				base level: authentication and encryption using AES 128bit key, so all traffic inside Pymesh is secured
+				advanced level: RSA or AES at application level allows private communication channels above Pymesh.
+				Any LoRa device (Lopy4/Fipy) can have any of the Pymesh Node Role: Leader, Router, Child or Border Router
+				
+				What does Pymesh integration offer you?
+				
+				This documentation is a quick introduction to the new Pymesh integration features on Pybytes.
+				
+				The Pymesh integration is here to help Pymesh firmware deployment and to monitor Pymesh node’s health
+	
+	
+				
+				
+				Mesh networks essentially get rid of gateways, which decentralises the network’s infrastructure. This then means that the network becomes flexible, so it can do many wonderful things – such as generate, change and fix itself. The success of the Mesh network is down to its parts, as any node within the network will automatically connect to the best radio-link available.
+				
+				
+				PROS and CONS of this mesh
