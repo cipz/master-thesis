@@ -116,15 +116,13 @@
 			\item Star: connects each device in the network to a central hub. Devices can only communicate with each other indirectly through the central hub;
 			\item Tree: parent-child hierarchy in which star networks are interconnected via bus networks;
 			\item Mesh: a dedicated point-to-point link connects each device on the network to another device on the network, only carrying data between two device;
-			\item Hybrid: any combination of two or more topologies;
+			\item Hybrid: any combination of two or more topologies.
 		\end{itemize}
 	
 		The project presented in this thesis regards a network with a mesh topology, which can be considered a multi-hop network, since data passes from node to node until it reaches its destination.
 		This is better described in \ref{chapter:proposed_solution} in a more depth and technical way.
 		The mesh proposed in this thesis has a span of LAN / MAN, since it connects devices that are in a circumscribed area but can be also placed further from each other, in order to cover longer distances.
-	
-		% Another important distinction to make is the one between a distributed systems and a computer network.
-		
+			
 		Nowadays, the organization responsible for technical management of IETF activities and the Internet standards process is the Internet Engineering Steering Group (IESG)\footnote{\url{https://www.ietf.org/about/groups/iesg/}}.
 		It is necessary to have an organization looking over the Internet itself since it gives the regulations that allow all devices to interconnect with each other.
 	
@@ -146,7 +144,6 @@
 		% https://sites.google.com/site/pnutpck11/lesson-9---wireless-transmission-media
 		Many users opt for wireless transmission media because it is more convenient than installing cables, even if they might sacrifice some performance. 
 		Also, using wireless technology allows transmission in locations where it is impossible to install cables.
-		% TODO RIVEDERE COPIATA SPUDORATAMENTE
 		Types of wireless transmission media used in communications include infrared, broadcast radio, cellular radio, microwaves, and communications satellites.
 		\begin{itemize}[noitemsep]
 			\item Infrared: wireless transmission medium that sends signals using infrared light waves
@@ -174,120 +171,104 @@
 		The growing popularity of IoT use cases in domains that rely on connectivity spanning large areas and the ability to handle a massive number of connections is driving the demand for LPWAN access technologies \cite{fi12030046}, and the project presented in this thesis falls under this category of communication.
 		LPWAN allows connectivity in many applications, from crowded areas in smart cities to smart farming and smart environment, from security and emergencies to e-health.
 		
+		% \newpage
+		\begin{figure}
+			\centering
+			\includegraphics[width=\textheight,height=\textwidth,keepaspectratio,angle=90]{resources/img/chap3/iot_range}
+			\caption[Wireless access geographic coverage.]{Wireless access geographic coverage. \cite{fi12030046}}
+			\label{img:wireless_coverage}
+		\end{figure}
+		% \newpage
+		
 		Various wireless transmission methods can be used to create a LPWAN, some of the most used in IoT are Sigfox, LoRa and NarrowBand IoT (NB-IoT).
 		In subsection \ref{subsec:lora_lorawan}, follows a more complete explanation on LoRa and LoRaWAN.
 		One important factor for all these transmission methods is to support a massive number of simultaneously connected devices with low data rates \cite{fi12030046}.
 		
 		Other important communication technologies in IoT are RFID, NFC, for contact purposes, Bluetooth, Zigbee for a personal network and IEEE 802.11, or WiFi, for a local area.
-		The latter was used in the ArduEco project, described in chap2.
+		The latter was used in the ArduEco project, described in Sec. \ref{subsec:ardueco}.
 		Fig. \ref{img:wireless_coverage} contains a representation of the geographic coverage in meters of the various aforementioned wireless transmission methods.
-	
-		
-		% TODO sistemare posizionamento immagine
-		% \newpage
-		\begin{figure}
-			\centering
-			\includegraphics[width=\textheight,height=\textwidth,keepaspectratio,angle=90]{resources/img/iot_range}
-			% \includegraphics[height=\textwidth, angle=90]{resources/img/iot_range}
-			\caption[Wireless access geographic coverage.]{Wireless access geographic coverage. \cite{fi12030046}}
-			\label{img:wireless_coverage}
-		\end{figure}
-		% \newpage
 	
 		\subsection{LoRa and LoRaWAN}\label{subsec:lora_lorawan}
 		
 			% TODO modificare perchè copiato spudoratamente
 			% https://www.semtech.com/lora
-			LoRa (short for long range) is a spread spectrum modulation technique derived from chirp spread spectrum (CSS) technology.
-			Semtech’s LoRa is a long range, low power wireless platform that has become the de facto wireless platform of Internet of Things (IoT).
+			% LoRa (short for long range) is a spread spectrum modulation technique derived from chirp spread spectrum (CSS) technology.
+			% Semtech’s LoRa is a long range, low power wireless platform that has become the de facto wireless platform of Internet of Things (IoT).
 			
 			% https://www.design-reuse.com/news/28706/semtech-cycleo-acquisition.html
 			% https://blog.semtech.com/a-brief-history-of-lora-three-inventors-share-their-personal-story-at-the-things-conference
-			Since it's development in 2009, by the french company Cycleo, now acquired by the semiconductor company Semtech, LoRa has come a long way.				
-			On top of it, there is a proprietary MAC protocol called “LoRaMAC”, which specifies the message formats and security layers for a true networking protocol.
+			% Since it's development in 2009, by the french company Cycleo, now acquired by the semiconductor company Semtech, LoRa has come a long way.				
+			% On top of it, there is a proprietary MAC protocol called “LoRaMAC”, which specifies the message formats and security layers for a true networking protocol.
 			
-			In February 2015, the LoRa Alliance was founded and the networking protocol was renamed “LoRaWAN.”
+			% In February 2015, the LoRa Alliance was founded and the networking protocol was renamed “LoRaWAN.”
 			% https://lora-alliance.org/
-			The LoRa Alliance is a non-profit organization committed to enabling large-scale deployment of Low Power Wide Area Networks (LPWAN) IoT through the development and promotion of the LoRaWAN open standard.
+			% The LoRa Alliance is a non-profit organization committed to enabling large-scale deployment of Low Power Wide Area Networks (LPWAN) IoT through the development and promotion of the LoRaWAN open standard.
+						
+			% Applications of LoRa in IoT varies from smart agriculture, to smart cities, to contact tracing, to logistics and healthcare.
+			% A complete list of the whitepapers on LoRa based communication can be found on Semtech's official website \footnote{\url{https://www.semtech.com/lora/lora-applications}}.
+		
+			LoRa (short for long range) is a spread spectrum modulation
+			technique derived from the chirp spread spectrum (CSS)
+			technology. LoRa devices provide a long range, low power
+			wireless platform that is being widely adopted for the Internet
+			of Things (IoT) networks worldwide. LoRa devices and the
+			open LoRaWAN protocol enable smart IoT applications in
+			various context, like: energy management, natural resource
+			reduction, pollution control, infrastructure efﬁciency, disaster
+			prevention, and more.
+
+			LoRaWAN is a comprehensive network architecture that details a Low Power, Wide Area (LPWA) networking technology.
+			It was designed to interconnect battery operated “things” and
+			provides a bi-directional communication service with end-to-end security features. The architecture is based on a star-of-stars topology in which speciﬁc devices called gateways relay
+			messages between end-devices and a central network server.
+			The wireless communication takes place through a single-hop
+			link between the end-device and one or many gateways.
+			The speciﬁcation deﬁnes the device-to-infrastructure physical layer parameters (LoRa) and the speciﬁc LoRaWAN protocol to allow for full interoperability among manufacturers. It
+			deﬁnes the technical implementation but it does not deﬁne any
+			commercial model or type of deployment, e.g., public, shared,
+			private, enterprise. The LoRaWAN speciﬁcation is developed
+			and maintained by the LoRa Alliance, an open association
+			of collaborating members. With LoRa and LoRaWAN the
+			intention was to provide the possibility to deploy Internet of
+			Things applications fast in areas where large distances are
+			involved, yet low bandwidth is needed. Low bandwidth makes
+			it ideal for practical IoT deployments with less data or where
+			data transmissions are not constant, for example with waste
+			management where the information that is required is whether
+			a waste bin is full or not. Moreover, the end-to-end delay (or
+			the RTT) can be relatively high, with values below one second
+			being acceptable.
 			
-			This organization is alike with the 3GPP 
-			
-			Applications of LoRa in IoT varies from smart agriculture, to smart cities, to contact tracing, to logistics and healthcare.
-			A complete list of the whitepapers on LoRa based communication can be found on Semtech's official website \footnote{\url{https://www.semtech.com/lora/lora-applications}}.
-			
-			% TODO aggiungere tabella con specifiche
-			
-			\begin{figure}[H]
+			\begin{figure}
 				\centering
 				\includegraphics[width=\textwidth]{resources/img/LoRa_Why_Range}
-				\caption{}
+				\caption{Range of LoRa transmission compared to Wi-Fi, BLE and Cellular}
 			\end{figure}
-	
-	%		The smaller the package, the greater the range.
-	%		The greater the range, the fewer receiving antennas.
-	%		The fewer antennas, the lower the total costs for the user.
-	
-	LoRa (short for long range) is a spread spectrum modulation
-	technique derived from the chirp spread spectrum (CSS)
-	technology. LoRa devices provide a long range, low power
-	wireless platform that is being widely adopted for the Internet
-	of Things (IoT) networks worldwide. LoRa devices and the
-	open LoRaWAN protocol enable smart IoT applications in
-	various context, like: energy management, natural resource
-	reduction, pollution control, infrastructure efﬁciency, disaster
-	prevention, and more.
-	LoRaWAN is a comprehensive network architecture that de-
-	tails a Low Power, Wide Area (LPWA) networking technology.
-	It was designed to interconnect battery operated “things” and
-	provides a bi-directional communication service with end-to-
-	end security features. The architecture is based on a star-of-
-	stars topology in which speciﬁc devices called gateways relay
-	messages between end-devices and a central network server.
-	The wireless communication takes place through a single-hop
-	link between the end-device and one or many gateways.
-	The speciﬁcation deﬁnes the device-to-infrastructure physi-
-	cal layer parameters (LoRa) and the speciﬁc LoRaWAN pro-
-	tocol to allow for full interoperability among manufacturers. It
-	deﬁnes the technical implementation but it does not deﬁne any
-	commercial model or type of deployment, e.g., public, shared,
-	private, enterprise. The LoRaWAN speciﬁcation is developed
-	and maintained by the LoRa Alliance 1 , an open association
-	of collaborating members. With LoRa and LoRaWAN the
-	intention was to provide the possibility to deploy Internet of
-	Things applications fast in areas where large distances are
-	involved, yet low bandwidth is needed. Low bandwidth makes
-	it ideal for practical IoT deployments with less data or where
-	data transmissions are not constant, for example with waste
-	management where the information that is required is whether
-	a waste bin is full or not. Moreover, the end-to-end delay (or
-	the RTT) can be relatively high, with values below one second
-	being acceptable [16]
-	
-	Conversely, packet loss is a more crucial factor. In Lo-
-	RaWAN, once a message has been delivered, there is no
-	acknowledgement of receipt. However, nodes can request
-	acknowledgements. In this case, if many gateways receive the
-	same packet, the cloud has to choose one gateway to respond
-	at a ﬁxed time, usually a couple of seconds later. The problem
-	is that when a gateway is transmitting back to the node, it stops
-	listening to everything else. So, if an application needs a lot of
-	acknowledgements, the gateway will very likely spend more
-	time transmitting acknowledgements than listening, which will
-	eventually lead to a network saturation. Therefore, classical
-	applications do not require acknowledgments and that’s why
-	having a reliable network with very small packet loss rate is
-	crucial if we don’t want to lose relevant information.
-	
-	Chirp spread spectrum has been used in
-	military and space communication for decades due to the long
-	communication distances that can be achieved and robustness
-	to interference, but LoRa is the ﬁrst low cost implementation
-	for commercial usage. The advantage of LoRa is in the
-	technology’s long range capability. Range highly depends on
-	the environment or obstructions in a given location, but LoRa
-	and LoRaWAN have a link budget greater than any other
-	standardized communication technology
-	
+			
+			Conversely, packet loss is a more crucial factor. In LoRaWAN, once a message has been delivered, there is no
+			acknowledgement of receipt. However, nodes can request
+			acknowledgements. In this case, if many gateways receive the
+			same packet, the cloud has to choose one gateway to respond
+			at a ﬁxed time, usually a couple of seconds later. The problem
+			is that when a gateway is transmitting back to the node, it stops
+			listening to everything else. So, if an application needs a lot of
+			acknowledgements, the gateway will very likely spend more
+			time transmitting acknowledgements than listening, which will
+			eventually lead to a network saturation. Therefore, classical
+			applications do not require acknowledgments and that’s why
+			having a reliable network with very small packet loss rate is
+			crucial if we don’t want to lose relevant information.
+			
+			Chirp spread spectrum has been used in
+			military and space communication for decades due to the long
+			communication distances that can be achieved and robustness
+			to interference, but LoRa is the ﬁrst low cost implementation
+			for commercial usage. The advantage of LoRa is in the
+			technology’s long range capability. Range highly depends on
+			the environment or obstructions in a given location, but LoRa
+			and LoRaWAN have a link budget greater than any other
+			standardized communication technology.
+			
 	\section{Hardware (Microcontrollers)}\label{sec:microcontrollers}
 	
 		% Parlare di board come questa?
@@ -296,13 +277,10 @@
 		Microcontrollers (or MCUs, short for Microcontroller Unit) are compact integrated circuits designed to govern a specific operation in an embedded system.
 		They are specially made to fit in particular environments or to perform specific functions, which usually do not require any particular computation, memory capacity or power.
 		This has been made possible thanks to the continuous shrinking of transistors, which makes almost all the components more compact, and the improved power sources.
-		% TODO cambiare batteries con qualcos'altro?
 		In junction with the previously described wireless technologies, microcontrollers are at the hearth of IoT devices, described in Chap. \ref{chap:background}, and they require long-lasting, low-cost, and sustainable batteries.
 		
-		% TODO modificare un attimo
-		% TODO da riprendere in chap2
 		% https://ieeexplore.ieee.org/abstract/document/9148855?casa_token=ppFhpgagThgAAAAA:u81u3jhRB-EJxsnQFx32i8LI4nJBKi3NsDvemcunZKNeSETGloW8wRB45S5OeaYOOdh2kXQ
-		The number of IoT connected devices is expected to grow up to 75 billion worldwide by 2025 \cite{statista}, and connection density is expected to be one million devices per square km\cite{noma}.
+		The number of IoT connected devices is expected to grow up to 75 billion worldwide by 2025 \cite{statista}, and connection density is expected to be one million devices per square km \cite{noma}.
 		These devices will generate massive data and consume significant energy.
 		
 		Given the amount of specific functions an MCU can perform, there are many boards on the market.
@@ -336,19 +314,17 @@
 		The simplified architectures and the constraints of embedded devices are reflected in the narrow choice for programming languages.
 		It is hard to find an MCU programmed in Java since this would require the JVM running in the background.
 		Popular languages for MCUs are, for example, C/C++, Assembly, Rust, Ada, Erlang, etc.
-		% TODO CONTROLLARE
 		All these have in common the fact that they are compiled and the bytecode has a small footprint.
 		A particular microcontroller company, Arduino, have developed a version of C++ specific for their boards, but given the simplictity of this new dialect, many boards on the market can be programmed with it.
 		Arduino is explained further in Subsection \ref{subsec:arduino}.
 	
-		% TODO da spostare in 
 		Another programming language that is quickly taking hold at the time of writing, is Mycropython.
 		As explained in their website it is an "efficient implementation of the Python 3 programming language that includes a small subset of the Python standard library and is optimised to run on microcontrollers and in constrained environments" \footnote{\url{https://micropython.org/}}.
 		% https://itqna.net/questions/437/what-definition-verbose-code-and-why-it-interesting-reduce-i
 		Python's fast learning and explicit code advantages are reflected in this smaller version for microcontrollers, available for most of them.
 		
 		Below is a table with the specifications of microcontrollers from Arduino, Raspberry Pi and Pycom, which are better described in the following subsections.
-		\begin{table}[htbp]
+		\begin{table}[tbp]
 			\begin{center}
 				\begin{tabularx}{\textwidth}{@{}|Y|Y|Y|Y|Y|Y|@{}} 
 					\hline
@@ -369,7 +345,6 @@
 			% https://www.arduino.cc/en/Main/AboutUs
 			% https://www.oreilly.com/library/view/arduino-a-technical/9781491934319/ch01.html	
 			Arduino is a company founded by Massimo Banzi Et Al. in Ivrea, Italy, in 2005, and has released the first commercially available microcontroller.
-			% TODO rivedere
 			They wanted a device that was simple, easy to connect to various ''things'' (such as relays, motors, and sensors), and easy to program, besides being inexpensive.
 			% It also needed to be inexpensive, as students and artists aren’t known for having lots of spare cash. 
 		
@@ -388,7 +363,6 @@
 			\begin{figure}[H]
 				\centering
 				\includegraphics[width=\textwidth]{resources/img/chap3/arduino_types}
-				% TODO rivedere accento yun, mettere link?
 				\caption{Arduino UNO Rev 3 on the left, Arduino Yun in the middle, Arduino Nano 33 BLE on the right}
 				\label{img:arduino_board}
 			\end{figure}
@@ -420,9 +394,9 @@
 				\item Arduino Nano 33 BLE Sense: contains BLE connectivity and multiple sensors, such as 9 axis inertial, humidity, and temperature, barometric, microphone, gesture, proximity, light color and light intensity.
 			\end{itemize}
 		
-			% TODO rivedere bene quando si scrive resto della tesi
+
 			Particularly, this last model, the board on the right in Fig. \ref{img:arduino_board}, has been considered as one of the possible choices as development board for this project.
-			As better explained in chap 5, it has been discarded since it does not offer LoRa connectivity and an additional module would have been necessary to connect the board in a mesh.
+			As better explained in Chap. \ref{chapter:proposed_solution}, it has been discarded since it does not offer LoRa connectivity and an additional module would have been necessary to connect the board in a mesh.
 								
 		\subsection{Raspberry Pi}
 	
@@ -435,7 +409,6 @@
 			ARM processors, or Advanced RISC Machine processors, are better suited to mobile computing, since they use a simplified, less power-hungry method of processing.
 			This allows the Raspberry Pi to run full operating systems such as some Linux distributions, included the official operating system Raspian OS
 			
-			% TODO rivedere perchè copiato
 			Since the entire Computer (the Processor, RAM, Storage, Graphics, Connectors, etc.) is sitting on a single Printed Circuit Board, the Raspberry Pi (and other similar boards) are called as Single Board Computers or SBC.
 			
 			Letting their differences aside, both are very popular boards among electronics DIY builders, hobbyists and even professionals.
@@ -447,7 +420,7 @@
 			% https://en.wikipedia.org/wiki/Raspberry_Pi
 			% https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/
 			
-			\begin{figure}[H]
+			\begin{figure}
 				\centering
 				\includegraphics[width=\textwidth]{resources/img/chap3/raspberry_types}
 				\caption{Raspberry Pi Model 3B+ on the left, Raspberry Pi Zero in the middle, Raspberry Pi Pico on the right}
@@ -466,7 +439,6 @@
 			They are represented in Fig. \ref{img:raspberry_board} and can be considered as the latest evolution of what is needed to learn programming in a Unix like environment at a low cost, in fact these boards cost 35\$, 5\$ and 3\$ each.
 			A complete list of the available boards can be found on their online store \footnote{\url{https://www.raspberrypi.org/products/}}.
 			
-			% TODO rivedere bene quando si scrive resto della tesi
 			The Raspberry Pi Pico was considered for this project, but was rejected since, as the Arduino, it would have needed additional modules for LoRa and BLE connectivity, while the other models have a computational power much greater than the one needed.
 				
 		\subsection{Pycom}
@@ -488,7 +460,6 @@
 			% share similar specifications
 			All the boards offered by pycom at the time of writing are equipped with an Espressif ESP32 chipset, 4MB of RAM and an flash memory of 8MB.
 			
-			% TODO VERIFICARE 
 			% https://pycom.io/products/software/open-source/
 			% https://eu.mouser.com/manufacturer/pycom/
 			Contrary to Arduino and Raspberry Pi, the Pycom has decided to maintain the datasheets and the firmware of their boards proprietary, which means there is far less support from the community when comes to finding bugs in the software or improving the component placement on the board.
@@ -518,10 +489,4 @@
 			An overall advantage of Pycom's products is the tight ecosystem, which allows for faster and easier troubleshooting, configuration and programming.
 			All these factors are well described in Pycom's documentation on their website \footnote{\url{https://docs.pycom.io/}}.
 			
-			% TODO rivedere bene quando si scrive resto della tesi
-			A more in depth description of how the chosen technologies interact is present in chap5.	
-			
-		
-		\subsection{Chip shortage}
-		
-			% https://www.raspberrypi.com/news/supply-chain-shortages-and-our-first-ever-price-increase/
+			A more in depth description of the chosen technologies is described in Chap. \ref{chapter:proposed_solution}.
