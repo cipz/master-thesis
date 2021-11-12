@@ -122,8 +122,6 @@
 	
 		\subsection{Advantages of WMS}
 		
-			Benefits of Mesh Network in IoT
-			
 			Mesh Network for IoT devices offers enormous benefits that make it sought-after in enterprises and significant in an IoT app development company.
 			Self-healing
 			
@@ -180,28 +178,27 @@
 		\subsection{Open source projects}
 		
 			% https://www.hackster.io/scottpowell69/lora-mesh-chat-5267d9
-			\subsubsection{LoRa Mesh Chat}
-			
-				A simple add-on for mobile phones to enable SMS-like messaging in a group when outside cell coverage, or in disaster scenarios.
-				
+			\subsubsection{LoRa Mesh Chat}\label{subsubsec:lorameshchat}
+
+				This project consist in an add-on for mobile phones that enable text messaging in a group when outside cellular and Internet coverage.		
+					
 				\noindent
-				\begin{minipage}{0.48\textwidth}% adapt widths of minipages to your needs
+				\begin{minipage}{0.5\textwidth}% adapt widths of minipages to your needs
 					\begin{figure}[H]
 						\centering
-						\includegraphics[width=\textwidth]{resources/img/chap4/lora-mesh-chat-5267d9}
-						\caption[Self Organizing Wireless Mesh Networks]{Self Organizing Wireless Mesh Networks\cite{BADIS2015653}}
+						\includegraphics[width=.8\textwidth]{resources/img/chap4/lora-mesh-chat-5267d9}
+						\caption{ESP32 Lora with OLED}
 						\label{img:lora_mesh_chat}
 					\end{figure}
 				\end{minipage}%
 				\hfill%
-				\begin{minipage}{0.5\textwidth}\raggedright
-					This is a fairly simple add-on for mobile phones to enable SMS-like messaging in a group when outside cell coverage, or in disaster scenarios. It utilises Semtech LoRa radios, for low-power/long-range communications. There are a lot of hardware options, and I am still trying different devices and manufacturers, but for now this tutorial will show how to assemble and set up one of the following boards:
-					
-					This board is quite nice in that it includes a nice OLED screen and Bluetooth radio. Unfortunately, the LoRa radio is not as good as the Feather, and only seems to get about half the range.
-				\end{minipage}
-			
+				\begin{minipage}{0.5\textwidth}\raggedright			
+					As explained on the project's webpage \footnotemark, an ESP32 microcontroller with a LoRa antenna and an OLED display is programmed to connect to the phone either via and OTG cable or BLE.
+					By using an application on the phone, the user is capable of sending text messages in a group.
+				\end{minipage}			
+				\footnotetext{{ \url{www.hackster.io/scottpowell69/lora-mesh-chat-5267d9}}}
 				
-				\subsubsection{Meshtastic}		
+				\subsubsection{Meshtastic}\label{subsubsec:meshtastic}
 	
 					% https://meshtastic.org/
 					% https://github.com/meshtastic
@@ -247,7 +244,7 @@
 			
 				\begin{figure}[H]
 					\centering
-					\includegraphics[width=.5\textwidth]{resources/img/loractp_flow}
+					\includegraphics[width=.5\textwidth]{resources/img/chap4/loractp_flow}
 					\caption[Flow of the establishment and interchange of data in LoRaCTP]{Flow of the establishment and interchange of data in LoRaCTP \cite{loractp}}
 				\end{figure}
 		
@@ -281,122 +278,123 @@
 		% https://www.project-owl.com/
 		% https://www.reddit.com/r/RTLSDR/comments/bzian5/ltt_showcases_new_lora_mesh_network_devices/
 
-		\subsection{Market solutions}
-		
-			Emergency Off-Grid Communication
-			
-			
-			
-			During a natural disaster or emergency, you might not be able to depend on your cell or land-line phones or internet to exchange information between you and your loved ones, or the community around you in the ways you are used to.
-			
-			Cell towers and internet routers must be powered to operate, and if there is a large enough power outage then their services can easily be compromised, and might not come back online for days, or even weeks.
-		
+		\subsection{Commercial applications}
+
+			% SONNET
 			% https://www.kickstarter.com/projects/sonnet/sonnet-decentralized-mobile-communication
 			% https://www.indiegogo.com/projects/sonnet-game-changer-for-wilderness-communications#/
-			\subsubsection{Sonnet}
-		
-				\noindent
-				\begin{minipage}{0.48\textwidth}% adapt widths of minipages to your needs
-					\begin{figure}[H]
-						\centering
-						\includegraphics[width=\textwidth]{resources/img/chap4/sonnet}
-						\caption[Self Organizing Wireless Mesh Networks]{Self Organizing Wireless Mesh Networks\cite{BADIS2015653}}
-						\label{img:wms_microsoft}
-					\end{figure}
-				\end{minipage}%
-				\hfill%
-				\begin{minipage}{0.5\textwidth}\raggedright
-
-Sonnet is the world's most advanced off-grid mobile mesh network.
-
-The device wirelessly connects to your smartphone, etc to let you send text, voice message, images, data, files and share GPS locations to any other Sonnet users up to several kilometers away with no cell tower, no satellite, and no subscription of any kind.
-
-Sonnet brings the long-range wireless communication of the walkie-talkie to the smartphone. It connects to your smartphone via Wi-Fi, and it will relay any data sent from your phone to other Sonnet devices via the long-range radio wave. This completely removes your smartphones’ dependency on cellular grid and other network infrastructure, and allows it to be used even when you have no cellular connectivity or internet access.
-
-Sonnet's mesh network dramatically increases the effective range beyond point-to-point range by relaying data through other deices. With Sonnet, data can be relayed up to 16 times to achieve a maximum range of 80 km (50 miles)!
-				\end{minipage}
-
-		
+			% GOTENNA
 			% https://gotenna.com/
 			%				https://gotennamesh.com/products/mesh?utm_source=internal-link&utm_medium=menu&utm_campaign=gotenna.com
 			% https://techcrunch.com/2019/06/18/gotenna-is-ramping-up-public-sector-mesh-networking-with-a-24m-c-round/
-			\subsubsection{goTenna}
+			\subsubsection{Off grid mesh devices: Sonnet and goTenna}
+			
+				Both of the following devices use LoRa to create a mesh network and have been designed for Emergency Off-Grid Communication, where cellular towers or land-line phones are not physically reachable.
 				
-				\noindent
-				\begin{minipage}{0.48\textwidth}% adapt widths of minipages to your needs
+				\begin{minipage}{0.38\textwidth}% adapt widths of minipages to your needs
 					\begin{figure}[H]
 						\centering
-						\includegraphics[width=\textwidth]{resources/img/chap4/gotenna}
-						\caption[Self Organizing Wireless Mesh Networks]{Self Organizing Wireless Mesh Networks\cite{BADIS2015653}}
-						\label{img:wms_microsoft}
+						\includegraphics[width=.8\textwidth]{resources/img/chap4/sonnet}
+						\caption{Sonnet}
+						\label{img:sonnet}
+					\end{figure}
+				\end{minipage}%
+				\hfill%
+				\begin{minipage}{0.52\textwidth}\raggedright
+					Sonnet \footnotemark, in Fig. \ref{img:sonnet}, connects to the smartphone via WiFi allowing the user to send texts, voice messages, images, data, files and share GPS locations to any other Sonnet users up to several kilometers away, thanks to LoRa.
+					This completely removes smartphones' dependency on cellular grid and other network infrastructure, and allows Sonnet to be used even when there is no cellular connectivity or Internet access.
+				\end{minipage}		
+				\footnotetext{ \url{www.sonnettech.com}}
+				\newline
+			
+				According to the product's Kickstarter page \footnote{ \url{www.kickstarter.com/profile/sonnet/created}} ``Sonnet's mesh network dramatically increases the effective range beyond point-to-point range by relaying data through other deices. With Sonnet, data can be relayed up to 16 times to achieve a maximum range of 80 km (50 miles)''.
+
+				\begin{minipage}{0.5\textwidth}%
+					\begin{figure}[H]
+						\centering
+						\includegraphics[height=6cm]{resources/img/chap4/gotenna}
+						\caption{goTenna Mesh}
+						\label{img:gotenna}
 					\end{figure}
 				\end{minipage}%
 				\hfill%
 				\begin{minipage}{0.5\textwidth}\raggedright
-				 Meet the sleek, lightweight device that pairs with your smartphone, and keeps your group connected when venturing off grid.
+					\begin{figure}[H]
+						\centering
+						\includegraphics[width=.9\textwidth]{resources/img/chap4/gotenna_prox}
+						\caption{goTenna Pro}
+						\label{img:gotenna_pro}
+					\end{figure}
+				\end{minipage}%
+				\newline
 				
-				Send text \& GPS locations without cell or wifi
-				Works with any iOS or Android smartphone
-				Mesh-networking enabled to privately relay messages
-				\end{minipage}
+				The goTenna \footnote{ \url{www.gotenna.com/}}, in Fig. \ref{img:gotenna}, offers similar functions as the Sonnet, allowing to send text \& GPS locations without a cellphone with Internet connection.
+				Mesh-networking allows to relay messages from a node to another until they reach destination.
+				
+				A compact and ruggedized network management kit, the goTenna Pro X, in Fig. \ref{img:gotenna_pro}, allows control for larger teams that operate in complex environments where no service is not an option.
+						
+				As Sonnet, goTenna has raised the funds necessary to enter the market as a crowdfunded project on Kickstarter \footnote{\url{www.kickstarter.com/profile/gotenna/created}}.
+				
+				Compared to the projects in \ref{subsubsec:lorameshchat} and \ref{subsubsec:meshtastic}, Sonnet and goTenna are more complete and offer a more stable network, thanks to the fact that these products have been thoroughly tested and produced on a bigger scale.
+						
+			% https://www.linksys.com/us/r/resource-center/whole-home-mesh-wifi/
+			% https://www.pcmag.com/picks/the-best-wi-fi-mesh-network-systems
+			\subsubsection{Mesh WiFi}
+					
+				Mesh WiFi, or Whole Home WiFi systems, consists of a main router that connects directly to the main modem, and a series of satellite modules, or nodes, placed around the house for full WiFi coverage.
+				Each node serves as a hop point for other nodes in the system and are all part of a single wireless network and share the same SSID and password, unlike traditional WiFi routers.
+				Weakened signal or WiFi dead spots of the latter are the result of physical obstructions (floor, doors, and walls).
+				
+				A modular mesh whole home WiFi system is flexible and scalable, giving a customizable method of expanding WiFi coverage without the need to add range extenders, which are certainly effective when it comes to increasing the router range, but they do so at the expense of WiFi performance, which gets cut in half.
+				
+				It’s just like installing lighting fixtures to illuminate your home; you can place your nodes anywhere in your home. You choose which rooms need the coverage, and when it’s time to add more to extend the signal even further. 				
 			
-			A compact and ruggedized network management kit for larger teams operating goTenna Pro X devices and third-party software like ATAK in complex environments where no service is not an option.
-			
-			\noindent
-			\begin{minipage}{0.48\textwidth}% adapt widths of minipages to your needs
-				\begin{figure}[H]
+				\begin{figure}
 					\centering
-					\includegraphics[width=\textwidth]{resources/img/chap4/gotenna_prox}
-					\caption[Self Organizing Wireless Mesh Networks]{Self Organizing Wireless Mesh Networks\cite{BADIS2015653}}
-					\label{img:wms_microsoft}
+					\includegraphics[width=\textwidth]{resources/img/chap4/wifi6}
+					\caption{WiFi 6 mesh nodes vs WiFi range extenders performance}
+					\label{img:wifi6}
 				\end{figure}
-			\end{minipage}%
-			\hfill%
-			\begin{minipage}{0.5\textwidth}\raggedright
-				Meet the sleek, lightweight device that pairs with your smartphone, and keeps your group connected when venturing off grid.
 				
-				Send text \& GPS locations without cell or wifi
-				Works with any iOS or Android smartphone
-				Mesh-networking enabled to privately relay messages
-			\end{minipage}
+				Wi-Fi 6 is an evolution of 802.11ac technology that promises increased throughput speeds (up to 9.6Gbps), less network congestion, greater client capacity, and better range performance thanks to the new and improved wireless technologies, including Orthogonal Frequency-Division Multiple Access (OFDMA). OFDMA improves overall throughput by breaking Wi-Fi channels into sub-channels, allowing up to 30 users to share a channel at the same time. Additionally, 802.11ax takes advantage of previously unused radio frequencies to provide faster 2.4GHz performance and uses MU-MIMO streaming, too. Some Wi-Fi 6 devices can also communicate on the less-crowded 6GHz band, which was recently opened for Wi-Fi and is known as Wi-Fi 6E.
 				
-
+				Many important manufacturers for network hardware, like Netgear and Cisco, have already implemented such technology and functions in their products.
 						
 						
-			% https://docs.pycom.io/pymesh/
-			% https://pycom.io/pymesh-relaunch/
-			\subsubsection{pymesh}
-			
-				Pycom itself has an available mesh network that connects lora devices, compared to the one proposed in this paper thought
-
-				
-				
-				Pymesh is the LoRa full-mesh network technology.
-				
-				A Mesh network acts like a net, this means that any node within the network can connect with any other node.
-				
-				Mesh networks essentially get rid of gateways, which decentralises the network’s infrastructure. This then means that the network becomes flexible, so it can do many wonderful things – such as generate, change and fix itself. The success of the Mesh network is down to its parts, as any node within the network will automatically connect to the best radio-link available.
-				
-				Pymesh works on all of our LoRa supporting development boards, the LoPy4 and FiPy as well as on our OEM modules, L01 and L04.
-				
-				An ad-hoc communication network over raw-LoRa radio
-				Multi-gateway (Border Routers) Nodes that connect Mesh-internal data with the Cloud
-				Each Node uses LBS - Listen Before Talk
-				Security on multiple levels
-				base level: authentication and encryption using AES 128bit key, so all traffic inside Pymesh is secured
-				advanced level: RSA or AES at application level allows private communication channels above Pymesh.
-				Any LoRa device (Lopy4/Fipy) can have any of the Pymesh Node Role: Leader, Router, Child or Border Router
-				
-				What does Pymesh integration offer you?
-				
-				This documentation is a quick introduction to the new Pymesh integration features on Pybytes.
-				
-				The Pymesh integration is here to help Pymesh firmware deployment and to monitor Pymesh node’s health
-	
-	
-				
-				
-				Mesh networks essentially get rid of gateways, which decentralises the network’s infrastructure. This then means that the network becomes flexible, so it can do many wonderful things – such as generate, change and fix itself. The success of the Mesh network is down to its parts, as any node within the network will automatically connect to the best radio-link available.
-				
-				
-				PROS and CONS of this mesh
+%			% https://docs.pycom.io/pymesh/
+%			% https://pycom.io/pymesh-relaunch/
+%			\subsubsection{pymesh}
+%			
+%				Pycom itself has an available mesh network that connects lora devices, compared to the one proposed in this paper thought
+%
+%				
+%				
+%				Pymesh is the LoRa full-mesh network technology.
+%				
+%				A Mesh network acts like a net, this means that any node within the network can connect with any other node.
+%				
+%				Mesh networks essentially get rid of gateways, which decentralises the network’s infrastructure. This then means that the network becomes flexible, so it can do many wonderful things – such as generate, change and fix itself. The success of the Mesh network is down to its parts, as any node within the network will automatically connect to the best radio-link available.
+%				
+%				Pymesh works on all of our LoRa supporting development boards, the LoPy4 and FiPy as well as on our OEM modules, L01 and L04.
+%				
+%				An ad-hoc communication network over raw-LoRa radio
+%				Multi-gateway (Border Routers) Nodes that connect Mesh-internal data with the Cloud
+%				Each Node uses LBS - Listen Before Talk
+%				Security on multiple levels
+%				base level: authentication and encryption using AES 128bit key, so all traffic inside Pymesh is secured
+%				advanced level: RSA or AES at application level allows private communication channels above Pymesh.
+%				Any LoRa device (Lopy4/Fipy) can have any of the Pymesh Node Role: Leader, Router, Child or Border Router
+%				
+%				What does Pymesh integration offer you?
+%				
+%				This documentation is a quick introduction to the new Pymesh integration features on Pybytes.
+%				
+%				The Pymesh integration is here to help Pymesh firmware deployment and to monitor Pymesh node’s health
+%	
+%	
+%				
+%				
+%				Mesh networks essentially get rid of gateways, which decentralises the network’s infrastructure. This then means that the network becomes flexible, so it can do many wonderful things – such as generate, change and fix itself. The success of the Mesh network is down to its parts, as any node within the network will automatically connect to the best radio-link available.
+%				
+%				
+%				PROS and CONS of this mesh
