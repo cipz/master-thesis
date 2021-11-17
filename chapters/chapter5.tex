@@ -12,14 +12,17 @@
 
 \chapter{Proposed solution}\label{chapter:proposed_solution}
 
-	\section{Idea}
+	This chapter describes the mesh network developed to accomodate small messages that need to be sent in a broader range
 	
-		% Why the choice of not using a simulator
-		% https://lora-alliance.org/resource_hub/online-simulation-of-lorawan-devices/
+	Such network should be able to integrate with the MegaSense device, described in Section \ref{subsec:megasense}, and allow data to be exchange among boards.
+	
+	Even though it would have been possible to use a simulator, such as ``The one'' \footnote{ \url{http://akeranen.github.io/the-one/}}, for demonstrating the usefulness of such network, the final project has been realized with Pycom hardware.
 	
 	\section{Architecture}
 	
-		%Describe sensing pipeline 
+		% TODO inserire immagine per architettura
+		
+		As represented in Figure \ref{img:mesh_architecture}, the network is composed of 
 	
 	\section{Hardware}
 	
@@ -59,6 +62,8 @@
 			For a graphical reason, each state of the automatas is abbreviated, and the full state is described in a table underneath
 			
 			Visione da generale a specifica di ciasun componente
+			
+			As said previously, the code is divided in two files, boot.py
 			
 			\subsubsection{Main}
 				
@@ -140,6 +145,8 @@
 		\subsection{Supported messages}
 				
 			% TODO spiegare i messaggi che vengono mandati tra i dispositivi
+		
+	\section{Other files}
 			
 	\section{Use cases}
 		

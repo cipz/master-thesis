@@ -418,13 +418,13 @@
 		\begin{tabularx}{0.9\textwidth}{Xl}
 			\textbf{Author} &  \\
 			&  \\
-			Voinea Stefan Ciprian & \\
+			Voinea Stefan Ciprian & Università degli Studi di Padova\\
 			Study programme: & Master's Degree in Computer Science \\
 			E-mail: & \href{mailto://stefanciprian.voinea@studenti.unipd.it}{stefanciprian.voinea@studenti.unipd.it}\\
 			E-mail: & \href{mailto://ciprian.voinea@outlook.com}{ciprian.voinea@outlook.com} \\
 			&  \\
 			&  \\
-			\textbf{Graduation commitee} &  \\
+			\textbf{Supervising professors} &  \\
 			&  \\
 			Claudio Enrico Palazzi & Università degli Studi di Padova \\
 			Study programme: & Assoc. Prof. in Computer Science \\

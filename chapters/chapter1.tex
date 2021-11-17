@@ -7,44 +7,42 @@
 
 \chapter{Introduction}\label{chapter:introduction}
 
-	% TODO incentrare sulla parte delle reti come prima cosa
-	% dire che bgp è basato su mesh network
-
-	% HYPERCONNECTED WORLD
+	% https://lucaspolo.eu/isaac-asimov-predicting-todays-internet-1988/
+	% https://aminotes.tumblr.com/post/4994624354/isaac-asimov-predicted-the-internet-of-today-20
 	
-	% IoT is an enabler for the sciences that need large amount of data for creating algorithms and offering better services and more well tailored products.
-	% The ubiquity of mobile technology has opened the door to a new era of mobile sensing. 
+	In an interview from 1988 about school education and its relationship with the Internet, Isaac Asimov, one of the 20th century's most prolific science fiction writers, said ``\textit{now, with the computer, it's possible to have a one-to-one relationship for the many. Everyone can have a teacher in the form of access to the gathered knowledge of the human species}''.
 	
-
-	% todo aggiungere qualcosa che i computer sono diventati anche personali e non solo piccoli
-	% todo parlare di lpwan e altri tipi di rete che ci sono che hanno bisogno di un'architettura ottimale
-
-	Starting from the Middle Ages, through the Industrial Revolutions and arriving to the Modern Era, water and air pollution have haunted people all around the world.
-	From early on, in Europe, unsanitary urban conditions favoured the outbreak of population-decimating epidemics of disease, from plague to cholera and typhoid fever.
-	% https://www.history.com/news/the-killer-fog-that-blanketed-london-60-years-ago
-	Later, with the advent of the steam engine in between of the 18th and 19th century, pollutants from factories started to spread in the air, causing problems such as smog and, in some cases, even acid rain, like the ``London Fog'' \cite{fog} in 1952.
+	At the time of writing, many things have changed since that interview: people now live in an \textit{hyperconnected world}, where accessing Internet is considered a right, so that everyone has the same learning opportunities.
 	
-	Using the data gathered until the second half of the 20th century, computer simulations showed how the rise in CO2 levels that can lead to climate change and cause global temperatures to rise steadily in the years.
-
-	% This prediction came true.
-
+	According to Cisco's 2018 - 2023 Internet Report, ``the number of devices connected to IP networks will be more than three times the global population by 2023'' \cite{cisco1}.
+	Authors also predict there will be 29.3 billion networked devices by 2023, a major increase from 18.4 billion in 2018. 
+	% https://www.cisco.com/c/en/us/solutions/executive-perspectives/annual-internet-report/air-highlights.html
+	Of al these, 50\% is represented by Internet of Things, or IoT, devices.
+	
+	As stated in one of Forbes's insights, ``\textit{IoT is ranked as the most important technology initiative by senior executives; more important than artificial intelligence and robotics, among many others}'', while, from an economical point of view, ``\textit{of all emerging technologies, the Internet of Things (IoT) is projected to have the greatest impact on the global economy}'' \cite{forbes}.
+	The number of devices that are being connected to the Internet is growing day by day and the industry is at its highest peeks.
+	
+	This new paradigm of Computer Science can be considered an enabler for the sciences that need large amount of data for creating algorithms and offering better services and more well tailored products.
+	The ubiquity of mobile technology has opened the door to a new era of mobile sensing. 
+	
+%	Starting from the Middle Ages, through the Industrial Revolutions and arriving to the Modern Era, water and air pollution have haunted people all around the world.
+%	From early on, in Europe, unsanitary urban conditions favoured the outbreak of population-decimating epidemics of disease, from plague to cholera and typhoid fever.
+%	% https://www.history.com/news/the-killer-fog-that-blanketed-london-60-years-ago
+%	Later, with the advent of the steam engine in between of the 18th and 19th century, pollutants from factories started to spread in the air, causing problems such as smog and, in some cases, even acid rain, like the ``London Fog'' \cite{fog} in 1952.
+	
+	Using the data gathered until the second half of the $20^{th}$ century, computer simulations showed how the rise in CO2 levels that can lead to climate change and cause global temperatures to rise steadily in the years.
 	Scientists started to take a more common approach to pollutants and climate change by developing instruments capable of more accurate readings and by better understanding how to analyze the gathered data.
-	In the preface of 1981's ``\textit{The Design of Air Quality Monitoring Networks}'', the author states that ``\textit{the number of publications in the environmental area is increasing exponentially}''\cite{airqualitynetworks}.
+	In the preface of 1981's ``\textit{The Design of Air Quality Monitoring Networks}'', the author states that ``\textit{the number of publications in the environmental area is increasing exponentially}'' \cite{airqualitynetworks}.
 	This leaves one to think about the state of this research area up to date.
 	
-	From the point of view of Computer Science, technology has also evolved exponentially, confirming the validity of Moore's law and increasing the accuracy of sensors and other analog peripherals used to gather data from the environment.
-
-	In combination with the fact that computers have also become smaller, portable and personal, a new paradigm of digital devices has emerged: the Internet of Things.
-		
-	As stated in one of Forbes's insights, ``IoT is ranked as the most important technology initiative by senior executives; more important than artificial intelligence and robotics, among many others'', while, from an economical point of view, ``of all emerging technologies, the Internet of Things (IoT) is projected to have the greatest impact on the global economy''\cite{forbes}.
-	The number of devices that are being connected to the Internet is growing day by day and the industry is at it's highest peeks.
+%	From the point of view of Computer Science, technology has also evolved exponentially, confirming the validity of Moore's law and increasing the accuracy of sensors and other analog peripherals used to gather data from the environment.
+%	In combination with the fact that computers have also become smaller, portable and personal, a new paradigm of digital devices has emerged: the Internet of Things.
 
 	Many publications have been studying the development of low-cost devices, focused on analyzing the quality of the surroundings of individual. 
-
+	
 	This thesis takes a focus on a particular project, MegaSense, a personal air quality device developed by the University of Helsinki.
 	
-	In this thesis, the architecture for connecting such devices is expanded with the use of LoRa and with the evaluation of other use cases.
-	% TODO spiegare bene che quello che vendo è la rete mesh lora
+	In this thesis, the architecture for connecting such devices is expanded with the use of a LoRa mesh network.
 	
 	\section{Contributions}\label{sec:contributions}
 	
@@ -54,18 +52,17 @@
 	
 	\section{Document outline}\label{sec:document_outline}
 		
-		This document follows an hourglass structure, and the content is organized as such in the following chapters:
-		
+		This document follows an hourglass structure by first explaining in general the necessary notions to understand the work done and then going more in detail.
+		The content is organized as such in the following chapters:
 		% TODO create links in the document
 		\begin{enumerate}
-			% \setcounter{enumi}{1}
-			
-			\item \hyperref[chapter:introduction]{\textit{Introduction}}:
-			\item \textit{Background}:
-			\item \textit{Technologies}:
-			\item \textit{Related work}:
-			\item \textit{Proposed solution}:
-			\item \textit{Results and experimentation}:
-			\item \textit{Conclusions}:
+			% \setcounter{enumi}{1}			
+			\item \hyperref[chapter:introduction]{\textit{Introduction}}: this introductory chapter;
+			\item \hyperref[chapter:background]{\textit{Background}:}
+			\item \hyperref[chapter:technologies]{\textit{Technologies}}:
+			\item \hyperref[chapter:related_work]{\textit{Related work}}:
+			\item \hyperref[chapter:proposed_solution]{\textit{Proposed solution}:}
+			\item \hyperref[chapter:results]{\textit{Results and experimentation}:}
+			\item \hyperref[chapter:conclusions]{\textit{Conclusions}}:
 			
 		\end{enumerate}

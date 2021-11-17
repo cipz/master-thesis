@@ -80,7 +80,7 @@
 	
 		In Sec. \ref{sec:radio_tech}, is described another level of distinction based on the power consumed by the transmission medium.
 		
-		Since everyone can connect to the Internet and access it's services, there is no need for the average user to understand what happens between his machine and the rest of the network, which means he only sees the information that is displayed to him without knowing where it arrives from or what path it took to arrive on his monitor.
+		Since everyone can connect to the Internet and access its services, there is no need for the average user to understand what happens between his machine and the rest of the network, which means he only sees the information that is displayed to him without knowing where it arrives from or what path it took to arrive on his monitor.
 		
 		For computer scientists though, it is important to understand the difference between network architecture and network topology.	
 		A network architecture, as described by by Paul E. Green, ``is a complete definition of all the layers necessary to build the network''\cite{nla.cat-vn252493}.
@@ -103,12 +103,14 @@
 		
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=\textwidth]{resources/img/chap3/network_topologies.png}
+			\includegraphics[width=\textwidth]{resources/img/chap3/network_topologies}
 			\caption{Common network topologies}
 			\label{img:network_topologies}
 		\end{figure}
 	
 		% TODO DEFINIZIONE UNICAST / MULTICAST / BROADCAST
+		
+		% TODO visto che ogni frase ricomincia con una maiuscola, e' meglio far terminare i punti con un punto invece che con il punto e virgola.
 		
 		As shown in Fig. \ref{img:network_topologies}, some of the most common network topologies are:
 		\begin{itemize}[noitemsep]
@@ -122,7 +124,7 @@
 		\end{itemize}
 	
 		The project presented in this thesis regards a network with a mesh topology, which can be considered a multi-hop network, since data passes from node to node until it reaches its destination.
-		This is better described in \ref{chapter:proposed_solution} in a more depth and technical way.
+		This is better described in Chapter \ref{chapter:proposed_solution} in a more depth and technical way.
 		The mesh proposed in this thesis has a span of LAN / MAN, since it connects devices that are in a circumscribed area but can be also placed further from each other, in order to cover longer distances.
 			
 		Nowadays, the organization responsible for technical management of IETF activities and the Internet standards process is the Internet Engineering Steering Group (IESG)\footnote{\url{https://www.ietf.org/about/groups/iesg/}}.
@@ -161,11 +163,11 @@
 		LAN MAN and WAN are not enough anymore to describe the new topologies.
 		An important distinction is now made by other factors such as power consumption, cost of the devices and range of the transmiter and receiver.
 		
-		The most important new category of wireless communication, that interests IoT and reprents a large portion of the market at the time of writing, as described in chap2, is LPWAN, which stands for Low Power Wide Area Networks.
+		The most important new category of wireless communication, that interests IoT and reprents a large portion of the market at the time of writing, as described in Chapter \ref{chap:background}, is LPWAN, which stands for Low Power Wide Area Networks.
 		
 		The characteristics of LPWAN are: long range, low power and low cost.
 		% https://en.wikipedia.org/wiki/Low-power_wide-area_network
-		Lightweight protocols reduce complexity in hardware design and lower device costs. Its long range combined with a star topology reduce expensive infrastructure requirements, and the use of license-free or licensed bands reduce network costs.
+		Lightweight protocols reduce complexity in hardware design and lower device costs. Its long range combined with a star topology reduces expensive infrastructure requirements, and the use of license-free or licensed bands reduces network costs.
 	
 		% http://iotfactory.eu/iot-knowledge-center/overview-of-iot-networks/	
 		% TODO CAMBIARE E CITARE
@@ -243,7 +245,7 @@
 			
 			\begin{figure}
 				\centering
-				\includegraphics[width=\textwidth]{resources/img/LoRa_Why_Range}
+				\includegraphics[width=\textwidth]{resources/img/chap3/LoRa_Why_Range}
 				\caption{Range of LoRa transmission compared to Wi-Fi, BLE and Cellular}
 			\end{figure}
 			
@@ -346,7 +348,7 @@
 		
 			% https://www.arduino.cc/en/Main/AboutUs
 			% https://www.oreilly.com/library/view/arduino-a-technical/9781491934319/ch01.html	
-			Arduino is a company founded by Massimo Banzi Et Al. in Ivrea, Italy, in 2005, and has released the first commercially available microcontroller.
+			Arduino is a company founded by Massimo Banzi \textit{et al.} in Ivrea, Italy, in 2005, and has released the first commercially available microcontroller.
 			They wanted a device that was simple, easy to connect to various ''things'' (such as relays, motors, and sensors), and easy to program, besides being inexpensive.
 			% It also needed to be inexpensive, as students and artists aren’t known for having lots of spare cash. 
 		
@@ -354,7 +356,8 @@
 			Arduino was the result.
 			
 			The most famous version of their board is the UNO (one in English).
-			Arduino UNO, the one on the left in Fig. \ref{img:arduino_board}, is the most used and documented board of the whole Arduino family.
+			% TODO se metti ~ tra Fig. e il riferimento, non ti separa Fig. e 3 su due righe diverse Fig.~\ref
+			Arduino UNO, the one on the left in Fig.~\ref{img:arduino_board}, is the most used and documented board of the whole Arduino family.
 			% https://www.circuito.io/blog/arduino-uno-pinout/
 			Although this board does not have any integrated sensors or particular ports for peripherals.
 			The current revision of the board is the Arduino UNO Rev 3 \footnote{\url{https://store.arduino.cc/products/arduino-uno-rev3}}, which consists of 14 digital pins, 6 analog inputs, a power jack, USB connection and ICSP header.
@@ -433,7 +436,7 @@
 			Some of the most important models are:
 			\begin{itemize}[noitemsep]
 				\item 3 B+ / 4: the model 3B+ and 4 are their most selling products, they are marketed as a ''tiny, dual-display, desktop computer'' \footnote{\url{https://www.raspberrypi.org/products/raspberry-pi-4-model-b/}};
-				\item Zero: it's the smallest form factor Raspberry Pi on the market;
+				\item Zero: it is the smallest form factor Raspberry Pi on the market;
 				\item Pico: a low-cost, high-performance microcontroller board with flexible digital interfaces.
 			\end{itemize}
 			

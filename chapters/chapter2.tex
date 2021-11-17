@@ -5,7 +5,7 @@
 %	\qauthor{Will Smith}
 %\end{savequote}
 
-\chapter{Background}\label{chap:background}
+\chapter{Background}\label{chapter:background}
 
 	This chapter introduces the background concepts necessary to understand the project presented in this thesis and why it has been developed.
 	
@@ -20,7 +20,7 @@
 		%http://www.itrco.jp/libraries/RFIDjournal-That%20Internet%20of%20Things%20Thing.pdf
 		%https://www.rfidjournal.com/that-internet-of-things-thing
 		
-		Internet of Things, also abbreviated with IoT, has a longer history than many people think about: it's name, now know all around the globe, has been attributed to Kevin Ashton, who used it in a presentation about Radio Frequency Identification (RFID) technology, at \textit{Protector \& Gamble}, in 1999 \cite{iot_definition} to describe the network connecting objects in the physical world to the Internet.
+		Internet of Things, also abbreviated with IoT, has a longer history than many people think about: its name, now know all around the globe, has been attributed to Kevin Ashton, who used it in a presentation about Radio Frequency Identification (RFID) technology, at \textit{Protector \& Gamble}, in 1999 \cite{iot_definition} to describe the network connecting objects in the physical world to the Internet.
 		
 		This constantly expanding branch of Computer Science aims to turn physical objects, as small as they may be, into nodes of an interconnected system which opens the door to new interfaces between humans and machines and how these see the physical world.
 		IoT's importance heavily relies on data gathered from these devices, since, in combination with other computer science paradigms such as Machine Learning and Artificial Intelligence, this can be transformed into valuable information.
@@ -31,7 +31,7 @@
 		
 		Another important application scenario of IoT is emergency situations, where it supports first responders with adequate means to perform their operations in an effective and safe way.
 		In this case, from a networking point of view, ``one of the main challenges is that of providing first responders with multimedia information about the emergency as soon as possible, even from a remote location'' \cite{4197976}.
-		Projects designed to provide connectivity off-grid not only to civilians, but firefighters, military operations, local law enforcement, search and rescue, are described in \ref{sec:chap4_projects}.
+		Projects designed to provide connectivity off-grid not only to civilians, but firefighters, military operations, local law enforcement, search and rescue, are described in Section \ref{sec:chap4_projects}.
 
 		But first, below are two important key projects in the story of IoT the UPC, or Universal Product Code, and the Carnegie Mellon University (CMU) coke machine.
 		
@@ -39,11 +39,11 @@
 	
 			% https://www.thoughtco.com/bar-codes-history-1991329
 			One of the first technologies that can be considered part of the IoT family, is the ``\textit{Universal Product Code}'', or \textit{UPC}.
-			It's first iteration is detailed in the patent issued to inventors Joseph Woodland and Bernard Silver on October 7, 1952, and can be described as a ``bull's eye'' symbol, made up of a series of concentric circles \cite{upc_patent}, as can be seen in Figure~\ref{fig:upc_patent}.
+			Its first iteration is detailed in the patent issued to inventors Joseph Woodland and Bernard Silver on October 7, 1952, and can be described as a ``bull's eye'' symbol, made up of a series of concentric circles \cite{upc_patent}, as can be seen in Figure~\ref{fig:upc_patent}.
 			
 			\begin{figure}[h]
 				\centering
-				\includegraphics[width=\textwidth-4cm]{resources/img/upc_1}
+				\includegraphics[width=\textwidth-4cm]{resources/img/chap2/upc_1}
 				\caption[Diagrammatic view of the Universal Product Code]{Diagrammatic view of the Universal Product Code from \cite{upc_patent}}
 				\label{fig:upc_patent}
 			\end{figure}
@@ -55,7 +55,7 @@
 			
 			Although, printers were vulnerable to smudge the design coped with errors as ink bleeding would result in taller bars.
 			
-			Thus, the ameliorated upc was vertical and came in the form of a barcode printed with strict rules in order to avoid errors in scanning due to smear or marks on the label.
+			Thus, the ameliorated UPC was vertical and came in the form of a barcode printed with strict rules in order to avoid errors in scanning due to smear or marks on the label.
 			
 			This version, developed in 1971 by George Laurer at IBM \cite{upc_ibm}, became the first wide appearance of the upc.
 			
@@ -74,7 +74,7 @@
 			\noindent
 			\begin{minipage}{0.5\textwidth}% adapt widths of minipages to your needs
 				\centering
-				\includegraphics[width=\textwidth]{resources/img/coke}
+				\includegraphics[width=\textwidth]{resources/img/chap2/coke}
 				% \captionof{figure}{Carnegie Mellon University's ``coke machine''}
 				\captionof{figure}{CMU's ``coke machine''}
 			\end{minipage}%
@@ -88,13 +88,13 @@
 			
 			As explained in the official website \footnote{\url{https://www.cs.cmu.edu/~coke/history_long.txt}} dedicated to this device by the University, there are ``micro-switches in the Coke machine to sense how many bottles were present in each of its six columns of bottles''.
 		
-			Modern day vending machines are usually require continuous connectivity to the manufacturer's systems.
+			Modern day vending machines usually require continuous connectivity to the manufacturer's systems.
 			This is not always achievable via a WiFi connection where the machines are placed, so other solutions, such as cellular connectivity, are used.
 			Connection reliability in vending machines and other kiosks is important since these provide goods that can be payed by credit card, which need to establish a secure connection.
 			
 			They contain multiple small, but complex, systems that interact with each other, thus it is implied that this kind of machines must have installed a secure software and that they need to be as hard as possible to be tampered with, either by brute force or by software bugs.
 				
-			Otherwise it's not only possible that someone steals a snack or a pack of cigarettes, but some remote script may turn these machines into a botnet capable of bringing down the connectivity of an entire campus.
+			Otherwise it is not only possible that someone steals a snack or a pack of cigarettes, but some remote script may turn these machines into a botnet capable of bringing down the connectivity of an entire campus.
 			Such attack has been described in Verizon's ``Data Breach Digest'' risk report from 2017, where the author states that ``the firewall analysis identified over 5,000 discrete systems making hundreds of DNS lookups every 15 minutes'' \cite{DataBreachDigest}.
 			
 			While credit card skimmers and chip EMV card cloners remain viable risks to the end consumer, security measures to the environment where the machines are placed must not remain an afterthought, especially when these are placed alongside other connected devices and not in their own separated network.
@@ -112,7 +112,7 @@
 		
 			\begin{figure}[h]
 				\centering
-				\includegraphics[width=0.8\textwidth]{resources/img/iot_research_areas}\\
+				\includegraphics[width=0.9\textwidth]{resources/img/chap2/iot_research_areas}
 				\caption[Most researched areas in IoT]{Most researched areas in IoT \cite{9319033}}
 				\label{iot_research_areas}
 			\end{figure}
@@ -126,7 +126,6 @@
 			Another important aspect is the architecture of the network, which needs to take in consideration the aspects such as heterogeneity of the devices connected, velocity of data that flows across and scalability.
 			Thus, paradigms like Cloud Computing, Fog Computing and Edge Computing \footnote{``Edge computing does not mean computers at the edge of a table.'' Alessandro Canesso} have emerged.
 			
-			% TODO rifare frase?
 			% https://objectbox.io/what-is-edge-computing/
 			With Edge Computing, data stays where it is produced, used and where it belongs – without traversing the network unnecessarily.
 			This way, cloud infrastructure needs are reduced in three ways: ﬁrstly, less network trafﬁc, secondly, less central storage and thirdly less computational power. Rather, edge	computing makes use of all the capable hardware already
@@ -135,12 +134,12 @@
 			
 			\begin{figure}[h]
 				\centering
-				\includegraphics[width=0.75\textwidth]{resources/img/computing_paradigms.png}
+				\includegraphics[width=\textwidth]{resources/img/chap2/computing_paradigms}
 				\caption{Edge, Fog and Cloud Computing}
 				\label{computing_paradigms}
 			\end{figure}
 		
-			Each of these paradigms, places the computation on a different layer of the network, from Cloud Computing that lift off all the need for devices to compute data, to Edge Computing, where there might be specialized servers physically placed in strategic points so that they are closer to the end devices (lower latency), which may even have the ability to compute data by themselves.
+			Each of these paradigms places the computation on a different layer of the network, from Cloud Computing that lift off all the need for devices to compute data, to Edge Computing, where there might be specialized servers physically placed in strategic points so that they are closer to the end devices (lower latency), which may even have the ability to compute data by themselves.
 			%https://www.cisco.com/c/en/us/solutions/computing/what-is-edge-computing.html
 			On the other hand, Fog Computing is less aggressive than Edge Computing, and does not require the same amount of services placed near the clients, but they can be sorted among the backbone of the network.
 			
@@ -170,7 +169,7 @@
 			IoT is an enabler for the sciences that need large amount of data for creating algorithms and offering better services and more well tailored products.
 			
 			Given the importance of this economic sector, many companies, both technical and not, have analyzed the trends and have been producing forecasts about the growth of IoT.
-			One analysis, made by The Economist's Intelligence Unit, and sponsored by Arm \footnote{\url{https://www.arm.com/}}, states that ``More than two-thirds of respondents agree that understanding the value of data helps them articulate the business case for IoT investments.''\cite{economist-iot-business-index-2020-arm}.
+			One analysis, made by The Economist's Intelligence Unit, and sponsored by Arm \footnote{\url{https://www.arm.com/}}, states that ``More than two-thirds of respondents agree that understanding the value of data helps them articulate the business case for IoT investments'' \cite{economist-iot-business-index-2020-arm}.
 			In the same analysis, has emerged that IoT is an enabler for AI, since many companies ``view IoT and AI as two components of an advanced analytics capability''.
 	
 			Underlying hardware challenges such as battery development and energy retention and consumption are among the main research areas that are being investigated, since they represent challenges to the realization of efficient IoT systems.
@@ -178,8 +177,7 @@
 	\section{Air quality}
 	
 		The ubiquity of mobile technology has opened the door to a new era of mobile sensing. 
-
-		Through this new paradigm, physical phenomena can be observed in a distributed way, crowd-sourcing the data measurement tasks to smartphones and/or other popular smart wearables. Mobile sensing and wireless communications can hence be employed to gather data and generate new information and services, benefiting our society.
+		Through this new paradigm, physical phenomena can be observed in a distributed way, crowd-sourcing the data measurement tasks to smartphones and/or other popular smart wearables. Mobile sensing and wireless communications can hence be employed to gather data and generate new information and services, benefitting our society.
 		
 		Two general strategies can be used to deploy an environmental monitoring system: creating a network of fixed sensors	and resorting to mobile sensors.
 			
@@ -228,7 +226,7 @@
 
 			\begin{figure}
 				\centering
-				\includegraphics[width=.9\textwidth]{resources/img/ardueco_circuit}
+				\includegraphics[width=.9\textwidth]{resources/img/chap2/ardueco_circuit}
 				\caption{Circuit of the ArduECO prototype}
 				\label{img:ardueco_circuit}
 			\end{figure}
@@ -249,7 +247,7 @@
 			\begin{minipage}{0.38\textwidth}
 				\begin{figure}[H]
 					\centering
-					\includegraphics[width=\textwidth]{resources/img/ardueco_picture}
+					\includegraphics[width=\textwidth]{resources/img/chap2/ardueco_picture}
 					\caption{Built ArduECO prototype}
 					\label{img:ardueco_picture}
 				\end{figure}
@@ -261,7 +259,7 @@
 				Therefore there are various aspects that can be improved, such as adding multiple sensors to detect different pollutants and tweak the software so that the board can sleep and save battery.
 			\end{minipage}
 
-		\subsection{MegaSense and Hope}
+		\subsection{MegaSense and Hope}\label{subsec:megasense}
 	
 			% https://www.researchgate.net/profile/Samu-Varjonen
 	
@@ -275,8 +273,8 @@
 			\begin{minipage}{0.35\textwidth}
 				\begin{figure}[H]
 					\centering
-					\includegraphics[width=.8\textwidth]{resources/img/megasense}
-					\caption{Megasense prototype}
+					\includegraphics[width=.8\textwidth]{resources/img/chap2/megasense}
+					\caption{MegaSense prototype}
 					\label{img:megasense_picture}
 				\end{figure}
 				\vspace{3mm}
@@ -287,7 +285,7 @@
 				Compared to the previously described ArduECO, the MegaSense is a more complete project which has been tested by citizens and companies in City of Helsinki and EU projects.
 				
 				The system receives data from sensing platforms
-				measuring local pollution exposure and other variables affecting it. This data is processed into air quality information such
+				measuring local pollution exposure and other variables affecting it. These data are processed into air quality information such
 				as maps and advice on how to reduce personal exposure, take
 				healthier routes, and direct participants to improve measurements in areas that have limited sensor coverage.
 			\end{minipage}
