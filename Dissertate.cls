@@ -432,7 +432,7 @@
 			Personal webpage & \href{https://www.math.unipd.it/~cpalazzi/}{https://www.math.unipd.it/\textasciitilde cpalazzi/}\\
 			&  \\
 			Pietro Manzoni &  Universitat Politècnica de València \\
-			Study programme: & Assoc. Prof. in Computer Science \\
+			Study programme: & Prof. of Computer Engineering \\
 			E-mail: & \href{mailto://pmanzoni@disca.upv.es}{pmanzoni@disca.upv.es}\\
 			Personal webpage & \href{https://pmanzoni.github.io/}{https://pmanzoni.github.io/}
 		\end{tabularx}
