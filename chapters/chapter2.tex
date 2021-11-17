@@ -98,7 +98,7 @@
 		\subsection{Trends, forecasts and research directions}
 	
 			IoT and related technologies have grown exponentially since the times of CMU's coke machine.
-			According to data from Microsoft Academic\footnote{ \url{www.academic.microsoft.com/topic/81860439/}}, publications about ``\textit{Internet of Things}'' have grown exponentially: from the 26 in the year 2000, to 534 in 2010, 4959 in 2015, to 22454 papers published in 2020.
+			According to data from Microsoft Academic\footnote{ \url{www.academic.microsoft.com/topic/81860439}}, publications about ``\textit{Internet of Things}'' have grown exponentially: from the 26 in the year 2000, to 534 in 2010, 4959 in 2015, to 22454 papers published in 2020.
 			This shows how much interest IoT has gathered among the scientific community.
 			Nonetheless, some IoT systems can still be considered not ready for mass deployment and many technical difficulties and problems need to be solved.
 	
@@ -116,10 +116,10 @@
 			
 			Data can be created and collected at a very high speed when considering the number of devices connected.
 			This has been stimulating the creation of faster and more reliable database management systems (DBMSs) and brokers that allow higher processing speeds and querying frequencies.
-			Specialized versions of these are emerging, each fitted for different scenarios, that may range from a fully online (or as a service with products such as AWS IoT Core\footnote{ \url{www.aws.amazon.com/iot-core/features/}}) infrastructure to fully on premise one.
+			Specialized versions of these are emerging, each fitted for different scenarios, that may range from a fully online (or as a service with products such as AWS IoT Core\footnote{ \url{www.aws.amazon.com/iot-core/features}}) infrastructure to fully on premise one.
 			
 			Another important aspect is the network's architecture, which needs to take in consideration aspects such as heterogeneity of connected devices, velocity of data that flows across and scalability.
-			Thus, paradigms like Cloud Computing, Fog Computing and Edge Computing\footnote{ ``\textit{Edge Computing does not mean computers at the edge of a table.}'' Alessandro Canesso} have emerged.
+			Thus, paradigms like Cloud Computing, Fog Computing and Edge Computing\footnote{ ``\textit{Edge Computing does not mean computers at the edge of a table.}'' -cit. Alessandro Canesso} have emerged.
 			
 			% https://objectbox.io/what-is-edge-computing/
 			% With Edge Computing, data stays where it is produced, used and where it belongs – without traversing the network unnecessarily.
@@ -134,69 +134,63 @@
 				\label{computing_paradigms}
 			\end{figure}
 		
-			% TODO CORREGGERE DA QUA IN POI
-		
-			Each of these paradigms places the computation on a different layer of the network, from Cloud Computing that lift off all the need for devices to compute data, to Edge Computing, where there might be specialized servers physically placed in strategic points so that they are closer to the end devices (lower latency), which may even have the ability to compute data by themselves.
+			Each of these paradigms places computation on a different network layer, from Cloud Computing which lifts off all the need for end devices to compute data, to Edge Computing, where there might be specialized servers physically placed in strategic points so that they are closer to the end devices (lower latency), which may even have the ability to compute data by themselves.
 			%https://www.cisco.com/c/en/us/solutions/computing/what-is-edge-computing.html
 			On the other hand, Fog Computing is less aggressive than Edge Computing, and does not require the same amount of services placed near the clients, but they can be sorted among the backbone of the network.
 			
-			These communications do not take place only via Wi-Fi or Ethernet.
-			Given that ``things'' can be everywhere, the need for a network that can adapt to a fast paced environment is becoming a must.
-			Here is where the 5th generation of cellular connectivity comes into play.
+			These communications do not take place only via Wi-Fi or Ethernet: given that ``\textit{things}'' can be everywhere, the need for a network that can adapt to a fast paced environment is becoming a must.
+			Here is where the $5^{th}$ generation of cellular connectivity comes into play.
 			
 			%https://www.gsma.com/iot/resources/iot-5g-ltem-nbiot-opportunities-benefits/
-			As described in a 2019 whitepaper by GSMA on the IoT and the use of 5G, a ``combination of 5G and wireless edge technologies will support demanding  use cases, such as autonomous driving, time-critical industrial IoT manufacturing processes and  augmented and virtual reality (AR/VR)''\cite{IoT_5g_era}.
+			As described in a 2019 whitepaper by the GSM Association on IoT and the use of 5G, a ``\textit{combination of 5G and wireless edge technologies will support demanding  use cases, such as autonomous driving, time-critical industrial IoT manufacturing processes and  augmented and virtual reality (AR/VR)}'' \cite{IoT_5g_era}.
 			Compared to what is possible with other transmission technologies, 5G supports a massive number in connections, with very little latency.
 				
-			All of this is not only interesting from a research point of view, but also from a market point of view, where new devices, for consumer and industrial purposes, are created to suit every possible need, that is why IoT can be considered as the ``next chapter of digital communication''.
+			All of this is not only interesting from a research point of view, but also from a market point of view, where new devices, for consumer and industrial purposes, are created to suit every possible need, that is why IoT can be considered as the ``\textit{next chapter of digital communication}''.
 			
-			The most notable example from a consumer's point of view, is the smartwatch, which started with the infamous Pebble watch, and is now considered almost a ``must-have'' extension of the smartphone.
-			Not only it can be used for recreational purposes, but it is crossing the line to become medical devices, given the improving accuracy with which they record data.
+			The most notable example from a consumer's point of view, is the smartwatch, which started with the infamous Pebble watch\footnote{ \url{www.kickstarter.com/profile/getpebble/created}}, and is now considered almost a ``\textit{must-have}'' extension of the smartphone.
+			Not only it smartwatches can be used for recreational purposes, but some models are crossing the line to becoming medical devices, given the improving accuracy with which they record data.
 			Data that, in conjunction with AI, can be used to predict heart attacks \cite{7946780} or other diseases, like Hyperkalemia \cite{HYPERKALEMIA}.
-			Even now IoT devices and frameworks can be used for contact tracing in order to prevent the spread of Covid-19 \cite{9181512}.
+			At the time of writing, IoT devices and frameworks can be used for contact tracing in order to prevent the spread of Covid-19 \cite{9181512}.
 			
-			Consumers want remote control of devices such as coffee pots so that they may wake up to freshly	brewed coffee, or cause coffee to be prepared at a precise time after the completion of dinner preparations \footnote{\textit{Hyper Text Coffee Pot Control Protocol}: \url{https://datatracker.ietf.org/doc/html/rfc2324}}.
+			Consumers want remote control of simple household devices such as coffee pots so that they may wake up to freshly	brewed coffee, or schedule it to be prepared at a given time\footnote{ \textit{Hyper Text Coffee Pot Control Protocol}: \url{www.datatracker.ietf.org/doc/html/rfc2324}}.
 			
-			On the other hand, from an industrial point of view, the demands are more focused on fast connectivity among devices to constantly improve production of goods and services in Industry 4.0 and with Industrial IoT (IIoT).
-			The more data available, the more there are opportunities for science, services, business etc. to understand and grow.
-			% https://www.mdpi.com/1999-5903/12/3/46
-			The growing popularity of IoT use cases in domains that rely on connectivity spanning large areas and the ability to handle a massive number of connections is driving the demand for LPWAN access technologies, that is why the goal of fifth-generation (5G) wireless networks and beyond is to realize connecting “anything, anyone, anytime, anywhere” \cite{7414384}.
-
+			On the other hand, from an industrial point of view, demands are more focused on fast connectivity among devices, ``\textit{Machine to Machine}'' (M2M), to constantly improve production of goods and services in Industry 4.0 and with the use of Industrial IoT (IIoT).
 			% https://www.siemens-advanta.com/blog/what-are-expected-iot-trends-2021
-			IoT is an enabler for the sciences that need large amount of data for creating algorithms and offering better services and more well tailored products.
+			% IoT is an enabler for the sciences that need large amount of data for creating algorithms and offering better services and more well tailored products.
+			The more data available, the more there are opportunities for science, services, business etc. to understand and improve and offer better services and more well tailored products.
+			% https://www.mdpi.com/1999-5903/12/3/46
+			The growing popularity of IoT use cases in domains that rely on connectivity spanning large areas and the ability to handle a massive number of connections is driving the demand for Low-Power Wide-Area-Network (LPWAN) access technologies, that is why the goal of fifth-generation (5G) wireless networks and beyond is to realize connecting ``\textit{anything, anyone, anytime, anywhere}'' \cite{7414384}.
+			LPWANs are better explained in Section \ref{sec:radio_tech}.
 			
-			Given the importance of this economic sector, many companies, both technical and not, have analyzed the trends and have been producing forecasts about the growth of IoT.
-			One analysis, made by The Economist's Intelligence Unit, and sponsored by Arm \footnote{\url{https://www.arm.com/}}, states that ``More than two-thirds of respondents agree that understanding the value of data helps them articulate the business case for IoT investments'' \cite{economist-iot-business-index-2020-arm}.
-			In the same analysis, has emerged that IoT is an enabler for AI, since many companies ``view IoT and AI as two components of an advanced analytics capability''.
+			Given the importance of this economic sector, many companies, have analyzed the trends and have been producing forecasts about the growth of IoT.
+			One analysis, made by The Economist's Intelligence Unit, and sponsored by Arm\footnote{ \url{www.arm.com}}, states that ``\textit{more than two-thirds of respondents agree that understanding the value of data helps them articulate the business case for IoT investments}'' \cite{economist-iot-business-index-2020-arm}.
+			In the same analysis, IoT has emerged as an enabler for AI, since many companies ``\textit{view IoT and AI as two components of an advanced analytics capability}'', as previously mentioned.
 	
 			Underlying hardware challenges such as battery development and energy retention and consumption are among the main research areas that are being investigated, since they represent challenges to the realization of efficient IoT systems.
 				
 	\section{Air quality}
 	
 		The ubiquity of mobile technology has opened the door to a new era of mobile sensing. 
-		Through this new paradigm, physical phenomena can be observed in a distributed way, crowd-sourcing the data measurement tasks to smartphones and/or other popular smart wearables. Mobile sensing and wireless communications can hence be employed to gather data and generate new information and services, benefitting our society.
-		
-		Two general strategies can be used to deploy an environmental monitoring system: creating a network of fixed sensors	and resorting to mobile sensors.
+		Through this new paradigm that is IoT, physical phenomena can be observed in a distributed way, crowd-sourcing data measurement tasks to smartphones and/or other popular smart wearables.
+		Mobile sensing and wireless communications can hence be employed to gather data and generate new information and services, benefitting society.
+		Two general strategies can be used to deploy an environmental monitoring system: creating a network of \textit{fixed sensors}	or resorting to \textit{mobile sensors}.
 			
-		Air quality and the presence of tiny particular matter are crucial factors in human health, especially when considering urban scenarios. 
+		The presence of tiny particulate matter in air is a crucial factor in health, especially when considering urban scenarios.
 		In this context, smart mobility coupled with low-cost sensors can create a distributed and sustainable platform for social sensing able to provide pervasive data to citizens and public administrations. 
-		Sustainable and eco-aware decisions can then be supported by empirical evidence, resulting in an improved life and city administration. 
+		Sustainable and eco-aware decisions can then be supported by empirical evidence, resulting in an improved life and better city administration.
 		
-		Some of the most harmful airborne agents are fine particles (PM2.5), Sulphur dioxide (SO2), Nitrogen dioxide (NO2), PM10, Carbon monoxide (CO), Benzene and Ozone.
-		The maximum amount for these particulates is regulated by various authorities, for example the EU has set standards \footnote{\url{https://ec.europa.eu/environment/air/quality/standards.htm}} that are reinforced by constant monitoring.
+		Some of the most harmful airborne agents are fine particles (PM2.5), sulphur dioxide (SO2), nitrogen dioxide (NO2), PM10, carbon monoxide (CO), benzene and ozone.
+		The maximum amount for these particulates is regulated by various local and international authorities, for example the EU has set standards\footnote{ \url{www.ec.europa.eu/environment/air/quality/standards.htm}} that are reinforced by constant monitoring.
 				
-		One of the most important instruments in air quality measurement is the Keeling Curve: a meticulous record of the amount of carbon dioxide in the atmosphere.
-		The Keeling Curve tracks changes in the concentration of CO2 in the Earth's atmosphere using data from a research station on Mauna Loa in Hawaii.
-		Figure \ref{keeling_full} shows the result of daily readings that have continued almost uninterrupted for more than 60 years, while Figure \ref{keeling_two} shows the data between October 2019 and November 2021.
-		The importance of this instrument lies in the fact that, over those six decades, the zig-zag has trended steadily upward. 
-		Real time readings can be found on the UC San Diego, Institution of Oceanography's dedicated website \footnote{\url{https://keelingcurve.ucsd.edu/}}.
+		One of the most important instruments in air quality measurement is the \textit{Keeling Curve}: a meticulous record of the amount of carbon dioxide in the atmosphere.
 	
 		\noindent
-		\begin{minipage}{0.49\textwidth}% adapt widths of minipages to your needs
+		\begin{minipage}{0.49\textwidth}%
 			\begin{figure}[H]
 				\centering
 				\includegraphics[width=\textwidth]{resources/img/chap2/keeling}
-				\caption{Full record Keeling curve until Nov. 1 2021}				\label{keeling_full}
+				\caption{Full record Keeling curve until Nov. 1 2021}
+				\label{keeling_full}
 			\end{figure}
 		\end{minipage}%
 		\hfill%
@@ -208,10 +202,14 @@
 				\label{keeling_two}
 			\end{figure}
 		\end{minipage}
-		\vspace{0.5cm}
+		\newline
+		
+		The Keeling Curve tracks changes in the concentration of CO2 in the Earth's atmosphere using data from a research station on Mauna Loa, Hawaii.
+		Figure~\ref{keeling_full} shows the result of daily readings that have continued almost uninterrupted for more than 60 years, while Figure~\ref{keeling_two} shows the data between October 2019 and November 2021.
+		The importance of this instrument lies in the fact that, over those six decades, the zig-zag has trended steadily upward. 
+		Real time readings can be found on the UC San Diego, Institution of Oceanography's dedicated website\footnote{ \url{keelingcurve.ucsd.edu}}.
 		
 		Many projects have been made, both for research and commercial purposes, to detect pollutants in the air and raise awareness of the conditions people are living in.
-				
 		Below are two research solutions that have been made for air quality sensing with low-cost sensors.
 			
 		\subsection{ArduECO}\label{subsec:ardueco}
@@ -221,24 +219,21 @@
 			
 			ArduECO is a wireless device based on an Arduino-like board, esp8266, capable of gathering data about air quality (and more with simple extensions) and sending them to the cloud, to be processed and displayed.
 
-			\begin{figure}
+			This solution has been proposed in the paper ``\textit{Air Quality Control through Bike Sharing Fleets}''\cite{ardueco_paper}, presented at the 2020 IEEE Symposium on Computers and Communications.
+			
+			\begin{figure}[h]
 				\centering
 				\includegraphics[width=.9\textwidth]{resources/img/chap2/ardueco_circuit}
 				\caption{Circuit of the ArduECO prototype}
 				\label{img:ardueco_circuit}
 			\end{figure}
 			
-			This solution has been proposed in the paper ``Air Quality Control through Bike Sharing Fleets''\cite{ardueco_paper}.
+			One of the main design goals of this device is to be easily fit on shared means of transportation, such as bikes and electric scooters, which been advantaged by the COVID-19 pandemic \cite{HU2021102997}, contrast other shared transportation approaches, such as car sharing, that have severely suffered from the pandemic.
 			
-			One of the main design goals of this device is to be easily fit on shared means of transportation, such as bikes and electric scooters, which been advantaged by the COVID-19 pandemic \cite{HU2021102997}.
-			% https://www.frontiersin.org/articles/10.3389/fpsyg.2021.646593/full
-			In contrast, other approaches to shared transportation, such as car sharing, have severely suffered from the outbreak of the coronavirus.
+			ArduECO is built around four core components: the NodeMCU ESP8266-based development board, a microSD card reader for local data caching, a GPS-based global navigation satellite system receiver for location data and an MQ-7 carbon monoxide (CO) sensor, which can easily be replaced with other sensors using the same pinout.
+			Figure~\ref{img:ardueco_circuit} shows the full circuit of the prototype, while Figure~\ref{img:ardueco_picture} is a picture of the built device.
 			
-			The ArduECO sensor is built around four core components: The NodeMCU ESP8266-based development board; a microSD card reader for local data caching; a GPS-based global navigation satellite system receiver for location data; and an MQ-7 carbon monoxide (CO) sensor, which can easily be replaced with other sensors using the same pinout.
-			Fig. \ref{img:ardueco_circuit} shows the full circuit of the prototype, while Fig. \ref{img:ardueco_picture} is a picture of the built device.
-			
-			As well as capturing the air quality data locally, data is cached and later sent in the cloud to an MQTT server running on Amazon Web Services IoT Core \footnote{\url{https://aws.amazon.com/iot-core/}}.
-			Server costs asidethe sensor platform can be built in a bill of materials of around €15 (around \$18) — less, if built in bulk.
+			As well as capturing the air quality data locally, data is cached and later sent in the cloud to an MQTT server running on Amazon Web Services IoT Core.
 			
 			\noindent
 			\begin{minipage}{0.38\textwidth}
@@ -251,12 +246,13 @@
 			\end{minipage}%
 			\hfill%
 			\begin{minipage}{0.6\textwidth}\raggedright
-				As described in the paper, this project is more of a proof of concept that shows the possibility of creating a small and cheap device which can be placed on shared means of transportation.
+				Server costs aside, the sensor platform can be built in a bill of materials of around €15, or less if the materials are bought in bulk.
 				
+				As described in the paper, this project is more of a proof of concept that shows the possibility of creating a small and cheap device which can be placed on shared means of transportation.
 				Therefore there are various aspects that can be improved, such as adding multiple sensors to detect different pollutants and tweak the software so that the board can sleep and save battery.
 			\end{minipage}
 
-		\subsection{MegaSense and Hope}\label{subsec:megasense}
+		\subsection{MegaSense}\label{subsec:megasense}
 	
 			% https://www.researchgate.net/profile/Samu-Varjonen
 	
@@ -264,8 +260,13 @@
 			% https://uia-initiative.eu/en/uia-cities/helsinki	
 			% https://ieeexplore.ieee.org/document/9248143
 		
-			MegaSense has been developed by the Departments of Computer Science at the University of Helsinki \footnote{\url{https://www.helsinki.fi/en/computer-science}} brings forward accurate portable low-cost sensing devices and an online data platform integrating multiple sources of urban data and leveraging AI network calibration producing hyper-local air quality information in real time.
+			MegaSense is a project that has been developed by the Departments of Computer Science at the University of Helsinki\footnote{ \url{www.helsinki.fi/en/computer-science}} and brings forward accurate portable low-cost sensing devices and an online data platform integrating multiple sources of urban data and leveraging AI network calibration producing hyper-local air quality information in real time.
 				
+			Compared to the previously described ArduECO, MegaSense, represented in Figure~\ref{img:megasense_picture}, is a more complete project which has been tested by citizens and companies in City of Helsinki and EU projects.
+
+			The back-end system receives data from sensing platforms, the individual MegaSense devices, measuring local pollution exposure and other variables affecting it.
+			These data are processed into air quality information such as maps and advice on how to reduce personal exposure, take healthier routes, and direct participants to improve measurements in areas that have limited sensor coverage.
+			
 			\noindent
 			\begin{minipage}{0.35\textwidth}
 				\begin{figure}[H]
@@ -278,38 +279,13 @@
 			\end{minipage}%
 			\hfill%
 			\begin{minipage}{0.65\textwidth}\raggedright
-				The feedback loop involves the actions of individuals and the physical and chemical processes, which increase exposure duration and concentration to air pollution. 
-				Compared to the previously described ArduECO, the MegaSense is a more complete project which has been tested by citizens and companies in City of Helsinki and EU projects.
-				
-				The system receives data from sensing platforms
-				measuring local pollution exposure and other variables affecting it. These data are processed into air quality information such
-				as maps and advice on how to reduce personal exposure, take
-				healthier routes, and direct participants to improve measurements in areas that have limited sensor coverage.
+				As explained in the main paper \cite{megasense} regarding this device, ``\textit{the core of MegaSense consists of two layers: the Edge and Cloud}''.
+				The Edge layer receives data from available node and delivers pollution maps to the mobile app, which provides users with personal air pollution exposure	information as well as local exposure maps.
+				This layer is responsible for data pre-processing, filtering and data cleaning.
+				The Cloud layer, which runs on AWS, is responsible for storing cleaned data	and aggregating the crowd-sourced data while preserving the privacy of participants.
 			\end{minipage}
-		
-			The core of MegaSense consists of two layers: the Edge and
-			Cloud. The Edge layer is responsible for reactively receiving
-			data from available data sources, such as sensor devices,
-			traffic data systems, and weather information systems. It
-			delivers advice and pollution maps to the mobile Exposure App
-			which provides the user with personal air pollution exposure
-			information as well as district exposure maps.
-			This layer is responsible for data preprocessing for filtering
-			and data cleaning.
-			The Cloud layer is responsible for storing cleaned data
-			and aggregating the crowd-sourced data while preserving the
-			privacy of participants. It includes a scalable storage system
-			based on Lustre, a distributed production-grade file system
-			similar in principle to Amazon S3.
+
+			Registered citizens that have been given the device, download the HOPE Exposure App from Google play store and tether their Android smart phone to the sensor.
+			The phone gathers data from the sensor, alongside the GPS coordinates, and it sends them in the cloud.
 			
-			During data gathering campaigns registered citizens download the HOPE Exposure App from Google play store and
-			tether their Android smart phone to HOPE sensor. The HOPE
-			Exposure App is preconfigured with the MegaSense server
-			address and upon launching the app and switching on the
-			HOPE sensor, measurement data packets including the smart-
-			phone GPS location are routed by wireless connection via local
-			mobile service provider to the MegaSense Core
-			
-			The HOPE project further develops the clean air journey
-			planner application that creates optimal walking and cycling
-			routes based on air quality of Helsinki.
+			This project develops the clean air journey	planner application that creates optimal walking and cycling routes based on air quality of Helsinki.
