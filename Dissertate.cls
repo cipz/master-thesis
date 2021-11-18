@@ -21,6 +21,8 @@
 \usepackage[bottom]{footmisc}
 \usepackage{enumitem} 
 
+\setlist{topsep=.3em, itemsep=0em}
+
 \newcommand{\Quote}[3]{
 	\begin{center}
 		\begin{minipage}[H]{0.9\columnwidth}
@@ -94,9 +96,9 @@
     {\endoldenumerate\end{spacing}}
 
 % Text layout.
-% \RequirePackage[outer=1in, inner=1.55in, twoside, a4paper, showframe]{geometry}
+ \RequirePackage[outer=1in, inner=1.55in, twoside, a4paper, showframe]{geometry}
 %\RequirePackage[outer=1in, inner=1.55in, twoside, a4paper]{geometry} %PRINT VERSION
- \RequirePackage[outer=1.275in, inner=1.275in, twoside, a4paper]{geometry} %PRINT VERSION
+% \RequirePackage[outer=1.275in, inner=1.275in, twoside, a4paper]{geometry} % DIGITAL VERSION
 \usepackage{ragged2e}
 %\RaggedRight
 \RequirePackage{graphicx}
