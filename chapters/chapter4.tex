@@ -6,39 +6,21 @@
 	\qauthor{Isaac Asimov, Foundation series}
 \end{savequote}
 
-%	Writing a related work section
-%	https://www.seas.upenn.edu/~cse400/CSE400_2008_2009/related_work.pdf
-%	Your review should: 
-%	• Summarize existing research, products and systems 
-%	• Talk about trends in the field 
-%	• Discuss research themes that emerged from your review 
-%	• Place your work in the context of cited work 
-%	• Explain why the proposed project is better than or different from what already exists
-
 \chapter{Related work}\label{chapter:related_work}
 
 	% https://ieeexplore.ieee.org/document/7968828
-	Internet  of  Things  is  one  of  the  hottest  topics  in 
-	both  industry  and  academia  of  the  communication  engineering 
-	world.
-	% TODO citare capitolo 2 dove parlo delle aziende di iot
-	On  the  other  hand,  wireless  mesh  networks,  a  network 
-	topology that has been discussed for decades that have not been put 
-	into use in large scale, can make a difference when it comes to the 
-	network  in  the  IoT  world  today.
-
-	Future IoT deployments need to focus on sustainability
-	since huge centralized data centers (cloud computing) have
-	become a critical part of the infrastructure.
-
-	This chapter anticipates the one where the actual project is described and shows some related projects from which the open mesh has drawn inspiration.
+	IoT is one of the most discussed topics in both academical and industrial research, as mentioned in Section \ref{sec:trends}.
 	
-	A  wireless  mesh  network  (WMN)  is  a  communications 
-	network made up of radio nodes organized in a mesh topology 
-	instead of star topology \cite{wms}.
+	By contrast, mesh networks that use wireless technologies have been researched for decades, but have yet to be put into use in large scale.
+	The correct definition of a \textit{wireless mesh network}, or WMN, is ``\textit{a communications network made up of radio nodes organized in a mesh topology instead of star topology}'' \cite{wms}.
+	These types of network can make a difference when it comes to the interconnections in the IoT world.
+	It is important that ``\textit{future IoT deployments need to focus on sustainability since huge centralized data centers (Cloud Computing) have become a critical part of the infrastructure}'' \cite{7968828}.
 	
-	At first, challenges and solutions are presented for these WMS.
-	Below are also presented some of the projects which have been made at various levels from homemade projects, to research and to the ones already available on the market.
+	This chapter anticipates the technical one, and shows some related projects from which the project has drawn inspiration.
+	At first, challenges and solutions are presented for these WMS, alongside their advantages and disadvantages.
+	Below are also presented some of the projects which have been made at various levels from homemade projects, to research, to the ones already available on the market.
+	
+	% TODO DO CHECK FROM HERE
 	
 	\section{Challenges and solutions of wireless mesh networks}
 		
@@ -147,7 +129,7 @@
 			
 			Mesh network is the best way of sending small data packages. Unfortunately, it doesn’t perform well while transferring video file sized data.
 			
-			Still, if transferring a large amount of data is compulsory, then the wifi mesh network would be a better option.
+			Still, if transferring a large amount of data is compulsory, then the Wi-Fi mesh network would be a better option.
 			Latency
 			
 			Actively switching from one node to another can decelerate the data receiving process. However, it is not an issue when your system requires a package every few minutes or so. But, it might be not enough for a few systems.
@@ -278,6 +260,7 @@
 		% https://www.project-owl.com/
 		% https://www.reddit.com/r/RTLSDR/comments/bzian5/ltt_showcases_new_lora_mesh_network_devices/
 
+		% TODO DONE CHECK FROM HERE ON
 		\subsection{Commercial applications}
 
 			% SONNET
@@ -289,7 +272,7 @@
 			% https://techcrunch.com/2019/06/18/gotenna-is-ramping-up-public-sector-mesh-networking-with-a-24m-c-round/
 			\subsubsection{Off grid mesh devices: Sonnet and goTenna}
 			
-				Both of the following devices use LoRa to create a mesh network and have been designed for Emergency Off-Grid Communication, where cellular towers or land-line phones are not physically reachable.
+				Both of the following devices use LoRa to create a mesh network and have been designed for emergency off-grid communication, where cellular towers or land-line phones are not physically reachable.
 				
 				\begin{minipage}{0.38\textwidth}% adapt widths of minipages to your needs
 					\begin{figure}[H]
@@ -300,14 +283,13 @@
 					\end{figure}
 				\end{minipage}%
 				\hfill%
-				\begin{minipage}{0.52\textwidth}\raggedright
-					Sonnet \footnotemark, in Fig. \ref{img:sonnet}, connects to the smartphone via WiFi allowing the user to send texts, voice messages, images, data, files and share GPS locations to any other Sonnet users up to several kilometers away, thanks to LoRa.
+				\begin{minipage}{0.62\textwidth}\raggedright
+					Sonnet\footnotemark, in Figure~\ref{img:sonnet}, connects to the smartphone via Wi-Fi allowing the user to send texts, voice messages, images, data, files and share GPS locations to any other Sonnet users up to several kilometers away, thanks to LoRa.
 					This completely removes smartphones' dependency on cellular grid and other network infrastructure, and allows Sonnet to be used even when there is no cellular connectivity or Internet access.
 				\end{minipage}		
-				\footnotetext{ \url{www.sonnettech.com}}
-				\newline
+				\footnotetext{~\url{www.sonnettech.com}}
 			
-				According to the product's Kickstarter page \footnote{ \url{www.kickstarter.com/profile/sonnet/created}} ``Sonnet's mesh network dramatically increases the effective range beyond point-to-point range by relaying data through other deices. With Sonnet, data can be relayed up to 16 times to achieve a maximum range of 80 km (50 miles)''.
+				According to the product's Kickstarter page\footnote{ \url{www.kickstarter.com/profile/sonnet/created}} ``\textit{with Sonnet, data can be relayed up to 16 times to achieve a maximum range of 80 km (50 miles)}''.
 
 				\begin{minipage}{0.5\textwidth}%
 					\begin{figure}[H]
@@ -326,75 +308,36 @@
 						\label{img:gotenna_pro}
 					\end{figure}
 				\end{minipage}%
-				\newline
+				\newpage
 				
-				The goTenna \footnote{ \url{www.gotenna.com/}}, in Fig. \ref{img:gotenna}, offers similar functions as the Sonnet, allowing to send text \& GPS locations without a cellphone with Internet connection.
+				The goTenna\footnote{ \url{www.gotenna.com}}, in Figure~\ref{img:gotenna}, offers similar functions as the Sonnet, allowing to send text and GPS locations without the use of a cellphone with Internet connectivity.
 				Mesh-networking allows to relay messages from a node to another until they reach destination.
 				
-				A compact and ruggedized network management kit, the goTenna Pro X, in Fig. \ref{img:gotenna_pro}, allows control for larger teams that operate in complex environments where no service is not an option.
+				A compact and ruggedized kit, the goTenna Pro X, in Figure~\ref{img:gotenna_pro}, allows control for larger teams that operate in complex environments where it is not possible to be offline.
 						
-				As Sonnet, goTenna has raised the funds necessary to enter the market as a crowdfunded project on Kickstarter \footnote{\url{www.kickstarter.com/profile/gotenna/created}}.
+				As Sonnet, goTenna has raised the funds necessary to enter the market as a crowdfunded project on Kickstarter\footnote{ \url{www.kickstarter.com/profile/gotenna/created}}.
 				
-				Compared to the projects in \ref{subsubsec:lorameshchat} and \ref{subsubsec:meshtastic}, Sonnet and goTenna are more complete and offer a more stable network, thanks to the fact that these products have been thoroughly tested and produced on a bigger scale.
+				Compared to the projects in Section \ref{subsubsec:lorameshchat} and Section \ref{subsubsec:meshtastic}, Sonnet and goTenna offer a more stable network, thanks to the fact that they can be considered finished products which have been thoroughly tested and produced on a bigger scale.
 						
-			% https://www.linksys.com/us/r/resource-center/whole-home-mesh-wifi/
+			% https://www.linksys.com/us/r/resource-center/whole-home-mesh-Wi-Fi/
 			% https://www.pcmag.com/picks/the-best-wi-fi-mesh-network-systems
-			\subsubsection{Mesh WiFi}
+			\subsubsection{Mesh Wi-Fi}
 					
-				Mesh WiFi, or Whole Home WiFi systems, consists of a main router that connects directly to the main modem, and a series of satellite modules, or nodes, placed around the house for full WiFi coverage.
-				Each node serves as a hop point for other nodes in the system and are all part of a single wireless network and share the same SSID and password, unlike traditional WiFi routers.
-				Weakened signal or WiFi dead spots of the latter are the result of physical obstructions (floor, doors, and walls).
+				\textit{Mesh Wi-Fi}, or \textit{Whole Home Wi-Fi} systems, consists of a main router that connects directly to the main modem, and a series of satellite modules, or nodes, placed around the house for full Wi-Fi coverage.
+				Each node serves as a hop point for other nodes in the system and are all part of a single wireless network and share the same SSID and password, unlike traditional Wi-Fi routers.
+				Weakened signal or Wi-Fi dead spots of the latter are the result of physical obstructions (floor, doors, and walls).
 				
-				A modular mesh whole home WiFi system is flexible and scalable, giving a customizable method of expanding WiFi coverage without the need to add range extenders, which are certainly effective when it comes to increasing the router range, but they do so at the expense of WiFi performance, which gets cut in half.
-				
-				It is like installing lighting fixtures to illuminate your home; you can place your nodes anywhere in your home. You choose which rooms need the coverage, and when it is time to add more to extend the signal even further. 				
+				A modular mesh whole home Wi-Fi system is flexible and scalable, giving a customizable method of expanding Wi-Fi coverage without the need to add range extenders, which are certainly effective when it comes to increasing the router range, but they do so at the expense of Wi-Fi performance, which gets cut in half.
 			
 				\begin{figure}
 					\centering
-					\includegraphics[width=\textwidth]{resources/img/chap4/wifi6}
-					\caption{WiFi 6 mesh nodes vs WiFi range extenders performance}
-					\label{img:wifi6}
+					\includegraphics[width=.9\textwidth]{resources/img/chap4/wifi6}
+					\caption{Wi-Fi 6 mesh nodes compared to Wi-Fi range extenders performance}
+					\label{img:Wi-Fi6}
 				\end{figure}
 				
-				Wi-Fi 6 is an evolution of 802.11ac technology that promises increased throughput speeds (up to 9.6Gbps), less network congestion, greater client capacity, and better range performance thanks to the new and improved wireless technologies, including Orthogonal Frequency-Division Multiple Access (OFDMA). OFDMA improves overall throughput by breaking Wi-Fi channels into sub-channels, allowing up to 30 users to share a channel at the same time. Additionally, 802.11ax takes advantage of previously unused radio frequencies to provide faster 2.4GHz performance and uses MU-MIMO streaming, too. Some Wi-Fi 6 devices can also communicate on the less-crowded 6GHz band, which was recently opened for Wi-Fi and is known as Wi-Fi 6E.
+				Wi-Fi 6 is an evolution of 802.11ac technology, which promises increased throughput speeds (up to 9.6Gbps), less network congestion, greater client capacity, and better range performance thanks to the improved wireless technologies, including \textit{Orthogonal Frequency-Division Multiple Access} (\textit{OFDMA}).
+				The latter improves overall throughput by breaking Wi-Fi channels into sub-channels, allowing up to 30 users to share a channel at the same time.
 				
-				Many important manufacturers for network hardware, like Netgear and Cisco, have already implemented such technology and functions in their products.
-						
-						
-%			% https://docs.pycom.io/pymesh/
-%			% https://pycom.io/pymesh-relaunch/
-%			\subsubsection{pymesh}
-%			
-%				Pycom itself has an available mesh network that connects lora devices, compared to the one proposed in this paper thought
-%
-%				
-%				
-%				Pymesh is the LoRa full-mesh network technology.
-%				
-%				A Mesh network acts like a net, this means that any node within the network can connect with any other node.
-%				
-%				Mesh networks essentially get rid of gateways, which decentralises the network’s infrastructure. This then means that the network becomes flexible, so it can do many wonderful things – such as generate, change and fix itself. The success of the Mesh network is down to its parts, as any node within the network will automatically connect to the best radio-link available.
-%				
-%				Pymesh works on all of our LoRa supporting development boards, the LoPy4 and FiPy as well as on our OEM modules, L01 and L04.
-%				
-%				An ad-hoc communication network over raw-LoRa radio
-%				Multi-gateway (Border Routers) Nodes that connect Mesh-internal data with the Cloud
-%				Each Node uses LBS - Listen Before Talk
-%				Security on multiple levels
-%				base level: authentication and encryption using AES 128bit key, so all traffic inside Pymesh is secured
-%				advanced level: RSA or AES at application level allows private communication channels above Pymesh.
-%				Any LoRa device (Lopy4/Fipy) can have any of the Pymesh Node Role: Leader, Router, Child or Border Router
-%				
-%				What does Pymesh integration offer you?
-%				
-%				This documentation is a quick introduction to the new Pymesh integration features on Pybytes.
-%				
-%				The Pymesh integration is here to help Pymesh firmware deployment and to monitor Pymesh node’s health
-%	
-%	
-%				
-%				
-%				Mesh networks essentially get rid of gateways, which decentralises the network’s infrastructure. This then means that the network becomes flexible, so it can do many wonderful things – such as generate, change and fix itself. The success of the Mesh network is down to its parts, as any node within the network will automatically connect to the best radio-link available.
-%				
-%				
-%				PROS and CONS of this mesh
+				Many important manufacturers for network hardware, like Netgear and Cisco, have already implemented such technology and functions in their products available not only for industrial purposes, but also for average users.
+				
