@@ -315,8 +315,7 @@
 		
 		\vspace{5pt}
 		% \small{\textit{Bachelor Thesis in }}
-		\small{\textit{Master Thesis in }}
-		\@mastername
+		\small{\textit{Master Thesis in \@mastername}}
 		
 		\setstretch{2.5}
 		

@@ -12,8 +12,12 @@
 	This project represents
 	
 	It has been implemented on pycom hardware, the software is available on github in 
+	
+	Besides summarising the previously discussed arguments, this chapter contains some personal considerations by the author.
 
 	\subsection{Contributions}
+	
+		
 
 	\section{Future work}
 	
@@ -33,13 +37,27 @@
 	
 		\subsection{About the Pycom boards}
 		
-			Compared to working with other boards
+			Compared to working with other boards, such as the Arduino, the Pycom boards are more complete, since they contain more sensors and have better specifications.
+			
+			For prototyping, Arduino boards offer very good opportunities
+			
+			The FiPy, on the other hand, would offer more stability and 
+			
+			An example where the FiPy would offer a great improvement over an Arduino board would be this smart home application\footnote{ \url{www.instructables.com/Smart-Home-With-Arduino-Ethernet-Shield-and-Teledu}}.
+			Such project contains an Arduino Mega board with various sensors and relays, all connected via a specifically build website, with the use of a third-party API handler for the Arduino.
+			The Arduino connects to the Internet via an Ethernet shield, thus sends data by cable.
+			A FiPy would allow a smaller footprint and no need for a shield, besides avoiding the use of a third-party API handler.
 			
 			It can easily become hard to create a project with a messed up codebase if not kept organized from the beginning.
 			Even if this is true for all software projects, it is particularly easy to achieve when dealing with microcontrollers, which have limitations on computation and memory, as explained in Chap. \ref{chapter:technologies}.
 			
-			The separation 
-			
-			
 		\subsection{About mesh networking}
+		
+			As said in Chapter \ref{chapter:technologies}, each network topology is better suited for particular scenarios.
+			It is not possible to have a ``\textit{one size fits all}'' network for all possible applications that need to exchange data.
+			
+			Mesh networking is a very interesting network topology which, compared to all the others in Figure~\ref{img:network_topologies}, has still a lot of research possibilities.
+			In conjunction with AI and machine learning, it is possible to achieve an optimal level of connectivity in such networks.
+			The bottlenecks would then be represented by the computing power in the nodes, and in the algorithm used in case one of the nodes fail, or new nodes are added into the network.
 
+			Scalability of such networks is a very interesting research scenario, since parlare del numero di nodi che si uniscono alla rete e che magari esiste uno sweet spot con un numero ottimale di dispositivi che permette una comunicazione buona
