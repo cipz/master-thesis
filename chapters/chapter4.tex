@@ -2,7 +2,8 @@
 
 % https://akhiluk.medium.com/on-why-salvor-hardin-is-simply-the-best-74948711e136
 \begin{savequote}[70mm]
-	To succeed, planning alone is insufficient.\\One must improvise as well.
+	To succeed, planning alone is insufficient.\\
+	One must improvise as well.
 	\qauthor{Isaac Asimov, Foundation series}
 \end{savequote}
 
@@ -90,6 +91,8 @@
 		This shows how each network topology is better suited for particular scenarios.
 		
 		Compared to the example of Microsoft's project, a VANET is more suited for a wms since the data transfered among cars is less than the one transfered among houses.
+		
+		A more personal approach consideration about this networking topology is made in Section \ref{sec:mesh_considerations}.
 				
 		% BLUETOOTH
 		% https://www.ericsson.com/en/reports-and-papers/white-papers/bluetooth-mesh-networking
@@ -103,80 +106,89 @@
 			\item \textit{endpoint}: mesh-only devices that don't route messages for other devices, but send them to other nodes.
 		\end{itemize}
 		\vspace*{-\baselineskip}
+
+		% https://beyondroot.com/blog/a-comprehensive-guide-to-mesh-network-in-iot-an-experts-take/	
+		\subsubsection{Advantages of WMS}
 		
-		% TODO CHECKED UNTIL HERE
-		\subsection{Advantages of WMS}
-		
-			% https://beyondroot.com/blog/a-comprehensive-guide-to-mesh-network-in-iot-an-experts-take/
 			Mesh Network for IoT devices offers enormous benefits that make it sought-after in enterprises and significant in an IoT app development company.
-			Self-healing
 			
-			Like Shortest Path Bridging, Self-healing algorithm automatically chooses the best path to transfer data even if a few nodes lose connection. Specifically, it uses only those connections that are available and working to maintain the task.
-			Self-configuring
+			Mesh networks can offer substantial benefits in the development of IoT applications:
+			\begin{itemize}
+				\item \textit{self-healing}: they automatically adjust allowing data to take the best path to transfer even if a few nodes lose connection;
+				\item \textit{self-configuration}: new nodes calibrate automatically and connect to the network without any previous setup;
+				\item \textit{reliability}: more nodes create multiple routes in which data packages can travel, which makes the network reliable and error-resistant in case of a node failing;
+				\item \textit{cost}: when considering the nodes that typically compose a mesh network, they are inexpensive, thus adding more nodes and sensors to expand the network should not be a substantial cost.
+			\end{itemize}
 			
-			Due to auto-discovery, mesh networks are self-configuring in nature. Hence, the new nodes calibrate automatically and connect to the network without any previous setup. Consequently, network administration and expansion become easier in mesh networking.
-			Scalability and Reliability
-			
-			In a mesh network, it is way easy to add or remove nodes without any efficiency issue. Usually, issues are in proportion to the devices. However, it is quite the opposite in the case of a mesh network. Adding nodes in a mesh network provides more routes in which data package can travel, which makes the network faster, reliable, and error-resistant.
-			Cost Reduction
-			
-			Since mesh networks do not require internet connection, it consumes ultra-little energy. Meanwhile, sensors are pocket-friendly and long-lasting.
-			
-			Besides, IoT implementation reduces expenses in many other ways like better management, optimization of resources usage, and more.
+			These are just some of the advantages that using a mesh network brings, but it is also important to consider the scenario where the network is deployed.
+			Not always a mesh network is necessary, but when it is well suited, it reduces expenses in many other ways like better management, optimization of resources usage, and more.
 		
-		\subsection{Disasvantages of WMS}
+		\subsubsection{Disasvantages of WMS}
 		
-			Drawbacks of Mesh Network in IoT
+			Despite the numerous advantages previously described, there are also some drawbacks when using mesh networks in IoT.
+			That is how come is so important to know when such network topologies can fit in the project.
 			
-			Though there are ample benefits of a mesh network, it also comes with a few drawbacks. So, it is essential to gain in-depth knowledge of this network before deciding whether a mesh network is a perfect fit for you.
-			Low Capacity
-			
-			Mesh network is the best way of sending small data packages. Unfortunately, it doesn’t perform well while transferring video file sized data.
-			
-			Still, if transferring a large amount of data is compulsory, then the Wi-Fi mesh network would be a better option.
-			Latency
-			
-			Actively switching from one node to another can decelerate the data receiving process. However, it is not an issue when your system requires a package every few minutes or so. But, it might be not enough for a few systems.
-			
-			Conversely, a full mesh network can accelerate the data transfer by connecting every node to one another.
-			Maintenance
-			
-			Due to the self-healing ability of the mesh network, finding a non-working node might be time-consuming. Also, we won’t come to know if a node is having an issue.
-			
-			On the other hand, mesh networks for IoT devices are established to make the IoT system smarter and more efficient. So, the nodes are less prone to crash.
+			These disadvantages are:
+			\begin{itemize}
+				\item \textit{low capacity}: such networks are well suited for sending small data packages and they do not perform well while transferring larger file sized data;
+				\item \textit{latency}: sending data from a node to another requires longer time than direct transfer, it might not be an issue when the system requires few packages, but, it might take too long for some systems;
+				\item \textit{maintenance}: finding bugs in a mesh network might be time-consuming since there could be a lot of factors that could create errors. Also, even if there is not a single-point-of-failure that could take down the whole network, it might not be easy to untangle logs from the nodes.
+			\end{itemize}
 		
-			% https://www.inthemesh.com/archive/the-scalability-of-mesh-networks/\\
+			The amount of data that a mesh network is capable to handle also depends on the transmission technology which is used, as explained in Section \ref{sec:radio_tech}.
+			For large amount of data Wi-Fi represents a better option then LoRa or BLE, for example.
+		
+	\section{Scalability of WMS}\label{sec:scalability}
 			
-			% https://ieeexplore.ieee.org/document/8071545
+			\textbf{\textcolor{red}{\hl{// To be completed}}}
 			
+			% https://inthemesh.com/archive/the-scalability-of-mesh-networks/
+			% https://inthemesh.com/archive/the-scalability-of-mesh-networks-part-ii/
+			Scalability of mesh networks is treated in a separate section, since it cannot be considered as an advantage, nor as a disadvantage.
+			
+			Alongside topological stability, these are two of the most challenging issues in current wireless mesh networks deployments, as explained in \cite{Sampaio-2015}.
+			Each solution for scalability brings advantages and disadvantages.
+			
+			There are numerous factors that 
+			
+			This first part will be on fundamental limits (the governing “laws of physics” as it were), and the second part will focus on practical aspects and protocols.
+		
+			The number of nodes determines the usefulness of a mesh network.
+			
+			Scalability of Mobile Ad Hoc Networks: Theory vs practice \cite{5680385}
+					
+		
 			% PAPER: LoRaWAN Range Extender for Industrial IoT
 	
-	\section{Algorithms for lora Wireless Mesh networks}
+	\section{Routing algorithms for Wireless Mesh networks}
+	
+		\textbf{\textcolor{red}{\hl{// To be completed}}}
 	
 		% https://www.springerprofessional.de/en/research-on-using-the-aodv-protocol-for-a-lora-mesh-network/18715992
 	
 	\section{Projects}\label{sec:chap4_projects}
 		
-		Here are three categories of projects:
+		This sections describes three category of projects: open-source, research and commercial.
+		These categories should represent a sample of what is the current state of the art for wireless mesh networking, particularly the ones communicating via LoRa.
 		
 		\subsection{Open source projects}
 		
 			% https://www.hackster.io/scottpowell69/lora-mesh-chat-5267d9
 			\subsubsection{LoRa Mesh Chat}\label{subsubsec:lorameshchat}
 
-				This project consist in an add-on for mobile phones that enable text messaging in a group when outside cellular and Internet coverage.		
-					
+				This project consist in an add-on for mobile phones that enable text messaging in a group when outside cellular and Internet coverage.	
+			
 				\noindent
-				\begin{minipage}{0.5\textwidth}% adapt widths of minipages to your needs
+				\begin{minipage}{0.6\textwidth}% adapt widths of minipages to your needs
 					\begin{figure}[H]
 						\centering
-						\includegraphics[width=.8\textwidth]{resources/img/chap4/lora-mesh-chat-5267d9}
-						\caption{ESP32 Lora with OLED}
+						\includegraphics[width=.9\textwidth]{resources/img/chap4/lora-mesh-chat-5267d9}
+						\caption{LoRa Mesh Chat ESP32 device}
 						\label{img:lora_mesh_chat}
 					\end{figure}
 				\end{minipage}%
 				\hfill%
-				\begin{minipage}{0.5\textwidth}\raggedright			
+				\begin{minipage}{0.4\textwidth}\raggedright
 					As explained on the project's webpage \footnotemark, an ESP32 microcontroller with a LoRa antenna and an OLED display is programmed to connect to the phone either via and OTG cable or BLE.
 					By using an application on the phone, the user is capable of sending text messages in a group.
 				\end{minipage}			
@@ -187,77 +199,78 @@
 					% https://meshtastic.org/
 					% https://github.com/meshtastic
 					% https://www.hackster.io/punkgeek/meshtastic-a-hiking-skiing-gps-mesh-communicator-84f999
-						
-					Meshtastic is an open-source hiking, pilot, skiing, Signal app-extending GPS mesh communicator.
+					Meshtastic is an open-source\footnote{ \url{www.github.com/meshtastic}} LoRa signal extending mesh communicator that uses LoRa.
+					This project allows the use of inexpensive (around $30$\$) GPS radios as an extensible, long battery life mesh GPS communicators for who practices sports like hiking, skiing, paragliding.
+					Essentially for who needs connectivity in places without Internet access.
 					
-					Meshtastic is a project that lets you use inexpensive (\$30 ish) GPS radios as an extensible, super long battery life mesh GPS communicator. These radios are great for hiking, skiing, paragliding - essentially any hobby where you don’t have reliable internet access. Each member of your private mesh can always see the location and distance of all other members and any text messages sent to your group chat.
-					
-					The radios automatically create a mesh to forward packets as needed, so everyone in the group can receive messages from even the furthest member. The radios will optionally work with your phone, but no phone is required.Our device code is here, our optional Android app is here.
-					
-					Prebuilt binaries are included on the github sites, but it is quite easy to build from source. Instructions are included in the README. No soldering is required, essentially - buy a \$30 radio and go. We'd love to have your help extending the project - it has been super fun to work on.
+					This project consists of private meshes created by its users, and allow the share of GPS location and text messages.					
+					The radios automatically create a mesh to forward packets as needed, so everyone in the group can receive messages from even the furthest member. 
+					Optionally devices can connect with phones, but no mobile is required.
 		
 		\subsection{Research projects}
 		
-			\subsubsection{Monitoring of Large-Area IoT Sensors Using LoRa Wireless Mesh Network System: Design and Evaluation}
-			
-			\subsubsection{Black Powder Flow Monitoring in Pipelines by Means of Multi-Hop LoRa Networks}
+			\textbf{\textcolor{red}{\hl{// To be completed}}}
 		
-			\subsubsection{Exploring Multi-Hop LoRa for Green Smart Cities}
-			
-			\subsubsection{Proposal of a Hybrid LoRa Mesh / LoRaWAN Network}
-			
-			\subsubsection{Beyond the Star of Stars: An Introduction to Multihop and Mesh for LoRa and LoRaWAN}
-			
-			\subsubsection{LoRa-based Mesh Network for Off-grid Emergency Communications}
-			
-			% https://ieeexplore.ieee.org/document/9394317
-			\subsubsection{LoRaCTP}
-			
-				a ﬂexible protocol based
-				on LoRa technology that allows for the transfer of “content” to
-				large distances with very low energy. LoRaCTP provides all the
-				necessary mechanisms to make LoRa reliable, by introducing a
-				lightweight connection set-up and ideally allowing the sending
-				of an as-long-as necessary data message.
-			
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=.75\textwidth]{resources/img/chap4/loractp_packet}
-					\caption[Flow of the establishment and interchange of data in LoRaCTP]{Structure of the packet used by the stop-and-wait ARQ. \cite{loractp}}
-				\end{figure}
-			
-				\begin{figure}[H]
-					\centering
-					\includegraphics[width=.5\textwidth]{resources/img/chap4/loractp_flow}
-					\caption[Flow of the establishment and interchange of data in LoRaCTP]{Flow of the establishment and interchange of data in LoRaCTP \cite{loractp}}
-				\end{figure}
-		
-		By content we refer to a self-contained piece of data, like a
-		JSON encoded message whose length is in principle unlimited.
-		We tested out library with messages of up to 150 kbytes,
-		as indicated in Section V. LoRaCTP is based on a unicast
-		protocol adopting a classical stop-and-wait ARQ approach
-		with a dynamic and adaptive value for the retransmission
-		delay. The protocol ensures that information is not lost due to
-		dropped packets and that packets are received in the correct
-		order.
-		
-		Each packet is sent by using a three attempts scheme. That
-		is, if after three attempts no ACK is received, we suppose
-		that the channel is currently busy or too noisy and the content
-		sending is dropped.
-		
-		On top of this ﬂow-control protocol there is a lightweight
-		transport protocol that is used to establish a connection be-
-		tween a master node, and a client node. Figure 3 shows a sim-
-		ple sequence example. Basically the master device “listens”
-		to incoming connections. Connections can be established in a
-		unicast manner, by providing the address of the master device,
-		or using an anycast approach, thus sending to the generic
-		“00000000” address and thus receiving the reply from the
-		close-by listening device. This possibility allows for a greater
-		ﬂexibility in establishing dynamic topologys in rural areas, for
-		example.
+%			\subsubsection{Monitoring of Large-Area IoT Sensors Using LoRa Wireless Mesh Network System: Design and Evaluation}
+%			
+%			\subsubsection{Black Powder Flow Monitoring in Pipelines by Means of Multi-Hop LoRa Networks}
+%		
+%			\subsubsection{Exploring Multi-Hop LoRa for Green Smart Cities}
+%			
+%			\subsubsection{Proposal of a Hybrid LoRa Mesh / LoRaWAN Network}
+%			
+%			\subsubsection{Beyond the Star of Stars: An Introduction to Multihop and Mesh for LoRa and LoRaWAN}
+%			
+%			\subsubsection{LoRa-based Mesh Network for Off-grid Emergency Communications}
+%			
+%			% https://ieeexplore.ieee.org/document/9394317
+%			\subsubsection{LoRaCTP}
+%			
+%				a ﬂexible protocol based
+%				on LoRa technology that allows for the transfer of “content” to
+%				large distances with very low energy. LoRaCTP provides all the
+%				necessary mechanisms to make LoRa reliable, by introducing a
+%				lightweight connection set-up and ideally allowing the sending
+%				of an as-long-as necessary data message.
+%			
+%				\begin{figure}[H]
+%					\centering
+%					\includegraphics[width=.75\textwidth]{resources/img/chap4/loractp_packet}
+%					\caption[Flow of the establishment and interchange of data in LoRaCTP]{Structure of the packet used by the stop-and-wait ARQ. \cite{loractp}}
+%				\end{figure}
+%			
+%				\begin{figure}[H]
+%					\centering
+%					\includegraphics[width=.5\textwidth]{resources/img/chap4/loractp_flow}
+%					\caption[Flow of the establishment and interchange of data in LoRaCTP]{Flow of the establishment and interchange of data in LoRaCTP \cite{loractp}}
+%				\end{figure}
+%		
+%		By content we refer to a self-contained piece of data, like a
+%		JSON encoded message whose length is in principle unlimited.
+%		We tested out library with messages of up to 150 kbytes,
+%		as indicated in Section V. LoRaCTP is based on a unicast
+%		protocol adopting a classical stop-and-wait ARQ approach
+%		with a dynamic and adaptive value for the retransmission
+%		delay. The protocol ensures that information is not lost due to
+%		dropped packets and that packets are received in the correct
+%		order.
+%		
+%		Each packet is sent by using a three attempts scheme. That
+%		is, if after three attempts no ACK is received, we suppose
+%		that the channel is currently busy or too noisy and the content
+%		sending is dropped.
+%		
+%		On top of this ﬂow-control protocol there is a lightweight
+%		transport protocol that is used to establish a connection be-
+%		tween a master node, and a client node. Figure 3 shows a sim-
+%		ple sequence example. Basically the master device “listens”
+%		to incoming connections. Connections can be established in a
+%		unicast manner, by providing the address of the master device,
+%		or using an anycast approach, thus sending to the generic
+%		“00000000” address and thus receiving the reply from the
+%		close-by listening device. This possibility allows for a greater
+%		ﬂexibility in establishing dynamic topologys in rural areas, for
+%		example.
 		
 		% https://www.project-owl.com/
 		% https://www.reddit.com/r/RTLSDR/comments/bzian5/ltt_showcases_new_lora_mesh_network_devices/
@@ -323,9 +336,9 @@
 						
 			% https://www.linksys.com/us/r/resource-center/whole-home-mesh-Wi-Fi/
 			% https://www.pcmag.com/picks/the-best-wi-fi-mesh-network-systems
-			\subsubsection{Mesh Wi-Fi}
+			\subsubsection{Wi-Fi mesh}
 					
-				\textit{Mesh Wi-Fi}, or \textit{Whole Home Wi-Fi} systems, consists of a main router that connects directly to the main modem, and a series of satellite modules, or nodes, placed around the house for full Wi-Fi coverage.
+				\textit{Wi-Fi mesh}, or \textit{whole home Wi-Fi} systems, consists of a main router that connects directly to the main modem, and a series of satellite modules, or nodes, placed around the house for full Wi-Fi coverage.
 				Each node serves as a hop point for other nodes in the system and are all part of a single wireless network and share the same SSID and password, unlike traditional Wi-Fi routers.
 				Weakened signal or Wi-Fi dead spots of the latter are the result of physical obstructions (floor, doors, and walls).
 				

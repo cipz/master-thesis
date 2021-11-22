@@ -333,9 +333,11 @@
 		\vfill
 		\begin{normalsize}
 			\begin{flushleft}
-				\textit{Supervisor} \hfill \textit{Candidate}\\
+				\textit{Supervisors} \hfill \textit{Candidate}\\
 				\vspace{1pt}
 				\textbf{\@advisor} \hfill \textbf{\@author}\\
+				\vspace{1pt}
+				\textbf{\@coadvisorOne}\\
 				\vspace{1pt}
 				\textit{} \hfill \textit{Student ID}\\
 				\vspace{.5pt}
@@ -347,7 +349,7 @@
 				%	  \@coadvisorOneUniversity
 				\vspace{.1cm}
 			\end{flushleft}
-			\textbf{Accademic Year 2020 - 2021}
+			\textbf{Academic Year 2020 - 2021}
 		\end{normalsize}
 		
 		
@@ -406,7 +408,7 @@
 	\begin{center}
 		
 		\begin{tabularx}{0.9\textwidth}{Xl}
-			Open LoRa mesh network for IoT-based air quality sensing &  \\
+			Open LoRa mesh network for IoT-based air quality sensing &\\
 			Master Thesis, Università degli Studi di Padova, December 2021
 		\end{tabularx}
 			

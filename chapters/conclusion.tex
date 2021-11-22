@@ -1,45 +1,57 @@
 %!TEX root = ../thesis.tex
 
 \begin{savequote}[70mm]
-	Be fearful when others are greedy, and greedy when others are fearful.
+	Be fearful when others are greedy,\\
+	and greedy when others are fearful.
 	\qauthor{Warren Buffet}
 \end{savequote}
 
 \chapter{Conclusions}\label{chapter:conclusions}
 
-	This thesis describes 
+	Mesh networks are ``\textit{decentralized, easy to deploy, and characterized by dynamic self-organization, self-configuration, and self-healing properties}'' \cite{Sampaio-2015}.
+	Such properties enable fast deployment, low installation cost, and reliable communication.
 	
-	This project represents
+	This thesis describes an implementation of a mesh network solution for IoT devices, particularly for an air quality sensing device: MegaSense, described in Section \ref{subsec:megasense}.
 	
-	It has been implemented on pycom hardware, the software is available on github in 
+%	This project represents
+%	
+%	It has been implemented on pycom hardware, the software is available on github in 
 	
-	Besides summarising the previously discussed arguments, this chapter contains some personal considerations by the author.
+	Besides summarizing the previously discussed arguments, this chapter contains some personal considerations by the author.
 
-	\subsection{Contributions}
+	\section{Contributions}
 	
-		
+		\textbf{\textcolor{red}{\hl{// To be completed}}}
 
 	\section{Future work}
+		
+		\textbf{\textcolor{red}{\hl{// To be completed}}}
 	
 		\subsection{Hardware improvements}
 			
 %			Note from the author, it must be taken in consideration that the device can run hot, an application of the device such as on a bike that is parked out in the sun may overheat the device.
 %			On pycom's documentation it is written that the fipy can support temperatures up to x
 %			Thus an interesting improvement could be to add a heatsink in order to lower the temperatures and improve the lifespan of the device
+		
+			\textbf{\textcolor{red}{\hl{// To be completed}}}
 
 		\subsection{Software improvements}
 		
-			Better logging 
-			
-			improvement on routing table and algorithm used for message forwarding 
+%			Better logging 
+%			
+%			improvement on routing table and algorithm used for message forwarding 
+
+			\textbf{\textcolor{red}{\hl{// To be completed}}}
 
 	\section{Personal considerations}
 	
-		\subsection{About the Pycom boards}
+		\subsection{About the Pycom boards}\label{sec:working_with_pycom}
 		
-			Compared to working with other boards, such as the Arduino, the Pycom boards are more complete, since they contain more sensors and have better specifications.
+			Compared to working with other boards, such as the Arduino, Pycom boards are more complete, since they offer better specifications, for both computing power and memory, connectivity and support.
 			
-			For prototyping, Arduino boards offer very good opportunities
+			For prototyping, Arduino boards offer very good opportunities and have been on the market for a longer time, allowing consumers to get acquainted and know the brand.
+			% https://patentlyo.com/patent/2011/01/tracing-the-quote-everything-that-can-be-invented-has-been-invented.html
+			Sometimes, working with Arduino feels like ``\textit{everything that can be invented has been invented}'', as said by Charles H. Duell, since there is so many people who have made all kind of projects and are sharing them online.
 			
 			The FiPy, on the other hand, would offer more stability and 
 			
@@ -51,13 +63,21 @@
 			It can easily become hard to create a project with a messed up codebase if not kept organized from the beginning.
 			Even if this is true for all software projects, it is particularly easy to achieve when dealing with microcontrollers, which have limitations on computation and memory, as explained in Chap. \ref{chapter:technologies}.
 			
-		\subsection{About mesh networking}
+		\subsection{About mesh networking}\label{sec:mesh_considerations}
 		
 			As said in Chapter \ref{chapter:technologies}, each network topology is better suited for particular scenarios.
 			It is not possible to have a ``\textit{one size fits all}'' network for all possible applications that need to exchange data.
+			As for all questions in computer science, the answer to the question where a mesh network is useful is ``\textit{it depends}''.
 			
 			Mesh networking is a very interesting network topology which, compared to all the others in Figure~\ref{img:network_topologies}, has still a lot of research possibilities.
 			In conjunction with AI and machine learning, it is possible to achieve an optimal level of connectivity in such networks.
 			The bottlenecks would then be represented by the computing power in the nodes, and in the algorithm used in case one of the nodes fail, or new nodes are added into the network.
 
-			Scalability of such networks is a very interesting research scenario, since parlare del numero di nodi che si uniscono alla rete e che magari esiste uno sweet spot con un numero ottimale di dispositivi che permette una comunicazione buona
+			Scalability of such networks, as spoken about in Section \ref{sec:scalability}, is a very interesting research scenario since it is one of the major deciding elements for any new networking technology to be accepted.
+			Factors such as multi-hopping, protocol overhead, and wireless interference limit the scalability of such networks.
+			Mesh networks will be more and more common, but I believe they will be used in conjunctions with other topologies: for example a local mesh network that allows communication between sensors in a house and a gateway node interacts with other networks in a different topology.
+			
+			Security is another important factor when considering in mesh networking.
+			Since each node receives and analyzes packages, there is no totally effective solution for a secure network.
+			Adding security features such as encryption/decryption algorithms and other checks, would result in a big overhead on small IoT devices.
+			Also, like other radio technologies, anyone can read messages, encrypted or not, ``\textit{flying}'' through the air.
