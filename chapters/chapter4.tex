@@ -140,29 +140,41 @@
 		
 	\section{Scalability of WMS}\label{sec:scalability}
 			
-			\textbf{\textcolor{red}{\hl{// To be completed}}}
-			
 			% https://inthemesh.com/archive/the-scalability-of-mesh-networks/
 			% https://inthemesh.com/archive/the-scalability-of-mesh-networks-part-ii/
 			Scalability of mesh networks is treated in a separate section, since it cannot be considered as an advantage, nor as a disadvantage.
 			
 			Alongside topological stability, these are two of the most challenging issues in current wireless mesh networks deployments, as explained in \cite{Sampaio-2015}.
-			Each solution for scalability brings advantages and disadvantages.
 			
-			There are numerous factors that 
+			In the case of wireless mesh networks, scalability has to be considered ``\textit{both in terms of increased geographical area and coverage and number of users}'' \cite{92000412}.
+			Each solution for scalability brings advantages and disadvantages, since it may impact one or the other terms from above.
 			
-			This first part will be on fundamental limits (the governing “laws of physics” as it were), and the second part will focus on practical aspects and protocols.
-		
-			The number of nodes determines the usefulness of a mesh network.
+			There are numerous various scaling relationships in this network topology: as number of nodes increases, the load increases and load increases as the communication distance increases and the total one-hop capacity increases as the coverage of the network increase.
 			
-			Scalability of Mobile Ad Hoc Networks: Theory vs practice \cite{5680385}
-					
-		
-			% PAPER: LoRaWAN Range Extender for Industrial IoT
+			Some of the factors that affect the scalability of a wireless mesh network in particular are:
+			\begin{itemize}
+				\item \textit{co-channel interference}
+				\item \textit{routing protocol overhead}
+				\item \textit{half-duplex nature of radio antennas}
+				\item \textit{difficulties in handling multiple frequency radio systems}
+				\item \textit{deployment architecture}
+				\item \textit{medium access control}
+				\item \textit{density of nodes and  degree of nodes}
+				\item \textit{communication pattern (locality and number of hops)}.
+			\end{itemize}			
+			
+			A formula that determines the capacity of an arbitrary mesh network is~$\theta(1/\sqrt{n})$, where $ n $ is the number of nodes in the network.
+			In other words, with the increase of nodes in the network, the information carrying capacity becomes negligibly small.
+			Such formula is described in depth in a seminal paper by Gupta and Kumar \cite{825799}.
+			
+			Although this is a theoretical description of the effects of scaling on the amount of data that can be exchange in a network, it is very different to what can happen in practice.
+			Such comparison is described in the paper ``Scalability of Mobile Ad Hoc Networks: Theory vs practice''  \cite{5680385}, where the author inspects how different relationships between the previously mentioned factors affect scalability in real life mesh networks.
 	
 	\section{Routing algorithms for Wireless Mesh networks}
 	
 		\textbf{\textcolor{red}{\hl{// To be completed}}}
+		
+		% PAPER: LoRaWAN Range Extender for Industrial IoT
 	
 		% https://www.springerprofessional.de/en/research-on-using-the-aodv-protocol-for-a-lora-mesh-network/18715992
 	
