@@ -11,14 +11,34 @@
 \end{savequote}
 
 \chapter{Proposed solution}\label{chapter:proposed_solution}
+	
+	% TODO AGGIUNGERE UNA O DUE FRASI?
 
-	This chapter describes the mesh network developed to accomodate small messages that need to be sent in a broader range
-	
-	Such network should be able to integrate with the MegaSense device, described in Section \ref{subsec:megasense}, and allow data to be exchange among boards.
-	
+	This chapter contains the technical description of the mesh network developed with the FiPy and communicates using LoRa.
+	Especially such networks is able to accommodate small messages, such as the ones sent by MegaSense, described in Section \ref{subsec:megasense}.
+		
 	Even though it would have been possible to use a simulator, such as ``The one'' \footnote{ \url{http://akeranen.github.io/the-one/}}, for demonstrating the usefulness of such network, the final project has been realized with Pycom hardware.
 	
-	\section{Architecture}
+	\section{Architecture}\label{sec:architecture}
+		
+		Before talking about the architecture of the mesh, it is important to understand the one of the MegaSense.
+		As can be seen in Figure~\ref{img:megasense_architecture}, since each MegaSense device is made to be carried by a person, devices connect each one to the user's phone.
+		The latter then communicates with the MegaSense and, via the application developed by the Computer Science department at the University of Helsinki, sends the air-quality readings and the GPS location, which has been read by the application from the phone itself, to the servers in the cloud.
+		
+		Communication between MegaSense and phone is done via BLE, and exchanges data such as battery status, 
+		
+		\begin{figure}
+			\centering
+			\includegraphics[width=.8\textwidth]{resources/img/chap5/architecture_megasense}
+			\caption{MegaSense architecture}
+			\label{img:megasense_architecture}
+		\end{figure}
+	
+		
+		
+		
+		
+		Each FiPy board represents a node on the network, which in this case is a ``Flat Wireless Mesh''.
 	
 		Flat Wireless Mesh
 		

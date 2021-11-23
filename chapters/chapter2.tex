@@ -277,17 +277,19 @@
 					\caption{MegaSense prototype}
 					\label{img:megasense_picture}
 				\end{figure}
-				\vspace{3mm}
 			\end{minipage}%
 			\hfill%
 			\begin{minipage}{0.65\textwidth}\raggedright
 				As explained in the main paper \cite{megasense} regarding this device, ``\textit{the core of MegaSense consists of two layers: the Edge and Cloud}''.
 				The Edge layer receives data from available node and delivers pollution maps to the mobile app, which provides users with personal air pollution exposure	information as well as local exposure maps.
 				This layer is responsible for data pre-processing, filtering and data cleaning.
-				The Cloud layer, which runs on AWS, is responsible for storing cleaned data	and aggregating the crowd-sourced data while preserving the privacy of participants.
+				The cloud layer, which runs on AWS, is responsible for storing cleaned data	and aggregating the crowd-sourced data while preserving the privacy of participants.
 			\end{minipage}
+			\newline
 
 			Registered citizens that have been given the device, download the HOPE Exposure App from Google play store and tether their Android smart phone to the sensor.
 			The phone gathers data from the sensor, alongside the GPS coordinates, and it sends them in the cloud.
 			
 			This project develops the clean air journey	planner application that creates optimal walking and cycling routes based on air quality of Helsinki.
+			
+			A better understanding of the architecture of MegaSense is explained in Section \ref{sec:architecture}.

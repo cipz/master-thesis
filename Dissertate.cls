@@ -368,7 +368,7 @@
 	\abstractpage
 	\sommario
 	
-	\preface
+%	\preface
 	
 	\tableofcontents
 	
