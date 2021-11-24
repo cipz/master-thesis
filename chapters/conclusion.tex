@@ -35,13 +35,17 @@
 		
 			\textbf{\textcolor{red}{\hl{// To be completed}}}
 
-		\subsection{Software improvements}
+		\subsection{Software improvements}\label{sec:software_improvements}
+		
+			\textbf{\textcolor{red}{\hl{// To be completed}}}
 		
 %			Better logging 
 %			
 %			improvement on routing table and algorithm used for message forwarding 
 
-			\textbf{\textcolor{red}{\hl{// To be completed}}}
+			Another factor that would improve the performance of each node on the network is the implementation of a sleep mode, Section \ref{sec:sleep}.
+			This would allow each node to have a longer battery life and only activate when necessary.
+			Although adding such mode requires more data and in depth testing, it is not an impossible upgrade.
 
 	\section{Personal considerations}
 	
@@ -49,24 +53,26 @@
 	
 		\subsection{About the Pycom boards}\label{sec:working_with_pycom}
 		
-			Compared to working with other boards, such as the Arduino, Pycom boards are more complete, since they offer better specifications, for both computing power and memory, connectivity and support.
-			
+			Compared to working with other boards, such as the Arduino, Pycom boards are more complete, since they offer better specifications, for both computing power and memory, connectivity and support.			
 			For prototyping, Arduino boards offer very good opportunities and have been on the market for a longer time, allowing consumers to get acquainted and know the brand.
 			% https://patentlyo.com/patent/2011/01/tracing-the-quote-everything-that-can-be-invented-has-been-invented.html
 			Sometimes, working with Arduino feels like ``\textit{everything that can be invented has been invented}'', as said by Charles H. Duell, since there is so many people who have made all kind of projects and are sharing them online.
 			
-			The FiPy, on the other hand, would offer more stability and 
+			The FiPy, on the other hand, offers more connectivity and more power, at the expense of the open source advantages of most of its competitors.
+			As explained in Section \ref{sec:pycom}, besides keeping the blueprints of their boards private, Pycom also has a proprietary firmware on their boards, which sometimes gets in the way of developers that require to fully use the hardware capabilities.
+			This also reflects on the software, where some functionalities that are functioning on other boards are not implemented in Pycom's firmware for their devices.
+			Nonetheless, the official forum\footnote{ \url{https://forum.pycom.io/}} available for Pycom's boards is full of useful comments and the users are fairly active.
 			
 			An example where the FiPy would offer a great improvement over an Arduino board would be this smart home application\footnote{ \url{www.instructables.com/Smart-Home-With-Arduino-Ethernet-Shield-and-Teledu}}.
 			Such project contains an Arduino Mega board with various sensors and relays, all connected via a specifically build website, with the use of a third-party API handler for the Arduino.
 			The Arduino connects to the Internet via an Ethernet shield, thus sends data by cable.
 			A FiPy would allow a smaller footprint and no need for a shield, besides avoiding the use of a third-party API handler.
-			
-			It can easily become hard to create a project with a messed up codebase if not kept organized from the beginning.
-			Even if this is true for all software projects, it is particularly easy to achieve when dealing with microcontrollers, which have limitations on computation and memory, as explained in Chap. \ref{chapter:technologies}.
+					
+			In my personal opinion, these boards are quite powerful and resilient for research purposes.
+			They can be used as multiple testbenches for different projects, but might result excessive if their powerful specifications are not necessary.
 			
 		\subsection{About mesh networking}\label{sec:mesh_considerations}
-		
+			
 			As said in Chapter \ref{chapter:technologies}, each network topology is better suited for particular scenarios.
 			It is not possible to have a ``\textit{one size fits all}'' network for all possible applications that need to exchange data.
 			As for all questions in computer science, the answer to the question where a mesh network is useful is ``\textit{it depends}''.

@@ -12,50 +12,73 @@
 
 \chapter{Proposed solution}\label{chapter:proposed_solution}
 	
-	% TODO AGGIUNGERE UNA O DUE FRASI?
+	\textbf{\textcolor{red}{\hl{// To be completed with one or two phrases}}}
 
 	This chapter contains the technical description of the mesh network developed with the FiPy and communicates using LoRa.
+	Such mesh network will be referred as ``\textit{Open LoRa Mesh}''.
 	Especially such networks is able to accommodate small messages, such as the ones sent by MegaSense, described in Section \ref{subsec:megasense}.
-		
-	Even though it would have been possible to use a simulator, such as ``The one'' \footnote{ \url{http://akeranen.github.io/the-one/}}, for demonstrating the usefulness of such network, the final project has been realized with Pycom hardware.
+
+	Even though it would have been possible to use a simulator, such as ``\textit{The one}'' \footnote{ \url{akeranen.github.io/the-one}}, for demonstrating the usefulness of such network, the final project has been realized with Pycom hardware, discussed in Section \ref{sec:hardware_solution}.
 	
-	\section{Architecture}\label{sec:architecture}
+	The code created for this project is open sourced and available on GitHub\footnote{ \url{www.github.com/cipz/OpenLoRaMesh}}.
+	Such code is better explained later in Section \ref{sec:software_solution} and its subsections.
+	
+	\section{Network architecture}\label{sec:architecture}
 		
 		Before talking about the architecture of the mesh, it is important to understand the one of the MegaSense.
 		As can be seen in Figure~\ref{img:megasense_architecture}, since each MegaSense device is made to be carried by a person, devices connect each one to the user's phone.
 		The latter then communicates with the MegaSense and, via the application developed by the Computer Science department at the University of Helsinki, sends the air-quality readings and the GPS location, which has been read by the application from the phone itself, to the servers in the cloud.
 		
-		Communication between MegaSense and phone is done via BLE, and exchanges data such as battery status, 
+		Communication between MegaSense and phone is done via BLE, and exchanges data such as sensor readings (like NO2,
+		O3, CO, battery percentage, \textit{etc.}) and calibration measurements, in \texttt{JSON} format.
+		Thus each device has to be linked to a person's phone, which might enhance the portability of the device, but not its possibility to read data independently if placed in a specific location.
 		
-		\begin{figure}
+		\begin{figure}[h]
 			\centering
-			\includegraphics[width=.8\textwidth]{resources/img/chap5/architecture_megasense}
+			\includegraphics[width=.75\textwidth]{resources/img/chap5/architecture_megasense}
 			\caption{MegaSense architecture}
 			\label{img:megasense_architecture}
 		\end{figure}
 	
-		
-		
-		
-		
-		Each FiPy board represents a node on the network, which in this case is a ``Flat Wireless Mesh''.
+		One of the goals Open LoRa Mesh tries to achieve, is to give independence to these devices, so that they can communicate one another and allow information to be passed along between nodes without the aid of a user's phone.
 	
-		Flat Wireless Mesh
+		This is why the architecture would evolve from the one in Figure~\ref{img:megasense_architecture} to Figure~\ref{img:openmesh_architecture}: the phone is replaced by a FiPy, which also connects to the MegaSense via BLE, and sends the data acquired from the sensors in the network.
+		Nodes communicate with each other via LoRa, detailed in Section \ref{subsec:lora_lorawan}, and exchange data using mainly \textit{LoRaCTP}, described in Section \ref{subsec:loractp}.
 		
-		Typically, in a wired or wireless network, clients are data providers and routers
-		are used as data forwarders. But, in a flat WMN, all the nodes are seen as peers. \cite{92000412}
-	
-		% TODO inserire immagine per architettura
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=.7\textwidth]{resources/img/chap5/mesh-architecture-1}
+			\caption{Open LoRa Mesh architecture}
+			\label{img:openmesh_architecture}
+		\end{figure}
 		
-		As represented in Figure \ref{img:mesh_architecture}, the network is composed of 
-	
-	\section{Hardware}
+		Each FiPy board represents a node on the network, which in this case is a ``\textit{Flat Wireless Mesh}'', where each node acts both as data provider and as data forwarder.
+		Although simple, such network architecture is well known from the previously mentioned, Section \ref{sec:scalability}, Gupta and Kumar \cite{825799}.
+		Besides not scaling well and having the potential to put very high resource constraints, ``\textit{addressing schemes and service discovery would prove to be a major bottleneck against scalability}'' \cite{92000412}.
+
+	\section{Hardware}\label{sec:hardware_solution}
 	
 		%Describe hardware requirements, connect to the sections in chap 3 
 		%
 		%Altri microcontroller, come esp8266 che sono stati generati da arduino sono stati scartati in quanto poca documentazione, ecc
-	
-	\section{Software}
+		
+		For the development of Open LoRa Mesh, the chosen hardware to replace the phone in the original MegaSense architecture is composed by Pycom's FiPy microcontrollers, along with its shields, like the PyTrack and the PySense.
+		A prototype of the MegaSense device was also given from the developers of the project in order to test the connectivity with the Pycom boards and test its capacity to send and receive data from other nodes in the network.
+		All devices can be seen together in Figure~\ref{img:irl_picture_1}.
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\textwidth]{resources/img/chap5/mesh-irl-picture}
+			\caption{FiPy with PyTrack, LoRa antenna, GPS antenna and MegaSense prototype}
+			\label{img:irl_picture_1}
+		\end{figure}
+		
+		Although the expansion board is important, the FiPy is the one that contains all the chips that allow connectivity, as said in Section \ref{sec:pycom}.
+		After an initial evaluation on the requirements necessary in creating a network for exchanging messages among air quality sensing devices, Pycom's boards have come first considering the numerous possibilities it allows for prototyping.
+		
+		Alternative microcontrollers, such as the Raspberry Pi Pico, Raspberry Pi 4, Arduino Nano 33 BLE Sense, and ESP32 boards have been discard given either their excessive power or their need for multiple expansion shields.
+				
+	\section{Software}\label{sec:software_solution}
 	
 	% Hardware Addressing Schemes
 	
@@ -73,7 +96,12 @@
 		While the Arduino C++ divides the code in two main functions, the \texttt{setup()} and \texttt{loop()}, as mentioned in Chap. \ref{chapter:technologies}, the Pycom boards use two files to separate an initial bootstrap of the board and a main section of the code.
 		These two special files are called \texttt{boot.py} and \texttt{main.py} respectively.
 		
-		The next section explains the algorithms made for this project and how they are implemented.
+		The next section explains the algorithms made for this project and how they have been implemented.
+		
+%		\newpage\phantom{blabla}
+%		\newpage\phantom{blabla}
+%		\newpage\phantom{blabla}
+%		\newpage\phantom{blabla}	
 		
 		\subsection{Algorithms}\label{subsec:algorithms}
 	
@@ -161,11 +189,30 @@
 			
 			\subsubsection{Broadcast mesh information}
 			
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=.7\textwidth]{resources/img/chap5/message_exchange}
+					\caption{``\textit{Open LoRa Mesh}'' architecture}
+					%			\label{img:openmesh_architecture}
+				\end{figure}
+			
+			
 			\subsubsection{Loop}
 			
-		\subsection{Sleep cycle}
-		
-			% TODO giustificare il fatto che non ci siano cicli di sleep in quanto se ci fossero allora la rete mesh potrebbe subire  modifiche nel durante, se un nodo va in sleep potrebbe essere che non riesce a forwardare dei messaggi che gli arrivano
+		\subsection{Microcontroller sleep cycle}\label{sec:sleep}
+			
+			Most IoT devices that compose LPWANs have three main modes, or profiles: \textit{sense}, \textit{connect} and \textit{sleep}.
+			Sense and connect refer respectively to gathering data from the sensors and sending it into the network, while sleep refers to a sleep-mode energy consumption where most processes in the device are halted, and some circuits may be powered down.
+			It can be considered a design trade-off between functionality, size, and battery lifetime.
+						
+			This energy consumption profile is important because it helps maximizing the battery life, which currently is one of the most considerable bottlenecks in IoT low-power devices, as explained in Section \ref{sec:trends}.
+			
+			However, in the implementation of the Open LoRa Mesh, nodes do not have such functionality implemented, since might it be the cause for network disruptions.
+			
+			For example, if a new node might want to join a network, but the nearest physical node is in sleep mode, there would be no possibility for the new node to request data about the network, thus wasting time and resources while waiting to the other node to come back online.
+			
+			Such mode could be implemented but would require an careful analysis on the evolution of the network in time, also would require a network made entirely, or mostly of static nodes.
+			This thought is reviewed again in Section \ref{sec:software_improvements}.
 			
 		\subsection{Supported messages}
 				

@@ -113,7 +113,7 @@
 % Fonts.
 \RequirePackage{color}
 \RequirePackage{xcolor}
-\usepackage{hyperref}
+\usepackage[bookmarks,bookmarksnumbered,pdfborder={0 0 0},pagebackref,linktocpage]{hyperref}
 \RequirePackage{url}
 \RequirePackage{amssymb}
 \RequirePackage{mathspec}
@@ -199,7 +199,25 @@
 
 \renewcommand\bibname{References}
 %\RequirePackage[super,comma,numbers]{natbib}
-\RequirePackage[comma,numbers]{natbib}
+\usepackage[square, numbers, comma, sort&compress]{natbib}%
+
+\usepackage{backref}
+
+%\renewcommand*{\backref}[1]{}% for backref < 1.33 necessary
+%\renewcommand*{\backrefsep}{,~}%
+%\renewcommand*{\backreftwosep}{,~}% ', and~'
+%\renewcommand*{\backreflastsep}{,~}% ' and~'
+
+\renewcommand*{\backrefalt}[4]{%
+	\ifcase #1 %
+	No citations.%
+	\or
+	\\Cited on page #2.%
+	\else
+	\\Cited on pages #2.%
+	\fi
+}
+
 \renewcommand{\bibnumfmt}[1]{[#1]}
 \RequirePackage[palatino]{quotchap}
 \renewcommand*{\chapterheadstartvskip}{\vspace*{-0.5\baselineskip}}

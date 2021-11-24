@@ -53,7 +53,7 @@
 		\end{itemize}
 
 		Given this increase of computers connecting to the Internet, there came the need for a revised structure that could better organize these components in a more robust, but also flexible, large network.
-		With more accessible Operating Systems, such as \textit{Windows 95} and \textit{Windows 98}, and the advent of Tim Berners-Lee's \textit{World Wide Web} (or \textit{WWW}), computers became a common commodity.
+		With more accessible operating systems, such as \textit{Windows 95} and \textit{Windows 98}, and the advent of Tim Berners-Lee's \textit{World Wide Web} (or \textit{WWW}), computers became a common commodity.
 		The invention of the web and its ease to navigate, using hyperlinks and search engines, culminated in the \textit{dot com} bubble, a stock market bubble in the late 90s that caused rapid rise of technology companies in stock market.
 	
 		\begin{figure}[H]
@@ -96,7 +96,7 @@
 		% https://www.omnisci.com/technical-glossary/network-topology
 		On the other hand, the \textit{network topology} refers to the manner in which the links and nodes of a network are arranged to relate to each other.
 	
-		% TODO DEFINIZIONE UNICAST / MULTICAST / BROADCAST
+		\textbf{\textcolor{red}{\hl{// To be completed w/ definition of UNICAST / MULTICAST / BROADCAST}}}
 		
 		As shown in Figure~\ref{img:network_topologies}, some of the most common network topologies are:
 		\begin{itemize}
@@ -266,7 +266,7 @@
 		
 		The simplified architectures and the constraints of embedded devices are reflected in the narrow choice for programming languages.
 		It is hard to find an MCU programmed in Java since this would require the JVM running in the background.
-		Popular languages for MCUs are, for example, C/C++, Assembly, Rust, Ada, Erlang, etc.
+		Popular languages for MCUs are, for example, C/C++, Assembly, Rust, Ada, Erlang, \textit{etc.}
 		All these have in common the fact that they are compiled and the bytecode has a small footprint.
 		A particular microcontroller company, Arduino, has developed a version of C++ specific for their boards, but given the simplicity of this new dialect, many boards on the market can be programmed with it.
 		Arduino is explained further in Subsection \ref{subsec:arduino}.
@@ -344,7 +344,7 @@
 			\end{itemize}
 		
 			Particularly, this last model, the board on the right in Figure~\ref{img:arduino_board}, has been considered as one of the possible choices as development board for this project.
-			As better explained in Chapter~\ref{chapter:proposed_solution}, it has been discarded since it does not offer LoRa connectivity and an additional module would have been necessary to connect the board in a mesh.
+			As better explained in Section \ref{sec:hardware_solution}, it has been discarded since it does not offer LoRa connectivity and an additional module would have been necessary to connect the board in a mesh.
 								
 		\subsection{Raspberry Pi}
 	
@@ -383,9 +383,9 @@
 			They are represented in Figure~\ref{img:raspberry_board} and can be considered as the latest evolution of what is needed to learn programming in a Unix like environment at a low cost, in fact these boards cost $35$\$, $5$\$ and $3$\$ respectively.
 			A complete list of the available boards can be found on their online store\footnote{ \url{www.raspberrypi.org/products}}.
 			
-			The Raspberry Pi Pico was considered for this project, but was rejected since, as the Arduino, it would have needed additional modules for LoRa and BLE connectivity, while the other models have a computational power much greater than the one needed.
+			The Raspberry Pi Pico was considered for this project, but was rejected since, as the Arduino, it would have needed additional modules for LoRa and Bluetooth Low Energy (\textit{BLE}) connectivity, while the other models have a computational power much greater than the one needed.
 				
-		\subsection{Pycom}
+		\subsection{Pycom}\label{sec:pycom}
 			
 			% https://pycom.io/the-story-of-pycom-things/
 			While Raspberry Pi and Arduino share a longer history, Pycom is a younger company.
@@ -396,7 +396,7 @@
 			\begin{figure}
 				\centering
 				\includegraphics[width=\textwidth]{resources/img/chap3/pycom_board}
-				\caption{fypy on the left, PyTrack 2X in the middle, pysense on the right}
+				\caption{FyPy on the left, PyTrack 2X in the middle, PySense on the right}
 				\label{img:pycom_board}
 			\end{figure}	
 			
