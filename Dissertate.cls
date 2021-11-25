@@ -440,22 +440,24 @@
 			\textbf{Author} &  \\
 			&  \\
 			Voinea Stefan Ciprian & Università degli Studi di Padova\\
-			Study programme: & Master's Degree in Computer Science \\
+			Study programme: &Master's Degree in Computer Science\\
 			E-mail: & \href{mailto://stefanciprian.voinea@studenti.unipd.it}{stefanciprian.voinea@studenti.unipd.it}\\
 			E-mail: & \href{mailto://ciprian.voinea@outlook.com}{ciprian.voinea@outlook.com} \\
 			&  \\
 			&  \\
+			&  \\
 			\textbf{Supervising professors} &  \\
 			&  \\
-			Claudio Enrico Palazzi & Università degli Studi di Padova \\
-			Study programme: & Assoc. Prof. in Computer Science \\
-			E-mail: & \href{mailto://cpalazzi@math.unipd.it}{cpalazzi@math.unipd.it}\\
-			Personal webpage & \href{https://www.math.unipd.it/~cpalazzi/}{https://www.math.unipd.it/\textasciitilde cpalazzi/}\\
+			Claudio Enrico Palazzi&Assoc. Prof. in Computer Science \\
+			&Università degli Studi di Padova \\
+			E-mail:&\href{mailto://cpalazzi@math.unipd.it}{cpalazzi@math.unipd.it}\\
+			Personal webpage:&\href{https://www.math.unipd.it/~cpalazzi/}{https://www.math.unipd.it/\textasciitilde cpalazzi/}\\
 			&  \\
-			Pietro Manzoni &  Universitat Politècnica de València \\
-			Study programme: & Prof. of Computer Engineering \\
+			&  \\
+			Pietro Manzoni &  Prof. of Computer Engineering \\
+			& Universitat Politècnica de València \\
 			E-mail: & \href{mailto://pmanzoni@disca.upv.es}{pmanzoni@disca.upv.es}\\
-			Personal webpage & \href{https://pmanzoni.github.io/}{https://pmanzoni.github.io/}
+			Personal webpage: & \href{https://pmanzoni.github.io/}{https://pmanzoni.github.io/}
 		\end{tabularx}
 	
 	\end{center}

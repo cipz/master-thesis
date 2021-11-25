@@ -73,7 +73,7 @@
 			\item \textit{Personal Ara Network}, or \textit{PAN}: connects devices within a user's immediate area.
 		\end{itemize}
 	
-		Another level of distinction among networks, which is made based on the power consumed by the transmission medium, is explained in Section \ref{sec:radio_tech}.
+		Another level of distinction among networks, which is made based on the power consumed by the transmission medium, is explained in Section~\ref{sec:radio_tech}.
 		
 		Since now everyone can connect to the Internet and access its services, there is no need for the average user to understand what happens between his machine and the rest of the network, which means he only sees the information displayed, without knowing where it arrives from or what path it took to arrive on his monitor.
 		
@@ -109,7 +109,7 @@
 			\item \textit{hybrid}: any combination of two or more topologies.
 		\end{itemize}
 	
-		An important factor that decides the industrial acceptance of any network topology is its ``\textit{scalability}'', concept reiterated in Section \ref{sec:scalability} for mesh networks.
+		An important factor that decides the industrial acceptance of any network topology is its ``\textit{scalability}'', concept reiterated in Section~\ref{sec:scalability} for mesh networks.
 	
 		\begin{figure}[h]
 			\centering
@@ -119,7 +119,7 @@
 		\end{figure}
 	
 		The project presented in this thesis regards a network with a mesh topology, which can be considered a \textit{multi-hop network}, since data passes from node to node until it reaches its destination.
-		This is better described in Chapter \ref{chapter:proposed_solution}, alongside the technical details of mesh proposed in this thesis, which has a span of LAN / MAN, since it connects devices that are in a circumscribed area but can be also placed further from each other, in order to cover longer distances.
+		This is better described in Chapter~\ref{chapter:proposed_solution}, alongside the technical details of mesh proposed in this thesis, which has a span of LAN / MAN, since it connects devices that are in a circumscribed area but can be also placed further from each other, in order to cover longer distances.
 			
 		The organization responsible for Internet standards is the Internet Engineering Steering Group (IESG)\footnote{ \url{www.ietf.org/about/groups/iesg}}.
 		It is necessary to have an organization looking over the Internet itself since it gives the regulations that allow all devices to interconnect with each other.
@@ -154,11 +154,11 @@
 		
 		With new transmission technologies, new network architectures and topologies that are better suited for the transmission method have emerged.
 		Topologies that bring computation closer to the edge are also rising in popularity, since they allow for faster computation and they bring data closer to the user.
-		These are Cloud, Edge and Fog Computing, as mentioned in Chapter \ref{chapter:background}.
+		These are Cloud, Edge and Fog Computing, as mentioned in Chapter~\ref{chapter:background}.
 		
 		LAN, MAN and WAN are not enough anymore to describe the new topologies.
 		An important distinction is now made by other factors such as power consumption, cost of the devices and range of transmitter and receiver.	
-		The most important new category of wireless communication, that interests IoT and represents a large portion of the market at the time of writing, as described in Chapter \ref{chapter:background}, is \textit{LPWAN}, which stands for \textit{Low Power Wide Area Networks} and is composed by nodes that are capable of \textit{long range communication}, \textit{low power consumption} and \textit{low cost}.
+		The most important new category of wireless communication, that interests IoT and represents a large portion of the market at the time of writing, as described in Chapter~\ref{chapter:background}, is \textit{LPWAN}, which stands for \textit{Low Power Wide Area Networks} and is composed by nodes that are capable of \textit{long range communication}, \textit{low power consumption} and \textit{low cost}.
 		Lightweight protocols also allow reducing complexity in hardware design and lower device costs.
 		Its long range combined with a star topology reduces expensive infrastructure requirements, and the use of license-free or licensed bands reduces network costs.
 		Growing popularity of IoT use cases in domains that rely on connectivity spanning large areas and the ability to handle a massive number of connections is driving the demand for LPWAN access technologies \cite{fi12030046}, and the project presented in this thesis falls under this category of communication.
@@ -231,7 +231,7 @@
 	
 		Microcontrollers (or MCUs, short for Microcontroller Unit) are compact integrated circuits designed to fit in specific environments or to perform specialized functions, which usually do not require any particular computation, memory capacity or power.
 		This has been made possible thanks to the continuous shrinking of transistors, which makes almost all the components more compact, and the improved power sources.
-		In junction with the previously described wireless technologies, microcontrollers are at the hearth of IoT devices, described in Chapter \ref{chapter:background}, and they require long-lasting, low-cost, and sustainable batteries.
+		In junction with the previously described wireless technologies, microcontrollers are at the hearth of IoT devices, described in Chapter~\ref{chapter:background}, and they require long-lasting, low-cost, and sustainable batteries.
 		
 		The number of IoT connected devices is expected to grow up to 75 billion worldwide by 2025 \cite{statista}, and connection density is expected to be one million devices per square Km \cite{noma}.
 		Hence, these devices will generate massive data and consume significant energy.
@@ -344,7 +344,7 @@
 			\end{itemize}
 		
 			Particularly, this last model, the board on the right in Figure~\ref{img:arduino_board}, has been considered as one of the possible choices as development board for this project.
-			As better explained in Section \ref{sec:hardware_solution}, it has been discarded since it does not offer LoRa connectivity and an additional module would have been necessary to connect the board in a mesh.
+			As better explained in Section~\ref{sec:hardware_solution}, it has been discarded since it does not offer LoRa connectivity and an additional module would have been necessary to connect the board in a mesh.
 								
 		\subsection{Raspberry Pi}
 	
@@ -401,7 +401,7 @@
 			\end{figure}	
 			
 			In particular, the FiPy board, has been chosen for this project since it packs five networks in one small board.
-			This choice is furthered in Chapter \ref{chapter:proposed_solution}.
+			This choice is furthered in Chapter~\ref{chapter:proposed_solution}.
 			
 			As described in the product page\footnote{ \url{www.pycom.io/product/fipy}}, it is capable to communicate via Wi-Fi, Bluetooth, LoRa, Sigfox and dual LTE-M (CAT-M1 and NB-IoT), and gives access to global LPWAN networks.
 			All the boards offered by Pycom at the time of writing are equipped with an Espressif ESP32 chipset, 4MB of RAM and an flash memory of 8MB.
@@ -416,7 +416,7 @@
 			Both expansion boards are represented in Figure~\ref{img:pycom_board}.
 					
 			% https://docs.pycom.io/pybytes/
-			For the programming language, Pycom boards can be programmed using Mycropython via their Pymakr suite of IDE plugins, the Pymate mobile app, and Pybytes an online middleware platform and desktop application to remotely manage the boards.
+			For the programming language, Pycom boards can be programmed using Micropython via their Pymakr suite of IDE plugins, the Pymate mobile app, and Pybytes an online middleware platform and desktop application to remotely manage the boards.
 			
 			About the cost of the boards, the price of the single major components used for this project are, at the time of writing:
 			\begin{itemize}
@@ -434,4 +434,4 @@
 			An overall advantage of Pycom's products is the tight ecosystem, which allows for faster and easier troubleshooting, configuration and programming.
 			All these factors are well described in Pycom's documentation on their website\footnote{ \url{https://docs.pycom.io}}.
 			
-			A more in depth description of the chosen technologies is described in Chapter \ref{chapter:proposed_solution}, while a personal consideration on working with such boards is expressed in Section \ref{sec:working_with_pycom}.
+			A more in depth description of the chosen technologies is described in Chapter~\ref{chapter:proposed_solution}, while a personal consideration on working with such boards is expressed in Section~\ref{sec:working_with_pycom}.
