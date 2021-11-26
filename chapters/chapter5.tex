@@ -20,8 +20,8 @@
 
 	Even though it would have been possible to use a simulator, such as ``\textit{The one}''\footnote{ \url{akeranen.github.io/the-one}}, for demonstrating the usefulness of such network, the final project has been realized with Pycom hardware, discussed in Section~\ref{sec:hardware_solution}.
 	
-	The code created for this project is open sourced and available on GitHub\footnote{ \url{www.github.com/cipz/OpenLoRaMesh}}.
-	Such code is better explained later in Section~\ref{sec:software_solution} and its subsections.
+%	The code created for this project is open sourced and available on GitHub\footnote{ \url{www.github.com/cipz/OpenLoRaMesh}}.
+%	Such code is better explained later in Section~\ref{sec:software_solution} and its subsections.
 	
 	\section{Network architecture}\label{sec:architecture}
 		
@@ -103,9 +103,12 @@
 		
 		\subsection{Algorithms}\label{subsec:algorithms}
 	
+			% DRAWING AUTOMATA
 			% https://latexdraw.com/automata-diagrams-in-latex/
 			% https://hayesall.com/blog/latex-automata/
-			% https://isaaccomputerscience.org/concepts/dsa_toc_fsm?examBoard=all&stage=all
+			
+			% DRAWING FLOWCHART
+			% https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ%3A_A_Tutorial_for_Beginners_(Part_3)%E2%80%94Creating_Flowcharts
 
 			This section shows in depth how the software works: for each significant building block of the code there are flowcharts and finite-state automata (or FSA).
 			The flowcharts describe the algorithms and show what functions are called, while finite-state machines show what states the devices can be in and how they arrive in such states.
@@ -118,91 +121,116 @@
 			
 				As previously said, the FiPy is divided in two files, \texttt{boot.py} and \texttt{main.py}.
 				
-				\begin{figure}[h]
-					\centering
-					\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
-					
-					% Help grid
-					% \draw [help lines] (-1,1) grid (6,-6);
-					
-					\tikzstyle{every state}=[fill={rgb:black,1;white,10}]
-					
-					
-					\node[state, initial]  			(s_0)                 	{$s_0$}; % START
-					\node[state] 					(s_1)	[right of=s_0]	{$s_1$}; % BOOT
-					\node[state]					(s_2) 	[right of=s_1]	{$s_2$}; % MESH DEFINITION
-					\node[state, accepting]			(s_3) 	[right of=s_2]	{$s_3$}; % MAIN LOOP
-					
-					\path[->]
-					(s_0) edge node {} (s_1)
-					(s_1) edge node {} (s_2)
-					(s_2) edge node {} (s_3)
-					(s_3) edge [loop right] node {} ();
-					
-					\end{tikzpicture}
-					\caption{FSA for the overview of the whole system}
-					\label{img:fsa_overview}
-				\end{figure}
-			
-				\begin{table}[h]
-					\begin{center}
-						\begin{tabularx}{0.85\textwidth}{@{}|Y|Y|Y|@{}} 
-							\hline
-							State abbreviation & Full state name & State description \\\hline
-							$s_{0}$ && \\\hline
-						\end{tabularx}
-						\caption{Main algorithm fsm description}
-						\label{table:fsm_main}
-					\end{center}
-				\end{table}
-			
-				\begin{figure}
-					\centering
-					\begin{center}						
-						% BLOCK STYLES
-						\tikzstyle{decision} = [diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
-						\tikzstyle{block} = [rectangle, draw, fill=blue!20,	text width=4em, text centered, rounded corners, minimum height=3em]
-						\tikzstyle{line} = [draw, -latex']
-						\tikzstyle{cloud} = [draw, ellipse,fill=red!20, minimum height=2.5em, minimum width=3.5em]
-						
-						\begin{tikzpicture}[node distance = 2cm, auto]
-						
-						% BLOCKS
-						
-						\node [cloud] 					(start) 	{start};
-						\node [block, below of=start] 	(boot) 		{boot()};
-						\node [block, below of=boot] 	(main) 		{main()};
-						\node [cloud, below of=main] 	(end) 		{end};
-						
-						% EDGES
-						\path [line] (start) -- (boot);
-						\path [line] (boot) -- (main);
-						\path [line] (main) -- (end);
-						
-						\end{tikzpicture}
-					\end{center}
-					\caption{test}
-					\label{test}
-				\end{figure}
-			
-
-			
+%				\begin{figure}[h]
+%					\centering
+%					\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+%					
+%					% Help grid
+%					% \draw [help lines] (-1,1) grid (6,-6);
+%					
+%					\tikzstyle{every state}=[fill={rgb:black,1;white,5}]
+%					
+%					
+%					\node[state, initial]  			(s_0)                 	{$s_0$}; % START
+%					\node[state] 					(s_1)	[right of=s_0]	{$s_1$}; % BOOT
+%					\node[state, accepting]			(s_2) 	[above right of=s_1]	{$s_2$}; % MAIN LOOP
+%					\node[state, accepting]			(s_3) 	[below right of=s_1]	{$s_3$}; % LISTENER LOOP
+%					
+%					\path[->]
+%					(s_0) edge node {} (s_1)
+%					(s_1) edge node {} (s_2)
+%					(s_3) edge node {} (s_1)
+%					(s_2) edge [loop right] node {} ()
+%					(s_3) edge [loop right] node {} ();
+%					
+%					\end{tikzpicture}
+%					\caption{FSA for the overview of the whole system}
+%					\label{img:fsa_overview}
+%				\end{figure}
+%			
+%				\begin{table}[h]
+%					\begin{center}
+%						\begin{tabularx}{0.85\textwidth}{@{}|Y|Y|Y|@{}} 
+%							\hline
+%							State abbreviation & Full state name & State description \\\hline
+%							$start$ && \\\hline
+%							$s_{0}$ && \\\hline
+%							$s_{1}$ && \\\hline
+%							$s_{2}$ && \\\hline
+%							$s_{3}$ && \\\hline
+%						\end{tabularx}
+%						\caption{Main algorithm fsm description}
+%						\label{table:fsm_main}
+%					\end{center}
+%				\end{table}
+%			
+%				\begin{figure}
+%					\centering
+%					\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+%					\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+%					\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+%					\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+%					\tikzstyle{arrow} = [thick,->,>=stealth]
+%					\begin{tikzpicture}[node distance=2cm]
+%						\node (start) [startstop] {Start};
+%						\node (in1) [io, below of=start] {Input};
+%						\node (pro1) [process, below of=in1] {Process 1};
+%						\node (dec1) [decision, below of=pro1] {Decision 1};
+%						\node (pro2a) [process, below of=dec1, yshift=-0.5cm] {Process 2a};
+%						\node (pro2b) [process, right of=dec1, xshift=2cm] {Process 2b};
+%						\node (out1) [io, below of=pro2a] {Output};
+%						\node (stop) [startstop, below of=out1] {Stop};
+%
+%					\end{tikzpicture}
+%				\end{figure}
+%				
+%				\begin{figure}
+%					\centering
+%					
+%					% BLOCK STYLES
+%					\tikzstyle{decision} = [diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+%					\tikzstyle{block} = [rectangle, draw, fill=blue!20,	text width=4em, text centered, rounded corners, minimum height=3em]
+%					\tikzstyle{line} = [draw, -latex']
+%					\tikzstyle{cloud} = [draw, ellipse,fill=red!20, minimum height=2.5em, minimum width=3.5em]
+%					
+%					\begin{tikzpicture}[node distance = 2cm, auto]
+%					
+%					% BLOCKS
+%					
+%					\node [cloud] 							(start) 	{start};
+%					\node [block, below of=start] 	 		(boot) 		{boot()};
+%					\node [block, below left  of=boot] 		(main) 		{main()};
+%					\node [block, below right of=boot] 		(listen) 	{listen()};
+%					\node [cloud, below right of=main] 		(end) 		{end};
+%					
+%					% EDGES
+%					\path [line] (start) -- (boot);
+%					\path [line] (boot) -- (main);
+%					\path [line] (main) -- (end);
+%					\path [line] (boot) -- (listen);
+%					\path [line] (listen) -- (end);
+%					
+%					\end{tikzpicture}
+%					\caption{test}
+%					\label{test}
+%				\end{figure}
 			
 			\subsubsection{Boot}
 			
 			\subsubsection{Main}
+			
+			\subsubsection{Plain listener}
 	
 			\subsubsection{Mesh initiation}
 			
 			\subsubsection{Broadcast mesh information}
 			
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width=.7\textwidth]{resources/img/chap5/message_exchange}
-					\caption{``\textit{Open LoRa Mesh}'' architecture}
-					%			\label{img:openmesh_architecture}
-				\end{figure}
-			
+%				\begin{figure}[h]
+%					\centering
+%					\includegraphics[width=.7\textwidth]{resources/img/chap5/message_exchange}
+%					\caption{``\textit{Open LoRa Mesh}'' architecture}
+%					\label{img:openmesh_architecture}
+%				\end{figure}
 			
 			\subsubsection{Loop}
 			
@@ -215,17 +243,15 @@
 			\subsubsection{Message transmission}
 			
 		\subsection{Supported messages}
-				
-			% TODO spiegare i messaggi che vengono mandati tra i dispositivi
 		
 	\section{Other files}
 	
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=.5\textwidth]{resources/img/chap5/tree_files}
-			\caption{List of files that compose the Open LoRa Mesh project}
-			\label{img:files}
-		\end{figure}
+%		\begin{figure}[h]
+%			\centering
+%			\includegraphics[width=.5\textwidth]{resources/img/chap5/tree_files}
+%			\caption{List of files that compose the Open LoRa Mesh project}
+%			\label{img:files}
+%		\end{figure}
 		
 	\section{Microcontroller sleep cycle}\label{sec:sleep}
 	
@@ -244,10 +270,14 @@
 			
 	\section{Use cases}
 		
-		% TODO fare disegni dei use cases
-		
 		\subsection{Mobile network}
+		
+			e.g. in a bike sharing environment
 		
 		\subsection{Fixed network}
 		
+			e.g. in a monitoring values of air quality inside a building
+		
 		\subsection{Hybrid network}
+		
+			e.g. integrating mobile sensors given to users with a network of fixed sensors
