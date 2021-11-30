@@ -20,8 +20,8 @@
 
 	Even though it would have been possible to use a simulator, such as ``\textit{The one}''\footnote{ \url{akeranen.github.io/the-one}}, for demonstrating the usefulness of such network, the final project has been realized with Pycom hardware, discussed in Section~\ref{sec:hardware_solution}.
 	
-%	The code created for this project is open sourced and available on GitHub\footnote{ \url{www.github.com/cipz/OpenLoRaMesh}}.
-%	Such code is better explained later in Section~\ref{sec:software_solution} and its subsections.
+	The code created for this project is open sourced and available on GitHub\footnote{ \url{www.github.com/cipz/OpenLoRaMesh}}.
+	Such code is better explained later in Section~\ref{sec:software_solution} and its subsections.
 	
 	\section{Network architecture}\label{sec:architecture}
 		
@@ -32,6 +32,7 @@
 		Communication between MegaSense and phone is done via BLE, and exchanges data such as sensor readings (like NO2,
 		O3, CO, battery percentage, \textit{etc.}) and calibration measurements, in \texttt{JSON} format.
 		Thus each device has to be linked to a person's phone, which might enhance the portability of the device, but not its possibility to read data independently if placed in a specific location.
+		Such communication resembles the one from devices described in Section~\ref{subsec:commercial_applications}.
 		
 		\begin{figure}[h]
 			\centering
@@ -55,6 +56,9 @@
 		Each FiPy board represents a node on the network, which in this case is a ``\textit{Flat Wireless Mesh}'', where each node acts both as data provider and as data forwarder.
 		Although simple, such network architecture is well known from the previously mentioned, Section~\ref{sec:scalability}, Gupta and Kumar \cite{825799}.
 		Besides not scaling well and having the potential to put very high resource constraints, ``\textit{addressing schemes and service discovery would prove to be a major bottleneck against scalability}'' \cite{92000412}.
+		
+		Despite having these disadvantages, it is important to remind the environment and the number of devices that will be connected in such network.
+		Since communication is not frequent and data packets are not large, this network layout can satisfy the MegaSense's requirements for interconnection.
 
 	\section{Open LoRa Mesh Hardware}\label{sec:hardware_solution}
 	
@@ -82,10 +86,10 @@
 		While the Arduino's C++ dialect divides the code in two main functions, the \texttt{setup()} and \texttt{loop()}, as mentioned in Chapter~\ref{chapter:technologies}, the Pycom boards use two files to separate an initial bootstrap of the board and a main section of the code.
 		These two special files are called \texttt{boot.py} and \texttt{main.py} respectively.
 		
-		The following section explains the addressing scheme in LoRa, which is important to understand.
-		Afterwards, the algorithms made for this project are delineated and it is shown how they have been implemented.
+		The following section explains the algorithms made for this project are delineated and it is shown how they have been implemented.
+		Afterwards, the addressing scheme in LoRa, which is important to understand, is described.
 		
-		The FiPy boards have been programmed using Micropython, and the firmware flashed on the boards, at the time of writing, is \texttt{v1.16.5}.
+		The FiPy boards have been programmed using Micropython, and the firmware flashed\footnote{ \textit{Flashing} involves the overwriting of existing firmware or data, contained in EEPROM or flash memory module present in an electronic device, with new data.} on the boards, at the time of writing, is \texttt{v1.16.5}.
 		
 		\subsection{Algorithms}\label{subsec:algorithms}
 	
@@ -96,18 +100,79 @@
 			% DRAWING FLOWCHART
 			% https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ%3A_A_Tutorial_for_Beginners_(Part_3)%E2%80%94Creating_Flowcharts
 
-			This section shows in depth how the software works: for each significant building block of the code there are flowcharts and finite-state automata (or FSA).
-			The flowcharts describe the algorithms and show what functions are called, while finite-state machines show what states the devices can be in and how they arrive in such states.
-			% Note: automata is plural
-			For a graphical reason, each state of the following automata is abbreviated, and the full state is described in a table underneath it.
+			This section shows in depth how the software works, for more significant building block of the code there are finite-state automata (or FSA) that show the state nodes find themselves in.
+			For a graphical reason, each state of the following automata is abbreviated, and, when needed, the full state is described in a table underneath it.
 			
+			At first an overview of the entire software is presented, then for each important component of the software there is a subsection that describes how it functions and connects to the rest.
 			Such vision should allow to understand the system from a broader point of view to a more detailed one, where every function is analyzed.
 			
 			\newpage
 			\subsubsection{Overview of the whole system}
 			
 				As previously said, the FiPy is divided in two files, \texttt{boot.py} and \texttt{main.py}.
+				When the board is powered up, the first file executed is \texttt{boot.py}, which contains the code that either boots the device in a state of listener or continues its normal sequence.
 				
+				The listener state allows for the device to be used as a station that only sniffs the messages traveling in the air.
+				
+				Continuing in the normal sequence, thus executing the code in \texttt{main.py}, will allow the node to connect to an existing mesh or to create one, for sending and receiving data afterwards.
+			
+%				\begin{table}[h]
+%					\begin{center}
+%						\begin{tabularx}{0.85\textwidth}{@{}|Y|Y|Y|@{}} 
+%							\hline
+%							State abbreviation & Full state name & State description \\\hline
+%							$start$ && \\\hline
+%							$s_{0}$ && \\\hline
+%							$s_{1}$ && \\\hline
+%							$s_{2}$ && \\\hline
+%							$s_{3}$ && \\\hline
+%						\end{tabularx}
+%						\caption{FSA \ref{fsa:fsa_overview} description}
+%						\label{table:fsm_main}
+%					\end{center}
+%				\end{table}
+			
+%				\begin{figure}
+%					\centering
+%					
+%					\begin{tikzpicture}[node distance=2cm]
+%						\node (start) [startstop] {Start};
+%						\node (pro1) [process, below of=start] {\texttt{boot()}};
+%						\node (dec1) [decision, below of=pro1, yshift=-0.5cm] {\texttt{boot\_mode}};
+%						\node (pro2a) [process, below of=dec1, yshift=-0.5cm, xshift=-2cm] {\texttt{main()}};
+%						\node (pro2b) [process, below of=dec1, yshift=-0.5cm, xshift=2cm] {\texttt{listen()}};
+%					
+%						\draw [arrow] (start) -- (pro1);
+%						\draw [arrow] (pro1) -- (dec1);
+%						\draw [arrow] (dec1) -- node[anchor=east] {\texttt{DEFAULT\_BOOT}} (pro2a);
+%						\draw [arrow] (dec1) -- node[anchor=west] {\texttt{PLAIN\_RECEIVER}} (pro2b);
+%					\end{tikzpicture}
+%					\label{algo_1}
+%					\caption{Outline algorithm}
+%				\end{figure}
+			
+			\newpage
+			\subsubsection{Boot}
+			
+				As mentioned earlier, the \texttt{boot.py} file contains the code that is initially executed by the FiPy.
+				In the case of Open LoRa Mesh, this code contains the instructions to load a \texttt{config.json} file, which contains the boot mode the device will be initialized in.
+				
+				The first operation done is to disable Wi-Fi communication and the default blinking (heartbeat) of the FiPy.
+				Since when powered up, Fipy's firmware enables Wi-Fi, it can be useful to turn it off because it is not used, also it could draw unnecessary power from the device.
+
+				\begin{lstlisting}
+					content
+				\end{lstlisting}
+				
+				During the boot procedure, the board checks the availability of a \texttt{config.json} file on an external SD card and, if present, uses the parameters on such files.
+				If not present it checks for such file locally on the flash memory, which contains one with default configurations and is uploaded with the \texttt{*.py} files.
+
+				The configuration file contains the custom parameters that can be used by the board.
+				One of these parameters is the \texttt{BOOT\_MODE}, which can either be \texttt{DEFAULT\_BOOT} or \texttt{PLAIN\_RECEIVER}.
+
+				If set to \texttt{DEFAULT\_BOOT}, the board will normally proceed to executing the software in \texttt{main.py}.
+				When set to \texttt{PLAIN\_RECEIVER}, the board will boot 
+									
 				\begin{figure}[h]
 					\centering
 					\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
@@ -132,51 +197,8 @@
 					
 					\end{tikzpicture}
 					\caption{FSA for the overview of the whole system}
-					\label{img:fsa_overview}
-				\end{figure}
-			
-				\begin{table}[h]
-					\begin{center}
-						\begin{tabularx}{0.85\textwidth}{@{}|Y|Y|Y|@{}} 
-							\hline
-							State abbreviation & Full state name & State description \\\hline
-							$start$ && \\\hline
-							$s_{0}$ && \\\hline
-							$s_{1}$ && \\\hline
-							$s_{2}$ && \\\hline
-							$s_{3}$ && \\\hline
-						\end{tabularx}
-						\caption{Outline FSM description}
-						\label{table:fsm_main}
-					\end{center}
-				\end{table}
-			
-				\begin{figure}
-					\centering
-					
-					\begin{tikzpicture}[node distance=2cm]
-						\node (start) [startstop] {Start};
-						\node (pro1) [process, below of=start] {\texttt{boot()}};
-						\node (dec1) [decision, below of=pro1, yshift=-0.5cm] {\texttt{boot\_mode}};
-						\node (pro2a) [process, below of=dec1, yshift=-0.5cm, xshift=-2cm] {\texttt{main()}};
-						\node (pro2b) [process, below of=dec1, yshift=-0.5cm, xshift=2cm] {\texttt{listen()}};
-					
-						\draw [arrow] (start) -- (pro1);
-						\draw [arrow] (pro1) -- (dec1);
-						\draw [arrow] (dec1) -- node[anchor=east] {\texttt{DEFAULT\_BOOT}} (pro2a);
-						\draw [arrow] (dec1) -- node[anchor=west] {\texttt{PLAIN\_RECEIVER}} (pro2b);
-					\end{tikzpicture}
-					\label{algo_1}
-					\caption{Outline algorithm}
-				\end{figure}
-			
-			\newpage
-			\subsubsection{Boot}
-			
-				As previously said, the \texttt{boot.py} file contains the code that is initially executed by the FiPy.
-				In the case of Open LoRa Mesh, this code contains the instructions to load a \texttt{config.json} file, which contains the boot mode the device will be initialized in.
-				
-				
+					\label{fsa:fsa_overview}
+				\end{figure}				
 			
 			\subsubsection{Main}
 			

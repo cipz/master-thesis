@@ -23,6 +23,8 @@
 
 \setlist{topsep=.3em, itemsep=0em}
 
+\usepackage{listings}
+
 \newcommand{\Quote}[3]{
 	\begin{center}
 		\begin{minipage}[H]{0.9\columnwidth}
