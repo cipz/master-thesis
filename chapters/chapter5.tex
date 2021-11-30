@@ -163,6 +163,7 @@ pycom.heartbeat(False)
 
 				If set to \texttt{DEFAULT\_BOOT}, the board will normally proceed to executing the software in \texttt{main.py}.
 				When set to \texttt{PLAIN\_RECEIVER}, the board will execute the code in the \texttt{plain\_receiver.py} file, which listens to the packets traveling in the air.
+				Such process can be seen in FSA~\ref{fsa:boot_sequence}, described in Table~\ref{table:fsa_boot}
 				
 				Other modes could be added to the software as an improvement, but at the time of writing only these have been implemented.
 				Improvements on this topic is later about in Section~\ref{sec:software_improvements}.
@@ -200,22 +201,23 @@ pycom.heartbeat(False)
 							\hline
 							State abbreviation & State description \\\hline
 							$start$ & device is powered up\\\hline
-							$s_{0}$ & \\\hline
-							$s_{1}$ & \\\hline
-							$s_{2}$ & \\\hline
-							$s_{3}$ & \\\hline
+							$s_{0}$ & Wi-Fi is de-initialized and heartbeat is set to \texttt{False}\\\hline
+							$s_{1}$ & configuration file is read\\\hline
+							$s_{2}$ & \texttt{PLAIN\_LISTENER mode is initialized}\\\hline
+							$s_{3}$ & \texttt{DEFAULT\_BOOT} mode is initialized\\\hline
 						\end{tabularx}
 						\caption{Boot sequence FSA description}
-						\label{table:fsm_main}
+						\label{table:fsa_boot}
 					\end{center}
 				\end{table}
 
+			\newpage
 			\subsubsection{Plain listener}
 			
 				The mode in which the device is set only to listen is called ``\textit{\texttt{PLAIN\_LISTENER}}''.
 				Such state lets the FiPy only listen to messages that are in its range.
 				
-				\begin{figure}
+				\begin{figure}[H]
 					\begin{lstlisting}
 def sniffLoRaNetwork():
 
