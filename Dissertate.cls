@@ -41,10 +41,9 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
 
-\usepackage[automake, indexonlyfirst, numberline]{glossaries}
-
-\renewcommand{\glsnamefont}[1]{\uppercase{\bfseries #1}}
-\renewcommand{\gls}[1]{\textsc{#1}\textsubscript{G}\glsadd{#1}}
+%\usepackage[automake, indexonlyfirst, numberline]{glossaries}
+%\renewcommand{\glsnamefont}[1]{\uppercase{\bfseries #1}}
+%\renewcommand{\gls}[1]{\textsc{#1}\textsubscript{G}\glsadd{#1}}
 
 % Package used to highlight
 
@@ -158,6 +157,12 @@
 \usepackage{tabulary}
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 \usepackage{pdfpages}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
 
 % Pseudocode
 \usepackage{algorithm}
