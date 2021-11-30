@@ -91,7 +91,7 @@
 		
 		The FiPy boards have been programmed using Micropython, and the firmware flashed\footnote{ \textit{Flashing} involves the overwriting of existing firmware or data, contained in EEPROM or flash memory module present in an electronic device, with new data.} on the boards, at the time of writing, is \texttt{v1.16.5}.
 		
-		\subsection{Algorithms}\label{subsec:algorithms}
+		\subsection{Software and algorithms}\label{subsec:algorithms}
 	
 			% DRAWING AUTOMATA
 			% https://latexdraw.com/automata-diagrams-in-latex/
@@ -141,7 +141,7 @@
 				As mentioned earlier, the \texttt{boot.py} file contains the code that is initially executed by the FiPy.
 				In the case of Open LoRa Mesh, this code contains the instructions to load a \texttt{config.json} file, which contains the boot mode the device will be initialized in.
 				
-				The first operation done is to disable Wi-Fi communication and the default blinking (heartbeat) of the FiPy.
+				The first operation done is to disable Wi-Fi communication and the default blinking (heartbeat) of the FiPy, Figure~\ref{code:boot_1}.
 				Since when powered up, FiPy's firmware enables Wi-Fi, it can be useful to turn it off because it is not used, also it could draw unnecessary power from the device.
 
 				\begin{figure}[H]
@@ -205,14 +205,40 @@ pycom.heartbeat(False)
 							$s_{2}$ & \\\hline
 							$s_{3}$ & \\\hline
 						\end{tabularx}
-						\caption[Boot sequence FSA description]{Boot sequence FSA \ref{fsa:boot_sequence} description}
+						\caption{Boot sequence FSA description}
 						\label{table:fsm_main}
 					\end{center}
 				\end{table}
 
 			\subsubsection{Plain listener}
 			
-				The mode
+				The mode in which the device is set only to listen is called ``\textit{\texttt{PLAIN\_LISTENER}}''.
+				Such state lets the FiPy only listen to messages that are in its range.
+				
+				\begin{figure}
+					\begin{lstlisting}
+def sniffLoRaNetwork():
+
+  ctpc = loractp.CTPendpoint()
+
+  print("Executing plain_receiver.py")
+
+  while True:
+
+    print('plainreceiver.py: waiting for data')
+
+    try:
+
+      rcvd_data, addr = ctpc.recvit()
+      print("plainreceiver.py: got {} from {}".format(rcvd_data, addr))
+
+    except Exception as e:
+
+      print ("plainreceiver.py: EXCEPTION!! ", e)
+					\end{lstlisting}
+					\caption{\texttt{PLAIN\_LISTENER} code}
+					\label{code:plain_listener}
+				\end{figure}
 			
 			\subsubsection{Main}
 			
