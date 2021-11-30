@@ -23,7 +23,8 @@
 
 \setlist{topsep=.3em, itemsep=0em}
 
-\usepackage{listings}
+\usepackage{listings,newtxtt}
+\lstset{basicstyle=\ttfamily, keywordstyle=\bfseries}
 
 \newcommand{\Quote}[3]{
 	\begin{center}

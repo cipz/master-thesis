@@ -116,22 +116,6 @@
 				
 				Continuing in the normal sequence, thus executing the code in \texttt{main.py}, will allow the node to connect to an existing mesh or to create one, for sending and receiving data afterwards.
 			
-%				\begin{table}[h]
-%					\begin{center}
-%						\begin{tabularx}{0.85\textwidth}{@{}|Y|Y|Y|@{}} 
-%							\hline
-%							State abbreviation & Full state name & State description \\\hline
-%							$start$ && \\\hline
-%							$s_{0}$ && \\\hline
-%							$s_{1}$ && \\\hline
-%							$s_{2}$ && \\\hline
-%							$s_{3}$ && \\\hline
-%						\end{tabularx}
-%						\caption{FSA \ref{fsa:fsa_overview} description}
-%						\label{table:fsm_main}
-%					\end{center}
-%				\end{table}
-			
 %				\begin{figure}
 %					\centering
 %					
@@ -158,11 +142,18 @@
 				In the case of Open LoRa Mesh, this code contains the instructions to load a \texttt{config.json} file, which contains the boot mode the device will be initialized in.
 				
 				The first operation done is to disable Wi-Fi communication and the default blinking (heartbeat) of the FiPy.
-				Since when powered up, Fipy's firmware enables Wi-Fi, it can be useful to turn it off because it is not used, also it could draw unnecessary power from the device.
+				Since when powered up, FiPy's firmware enables Wi-Fi, it can be useful to turn it off because it is not used, also it could draw unnecessary power from the device.
 
-				\begin{lstlisting}
-					content
-				\end{lstlisting}
+				\begin{figure}[H]
+					\begin{lstlisting}[language=Python]
+wlan = WLAN(mode=WLAN.STA)
+wlan.deinit()
+pycom.heartbeat(False)
+					\end{lstlisting}
+					\label{code:boot_1}
+					\caption{Code for Wi-Fi de-initialization and heartbeat stop}
+				\end{figure}
+
 				
 				During the boot procedure, the board checks the availability of a \texttt{config.json} file on an external SD card and, if present, uses the parameters on such files.
 				If not present it checks for such file locally on the flash memory, which contains one with default configurations and is uploaded with the \texttt{*.py} files.
@@ -171,7 +162,10 @@
 				One of these parameters is the \texttt{BOOT\_MODE}, which can either be \texttt{DEFAULT\_BOOT} or \texttt{PLAIN\_RECEIVER}.
 
 				If set to \texttt{DEFAULT\_BOOT}, the board will normally proceed to executing the software in \texttt{main.py}.
-				When set to \texttt{PLAIN\_RECEIVER}, the board will boot 
+				When set to \texttt{PLAIN\_RECEIVER}, the board will execute the code in the \texttt{plain\_receiver.py} file, which listens to the packets traveling in the air.
+				
+				Other modes could be added to the software as an improvement, but at the time of writing only these have been implemented.
+				Improvements on this topic is later about in Section~\ref{sec:software_improvements}.
 									
 				\begin{figure}[h]
 					\centering
@@ -196,14 +190,32 @@
 					(s_3) edge [loop right] node {} ();
 					
 					\end{tikzpicture}
-					\caption{FSA for the overview of the whole system}
-					\label{fsa:fsa_overview}
+					\caption{FSA for the overview of boot sequence}
+					\label{fsa:boot_sequence}
 				\end{figure}				
+			
+				\begin{table}[h]
+					\begin{center}
+						\begin{tabularx}{0.85\textwidth}{@{}|Y|Y|@{}} 
+							\hline
+							State abbreviation & State description \\\hline
+							$start$ & device is powered up\\\hline
+							$s_{0}$ & \\\hline
+							$s_{1}$ & \\\hline
+							$s_{2}$ & \\\hline
+							$s_{3}$ & \\\hline
+						\end{tabularx}
+						\caption[Boot sequence FSA description]{Boot sequence FSA \ref{fsa:boot_sequence} description}
+						\label{table:fsm_main}
+					\end{center}
+				\end{table}
+
+			\subsubsection{Plain listener}
+			
+				The mode
 			
 			\subsubsection{Main}
 			
-			\subsubsection{Plain listener}
-	
 			\subsubsection{Mesh initiation}
 			
 			\subsubsection{Broadcast mesh information}
