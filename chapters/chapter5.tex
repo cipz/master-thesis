@@ -288,9 +288,11 @@ def sniffLoRaNetwork():
 				
 			\subsubsection{Mesh initialization}
 			
-				As can be seen in Figure~\ref{fsa:main}, after initializing the necessary variables and objects, the node listens for a period of time of at least 180 seconds for any messages that advertise an existing mesh.
+				As can be seen in Figure~\ref{fsa:main}, after initializing the necessary variables and objects, the node listens for a period of time of \textit{at least} 180 seconds for any messages that advertise an existing mesh.
 				Particularly, this is done via the code in Figure~\ref{code:mesh_init_1}.
-
+				An important thing to keep in mind when working with devices that communicate wirelessly is the channel availability.
+				That is why earlier it is said that the node listens for \textit{at least} 180 seconds: the function \texttt{listenForMesh} of the \texttt{MeshNode} object contains a line of code that adds a random amount of time so that nodes that start at the same time, do not overlap and create two separate mesh networks.
+				
 				\begin{figure}[H]
 					\begin{lstlisting}
 mesh_id, advertising_node, request_connection = node.listenForMesh(180)
@@ -455,7 +457,7 @@ def __init__(self) -> None:
 			
 			Open LoRa Mesh would not be well suited for such type of networks, this is because the ``\textit{raw maximum data rate of 27 kbps}'' \cite{8030482} and, when moving at high speed, devices can become very sensitive to Doppler effect \cite{s21124049}.
 		
-		\subsection{Fixed network}
+		\subsection{Fixed network}\label{sec:fixed_network}
 		
 			This is the type of network Open LoRa Mesh is better suited in.
 			Although MegaSense works with mobile sensors, Open LoRa Mesh would allow it to work with monitoring sensors spread in a defined area.
