@@ -70,8 +70,12 @@
 			\noindent
 			\begin{minipage}{0.5\textwidth}% adapt widths of minipages to your needs
 				\centering
-				\includegraphics[width=\textwidth]{resources/img/chap2/coke}
-				\captionof{figure}{CMU's ``\textit{coke machine}''}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=\textwidth]{resources/img/chap2/coke}
+					\caption{CMU's ``\textit{coke machine}''}
+					\label{img:coke_machine}
+				\end{figure}
 			\end{minipage}%
 			\hfill%
 			\begin{minipage}{0.5\textwidth}\raggedright
@@ -184,7 +188,7 @@
 		The maximum amount for these particulates is regulated by various local and international authorities, for example the EU has set standards\footnote{ \url{www.ec.europa.eu/environment/air/quality/standards.htm}} that are reinforced by constant monitoring.
 				
 		One of the most important instruments in air quality measurement is the \textit{Keeling Curve}: a meticulous record of the amount of carbon dioxide in the atmosphere.
-	
+				
 		\noindent
 		\begin{minipage}{0.49\textwidth}%
 			\begin{figure}[H]
@@ -210,10 +214,10 @@
 		The importance of this instrument lies in the fact that, over those six decades, the zig-zag has trended steadily upward. 
 		Real time readings can be found on the UC San Diego, Institution of Oceanography's dedicated website\footnote{ \url{keelingcurve.ucsd.edu}}.
 		
-		\textbf{\textcolor{red}{\hl{// To be completed, add research on low cost outdoor air quality sensors}}}
-		
-%		\cite{unknown}
-%		LOW-COST OUTDOOR AIR QUALITY MONITORING AND SENSOR CALIBRATION: A SURVEY AND CRITICAL ANALYSIS
+		Authors of \cite{unknown} have surveyed the use of machine-learning-based calibration for low-cost air quality
+		sensors.
+		This represents the ``\textit{main technique for improving the usefulness of measurements provided by low-cost air quality sensors}''.
+		Authors explain how the use of low-cost air quality monitoring technology is complementary to professional-grade air quality stations, which are high cost of professional-grade stations that limit ``\textit{limits the granularity at which they can capture pollutant concentrations, whereas low-cost sensors can be deployed densely to increase the spatial granularity of collected information}'' \cite{unknown}.
 		
 		Many projects have been made, both for research and commercial purposes, to detect pollutants in the air and raise awareness of the conditions people are living in.
 		Below are two research solutions that have been made for air quality sensing with low-cost sensors.
@@ -295,27 +299,12 @@
 			Registered citizens that have been given the device, download the HOPE Exposure App from Google play store and tether their Android smart phone to the sensor.
 			The phone gathers data from the sensor, alongside the GPS coordinates, and it sends them in the cloud.
 
-
-			\textbf{\textcolor{red}{\hl{// To be completed, add how calibration works + sensors}}}
-
-%			\cite{8999428}		
-%			Calibration Performance: We fi rst assess over-
-%			all feasibility of calibration by assessing perfor-
-%			mance of the mid-cost sensor after calibrating it
-%			against a reference station. For calibration, we use
-%			a deep learning model consisting of convolution-
-%			al layers, fully connected neural network layers,
-%			and long short-term memory (LSTM) layers that
-%			model temporal dependencies.
-
-%			\cite{megasense}
-%			BME-280 Temp, Humidity, Air Pressure, 1
-%			Battery Voltage 2
-%			Sensirion SPS30 PM 3
-%			SI1133-AA00-GM UV 4
-%			MiCS-4514 CO, NO2 5
-%			MQ-131 O3 6
+			Calibration of the mid-cost sensor that are contained in the MegaSense is done against a reference station in the Kumpula Campus at the University of Helsinki.
+			Authors ``\textit{use a deep learning model consisting of convolutional layers, fully connected neural network layers, and long short-term memory (LSTM) layers that model temporal dependencies}'' \cite{8999428} against the data gathered from the main station.
 			
+			The exact sensors \cite{megasense} contained in the MegaSense device are: BME-280 (temperature, humidity, air pressure), battery voltage, Sensirion SPS30 (PM3), SI1133-AA00-GM (UV), MiCS-4514 (CO, NO2), MQ-131 (O3).
+			These sensors have been chosen after an careful analysis contained in \cite{unknown}.
+						
 			This project develops the clean air journey	planner application that creates optimal walking and cycling routes based on air quality of Helsinki.
 			
 			A better understanding of the architecture of MegaSense is explained in Section~\ref{sec:architecture}, while the papers in which this project is detailed are \cite{8999428, megasense}.

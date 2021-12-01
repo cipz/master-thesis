@@ -1,7 +1,7 @@
 %!TEX root = ../thesis.tex
 
-\begin{savequote}[70mm]
-	The Internet is becoming the town square for the global village of tomorrow.
+\begin{savequote}[65mm]
+	The Internet is becoming the town square\\for the global village of tomorrow.
 	\qauthor{Bill Gates}
 \end{savequote}
 
@@ -95,8 +95,6 @@
 		
 		% https://www.omnisci.com/technical-glossary/network-topology
 		On the other hand, the \textit{network topology} refers to the manner in which the links and nodes of a network are arranged to relate to each other.
-	
-		\textbf{\textcolor{red}{\hl{// To be completed w/ definition of UNICAST / MULTICAST / BROADCAST}}}
 		
 		As shown in Figure~\ref{img:network_topologies}, some of the most common network topologies are:
 		\begin{itemize}
@@ -120,6 +118,11 @@
 	
 		The project presented in this thesis regards a network with a mesh topology, which can be considered a \textit{multi-hop network}, since data passes from node to node until it reaches its destination.
 		This is better described in Chapter~\ref{chapter:proposed_solution}, alongside the technical details of mesh proposed in this thesis, which has a span of LAN / MAN, since it connects devices that are in a circumscribed area but can be also placed further from each other, in order to cover longer distances.
+			
+		Another key distinction is the one between \textit{control plane} and \textit{data plane}.
+		The control plane is the part of a network that controls how data packets are forwarded, which means how data is sent from one place to another.
+		The process of creating a routing table, for example, is considered part of the control plane.
+		Data plane, on the other hand, is the part of the software that processes the data requests and handles the data which needs to be forwarded.
 			
 		The organization responsible for Internet standards is the Internet Engineering Steering Group (IESG)\footnote{ \url{www.ietf.org/about/groups/iesg}}.
 		It is necessary to have an organization looking over the Internet itself since it gives the regulations that allow all devices to interconnect with each other.
@@ -164,7 +167,7 @@
 		Growing popularity of IoT use cases in domains that rely on connectivity spanning large areas and the ability to handle a massive number of connections is driving the demand for LPWAN access technologies \cite{fi12030046}, and the project presented in this thesis falls under this category of communication.
 		LPWAN allows connectivity in many applications, from crowded areas in smart cities to smart farming and smart environment, from security and emergencies to e-health.
 		
-		Various wireless transmission methods can be used to create a LPWAN, some of the most used in IoT are Sigfox, LoRa and NarrowBand IoT (NB-IoT).
+		Various wireless transmission methods can be used to create a LPWAN, some of the most used in IoT are Sigfox, LoRa and Narrow-Band IoT (NB-IoT).
 		In Subsection \ref{subsec:lora_lorawan}, follows a more complete explanation on LoRa and LoRaWAN.
 		One crucial factor for these transmission methods is to ``\textit{support a massive number of simultaneously connected devices with low data rates}'' \cite{fi12030046}.
 		
@@ -336,9 +339,9 @@
 			Newer Arduino boards offer many integrated functionalities, for example:
 			\begin{itemize}
 				% https://store.arduino.cc/collections/boards/products/arduino-mkr-nb-1500
-				\item \textit{Arduino MKR NB 1500}: offers an all-in-one solution for Narrowband IoT large-coverage solutions;
+				\item \textit{Arduino MKR NB 1500}: offers an all-in-one solution for Narrow-Band IoT large-coverage solutions;
 				% https://store.arduino.cc/collections/boards/products/arduino-mkr-wifi-1010
-				\item \textit{Arduino MKR WiFi 1010}: offers integrated WiFi and Bluetooth;
+				\item \textit{Arduino MKR Wi-Fi 1010}: offers integrated Wi-Fi and Bluetooth;
 				% https://store.arduino.cc/collections/boards/products/arduino-nano-33-ble-sense
 				\item \textit{Arduino Nano 33 BLE Sense}: contains BLE connectivity and multiple sensors, such as 9 axis inertial, humidity, and temperature, barometric, microphone, gesture, proximity, light color and light intensity.
 			\end{itemize}

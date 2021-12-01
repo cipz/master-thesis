@@ -11,6 +11,8 @@
 \end{savequote}
 
 \chapter{Proposed solution}\label{chapter:proposed_solution}
+
+	\textbf{\textcolor{red}{\hl{// REVIEW ALL CODE SNIPPETS}}}
 	
 	\textbf{\textcolor{red}{\hl{// To be completed with one or two phrases}}}
 
@@ -91,7 +93,7 @@
 		
 		The FiPy boards have been programmed using Micropython, and the firmware flashed\footnote{ \textit{Flashing} involves the overwriting of existing firmware or data, contained in EEPROM or flash memory module present in an electronic device, with new data.} on the boards, at the time of writing, is \texttt{v1.16.5}.
 		
-		\subsection{Software and algorithms}\label{subsec:algorithms}
+		\subsection{Software}\label{subsec:algorithms}
 	
 			% DRAWING AUTOMATA
 			% https://latexdraw.com/automata-diagrams-in-latex/
@@ -106,7 +108,6 @@
 			At first an overview of the entire software is presented, then for each important component of the software there is a subsection that describes how it functions and connects to the rest.
 			Such vision should allow to understand the system from a broader point of view to a more detailed one, where every function is analyzed.
 			
-			\newpage
 			\subsubsection{Overview of the whole system}
 			
 				As previously said, the FiPy is divided in two files, \texttt{boot.py} and \texttt{main.py}.
@@ -115,27 +116,7 @@
 				The listener state allows for the device to be used as a station that only sniffs the messages traveling in the air.
 				
 				Continuing in the normal sequence, thus executing the code in \texttt{main.py}, will allow the node to connect to an existing mesh or to create one, for sending and receiving data afterwards.
-			
-%				\begin{figure}
-%					\centering
-%					
-%					\begin{tikzpicture}[node distance=2cm]
-%						\node (start) [startstop] {Start};
-%						\node (pro1) [process, below of=start] {\texttt{boot()}};
-%						\node (dec1) [decision, below of=pro1, yshift=-0.5cm] {\texttt{boot\_mode}};
-%						\node (pro2a) [process, below of=dec1, yshift=-0.5cm, xshift=-2cm] {\texttt{main()}};
-%						\node (pro2b) [process, below of=dec1, yshift=-0.5cm, xshift=2cm] {\texttt{listen()}};
-%					
-%						\draw [arrow] (start) -- (pro1);
-%						\draw [arrow] (pro1) -- (dec1);
-%						\draw [arrow] (dec1) -- node[anchor=east] {\texttt{DEFAULT\_BOOT}} (pro2a);
-%						\draw [arrow] (dec1) -- node[anchor=west] {\texttt{PLAIN\_RECEIVER}} (pro2b);
-%					\end{tikzpicture}
-%					\label{algo_1}
-%					\caption{Outline algorithm}
-%				\end{figure}
-			
-			\newpage
+				
 			\subsubsection{Boot}
 			
 				As mentioned earlier, the \texttt{boot.py} file contains the code that is initially executed by the FiPy.
@@ -153,17 +134,15 @@ pycom.heartbeat(False)
 					\label{code:boot_1}
 					\caption{Code for Wi-Fi de-initialization and heartbeat stop}
 				\end{figure}
-
-				
+			
 				During the boot procedure, the board checks the availability of a \texttt{config.json} file on an external SD card and, if present, uses the parameters on such files.
 				If not present it checks for such file locally on the flash memory, which contains one with default configurations and is uploaded with the \texttt{*.py} files.
 
-				The configuration file contains the custom parameters that can be used by the board.
-				One of these parameters is the \texttt{BOOT\_MODE}, which can either be \texttt{DEFAULT\_BOOT} or \texttt{PLAIN\_RECEIVER}.
-
+				The configuration file contains the custom parameters that can be used by the board, and
+				include \texttt{BOOT\_MODE}, which can either be \texttt{DEFAULT\_BOOT} or \texttt{PLAIN\_RECEIVER}.
 				If set to \texttt{DEFAULT\_BOOT}, the board will normally proceed to executing the software in \texttt{main.py}.
-				When set to \texttt{PLAIN\_RECEIVER}, the board will execute the code in the \texttt{plain\_receiver.py} file, which listens to the packets traveling in the air.
-				Such process can be seen in FSA~\ref{fsa:boot_sequence}, described in Table~\ref{table:fsa_boot}
+				When set to \texttt{PLAIN\_RECEIVER}, the board will execute code which makes it listen to the packets traveling in the air.
+				Such process can be seen in Figure~\ref{fsa:boot_sequence}, described in Table~\ref{table:fsa_boot}
 				
 				Other modes could be added to the software as an improvement, but at the time of writing only these have been implemented.
 				Improvements on this topic is later about in Section~\ref{sec:software_improvements}.
@@ -194,70 +173,208 @@ pycom.heartbeat(False)
 					\caption{FSA for the overview of boot sequence}
 					\label{fsa:boot_sequence}
 				\end{figure}				
-			
+		
 				\begin{table}[h]
 					\begin{center}
-						\begin{tabularx}{0.85\textwidth}{@{}|Y|Y|@{}} 
+						\begin{tabular}{|c|m{10.2cm}|} 
 							\hline
-							State abbreviation & State description \\\hline
+							\textbf{State abbreviation} & \textbf{State description} \\\hline
 							$start$ & device is powered up\\\hline
 							$s_{0}$ & Wi-Fi is de-initialized and heartbeat is set to \texttt{False}\\\hline
 							$s_{1}$ & configuration file is read\\\hline
-							$s_{2}$ & \texttt{PLAIN\_LISTENER mode is initialized}\\\hline
+							$s_{2}$ & \texttt{PLAIN\_LISTENER} mode is initialized\\\hline
 							$s_{3}$ & \texttt{DEFAULT\_BOOT} mode is initialized\\\hline
-						\end{tabularx}
+						\end{tabular}
 						\caption{Boot sequence FSA description}
 						\label{table:fsa_boot}
 					\end{center}
 				\end{table}
 
-			\newpage
 			\subsubsection{Plain listener}
 			
-				The mode in which the device is set only to listen is called ``\textit{\texttt{PLAIN\_LISTENER}}''.
-				Such state lets the FiPy only listen to messages that are in its range.
+				The mode in which the device is set only to listen is called ``\textit{\texttt{PLAIN\_LISTENER}}'', and the code executed is contained in the \texttt{plain\_listener.py} file.
+				Such state lets the FiPy listen to messages that are in its range, without the possibility of sending messages or participate into the mesh.
+				This state can be used for debugging and catching the different messages that are sent in an area.
 				
 				\begin{figure}[H]
-					\begin{lstlisting}
+					\begin{lstlisting}[language=python]
 def sniffLoRaNetwork():
-
   ctpc = loractp.CTPendpoint()
-
   print("Executing plain_receiver.py")
-
   while True:
-
     print('plainreceiver.py: waiting for data')
-
     try:
-
       rcvd_data, addr = ctpc.recvit()
       print("plainreceiver.py: got {} from {}".format(rcvd_data, addr))
-
     except Exception as e:
-
       print ("plainreceiver.py: EXCEPTION!! ", e)
 					\end{lstlisting}
-					\caption{\texttt{PLAIN\_LISTENER} code}
+					\caption{\texttt{PLAIN\_LISTENER} mode code}
 					\label{code:plain_listener}
 				\end{figure}
+				
+				The principal function in the file \texttt{plain\_listener.py} is \texttt{sniffLoRaNetwork()} and, as for the code used in the rest of the software, this function utilizes LoRaCTP.
+				It first creates an endpoint, which is then used in an infinite loop.
+				Such \texttt{while} loop reads the data received by that endpoint and logs it.
 			
 			\subsubsection{Main}
 			
-			\subsubsection{Mesh initiation}
+				This section describes the course of the \texttt{main.py} file and the \texttt{main()} function it contains.
+				The code contained in this file is automatically executed by the board, unless specified otherwise, after the code in the previously described \texttt{boot.py}.
+				
+				\begin{figure}[h]
+					\centering
+					\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+					
+					% Help grid
+					% \draw [help lines] (-1,1) grid (6,-6);
+					
+					\tikzstyle{every state}=[fill={rgb:black,1;white,5}]
+					
+					
+					\node[state]  					(s_3)                 	{$s_3$}; % PICKS UP FROM BOOT
+					\node[state] 					(m_0)	[right of=s_3]	{$m_0$}; % INITIALIZE VARIABLES AND OBJECTS AND LOCKS THE LORA ANTENNA AND CREATES CONNECTION WITH MEGASENSE, IF AVAILABLE
+					\node[state]					(m_1) 	[right of=m_0]	{$m_1$}; % LISTEN LOOP FOR MESSAGES OF EXISTING LORA MESHES
+					\node[state]					(m_2) 	[above right of=m_1]	{$m_2$}; % LORA MESH EXISTS
+					\node[state]					(m_3) 	[below right of=m_1]	{$m_3$}; % LORA MESH DOES NOT EXIST, CREATE NEW MESH
+					\node[state,accepting]			(m_4) 	[above right of=m_3]	{$m_4$}; % NODE LISTENS FOR MESSAGES IN THE AIR AND ANALYZES IT
+					\node[state]					(m_5) 	[right of=m_4]	{$m_5$}; % IF AVAILABLE COMMUNICATES WITH MEGASENSE AND READS DATA FROM IT
+					\node[state]					(m_6) 	[right of=m_5]	{$m_6$}; % COMMUNICATE WITH MEGASENSE
+					
+					\path[->]
+					(s_3) edge node {} (m_0)
+					(m_0) edge node {} (m_1)
+					(m_1) edge [loop above] node {} ()
+					(m_1) edge node {} (m_2)
+					(m_1) edge node {} (m_3)
+					(m_3) edge node {} (m_4)
+					(m_2) edge node {} (m_4)
+					(m_4) edge node {} (m_5)
+					(m_5) edge node {} (m_6)
+					(m_6) edge [bend left] node {} (m_4);
+					
+					\end{tikzpicture}
+					\caption{FSA for the overview of the main code}
+					\label{fsa:main}
+				\end{figure}		
 			
-			\subsubsection{Broadcast mesh information}
+				\begin{table}[h]
+					\begin{center}
+						\begin{tabular}{|c|m{10.2cm}|} 
+							\hline
+							\textbf{State abbreviation} & \textbf{State description} \\\hline
+							$s_{3}$ & state $s_{3}$ from Figure~\ref{fsa:boot_sequence} where the code \texttt{main.py} starts\\\hline
+							$m_{0}$ & variables,objects and communication with MegaSense device, if available, are initialized\\\hline
+							$m_{1}$ & listen loop for messages for existing LoRa mesh network\\\hline
+							$m_{2}$ & if the mesh exists, the node exchanges information about it with the advertising node\\\hline
+							$m_{3}$ & if the mesh does not exist, the node creates a new mesh and advertises the mesh information\\\hline
+							$m_{4}$ & the node listens for any messages in the air and processes them\\\hline
+							$m_{5}$ & if the MegaSense device is available, the node connects to it, reads data, and sends it into the network\\\hline
+						\end{tabular}
+						\caption{Main sequence FSA description}
+						\label{table:fsa_main}
+					\end{center}
+				\end{table}
 			
-%				\begin{figure}[h]
-%					\centering
-%					\includegraphics[width=.7\textwidth]{resources/img/chap5/message_exchange}
-%					\caption{``\textit{Open LoRa Mesh}'' architecture}
-%					\label{img:openmesh_architecture}
-%				\end{figure}
+				The most important objects that are used in the main part of this software, and that are initialized at the beginning, are:
+				\begin{itemize}
+					\item \texttt{LORA\_ANTENNA\_LOCK}: % parlare dell'uso dei lock
+				    \item \texttt{node}:
+					\item \texttt{mesh}:
+					\item \texttt{routing\_table}:
+				\end{itemize}
 			
-			\subsubsection{Loop}
+				\texttt{node}, \texttt{mesh} and \texttt{routing\_table} are all three objects described in the mesh library, contained in the \texttt{mesh.py} file under the \texttt{lib} folder.
+				
+			\subsubsection{Mesh initialization}
 			
-			\subsubsection{Listen}
+				As can be seen in Figure~\ref{fsa:main}, after initializing the necessary variables and objects, the node listens for a period of time of at least 180 seconds for any messages that advertise an existing mesh.
+				Particularly, this is done via the code in Figure~\ref{code:mesh_init_1}.
+
+				\begin{figure}[H]
+					\begin{lstlisting}
+mesh_id, advertising_node, request_connection = node.listenForMesh(180)
+					\end{lstlisting}		
+					\label{code:mesh_init_1}
+					\caption{Code that listens for mesh network advertisements}
+				\end{figure}
+			
+				The \texttt{node.listenForMesh()} function is invoked on the \texttt{Node} object from the library in \texttt{mesh.py}, better explained later in Section~\ref{subsec:mesh_library}.				
+				\texttt{request\_connection}, in Figure~\ref{code:mesh_init_1}, is a boolean variable that tells if a message such as the one in Figure~\ref{msg:advertise_msg} has been received.
+				
+				% TODO aggiungere messaggio per advertise
+				
+				If such message has been received, the receiving node sends a request for mesh information to the sending node, this will send the data, which includes the routing table, the routing table version and the mesh id.
+				Otherwise, the current node will create a new mesh network, thus initializing the routing table with itself as parent and using the mesh id given in the configuration file.
+				Such code is present in Figure~\ref{code:mesh_init_2} and represents respectively states $m_{2}$ and $m_{4}$ from Figure~\ref{fsa:main}.
+									
+				\begin{figure}	
+					\begin{lstlisting}
+if request_connection:
+  mesh = Mesh(mesh_id)
+  mesh_info = node.requestMeshInfo(mesh_id, advertising_node)
+  mesh_info = json.loads(mesh_info.decode())
+
+  received_routing_table_content = mesh_info["CURR_ROUTING_TABLE_CONTENT"]
+  received_routing_table_version = mesh_info["CURR_ROUTING_TABLE_VERSION"]
+  
+  routing_table = RoutingTable(
+    received_routing_table_content, 
+    received_routing_table_version
+  )
+else:
+  mesh = Mesh(force_new_mesh_id = b"OPENMESH")
+  new_routing_table_dict = { node.LORA_MAC : "" }
+  routing_table = RoutingTable(new_routing_table_dict)
+					\end{lstlisting}
+					\label{code:mesh_init_2}
+					\caption{Code use to initialize the mesh network by requesting data from the advertising node or creating a new mesh}
+				\end{figure}
+			
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=.7\textwidth]{resources/img/chap5/message_exchange}
+					\caption{Message exchange for mesh network advertisement}
+					\label{img:message_exchange}
+				\end{figure}
+	
+			\subsubsection{Main loop}\label{subsec:loop}
+	
+				After the code in Figure~\ref{code:mesh_init_2} is executed, the code contains an infinite \texttt{while True} loop.
+				Unlike the Arduino, which has the \texttt{loop()} function that runs infinitely unless ordered differently, Pycom devices only execute the contents of \texttt{main.py} once. 
+				That is why this infinite loop is needed.
+				
+				In the FSA in Figure~\ref{fsa:main}, state $ m_{4} $ coincides with this loop.
+				It is marked as an accepting state since the program might finish due to possible Exceptions.
+				Such Exceptions are part of the ones described later in Section~\ref{sec:software_improvements}.
+				
+				At the start of the loop, the \texttt{LORA\_ANTENNA\_LOCK} is acquired, thus allowing the node to send and receive data.
+				This infinite loop can be divided in three parts:
+				% TODO COMPLETE
+				\begin{itemize}
+					\item listen and for messages and answer:
+					\item connectivity with the MegaSense and data gathering:
+					\item mesh broadcasting:
+						\begin{figure}[H]
+							\begin{lstlisting}
+node.broadcastMeshAdvertisement(mesh.MESH_ID)
+							\end{lstlisting}
+							\caption{Code for mesh advertisement in \texttt{main.py} loop}
+							\label{code:mesh_advertisement_main}
+						\end{figure}
+					
+						\begin{figure}
+							\begin{lstlisting}
+def broadcastMeshAdvertisement(self, mesh_id):
+  msg = self.MESH_ADVERTISE_PREAMBLE.decode() + 
+    "=" + mesh_id.decode() + "." + self.LORA_MAC.decode()
+  self.broadcast(msg)
+							\end{lstlisting}
+							\caption{Code for broadcasting advertisement messages in mesh library}
+							\label{code:mesh_advertisement_library}
+						\end{figure}
+
+				\end{itemize}	
 			
 			\subsubsection{Message forwarding}
 			
@@ -265,11 +382,30 @@ def sniffLoRaNetwork():
 			
 			\subsubsection{Message transmission}
 			
+		\subsection{Mesh library}\label{subsec:mesh_library}
+		
+			\subsection{Node initialization}
+				\begin{figure}
+					\begin{lstlisting}
+def __init__(self) -> None:
+  self.LORA_NETWORK = LoRa(mode=LoRa.LORA, region=LoRa.EU868)
+  self.LORA_SOCKET = socket.socket(socket.AF_LORA, socket.SOCK_RAW)
+  self.LORA_MAC = binascii.hexlify(LoRa().mac())[8:]
+  self.NODE_ID = 0x01
+					\end{lstlisting}
+					\label{code:node_initialization}
+					\caption{Code for node initialization in mesh library}
+				\end{figure}
+		
+			\subsubsection{Routing table}\label{subsec:routing_table}
+		
+		\subsection{LoRaCTP forwarding}\label{subsec:loractp_mesh}
+		
+			% spiegare come si modifica loractp
+		
 		\subsection{Supported messages}
 		
 	\section{LoRa addressing scheme}\label{subsec:lora_addressing}
-
-		\textbf{\textcolor{red}{\hl{// To be completed}}}
 		
 		% Hardware Addressing Schemes
 		
@@ -278,12 +414,19 @@ def sniffLoRaNetwork():
 		
 	\section{Other files}
 	
-%		\begin{figure}[h]
-%			\centering
-%			\includegraphics[width=.5\textwidth]{resources/img/chap5/tree_files}
-%			\caption{List of files that compose the Open LoRa Mesh project}
-%			\label{img:files}
-%		\end{figure}
+		Figure~\ref{img:files} shows a list of all files that contribute to this project.
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=.5\textwidth]{resources/img/chap5/tree_files}
+			\caption{List of files that compose the Open LoRa Mesh project}
+			\label{img:files}
+		\end{figure}
+	
+		\texttt{LED.py} is an LED library that allows the definition of threads in which LED functions are controlled.
+		These are used in the software and have not been explained in the previous sections since their use is secondary compared to the other functions.
+		% TODO CAMBIARE SE NECESSARIO
+		\texttt{README.md} and \texttt{banner.png} files are used in the GitHub repository and not essential to the usability of this project.
 		
 	\section{Microcontroller sleep cycle}\label{sec:sleep}
 	
@@ -302,14 +445,26 @@ def sniffLoRaNetwork():
 			
 	\section{Use cases}
 		
+		Each network topology is better suited for particular scenarios, and it is not possible to have a ``\textit{one size fits all}'' network.
+		Which is why the final section of this chapter explains where Open LoRa Mesh is better suited and where it will not perform as well.
+		
 		\subsection{Mobile network}
 		
-			e.g. in a bike sharing environment
+			Mobile networks, such as bike sharing and other shared transportation environment, require high speed for adjusting. 
+			These are dynamic environments where speed is important, especially for messages exchanged in the control plane, as explained for VANETs in Section~\ref{sec:overview_wms}.
+			
+			Open LoRa Mesh would not be well suited for such type of networks, this is because the ``\textit{raw maximum data rate of 27 kbps}'' \cite{8030482} and, when moving at high speed, devices can become very sensitive to Doppler effect \cite{s21124049}.
 		
 		\subsection{Fixed network}
 		
-			e.g. in a monitoring values of air quality inside a building
+			This is the type of network Open LoRa Mesh is better suited in.
+			Although MegaSense works with mobile sensors, Open LoRa Mesh would allow it to work with monitoring sensors spread in a defined area.
+			This could either be inside or outside a a building.
+			
+			Such type of network works best since it is mostly static and connections are rarely broken, thus data that needs to be sent in the control plane does not exceed the one sent in the data plane, as it can happen in the previous scenario.
 		
 		\subsection{Hybrid network}
 		
-			e.g. integrating mobile sensors given to users with a network of fixed sensors
+			Such scenario includes, for example, the integration of mobile sensors given to users with a network of fixed sensors in an area.
+			In this case, the usability of Open LoRa Mesh depends on the number of mobile devices that need connectivity and how many times they connect and disconnect.
+			
