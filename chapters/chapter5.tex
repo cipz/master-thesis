@@ -12,22 +12,19 @@
 
 \chapter{Proposed solution}\label{chapter:proposed_solution}
 
-	\textbf{\textcolor{red}{\hl{// REVIEW ALL CODE SNIPPETS}}}
-	
-	\textbf{\textcolor{red}{\hl{// To be completed with one or two phrases}}}
+	% TODO REVIEW ALL CODE SNIPPETS
+	% TODO To be completed with one or two phrases
 
-	This chapter contains the technical description of the mesh network developed with the FiPy and communicates using LoRa.
-	Such mesh network will be referred as ``\textit{Open LoRa Mesh}''.
-	Especially such networks is able to accommodate small messages, such as the ones sent by MegaSense, described in Section~\ref{subsec:megasense}.
+	This chapter contains the technical description of the mesh network developed with the FiPy and communicates using LoRa, ``\textit{Open LoRa Mesh}''.
+	This network is able to accommodate small messages, such as the ones sent by MegaSense, described in Section~\ref{subsec:megasense}.
 
 	Even though it would have been possible to use a simulator, such as ``\textit{The one}''\footnote{ \url{akeranen.github.io/the-one}}, for demonstrating the usefulness of such network, the final project has been realized with Pycom hardware, discussed in Section~\ref{sec:hardware_solution}.
 	
-	The code created for this project is open sourced and available on GitHub\footnote{ \url{www.github.com/cipz/OpenLoRaMesh}}.
-	Such code is better explained later in Section~\ref{sec:software_solution} and its subsections.
+	The code created for this project is open sourced and available on GitHub under the repository \textit{Open LoRa Mesh} \footnote{ \url{www.github.com/cipz/OpenLoRaMesh}}, and better explained in the following Section~\ref{sec:software_solution}.
 	
 	\section{Network architecture}\label{sec:architecture}
 		
-		Before talking about the architecture of the mesh, it is important to understand the one of the MegaSense.
+		Before talking about the architecture of Open LoRa Mesh, it is important to understand the one of the MegaSense.
 		As can be seen in Figure~\ref{img:megasense_architecture}, since each MegaSense device is made to be carried by a person, devices connect each one to the user's phone.
 		The latter then communicates with the MegaSense and, via the application developed by the Computer Science Department at the University of Helsinki, sends the air-quality readings and the GPS location, which has been read by the application from the phone itself, to the servers in the cloud.
 		
@@ -85,7 +82,7 @@
 				
 	\section{Open LoRa Mesh Software}\label{sec:software_solution}
 	
-		While the Arduino's C++ dialect divides the code in two main functions, the \texttt{setup()} and \texttt{loop()}, as mentioned in Chapter~\ref{chapter:technologies}, the Pycom boards use two files to separate an initial bootstrap of the board and a main section of the code.
+		While Arduino's C++ dialect divides the code in two main functions, the \texttt{setup()} and \texttt{loop()}, as mentioned in Chapter~\ref{chapter:technologies}, the Pycom boards use two files to separate an initial bootstrap of the board and a main section of the code.
 		These two special files are called \texttt{boot.py} and \texttt{main.py} respectively.
 		
 		The following section explains the algorithms made for this project are delineated and it is shown how they have been implemented.
@@ -102,7 +99,7 @@
 			% DRAWING FLOWCHART
 			% https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ%3A_A_Tutorial_for_Beginners_(Part_3)%E2%80%94Creating_Flowcharts
 
-			This section shows in depth how the software works, for more significant building block of the code there are finite-state automata (or FSA) that show the state nodes find themselves in.
+			This subsection shows in depth how the software works, for more significant building block of the code there are finite-state automata (or FSA) that show the state nodes find themselves in.
 			For a graphical reason, each state of the following automata is abbreviated, and, when needed, the full state is described in a table underneath it.
 			
 			At first an overview of the entire software is presented, then for each important component of the software there is a subsection that describes how it functions and connects to the rest.
@@ -117,13 +114,12 @@
 				
 				Continuing in the normal sequence, thus executing the code in \texttt{main.py}, will allow the node to connect to an existing mesh or to create one, for sending and receiving data afterwards.
 				
+				% TODO dire che si fa molto affidamento sulla trasmissione con loractp
+				
 			\subsubsection{Boot}
 			
 				As mentioned earlier, the \texttt{boot.py} file contains the code that is initially executed by the FiPy.
 				In the case of Open LoRa Mesh, this code contains the instructions to load a \texttt{config.json} file, which contains the boot mode the device will be initialized in.
-				
-				The first operation done is to disable Wi-Fi communication and the default blinking (heartbeat) of the FiPy, Figure~\ref{code:boot_1}.
-				Since when powered up, FiPy's firmware enables Wi-Fi, it can be useful to turn it off because it is not used, also it could draw unnecessary power from the device.
 
 				\begin{figure}[H]
 					\begin{lstlisting}[language=Python]
@@ -131,9 +127,12 @@ wlan = WLAN(mode=WLAN.STA)
 wlan.deinit()
 pycom.heartbeat(False)
 					\end{lstlisting}
-					\label{code:boot_1}
 					\caption{Code for Wi-Fi de-initialization and heartbeat stop}
+					\label{code:boot_wifi}
 				\end{figure}
+			
+				The first operation done is to disable Wi-Fi communication and the default blinking (heartbeat) of the FiPy, Figure~\ref{code:boot_wifi}.
+				Since when powered up, FiPy's firmware enables Wi-Fi, it can be useful to turn it off because it is not used, also it could draw unnecessary power from the device.
 			
 				During the boot procedure, the board checks the availability of a \texttt{config.json} file on an external SD card and, if present, uses the parameters on such files.
 				If not present it checks for such file locally on the flash memory, which contains one with default configurations and is uploaded with the \texttt{*.py} files.
@@ -212,15 +211,14 @@ def sniffLoRaNetwork():
 					\caption{\texttt{PLAIN\_LISTENER} mode code}
 					\label{code:plain_listener}
 				\end{figure}
-				
-				The principal function in the file \texttt{plain\_listener.py} is \texttt{sniffLoRaNetwork()} and, as for the code used in the rest of the software, this function utilizes LoRaCTP.
-				It first creates an endpoint, which is then used in an infinite loop.
-				Such \texttt{while} loop reads the data received by that endpoint and logs it.
+
+				The principal function in the file \texttt{plain\_listener.py} is \texttt{sniffLoRaNetwork()}, in Figure~\ref{code:plain_listener}, and, as for the code used in the rest of the software, this function utilizes LoRaCTP.
+				It first creates an endpoint, which is then used in an infinite loop that reads data received at the endpoint and logs it.
 			
 			\subsubsection{Main}
 			
-				This section describes the course of the \texttt{main.py} file and the \texttt{main()} function it contains.
-				The code contained in this file is automatically executed by the board, unless specified otherwise, after the code in the previously described \texttt{boot.py}.
+				This subsection describes the course of the \texttt{main.py} file and the \texttt{main()} function it contains.
+				The code contained in this file is automatically executed by the board, unless specified otherwise, after the code in the previously described \texttt{boot.py} file.
 				
 				\begin{figure}[h]
 					\centering
@@ -276,15 +274,15 @@ def sniffLoRaNetwork():
 					\end{center}
 				\end{table}
 			
-				The most important objects that are used in the main part of this software, and that are initialized at the beginning, are:
-				\begin{itemize}
-					\item \texttt{LORA\_ANTENNA\_LOCK}: % parlare dell'uso dei lock
-				    \item \texttt{node}:
-					\item \texttt{mesh}:
-					\item \texttt{routing\_table}:
-				\end{itemize}
+%				The most important objects that are used in the main part of this software, and that are initialized at the beginning, are:
+%				\begin{itemize}
+%					\item \texttt{LORA\_ANTENNA\_LOCK}: % parlare dell'uso dei lock
+%				    \item \texttt{node}:
+%					\item \texttt{mesh}:
+%					\item \texttt{routing\_table}:
+%				\end{itemize}
 			
-				\texttt{node}, \texttt{mesh} and \texttt{routing\_table} are all three objects described in the mesh library, contained in the \texttt{mesh.py} file under the \texttt{lib} folder.
+%				\texttt{node}, \texttt{mesh} and \texttt{routing\_table} are all three objects described in the mesh library, contained in the \texttt{mesh.py} file under the \texttt{lib} folder.
 				
 			\subsubsection{Mesh initialization}
 			
@@ -301,7 +299,7 @@ mesh_id, advertising_node, request_connection = node.listenForMesh(180)
 					\caption{Code that listens for mesh network advertisements}
 				\end{figure}
 			
-				The \texttt{node.listenForMesh()} function is invoked on the \texttt{Node} object from the library in \texttt{mesh.py}, better explained later in Section~\ref{subsec:mesh_library}.				
+				The \texttt{node.listenForMesh()} function is invoked on the \texttt{MeshNode} object from the library in \texttt{mesh.py}, better explained later in Section~\ref{subsec:mesh_library}.				
 				\texttt{request\_connection}, in Figure~\ref{code:mesh_init_1}, is a boolean variable that tells if a message such as the one in Figure~\ref{msg:advertise_msg} has been received.
 				
 				% TODO aggiungere messaggio per advertise
@@ -333,12 +331,12 @@ else:
 					\caption{Code use to initialize the mesh network by requesting data from the advertising node or creating a new mesh}
 				\end{figure}
 			
-				\begin{figure}[h]
-					\centering
-					\includegraphics[width=.7\textwidth]{resources/img/chap5/message_exchange}
-					\caption{Message exchange for mesh network advertisement}
-					\label{img:message_exchange}
-				\end{figure}
+%				\begin{figure}[h]
+%					\centering
+%					\includegraphics[width=.7\textwidth]{resources/img/chap5/message_exchange}
+%					\caption{Message exchange for mesh network advertisement}
+%					\label{img:message_exchange}
+%				\end{figure}
 	
 			\subsubsection{Main loop}\label{subsec:loop}
 	
@@ -380,55 +378,58 @@ def broadcastMeshAdvertisement(self, mesh_id):
 			
 			\subsubsection{Message forwarding}
 			
+				\textbf{\textcolor{red}{\hl{// To be completed}}}
+			
 			\subsubsection{MegaSense communication}
 			
-			\subsubsection{Message transmission}
+				\textbf{\textcolor{red}{\hl{// To be completed}}}
 			
 		\subsection{Mesh library}\label{subsec:mesh_library}
 		
-			\subsection{Node initialization}
-				\begin{figure}
-					\begin{lstlisting}
-def __init__(self) -> None:
-  self.LORA_NETWORK = LoRa(mode=LoRa.LORA, region=LoRa.EU868)
-  self.LORA_SOCKET = socket.socket(socket.AF_LORA, socket.SOCK_RAW)
-  self.LORA_MAC = binascii.hexlify(LoRa().mac())[8:]
-  self.NODE_ID = 0x01
-					\end{lstlisting}
-					\label{code:node_initialization}
-					\caption{Code for node initialization in mesh library}
-				\end{figure}
+				\textbf{\textcolor{red}{\hl{// To be completed}}}
+%			\subsection{Node initialization}
+%				\begin{figure}
+%					\begin{lstlisting}
+%def __init__(self) -> None:
+%  self.LORA_NETWORK = LoRa(mode=LoRa.LORA, region=LoRa.EU868)
+%  self.LORA_SOCKET = socket.socket(socket.AF_LORA, socket.SOCK_RAW)
+%  self.LORA_MAC = binascii.hexlify(LoRa().mac())[8:]
+%  self.NODE_ID = 0x01
+%					\end{lstlisting}
+%					\label{code:node_initialization}
+%					\caption{Code for node initialization in mesh library}
+%				\end{figure}
 		
-			\subsubsection{Routing table}\label{subsec:routing_table}
+%			\subsubsection{Routing table}\label{subsec:routing_table}
 		
-		\subsection{LoRaCTP forwarding}\label{subsec:loractp_mesh}
+%		\subsection{LoRaCTP forwarding}\label{subsec:loractp_mesh}
 		
 			% spiegare come si modifica loractp
 		
-		\subsection{Supported messages}
+%		\subsection{Supported messages}
 		
-	\section{LoRa addressing scheme}\label{subsec:lora_addressing}
+%	\section{LoRa addressing scheme}\label{subsec:lora_addressing}
 		
 		% Hardware Addressing Schemes
 		
 		
 		%calcolare transmission times
 		
-	\section{Other files}
-	
-		Figure~\ref{img:files} shows a list of all files that contribute to this project.
-		
-		\begin{figure}[h]
-			\centering
-			\includegraphics[width=.5\textwidth]{resources/img/chap5/tree_files}
-			\caption{List of files that compose the Open LoRa Mesh project}
-			\label{img:files}
-		\end{figure}
-	
-		\texttt{LED.py} is an LED library that allows the definition of threads in which LED functions are controlled.
-		These are used in the software and have not been explained in the previous sections since their use is secondary compared to the other functions.
-		% TODO CAMBIARE SE NECESSARIO
-		\texttt{README.md} and \texttt{banner.png} files are used in the GitHub repository and not essential to the usability of this project.
+%	\section{Other files}
+%	
+%		Figure~\ref{img:files} shows a list of all files that contribute to this project.
+%		
+%		\begin{figure}[h]
+%			\centering
+%			\includegraphics[width=.5\textwidth]{resources/img/chap5/tree_files}
+%			\caption{List of files that compose the Open LoRa Mesh project}
+%			\label{img:files}
+%		\end{figure}
+%	
+%		\texttt{LED.py} is an LED library that allows the definition of threads in which LED functions are controlled.
+%		These are used in the software and have not been explained in the previous sections since their use is secondary compared to the other functions.
+%		% TODO CAMBIARE SE NECESSARIO
+%		\texttt{README.md} and \texttt{banner.png} files are used in the GitHub repository and not essential to the usability of this project.
 		
 	\section{Microcontroller sleep cycle}\label{sec:sleep}
 	

@@ -8,57 +8,63 @@
 
 \chapter{Conclusions}\label{chapter:conclusions}
 
+	This thesis contains the description of a mesh network, Open LoRa Mesh, of low powered devices in which nodes communicate using LoRa technology.
+	Such solution has been thought to work with IoT devices, particularly with an air quality sensing device: MegaSense, described in Section~\ref{subsec:megasense}.
+	
+	It is important to understanding characteristics of pollutants in urban environments for counteracting problems linked to poor air quality and for assessing the effectiveness of initiatives designed for tackling it.
+	Open LoRa Mesh helps in the placement of devices across a larger space where connectivity might be an issue.
+	
 	Mesh networks are ``\textit{decentralized, easy to deploy, and characterized by dynamic self-organization, self-configuration, and self-healing properties}'' \cite{Sampaio-2015}.
 	Such properties enable fast deployment, low installation cost, and reliable communication.
+		
+	Implementation has been done in Micropython for Pycom hardware, particularly it has been programmed for the FiPy board.
+	Software is available on GitHub under the repository \textit{Open LoRa Mesh}\footnote{ \url{www.github.com/cipz/OpenLoRaMesh}}.
 	
-%	Understanding the characteristics of pollutants in urban environments is essential for counteracting problems linked
-	to poor air quality and for assessing the effectiveness of initiatives designed for tackling it.
-	
-	This thesis describes an implementation of a mesh network solution for IoT devices, particularly for an air quality sensing device: MegaSense, described in Section~\ref{subsec:megasense}.
-	
-%	This project represents
-%	
-%	It has been implemented on pycom hardware, the software is available on github in 
-	
-	Besides summarizing the previously discussed arguments, this chapter contains some personal considerations by the author.
-
-	\section{Contributions}
-	
-		\textbf{\textcolor{red}{\hl{// To be completed}}}
+	This conclusive chapter summarizes the previously discussed arguments in this thesis, presents possible improvements, both hardware and software, and contains some personal considerations by the author.
 
 	\section{Future work}
 		
-		\textbf{\textcolor{red}{\hl{// To be completed}}}
+		Open LoRa Mesh can be considered as a proof of concept that shows LoRa's validity for creating a network which allows devices like MegaSense to communicate and exchange useful data, like on updating calibration.
+		However, there are various aspects of this project that can be better improved, both from a hardware and a software point of view.
 	
 		\subsection{Hardware improvements}
-			
-%			Note from the author, it must be taken in consideration that the device can run hot, an application of the device such as on a bike that is parked out in the sun may overheat the device.
-%			On pycom's documentation it is written that the fipy can support temperatures up to x
-%			Thus an interesting improvement could be to add a heatsink in order to lower the temperatures and improve the lifespan of the device
 		
-			\textbf{\textcolor{red}{\hl{// To be completed}}}
+			In this project, the hardware that composes each node is quite straightforward: a FiPy device with an expansion board, an antennas for LoRa communication and, where needed, an antenna for GPS and, last but not least, the MegaSense.
 			
-			Another possible improvement could be to add a hard 3D printed shell to each node.
-			If the MegaSense integration with Open LoRa Mesh is accepted as a
+			A possible improvement could be adding a hard 3D printed shell to each node.
+			This would contain the FiPy and the Megasense, with openings for antennas and MegaSense's air sensors.
+			
+			If functionalities such as the SD card and the GPS antenna are not needed, also if nodes have already been flashed with the software and do not need the micro USB port, shields can be removed.
+			Without the shield, FiPys can be powered by either a battery or a direct power source that connects to a 5V wall charger.
+			
+			About powering the device, an external battery, either LiPo (Lithium Polymer) or alkaline cell, can be added when devices are placed in locations harder to reach.
+			Upon these, battery sensors, such as the ones in the MegaSense, can be added to evaluate the battery charge and communicate when they are almost out of energy.
 
 		\subsection{Software improvements}\label{sec:software_improvements}
 		
-			\textbf{\textcolor{red}{\hl{// To be completed}}}
-		
-%			Better logging 
-%			
-%			improvement on routing table and algorithm used for message forwarding 
+			The most important software improvement is on routing table, which could be populated keeping in mind the \textit{Received Signal Strength Indicator} (RSSI) of incoming messages.
+			With the use of this indicator a more stable network can be created, since nodes messages would be better routed through more stable connections among nodes.
 
-%			Aggiungere altre modalità oltre a quella di plain listener e del main, ad esempio relay station per fare forwarding dei messaggi
-%			Aggiungere gestione delle eccezioni per i messaggi, come spiegato in subsec:loop
+			Besides the \texttt{DEFAULT\_BOOT} and \texttt{PLAIN\_LISTENER} modes, other modes could be added to the nodes.
+			These can include, for example, a relay station which only forwards packets and does not participate in data creation or communication with air quality sensing devices.
+			Such nodes can strategically be placed so that nodes hard to reach, because inside a building or really far away from other nodes, can communicate with the rest of the network.
+
+			As explained in Section~\ref{subsec:loop}, there can be Exceptions that terminate the main loop, thus better Exception handling can be added to the software.
+			This would allow for a more stable communication between nodes when, for example, transmissions overlap and packets get corrupted.
+			Retransmission backoff methods, for a more controlled system, can be added as a possible solution.
 
 			Another factor that would improve the performance of each node on the network is the implementation of a sleep mode, Section~\ref{sec:sleep}.
 			This would allow each node to have a longer battery life and only activate when necessary.
 			Although adding such mode requires more data and in depth testing, it is not an impossible upgrade.
 
-		\subsection{On LoRa and other transmission methods}\label{sec:other_transmission_methods}
+		\subsection{On LoRa and other transmission technologies}\label{sec:other_transmission_methods}
 		
-%			How other transmission methods would compare against lora in this use case
+			LoRa is a promising transmission technologies, but it also comes with some disadvantages, such as the low data rate and high transmission time.
+			There are other technologies that could be used for a project such as this one, particularly NB-IoT and 5G would allow for transferring higher amounts of data.
+			
+			They would not allow thought to have a mesh network since they rely on the cellular technology, thus need a cellular tower and a SIM card.
+			Wi-Fi, on the other hand, does not supply a substantial range for these devices to work, as proved by the project described in Section~\ref{subsec:ardueco}.
+			In this case, LoRa is the most logical choice since it allows devices to rely on themselves.
 
 	\section{Personal considerations}
 	

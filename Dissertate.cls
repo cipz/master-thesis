@@ -15,7 +15,6 @@
 \LoadClass[12pt, twoside, openright, a4paper]{book}
 
 \usepackage[nokeyprefix]{refstyle}
-
 \usepackage{lipsum}
 \usepackage{tabularx}
 \usepackage[bottom]{footmisc}
