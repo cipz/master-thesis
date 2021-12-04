@@ -96,9 +96,9 @@
     {\endoldenumerate\end{spacing}}
 
 % Text layout.
-% \RequirePackage[outer=1in, inner=1.55in, twoside, a4paper, showframe]{geometry}
+ \RequirePackage[outer=1in, inner=1.55in, twoside, a4paper, showframe]{geometry}
 %\RequirePackage[outer=1in, inner=1.55in, twoside, a4paper]{geometry} %PRINT VERSION
- \RequirePackage[outer=1.275in, inner=1.275in, twoside, a4paper]{geometry} % DIGITAL VERSION
+% \RequirePackage[outer=1.275in, inner=1.275in, twoside, a4paper]{geometry} % DIGITAL VERSION
 \usepackage{ragged2e}
 %\RaggedRight
 \RequirePackage{graphicx}
@@ -465,6 +465,21 @@
 		\end{tabularx}
 	
 	\end{center}
+
+	\newpage
+
+%	% REVISION TABLE	
+%	\begin{center}
+%		\setlength{\extrarowheight}{20pt}
+%		\begin{tabular}{ccm{10cm}} 
+%			\textbf{Version} & \textbf{Date} & \textbf{Version description} \\
+%			$0.1$ & 02/12/2021 & Chapter 1,2,3,7 completed\\
+%			$0.2$ & 02/12/2021 & Chapter 4,5,6 completed\\
+%			$0.3$ & 02/12/2021 & Chapter 4,5,6 completed\\
+%			$0.4$ & 02/12/2021 & Chapter 4,5,6 completed\\
+%			$1.0$ & 02/12/2021 & Chapter 4,5,6 completed\\
+%		\end{tabular}
+%	\end{center}
 
 	\cleardoublepage
 	\rm
