@@ -96,9 +96,9 @@
     {\endoldenumerate\end{spacing}}
 
 % Text layout.
- \RequirePackage[outer=1in, inner=1.55in, twoside, a4paper, showframe]{geometry}
+% \RequirePackage[outer=1in, inner=1.55in, twoside, a4paper, showframe]{geometry}
 %\RequirePackage[outer=1in, inner=1.55in, twoside, a4paper]{geometry} %PRINT VERSION
-% \RequirePackage[outer=1.275in, inner=1.275in, twoside, a4paper]{geometry} % DIGITAL VERSION
+ \RequirePackage[outer=1.275in, inner=1.275in, twoside, a4paper]{geometry} % DIGITAL VERSION
 \usepackage{ragged2e}
 %\RaggedRight
 \RequirePackage{graphicx}
@@ -355,7 +355,7 @@
 		\vfill
 		\begin{normalsize}
 			\begin{flushleft}
-				\textit{Supervisors} \hfill \textit{Candidate}\\
+				\textit{Supervisor} \hfill \textit{Candidate}\\
 				\vspace{1pt}
 				\textbf{\@advisor} \hfill \textbf{\@author}\\
 				\vspace{1pt}
@@ -450,18 +450,18 @@
 			&  \\
 			&  \\
 			&  \\
-			\textbf{Supervising professors} &  \\
+			\textbf{Supervising professor} &  \\
 			&  \\
 			Claudio Enrico Palazzi&Assoc. Prof. in Computer Science \\
 			&Università degli Studi di Padova \\
 			E-mail:&\href{mailto://cpalazzi@math.unipd.it}{cpalazzi@math.unipd.it}\\
 			Personal webpage:&\href{https://www.math.unipd.it/~cpalazzi/}{https://www.math.unipd.it/\textasciitilde cpalazzi/}\\
-			&  \\
-			&  \\
-			Pietro Manzoni &  Prof. of Computer Engineering \\
-			& Universitat Politècnica de València \\
-			E-mail: & \href{mailto://pmanzoni@disca.upv.es}{pmanzoni@disca.upv.es}\\
-			Personal webpage: & \href{https://pmanzoni.github.io/}{https://pmanzoni.github.io/}
+%			&  \\
+%			&  \\
+%			Pietro Manzoni &  Prof. of Computer Engineering \\
+%			& Universitat Politècnica de València \\
+%			E-mail: & \href{mailto://pmanzoni@disca.upv.es}{pmanzoni@disca.upv.es}\\
+%			Personal webpage: & \href{https://pmanzoni.github.io/}{https://pmanzoni.github.io/}
 		\end{tabularx}
 	
 	\end{center}

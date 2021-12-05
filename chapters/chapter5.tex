@@ -12,11 +12,9 @@
 
 \chapter{Proposed solution}\label{chapter:proposed_solution}
 
-	% TODO REVIEW ALL CODE SNIPPETS
-	% TODO To be completed with one or two phrases
-
-	This chapter contains the technical description of the mesh network developed with the FiPy and communicates using LoRa, ``\textit{Open LoRa Mesh}''.
-	This network is able to accommodate small messages, such as the ones sent by MegaSense, described in Section~\ref{subsec:megasense}.
+	This chapter contains the technical description of ``\textit{Open LoRa Mesh}'', a mesh network composed by FiPy devices that communicate with each other via LoRa.
+	Open LoRa Mesh is able to accommodate small messages, such as the ones sent by MegaSense, described in Section~\ref{subsec:megasense}.
+	All network related functions are contained in a library that describes main components of this project.
 
 	Even though it would have been possible to use a simulator, such as ``\textit{The one}''\footnote{ \url{akeranen.github.io/the-one}}, for demonstrating the usefulness of such network, the final project has been realized with Pycom hardware, discussed in Section~\ref{sec:hardware_solution}.
 	
@@ -40,7 +38,7 @@
 			\label{img:megasense_architecture}
 		\end{figure}
 	
-		One of the goals Open LoRa Mesh tries to achieve, is to give independence to these devices, so that they can communicate one another and allow information to be passed along between nodes without the aid of a user's phone.
+		One of the goals Open LoRa Mesh tries to achieve is to give independence to these devices so that they can communicate with one another and allow information to be passed along between nodes without the aid of a user's phone.
 	
 		This is why the architecture would evolve from the one in Figure~\ref{img:megasense_architecture} to Figure~\ref{img:openmesh_architecture}: the phone is replaced by a FiPy, which also connects to the MegaSense via BLE, and sends the data acquired from the sensors in the network.
 		Nodes communicate with each other via LoRa, detailed in Section~\ref{subsec:lora_lorawan}, and exchange data using mainly \textit{LoRaCTP}, described in Section~\ref{subsec:loractp}.
@@ -52,11 +50,11 @@
 			\label{img:openmesh_architecture}
 		\end{figure}
 		
-		Each FiPy board represents a node on the network, which in this case is a ``\textit{Flat Wireless Mesh}'', where each node acts both as data provider and as data forwarder.
+		Each FiPy board represents a node of the network, which in this case is a ``\textit{Flat Wireless Mesh}'', where each node acts both as data provider and as data forwarder.
 		Although simple, such network architecture is well known from the previously mentioned, Section~\ref{sec:scalability}, Gupta and Kumar \cite{825799}.
 		Besides not scaling well and having the potential to put very high resource constraints, ``\textit{addressing schemes and service discovery would prove to be a major bottleneck against scalability}'' \cite{92000412}.
 		
-		Despite having these disadvantages, it is important to remind the environment and the number of devices that will be connected in such network.
+		Despite having these disadvantages, it is important to keep in mind the small environment and the limited number of devices that will be connected in such network.
 		Since communication is not frequent and data packets are not large, this network layout can satisfy the MegaSense's requirements for interconnection.
 
 	\section{Open LoRa Mesh Hardware}\label{sec:hardware_solution}
@@ -88,9 +86,11 @@
 		The following section explains the algorithms made for this project are delineated and it is shown how they have been implemented.
 		Afterwards, the addressing scheme in LoRa, which is important to understand, is described.
 		
+		All network related functions are contained in a library that describes main components of this project.
+		
 		The FiPy boards have been programmed using Micropython, and the firmware flashed\footnote{ \textit{Flashing} involves the overwriting of existing firmware or data, contained in EEPROM or flash memory module present in an electronic device, with new data.} on the boards, at the time of writing, is \texttt{v1.16.5}.
 		
-		\subsection{Software}\label{subsec:algorithms}
+		\subsection{Important functions}\label{subsec:algorithms}
 	
 			% DRAWING AUTOMATA
 			% https://latexdraw.com/automata-diagrams-in-latex/
@@ -108,18 +108,19 @@
 			\subsubsection{Overview of the whole system}
 			
 				As previously said, the FiPy is divided in two files, \texttt{boot.py} and \texttt{main.py}.
-				When the board is powered up, the first file executed is \texttt{boot.py}, which contains the code that either boots the device in a state of listener or continues its normal sequence.
+				When the board is powered up, the first file executed is \texttt{boot.py}, which contains the code that either boots the device in a state of receiver or continues its normal sequence.
 				
-				The listener state allows for the device to be used as a station that only sniffs the messages traveling in the air.
-				
+				The receiver state allows for the device to be used as a station that only sniffs the messages traveling in the air.				
 				Continuing in the normal sequence, thus executing the code in \texttt{main.py}, will allow the node to connect to an existing mesh or to create one, for sending and receiving data afterwards.
 				
-				% TODO dire che si fa molto affidamento sulla trasmissione con loractp
+				Open LoRa Mesh heavily relies on the use of LoRaCTP, described in Section~\ref{subsec:loractp}, for message transmission.
+				This is because LoRaCTP builds an important layer of stability on top of raw LoRa transmission.
 				
-			\subsubsection{Boot}
+			\subsubsection{Boot sequence}
 			
 				As mentioned earlier, the \texttt{boot.py} file contains the code that is initially executed by the FiPy.
-				In the case of Open LoRa Mesh, this code contains the instructions to load a \texttt{config.json} file, which contains the boot mode the device will be initialized in.
+				The first operation done is to disable Wi-Fi communication and the default blinking (heartbeat) of the FiPy, Figure~\ref{code:boot_wifi}.
+				Since when powered up, FiPy's firmware enables Wi-Fi, it can be useful to turn it off because it is not used, also it could draw unnecessary power from the device.
 
 				\begin{figure}[H]
 					\begin{lstlisting}[language=Python]
@@ -130,9 +131,6 @@ pycom.heartbeat(False)
 					\caption{Code for Wi-Fi de-initialization and heartbeat stop}
 					\label{code:boot_wifi}
 				\end{figure}
-			
-				The first operation done is to disable Wi-Fi communication and the default blinking (heartbeat) of the FiPy, Figure~\ref{code:boot_wifi}.
-				Since when powered up, FiPy's firmware enables Wi-Fi, it can be useful to turn it off because it is not used, also it could draw unnecessary power from the device.
 			
 				During the boot procedure, the board checks the availability of a \texttt{config.json} file on an external SD card and, if present, uses the parameters on such files.
 				If not present it checks for such file locally on the flash memory, which contains one with default configurations and is uploaded with the \texttt{*.py} files.
@@ -159,7 +157,7 @@ pycom.heartbeat(False)
 					\node[state, initial]  			(s_0)                 	{$s_0$}; % START
 					\node[state] 					(s_1)	[right of=s_0]	{$s_1$}; % BOOT
 					\node[state, accepting]			(s_2) 	[above right of=s_1]	{$s_2$}; % MAIN LOOP
-					\node[state, accepting]			(s_3) 	[below right of=s_1]	{$s_3$}; % LISTENER LOOP
+					\node[state, accepting]			(s_3) 	[below right of=s_1]	{$s_3$}; % RECEIVER LOOP
 					
 					\path[->]
 					(s_0) edge node {} (s_1)
@@ -181,7 +179,7 @@ pycom.heartbeat(False)
 							$start$ & device is powered up\\\hline
 							$s_{0}$ & Wi-Fi is de-initialized and heartbeat is set to \texttt{False}\\\hline
 							$s_{1}$ & configuration file is read\\\hline
-							$s_{2}$ & \texttt{PLAIN\_LISTENER} mode is initialized\\\hline
+							$s_{2}$ & \texttt{PLAIN\_RECEIVER} mode is initialized\\\hline
 							$s_{3}$ & \texttt{DEFAULT\_BOOT} mode is initialized\\\hline
 						\end{tabular}
 						\caption{Boot sequence FSA description}
@@ -189,9 +187,9 @@ pycom.heartbeat(False)
 					\end{center}
 				\end{table}
 
-			\subsubsection{Plain listener}
+			\subsubsection{Plain receiver}
 			
-				The mode in which the device is set only to listen is called ``\textit{\texttt{PLAIN\_LISTENER}}'', and the code executed is contained in the \texttt{plain\_listener.py} file.
+				The mode in which the device is set only to listen is called ``\textit{\texttt{PLAIN\_RECEIVER}}'', and the code executed is contained in the \texttt{plain\_receiver.py} file.
 				Such state lets the FiPy listen to messages that are in its range, without the possibility of sending messages or participate into the mesh.
 				This state can be used for debugging and catching the different messages that are sent in an area.
 				
@@ -208,14 +206,15 @@ def sniffLoRaNetwork():
     except Exception as e:
       print ("plainreceiver.py: EXCEPTION!! ", e)
 					\end{lstlisting}
-					\caption{\texttt{PLAIN\_LISTENER} mode code}
-					\label{code:plain_listener}
+					\caption{\texttt{PLAIN\_RECEIVER} mode code}
+					\label{code:plain_receiver}
 				\end{figure}
 
-				The principal function in the file \texttt{plain\_listener.py} is \texttt{plain\_listener()}, in Figure~\ref{code:plain_listener}, and, as for the code used in the rest of the software, this function utilizes LoRaCTP.
+				The principal function in the file \texttt{plain\_receiver.py} is \texttt{plain\_receiver()}, in Figure~\ref{code:plain_receiver}.
+				Such function is an adaptation of the example one contained in the LoRaCTP repository.
 				It first creates an endpoint, which is then used in an infinite loop that reads data received at the endpoint and logs it.
-			
-			\subsubsection{Main}
+				
+			\subsubsection{Main sequence and key variables}
 			
 				This subsection describes the course of the \texttt{main.py} file and the \texttt{main()} function it contains.
 				The code contained in this file is automatically executed by the board, unless specified otherwise, after the code in the previously described \texttt{boot.py} file.
@@ -268,43 +267,52 @@ def sniffLoRaNetwork():
 							$m_{3}$ & if the mesh does not exist, the node creates a new mesh and advertises the mesh information\\\hline
 							$m_{4}$ & the node listens for any messages in the air and processes them\\\hline
 							$m_{5}$ & if the MegaSense device is available, the node connects to it, reads data, and sends it into the network\\\hline
+							$m_{6}$ & the node broadcasts a message advertising the mesh network\\\hline
 						\end{tabular}
 						\caption{Main sequence FSA description}
 						\label{table:fsa_main}
 					\end{center}
 				\end{table}
 			
-%				The most important objects that are used in the main part of this software, and that are initialized at the beginning, are:
-%				\begin{itemize}
-%					\item \texttt{LORA\_ANTENNA\_LOCK}: % parlare dell'uso dei lock
-%				    \item \texttt{node}:
-%					\item \texttt{mesh}:
-%					\item \texttt{routing\_table}:
-%				\end{itemize}
+				The most important objects used in the main part of this software, and that are initialized at the beginning, are:
+				\begin{itemize}
+					\item \texttt{LORA\_ANTENNA\_LOCK}: a \texttt{LOCK} is placed on the use of the LoRa antenna so that it can be used only in one part of the program at the time; 
+				    \item \texttt{node}: represents the current node and its properties;
+					\item \texttt{mesh}: contains the data about the mesh network;
+					\item \texttt{routing\_table}: contains data about the other nodes connected to the mesh.
+				\end{itemize}
 			
-%				\texttt{node}, \texttt{mesh} and \texttt{routing\_table} are all three objects described in the mesh library, contained in the \texttt{mesh.py} file under the \texttt{lib} folder.
+				\texttt{node}, \texttt{mesh} and \texttt{routing\_table} are all objects initialized from the \texttt{mesh.py} library, later described in Section~\ref{subsec:mesh_library}.
+				
+				Like in the \texttt{boot()} function, \texttt{main()} also searches for a configuration file, at first on an SD card, then on the flash memory.
+				Important entries in this \texttt{JSON} file used by \texttt{main()} are:
+				\begin{itemize}
+					\item \texttt{GPS}: a boolean that tells the FiPy to either find or not the GPS coordinates of the board. This only happens if the board is connected to a PyTrack shield;
+					\item \texttt{MEGASENSE\_CONNECT}: another boolean that tells the board either to connect or not to a MegaSense device, of which the MAC address is contained in \texttt{MEGASENSE\_ADDR};
+					\item \texttt{MEGASENSE\_ADDR}: address of the MegaSense device the board will connect to.
+				\end{itemize}
+			
+				The functions related to the communication with the MegaSense device are contained in the \texttt{megasense.py} file, described in Section~\ref{subsec:megasense_lib}.
 				
 			\subsubsection{Mesh initialization}
 			
-				As can be seen in Figure~\ref{fsa:main}, after initializing the necessary variables and objects, the node listens for a period of time of \textit{at least} 180 seconds for any messages that advertise an existing mesh.
+				As can be seen in the Figure~\ref{fsa:main}, after initializing the necessary variables and objects in $ m_0 $ , the node listens for any messages that advertise an existing mesh, represented by state $ m_1 $.
 				Particularly, this is done via the code in Figure~\ref{code:mesh_init_1}.
 				An important thing to keep in mind when working with devices that communicate wirelessly is the channel availability.
-				That is why earlier it is said that the node listens for \textit{at least} 180 seconds: the function \texttt{listenForMesh} of the \texttt{MeshNode} object contains a line of code that adds a random amount of time so that nodes that start at the same time, do not overlap and create two separate mesh networks.
+				The node listens for \textit{at least} 180 seconds: the function \texttt{listen\_for\_mesh} of the \texttt{Node} object contains a line of code that adds a random amount of time so that nodes which start at the same time, do not overlap and cause the creation two separate mesh networks.
 				
 				\begin{figure}[H]
 					\begin{lstlisting}
 mesh_id, advertising_node, request_connection = node.listenForMesh(180)
 					\end{lstlisting}		
-					\label{code:mesh_init_1}
 					\caption{Code that listens for mesh network advertisements}
+					\label{code:mesh_init_1}
 				\end{figure}
 			
-				The \texttt{node.listenForMesh()} function is invoked on the \texttt{MeshNode} object from the library in \texttt{mesh.py}, better explained later in Section~\ref{subsec:mesh_library}.				
-				\texttt{request\_connection}, in Figure~\ref{code:mesh_init_1}, is a boolean variable that tells if a message such as the one in Figure~\ref{msg:advertise_msg} has been received.
+				The \texttt{node.listen\_for\_mesh()} function is invoked on the \texttt{Node} object from the library in \texttt{mesh.py}, better explained later in Section~\ref{subsec:mesh_library}.				
+				\texttt{request\_connection}, in Figure~\ref{code:mesh_init_1}, is a boolean variable that tells if a message has been received.
 				
-				% TODO aggiungere messaggio per advertise
-				
-				If such message has been received, the receiving node sends a request for mesh information to the sending node, this will send the data, which includes the routing table, the routing table version and the mesh id.
+				If positive, the receiving node sends a request for such mesh information to the sending node, this will send the data, which includes the routing table, the routing table version and the mesh id.
 				Otherwise, the current node will create a new mesh network, thus initializing the routing table with itself as parent and using the mesh id given in the configuration file.
 				Such code is present in Figure~\ref{code:mesh_init_2} and represents respectively states $m_{2}$ and $m_{4}$ from Figure~\ref{fsa:main}.
 									
@@ -327,8 +335,8 @@ else:
   new_routing_table_dict = { node.LORA_MAC : "" }
   routing_table = RoutingTable(new_routing_table_dict)
 					\end{lstlisting}
-					\label{code:mesh_init_2}
 					\caption{Code use to initialize the mesh network by requesting data from the advertising node or creating a new mesh}
+					\label{code:mesh_init_2}
 				\end{figure}
 			
 %				\begin{figure}[h]
@@ -348,13 +356,13 @@ else:
 				It is marked as an accepting state since the program might finish due to possible Exceptions.
 				Such Exceptions are part of the ones described later in Section~\ref{sec:software_improvements}.
 				
-				At the start of the loop, the \texttt{LORA\_ANTENNA\_LOCK} is acquired, thus allowing the node to send and receive data.
-				This infinite loop can be divided in three parts:
+				At each start of the loop, \texttt{LORA\_ANTENNA\_LOCK} is acquired, thus allowing the node to send and receive data.
+				This infinite loop can be divided in three parts, which are respectively states $ m_4 $, $ m_5 $ and $ m_6 $ in Figure~\ref{fsa:main}:
 				% TODO COMPLETE
 				\begin{itemize}
-					\item listen and for messages and answer:
-					\item connectivity with the MegaSense and data gathering:
-					\item mesh broadcasting:
+					\item $ m_4 $, listen and for incoming messages and send responses:
+					\item $ m_5 $, connection with MegaSense and data gathering:
+					\item $ m_6 $, broadcasting mesh advertisement:
 						\begin{figure}[H]
 							\begin{lstlisting}
 node.broadcastMeshAdvertisement(mesh.MESH_ID)
@@ -373,7 +381,6 @@ def broadcastMeshAdvertisement(self, mesh_id):
 							\caption{Code for broadcasting advertisement messages in mesh library}
 							\label{code:mesh_advertisement_library}
 						\end{figure}
-
 				\end{itemize}	
 			
 			\subsubsection{Message forwarding}
@@ -382,8 +389,14 @@ def broadcastMeshAdvertisement(self, mesh_id):
 			
 			\subsubsection{MegaSense communication}
 			
-				\textbf{\textcolor{red}{\hl{// To be completed}}}
-			
+				If the boolean variable \texttt{MEGASENSE\_CONNECT} in the configuration file is set to \texttt{True}, then at the beginning of \texttt{main()} a \texttt{MegaSense} object is created.
+				Such object is implemented in the \texttt{megasense.py} file, a library that contains the functions used to interact with the device.
+				
+				The architecture of Open LoRa Mesh implies that each node of the network communicates with a MegaSense device via BLE.
+				Thus, the configuration file of each node contains \texttt{MEGASENSE\_ADDR} variable, a string with the MAC address of a specific MegaSense.
+				If such sensor is in reach, then the node will connect to it and interact, gathering data about air quality in its surroundings.
+				Such interaction is done via the functions in the MegaSense class, described in Section~\ref{subsec:megasense_lib}.
+				
 		\subsection{Mesh library}\label{subsec:mesh_library}
 		
 				\textbf{\textcolor{red}{\hl{// To be completed}}}
@@ -430,6 +443,8 @@ def broadcastMeshAdvertisement(self, mesh_id):
 %		These are used in the software and have not been explained in the previous sections since their use is secondary compared to the other functions.
 %		% TODO CAMBIARE SE NECESSARIO
 %		\texttt{README.md} and \texttt{banner.png} files are used in the GitHub repository and not essential to the usability of this project.
+
+		\subsection{MegaSense library}\label{subsec:megasense_lib}
 		
 	\section{Microcontroller sleep cycle}\label{sec:sleep}
 	

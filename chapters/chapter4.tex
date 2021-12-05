@@ -221,70 +221,70 @@
 		
 		\subsection{Research projects}
 		
-			\textbf{\textcolor{red}{\hl{// To be completed}}}
-		
-%			\subsubsection{Monitoring of Large-Area IoT Sensors Using LoRa Wireless Mesh Network System: Design and Evaluation}
-%			
-%			\subsubsection{Black Powder Flow Monitoring in Pipelines by Means of Multi-Hop LoRa Networks}
-%		
-%			\subsubsection{Exploring Multi-Hop LoRa for Green Smart Cities}
-%			
-%			\subsubsection{Proposal of a Hybrid LoRa Mesh / LoRaWAN Network}
-%			
-%			\subsubsection{Beyond the Star of Stars: An Introduction to Multihop and Mesh for LoRa and LoRaWAN}
-%			
-%			\subsubsection{LoRa-based Mesh Network for Off-grid Emergency Communications}
-%			
+			\subsection{LoRa mesh networks}
+			
+				The idea of creating a wireless mesh network in which nodes communicate via LoRa technology is certainly not new.
+				% Monitoring of Large-Area IoT Sensors Using LoRa Wireless Mesh Network System: Design and Evaluation
+				Authors of \cite{8326735} designed and tested a LoRa wireless mesh network system for collecting data from IoT sensors distributed across a mixed scenario, with nodes both indoors and outdoors.
+				Their measurements show that in urban areas ``\textit{LoRa requires dense deployment of LoRa gateways (GWs) to ensure that indoor LoRa devices can successfully transfer data back to remote GWs}''.
+
+				% Exploring Multi-Hop LoRa for Green Smart Cities
+				% Black Powder Flow Monitoring in Pipelines by Means of Multi-Hop LoRa Networks
+				% LoRa-based Mesh Network for Off-grid Emergency Communications
+				Other papers, such as \cite{8884231}, \cite{8792890} and \cite{9342944} analyze study cases of LoRa mesh networks in different scenarios.
+				
+				The first paper, ``\textit{Exploring Multi-Hop LoRa for Green Smart Cities}'' \cite{8884231} describes an experimental case study on multi-hop LoRa systems with the goal of understanding the amount of energy used by each node and the range in both transmission and reception of such nodes, as represented in Figure~\ref{img:transmit}.
+				Authors of such paper conclude by stating that ``\textit{the smart city concept would require hundreds of thousands of end devices to be deployed across a city, multi-hop assisted star-of-stars topologies may be considered a viable option for clustering many end devices together and making the network more energy efficient}''.
+				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=.75\textwidth]{resources/img/chap4/transmit}
+					\caption[Required transmit power as a function of packet reception ratio and location of relay node]{Required transmit power as a function of packet reception ratio and location of relay node \cite{8884231}}
+					\label{img:transmit}
+				\end{figure}
+			
+				In the second paper, ``\textit{Black Powder Flow Monitoring in Pipelines by Means of Multi-Hop LoRa Networks}'' \cite{8792890}, authors propose ``\textit{a multi-hop linear topology that allows to deploy a monitoring infrastructure that can be used to cover extremely long pipeline structures thanks to the wide transmission range of the LoRa technology}''.
+				
+				The third and last paper, ``\textit{LoRa-based Mesh Network for Off-grid Emergency Communications}'', authors propose the use of a LoRa mesh network to monitor natural calamities in the Philippines.
+				Such network would integrate with the existing emergency system, based on GSM base stations, and would be composed of embedded devices capable of sending information via LoRa and communicate with a user's phone via BLE.
+				This architecture resembles the one of the projects later described in Section~\ref{subsec:sonnet}, where a phone is needed to generate the data sent in the network.
+				
+%				\subsubsection{Proposal of a Hybrid LoRa Mesh / LoRaWAN Network}
+%				\subsubsection{Beyond the Star of Stars: An Introduction to Multihop and Mesh for LoRa and LoRaWAN}
+
 %			% https://ieeexplore.ieee.org/document/9394317
 			\subsubsection{LoRaCTP}\label{subsec:loractp}
+				
+				LoRaCTP, which stands for \textit{LoRa Content Transfer Protocol}, is a ``\textit{flexible protocol based on LoRa technology that allows for the transfer of ``content'' to large distances with very low energy}'', as explained by the authors in \cite{loractp}.
+				
+				The goal of this protocol is to make LoRa transmissions reliable, by ``introducing a lightweight connection set-up and ideally allowing the sending of an as-long-as necessary data message''.
+				By ``\textit{content}'', authors refer to a ``\textit{self-contained piece of data}'', which in essence is a \texttt{JSON} encoded message with a virtually unlimited length.
+				The structure of a LoRaCTP packet is depicted in Figure~\ref{img:loractp_packet}.
 			
-				\textbf{\textcolor{red}{\hl{// To be completed}}}
-%			
-%				a ﬂexible protocol based
-%				on LoRa technology that allows for the transfer of “content” to
-%				large distances with very low energy. LoRaCTP provides all the
-%				necessary mechanisms to make LoRa reliable, by introducing a
-%				lightweight connection set-up and ideally allowing the sending
-%				of an as-long-as necessary data message.
-%			
-%				\begin{figure}[H]
-%					\centering
-%					\includegraphics[width=.75\textwidth]{resources/img/chap4/loractp_packet}
-%					\caption[Flow of the establishment and interchange of data in LoRaCTP]{Structure of the packet used by the stop-and-wait ARQ. \cite{loractp}}
-%				\end{figure}
-%			
-%				\begin{figure}[H]
-%					\centering
-%					\includegraphics[width=.5\textwidth]{resources/img/chap4/loractp_flow}
-%					\caption[Flow of the establishment and interchange of data in LoRaCTP]{Flow of the establishment and interchange of data in LoRaCTP \cite{loractp}}
-%				\end{figure}
-%		
-%		By content we refer to a self-contained piece of data, like a
-%		JSON encoded message whose length is in principle unlimited.
-%		We tested out library with messages of up to 150 kbytes,
-%		as indicated in Section V. LoRaCTP is based on a unicast
-%		protocol adopting a classical stop-and-wait ARQ approach
-%		with a dynamic and adaptive value for the retransmission
-%		delay. The protocol ensures that information is not lost due to
-%		dropped packets and that packets are received in the correct
-%		order.
-%		
-%		Each packet is sent by using a three attempts scheme. That
-%		is, if after three attempts no ACK is received, we suppose
-%		that the channel is currently busy or too noisy and the content
-%		sending is dropped.
-%		
-%		On top of this ﬂow-control protocol there is a lightweight
-%		transport protocol that is used to establish a connection be-
-%		tween a master node, and a client node. Figure 3 shows a sim-
-%		ple sequence example. Basically the master device “listens”
-%		to incoming connections. Connections can be established in a
-%		unicast manner, by providing the address of the master device,
-%		or using an anycast approach, thus sending to the generic
-%		“00000000” address and thus receiving the reply from the
-%		close-by listening device. This possibility allows for a greater
-%		ﬂexibility in establishing dynamic topologys in rural areas, for
-%		example.
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=.75\textwidth]{resources/img/chap4/loractp_packet}
+					\caption[Structure of the packet used by the stop-and-wait ARQ]{Structure of the packet used by the stop-and-wait ARQ \cite{loractp}}
+					\label{img:loractp_packet}
+				\end{figure}
+				
+				LoRaCTP's structure is based on a unicast protocol that uses a textbook stop-and-wait Automatic Repeat Request (ARQ) approach with a ``\textit{dynamic and adaptive value for the retransmission delay}''. 
+				The protocol ensures data is not lost due to dropped packets and that these are received in the correct order.
+				Each packet is sent by using a ``three attempts scheme'': if after three attempts no \texttt{ACK} is received, the protocol supposes the channel is currently busy or too noisy and the content sending is dropped.
+
+				Authors also introduced a ``\textit{lightweight transport protocol that is used to establish a connection between a master node, and a client node}'', Figure~\ref{img:flow_loractp}, which allow for greater flexibility.
+				Such connections are established in a unicast manner, by providing the address of the master device,
+				or using an anycast approach.
+				
+				\begin{figure}[h]
+					\centering
+					\includegraphics[width=.5\textwidth]{resources/img/chap4/loractp_flow}
+					\caption[Flow of the establishment and interchange of data in LoRaCTP]{Flow of the establishment and interchange of data in LoRaCTP \cite{loractp}}
+					\label{img:flow_loractp}
+				\end{figure}
+		
+				Authors have made the code publicly available online on a GitHub repository\footnote{ \url{www.github.com/pmanzoni/loractp}}.
+				Section~\ref{sec:software_solution} explains how \texttt{loracpt.py} is used in Open LoRa Mesh in forwarding messages from one node to another.
 		
 		% https://www.project-owl.com/
 		% https://www.reddit.com/r/RTLSDR/comments/bzian5/ltt_showcases_new_lora_mesh_network_devices/
@@ -298,7 +298,7 @@
 			% https://gotenna.com/
 			%				https://gotennamesh.com/products/mesh?utm_source=internal-link&utm_medium=menu&utm_campaign=gotenna.com
 			% https://techcrunch.com/2019/06/18/gotenna-is-ramping-up-public-sector-mesh-networking-with-a-24m-c-round/
-			\subsubsection{Off grid mesh devices: Sonnet and goTenna}
+			\subsubsection{Off grid mesh devices: Sonnet and goTenna}\label{subsec:sonnet}
 			
 				Both of the following devices use LoRa to create a mesh network and have been designed for emergency off-grid communication, where cellular towers or land-line phones are not physically reachable.
 				
