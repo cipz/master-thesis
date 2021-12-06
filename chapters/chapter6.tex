@@ -8,16 +8,12 @@
 
 \chapter{Experimental results}\label{chapter:results}
 	
-	This chapter expands the previous one by verifying the usability of the Open LoRa Mesh.
-	Particularly, it describes four experiments in which Open LoRa Mesh has been set up and tested, in order to record its rough performances.
+	This chapter expands the previous one by verifying the usability of Open LoRa Mesh.
+	Particularly, it describes four experiments in which Open LoRa Mesh has been set up and tested, in order to record its rough performances.The following sections describe such experiments done with the available hardware in two particular locations: inside a building and in an open field.
 	
-	The following sections describe such experiments done with the available hardware in two particular locations: inside a building and in an open field.
+	The first location is \textit{Archimedes Tower} \footnote{ For simplicity, pictures representing this location are taken from a publicly available online 3D model\newline (\url{https://3dwarehouse.sketchup.com/model/a4d327dd45162ee0557d96e459f19076/})} (\textit{Torre Archimede} in Italian), the building which houses the department of mathematics and computer science at the University of Padova, while the second place is the \textit{Mazzini Square} \footnote{ Images of this location in this thesis are taken from Google Maps and OpenStreetMap} (\textit{Piazza Mazzini} in Italian) in Monselice, a city in the south of Padova.
 	
-	The first location is \textit{Archimedes Tower}\footnote{ For simplicity, pictures representing this location are taken from a publicly available online 3D model\newline (\url{https://3dwarehouse.sketchup.com/model/a4d327dd45162ee0557d96e459f19076/})} (\textit{Torre Archimede} in Italian), the building which houses the department of mathematics and computer science at the University of Padova, while the second place is the \textit{Mazzini Square}\footnote{ Images of this location in this thesis are taken from Google Maps and OpenStreetMap} (\textit{Piazza Mazzini} in Italian) in Monselice, a city in the south of Padova.
-	
-	These places have been chosen especially for their opposite characteristics.
-	Archimedes Tower, in Figure~\ref{img:archimede_1}, is a 31m tall building which develops on seven levels above the ground and three underground levels\footnote{ \url{https://phaidra.cab.unipd.it/view/o:10783}}.
-	On the other hand, Mazzini Square, in Figure~\ref{img:pzza_mazzini_1}, is an open space that allows an unobstructed view between nodes.
+	These places have been chosen especially for their opposite characteristics: Archimedes Tower, in Figure~\ref{img:archimede_1}, is a 31m tall building which develops on seven levels above the ground and three underground levels\footnote{ \url{https://phaidra.cab.unipd.it/view/o:10783}}, while Mazzini Square, in Figure~\ref{img:pzza_mazzini_1}, is an open space that allows an unobstructed view between nodes.
 	
 	An important remark that has to be done before describing these experiments is that they are not exhaustive.
 	When thinking about the amount of possibilities in which nodes can be arranged, it is certain that more tests could have been executed.
@@ -35,7 +31,7 @@
 	\begin{minipage}{0.5\textwidth}\raggedright
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=.8\textwidth]{resources/img/chap5/pzza_mazzini_2}
+			\includegraphics[width=.8\textwidth]{resources/img/chap5/pzza_mazzini_1}
 			\caption{View from above of Mazzini Square}
 			\label{img:pzza_mazzini_1}
 		\end{figure}
@@ -54,7 +50,7 @@
 		\end{figure}
 	
 		Regarding Archimedes Tower, boards have been placed so that board \textbf{\textit{A}} is on the 6$^{th}$ floor, \textbf{\textit{B}} is on the 4$^{th}$ floor, \textbf{\textit{C}} is on the 2$^{nd}$ floor, \textbf{\textit{D}} is on the first underground level.
-		All boards have been placed with the antenna facing the internal building courtyard.
+		All boards have been placed with the antenna facing the internal courtyard of the building.
 		
 		For Mazzini Square, on the other hand, boards have been placed so that they are directly visible to each other, almost one for each corner of the square.
 		
@@ -66,27 +62,52 @@
 		\end{figure}
 	
 		These placements have been made so that boards do not have direct obstructions that can block the signal used in communicating.
-		It can be considered as an ideal placement also because in this way nodes are all not that far from one another and their signal does not loose that much power.
-		
-		In both scenarios boards are tested as if they were part of a network of fixed devices, which, as explained in Section~\ref{sec:fixed_network}, is the best case scenario for Open LoRa Mesh.
+		Such placement can be considered ideal because nodes are not far from one another, and their signal does not lose much power.
+
+		In both scenarios boards have been tested as if they were part of a network of fixed devices, which, as explained in Section~\ref{sec:fixed_network}, is the best case scenario for Open LoRa Mesh.
 	
 	\section{Experiments}
 		
-		\textbf{\textcolor{red}{\hl{// To be completed}}}
+		\subsection{Message range propagation}
+		
+			This first experiment is intended to understand nodes' range and how they can be placed in order to achieve a strongly connected network.
+			
+			In the case of Archimedes Tower, this test has shown the weakness of LoRa when devices are placed inside a building.
+			Considering the placement of nodes as represented in Figure~\ref{img:archimede_2}, various cases have been examined.
+			
+			To test the transmission range of the nodes in the worst case scenario, at first device \textbf{\textit{D}} has been booted in the library's floor.
+			After booting up, the device listens for around 180 seconds for any mesh advertisement messages, as explained in Section~\ref{subsec:initialization}, but since there are no other nodes it will create a new mesh with the specified identifier.
+			Subsequently, device \textbf{\textit{A}} was the second one started, but, due to the amount of concrete layers in between these devices, but not all packets were correctly exchanged in between these two nodes.
+			This has caused device \textbf{\textit{A}} to not be able to exchange data with node \textbf{\textit{D}} and to be shut down, so that a better placed node could be booted up.
+			Node \textbf{\textit{B}}, placed on the 4$^{th}$ floor, showed better results when exchanging mesh data, although some messages were still lost when communicating with node \textbf{\textit{D}}.
+			
+			The best placement of nodes in Archimedes Tower is thus represented by the placement in Figure~\ref{img:archimede_1}.
+			Nodes showed a strong connection when placed roughly two levels apart and booted up in order, allowing the mesh to be created without any packet loss.
+			FiPys have been started in alphabetical order and 5 minutes apart from each other, so the first one would have time to generate the mesh, and the others would be able to join it.
+			The addition of a node is further described in Section~\ref{subsec:node_addition}.
+			
+			Contrasting with the thick walls of Archimedes Tower, Piazza Mazzini is an open space where no obstructions are present.
+			
+			
+			Such differences in results are the reason why places so divergent have been chosen for testing the mesh.
 		
 		\subsection{Mesh creation}
 		
-		\subsection{Node addition}
+			
+		
+		\subsection{Node addition}\label{subsec:node_addition}
+		
+			
 
 		\subsection{Node removal}
 		
-		\subsection{Message propagation}
+		
 	
 	\section{About the results}
-	
-		\textbf{\textcolor{red}{\hl{// To be completed}}}
-			
-		% When thinking about the first scenario where the network has been tested, it is possible to think of an optimal structure in which nodes are strategically placed to cover the entire area of the building:
+		
+		In order to achieve an optimal connectivity in Archimedes Tower, nodes would need to be placed near the window on each of the aforementioned floors ($-1$, $2$, $4$, $6$).
+		Placing them near the window, either facing externally or on the internal courtyard, would allow them to have a clear visual.
+		A stronger connection could then be achieved in between nodes \textbf{\textit{A}} and \textbf{\textit{D}}.
 	
 	\section{Other possible experiments}
 	

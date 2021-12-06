@@ -294,9 +294,9 @@ def sniffLoRaNetwork():
 			
 				The functions related to the communication with the MegaSense device are contained in the \texttt{megasense.py} file, described in Section~\ref{subsec:megasense_lib}.
 				
-			\subsubsection{Mesh initialization}
+			\subsubsection{Mesh initialization}\label{subsec:initialization}
 			
-				As can be seen in the Figure~\ref{fsa:main}, after initializing the necessary variables and objects in $ m_0 $ , the node listens for any messages that advertise an existing mesh, represented by state $ m_1 $.
+				As can be seen in the Figure~\ref{fsa:main}, after initializing the necessary variables and objects in $ m_0 $, the node listens for any messages that advertise an existing mesh, represented by state $ m_1 $.
 				Particularly, this is done via the code in Figure~\ref{code:mesh_init_1}.
 				An important thing to keep in mind when working with devices that communicate wirelessly is the channel availability.
 				The node listens for \textit{at least} 180 seconds: the function \texttt{listen\_for\_mesh} of the \texttt{Node} object contains a line of code that adds a random amount of time so that nodes which start at the same time, do not overlap and cause the creation two separate mesh networks.
