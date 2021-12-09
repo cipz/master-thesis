@@ -306,7 +306,7 @@ def plain_receiver():
 				The node listens for \textit{at least} 180 seconds: the function \texttt{listen\_for\_mesh} of the \texttt{Node} object contains a line of code that adds a random amount of time so that nodes which start at the same time, do not overlap and cause the creation two separate mesh networks.
 				
 				\begin{figure}[H]
-					\begin{lstlisting}
+					\begin{lstlisting}[language=python]
 mesh_id, advertising_node, request_connection = node.listen_for_mesh(180)
 					\end{lstlisting}		
 					\caption{Code that listens for mesh network advertisements}
@@ -321,7 +321,7 @@ mesh_id, advertising_node, request_connection = node.listen_for_mesh(180)
 				Such code is present in Figure~\ref{code:mesh_init_2} and represents respectively states $m_{2}$ and $m_{4}$ from Figure~\ref{fsa:main}.
 									
 				\begin{figure}	
-					\begin{lstlisting}
+					\begin{lstlisting}[language=python]
 if request_connection:
   mesh = Mesh(mesh_id)
   mesh_info = node.request_mesh_info(mesh_id, advertising_node)
@@ -371,7 +371,7 @@ else:
 				Broadcasting mesh advertisement messages is done at the very end of the loop:  Figure~\ref{code:mesh_advertisement_main} is the line of code in the cycle which calls the code in Figure~\ref{code:mesh_advertisement_library}, implemented in the mesh library.
 			
 				\begin{figure}[h]
-					\begin{lstlisting}
+					\begin{lstlisting}[language=python]
 node.broadcast_mesh_advertisement(mesh.MESH_ID)
 					\end{lstlisting}
 					\caption{Code for mesh advertisement in \texttt{main.py} loop}
@@ -379,7 +379,7 @@ node.broadcast_mesh_advertisement(mesh.MESH_ID)
 				\end{figure}
 				
 				\begin{figure}[h]
-					\begin{lstlisting}
+					\begin{lstlisting}[language=python]
 def broadcast_mesh_advertisement(self, mesh_id):
   msg = self.MESH_ADVERTISE_PREAMBLE.decode() + 
       "=" + mesh_id.decode() + "." + self.LORA_MAC.decode()
@@ -409,40 +409,139 @@ def broadcast_mesh_advertisement(self, mesh_id):
 				
 		\subsection{Mesh library}\label{subsec:mesh_library}
 		
-				\textbf{\textcolor{red}{\hl{// To be completed}}}
-%			\subsection{Node initialization}
-%				\begin{figure}
-%					\begin{lstlisting}
-%def __init__(self) -> None:
-%  self.LORA_NETWORK = LoRa(mode=LoRa.LORA, region=LoRa.EU868)
-%  self.LORA_SOCKET = socket.socket(socket.AF_LORA, socket.SOCK_RAW)
-%  self.LORA_MAC = binascii.hexlify(LoRa().mac())[8:]
-%  self.NODE_ID = 0x01
-%					\end{lstlisting}
-%					\label{code:node_initialization}
-%					\caption{Code for node initialization in mesh library}
-%				\end{figure}
+			The mesh library is contained in the \texttt{mesh.py} file and implements the code for the objects \texttt{Node}, \texttt{Mesh} and \texttt{RoutingTable}.
 		
-%			\subsubsection{Routing table}\label{subsec:routing_table}
+			\subsubsection{Node}
+				
+				The \texttt{Node} object represents the device itself, which, when instantiated, sets the correct LoRa network in which the FiPy operates, the socket, gets the MAC address and sets a node identifier to either the default value or to a given one.
+				The complete list of the methods made available by this object and the implementation of its constructor is represented in Figure~\ref{code:node_function_list}.
+				
+				\begin{figure}[h]
+					\begin{lstlisting}[language=python]
+class Node:    
+  LORA_NETWORK = None
+  LORA_SOCKET = None
+  LORA_MAC = None
+  NODE_ID = None
+  
+  def get_mac_addr(self): ...
+  def listen(self): ...
+  def broadcast(self, msg): ...
+  def send_mesh_info(self, rcv_addr, routing_table): ...
+  def request_mesh_info(self, mesh_id, sndr_addr, routing_table): ...
+  def broadcast_mesh_advertisement(self, mesh_id): ...
+  def listen_for_mesh(self, LISTEN_TIMEOUT = 180): ...
+  def __init__(self, default_node_id = 0x00) -> None:
+    self.LORA_NETWORK = LoRa(mode=LoRa.LORA, region=LoRa.EU868)
+    self.LORA_SOCKET = socket.socket(socket.AF_LORA, socket.SOCK_RAW)
+    self.LORA_MAC = binascii.hexlify(LoRa().mac())[8:]
+    self.NODE_ID = default_node_id
+					\end{lstlisting}
+					\caption{List of methods of the \texttt{Node} object and implementation of its constructor}
+					\label{code:node_function_list}
+				\end{figure}
+			
+			\subsubsection{Mesh}
+			
+				The \texttt{Mesh} object is used track the mesh network to which the device is connected to.
+				It implements the constructor of the object, the get and set methods for the mesh identifier, and a method that generates a mesh identifier based on the MAC address of the current device, if no mesh identifier is given.
+				
+				The signature of the methods contained in the \texttt{Mesh} object and the implementation of its constructor are in Figure~\ref{code:mesh_function_list}.
+				
+				\begin{figure}[h]
+					\begin{lstlisting}[language=python]
+class Mesh:
+  MESH_ID = None
+  def generate_mesh_id(self) -> bytes: ...
+  def set_mesh_id(self, new_mesh_id) -> None: ...
+  def get_mesh_id(self): ...  
+  def __init__(self, existing_mesh_id = None, 
+               force_new_mesh_id = None) -> None:
+    if existing_mesh_id:
+      self.set_mesh_id(existing_mesh_id)
+    elif force_new_mesh_id:
+      self.set_mesh_id(force_new_mesh_id)
+    else:
+      self.set_mesh_id(self.generate_mesh_id())
+					\end{lstlisting}
+					\caption{List of methods of the \texttt{Mesh} object and implementation of its constructor}
+					\label{code:mesh_function_list}
+				\end{figure}
+			
+			\subsubsection{RoutingTable}
+			
+				The \texttt{RoutingTable} object is the object that keeps track of all the adjacent nodes.
+				In order to keep track of the various connections among nodes, this object uses a dictionary in which entries are organized so that each node has a parent node assigned.
+				This is true for all nodes but the root, which has \texttt{None} as a parent, since it is considered to be the first node that initiated the mesh.
+
+				Nodes are identified via the first 8 bytes of their MAC address, while the routing table has an identifier that keeps track of its version.
+				Such variable changes when there are changes in the routing table, for example a node is added or another one is removed.
+				
+				The signature of this object's function and the implementation of the constructor method can be seen in Figure~\ref{code:routing_table_functions}.
+				
+				\begin{figure}[h]
+					\begin{lstlisting}[language=python]
+class RoutingTable:
+  VERSION = None
+  ROOT_ADDR = None
+  ROUTING_TABLE = dict()
+  def check_version(self, other_version) -> bool: ...
+  def calculate_version(self): ...
+  def set_version(self, new_version) -> None: ...
+  def get_version(self): ...
+  def get_routing_table(self): ...
+  def set_routing_table(self, new_routing_table) -> None: ...
+  def add_child(self, parent_addr, child_addr) -> None: ...
+  def remove_child(self, remove_addr) -> None: ...
+  def get_root(self): ...
+  def set_root(self, new_root_addr) -> None: ...
+  def __init__(self, existing_routing_table_content = {},
+               existing_routing_table_version = None) -> None:
+    self.set_root(list(existing_routing_table_content.keys())[0])
+    self.set_routing_table(existing_routing_table_content)
+    if existing_routing_table_version:
+      self.set_version(existing_routing_table_version)    
+    else:
+      self.set_version(self.calculate_version())
+					\end{lstlisting}
+					\caption{List of methods of the \texttt{RoutingTable} object}
+					\label{code:routing_table_functions}
+				\end{figure}
+				
+	\section{LoRa addressing scheme}\label{subsec:lora_addressing}
+
+		As any other transmission method, LoRa needs has an addressing scheme that allows devices to have an unique hardware address (MAC address) that uniquely identifies each node of a network.
+		Such address is assigned by the vendor or manufacturer and saved to the device memory. 
 		
-%		\subsection{LoRaCTP forwarding}\label{subsec:loractp_mesh}
+		LoRa's MAC address is built up with 16 hexadecimal characters, but Open LoRa Mesh adapts to LoRaCTP's address scheme, where only the first 8 are used.
+		This can be seen in Figure~\ref{img:loractp_packet} where the \textit{source addr.} and the \textit{dest. addr.} are both 8 bytes.
 		
-			% spiegare come si modifica loractp
+		This has been done to save 8 bytes, 4 for the sender address and 4 for the destination address, that would be added to each packet.
+		A lighter packet means a faster transmission time and less chances of overlapping communications.
 		
-%		\subsection{Supported messages}
+		The default frequency plan of LoRa devices for Europe is called \texttt{EU\_863\_870868} and is 868.1 to 868.5 MHz.
+
+	\section{MegaSense library}\label{subsec:megasense_lib}
+
+		The \texttt{megasense.py} file contains the implementation of the MegaSense object.
+		Code in this file is based on the script used by the authors of \cite{megasense} to connect to the sensor via Linux, which has been adapted to work on Pycom's firmware and implementation of the Micropython BLE library.
 		
-		\section{LoRa addressing scheme}\label{subsec:lora_addressing}
+		\begin{figure}[h]
+			\begin{lstlisting}[language=python]
+class MegaSense:
+  MEGASENSE_ADDR = None
+  CONNECTED = False
+  def is_connected(): ...
+  def read_data(): ...
+  def __init__(self, default_megasense_addr = None) -> None: ...
+			\end{lstlisting}
+			\caption{List of methods of the \texttt{MegaSense} object}
+			\label{code:megasense_lib_function}
+		\end{figure}
 	
-			As any other transmission method, LoRa needs has an addressing scheme that allows devices to have an unique hardware address (MAC address) that uniquely identifies each node of a network.
-			Such address is assigned by the vendor or manufacturer and saved to the device memory. 
-			
-			LoRa's MAC address is built up with 16 hexadecimal characters, but Open LoRa Mesh adapts to LoRaCTP's address scheme, where only the first 8 are used.
-			This can be seen in Figure~\ref{img:loractp_packet} where the \textit{source addr.} and the \textit{dest. addr.} are both 8 bytes.
-			
-			This has been done to save 8 bytes, 4 for the sender address and 4 for the destination address, that would be added to each packet.
-			A lighter packet means a faster transmission time and less chances of overlapping communications.
-			
-			The default frequency plan of LoRa devices for Europe is called \texttt{EU\_863\_870868} and is 868.1 to 868.5 MHz.
+		Figure~\ref{code:megasense_lib_function} shows the methods that are implemented in this object.
+		When invoked, the constructor method initiates a BLE scan searching for the device with the given Bluetooth MAC address.
+		This address is previously read from the configuration file and passed to the constructor when invoked in the \texttt{main.py} file.
 		
 	\section{Other files}
 	
@@ -459,10 +558,6 @@ def broadcast_mesh_advertisement(self, mesh_id):
 			\label{img:files}
 		\end{figure}
 
-		\subsection{MegaSense library}\label{subsec:megasense_lib}
-		
-			\textbf{\textcolor{red}{\hl{// To be completed}}}
-		
 	\section{Microcontroller sleep cycle}\label{sec:sleep}
 	
 		Most IoT devices that compose LPWANs have three main modes, or profiles: \textit{sense}, \textit{connect} and \textit{sleep}.

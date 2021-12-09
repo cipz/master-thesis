@@ -87,7 +87,7 @@
 			The best placement of nodes in Archimedes Tower is thus represented by the placement in Figure~\ref{img:archimede_1}.
 			Nodes have shown a strong connection when placed roughly two levels apart and booted up in order, allowing the mesh to be created without any packet loss.
 			FiPys have been booted in alphabetical order and two minutes apart from each other, so the first one would have time to generate the mesh, and the others would be able to join it.
-			The addition of a node is further described in Section~\ref{subsec:node_addition}.
+			The creation of a mesh and the addition of a node are further described in  Section~\ref{subsec:node_addition}.
 			
 			Contrasting with the thick walls of Archimedes Tower, Piazza Mazzini is an open space where no obstructions are present.
 			In this scenario, whatever is the order in which devices are booted, all of them have a clear line of sight with one another.
@@ -97,9 +97,9 @@
 			They show how space around nodes influences the network and that it is important to study an ideal placement that can allow the mesh to function correctly and with as little packet loss as possible.
 			A scenario similar to Mazzini Square can be an orchard, where each node is strategically placed to monitor part of the field and relates data on air measurements, since for every FiPy there should be a MegaSense paired.
 			
-		\subsection{Mesh creation}
+		\subsection{Mesh creation and node addition}\label{subsec:node_addition}
 		
-			As long as nodes are in reach of one another, the creation of the mesh is quite straightforward.
+			As long as nodes are in reach of one another, the creation of the mesh and the addition of a node are quite straightforward.
 			When the first node boots, it needs around 180 seconds to go beyond the initial listening phase, since there are node preexisting networks.
 			
 			In Archimedes Tower's case, by booting devices in alphabetical order, or reverse, the mesh would create without any issues since, as stated in the previous section, FiPy's range would not be affected as much when devices are separated by two floors. 
@@ -109,13 +109,23 @@
 			
 			In both scenarios, the minimum time to correctly initiate the mesh network has proven to be around 5 minutes, considering the first node needs 3 of them to create the mesh and then booting the others 30 seconds apart after.
 			
-		\subsection{Node addition}\label{subsec:node_addition}
-		
-			% The building block od creating a mesh is the addition of each node to the network.			
-
+			Node addition can be tested while testing the correct creation of the mesh network.
+			Booting up node by node, it can be seen that the routing table correctly creates for each device.
+			Environment, as previously mentioned, has to be taken in consideration.
+			This is because a strong reception is required in between nodes.
+			
 		\subsection{Node removal}
 		
-			% Removing a node can	
+			This experiment tests the robustness of the network when a node is abruptly removed.
+			Results of such test diverge, according to the environment.
+			
+			In Archimedes Tower, the removal of either of the external nodes results in a mesh that keeps functioning and allows messages to be exchange in between the remaining devices.
+			The mesh heals by recreating the routing table and removing the device that was suddenly shut down.
+			
+			If the device shut down is one in the middle of the building, the one on floor $4$ for example, the mesh will have a harder time to recreate, given the previously talked about connectivity problem of nodes in such environment.
+			
+			In Mazzini Square the removal of a node resembles the first case described for Archimedes Tower.
+			Since devices have a clear line of sight, the mesh does not have any problems to heal.
 	
 	\section{About the results}
 		
